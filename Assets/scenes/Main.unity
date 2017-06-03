@@ -4869,6 +4869,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 697831320}
+  - component: {fileID: 697831321}
   m_Layer: 0
   m_Name: CameraObj
   m_TagString: Untagged
@@ -4882,14 +4883,27 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 697831319}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.25881913, z: 0.0000000035656633, w: 0.9659259}
   m_LocalPosition: {x: -3.6, y: 10.21, z: -10.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 978796482}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
+--- !u!114 &697831321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 697831319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c03f8c87a94f42cb87b8e767921ff67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panSpeed: 15
+  panBoardThickness: 10
 --- !u!1001 &705682309
 Prefab:
   m_ObjectHideFlags: 0
@@ -6891,6 +6905,7 @@ GameObject:
   - component: {fileID: 978796480}
   - component: {fileID: 978796479}
   - component: {fileID: 978796478}
+  - component: {fileID: 978796483}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6961,13 +6976,26 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 978796477}
-  m_LocalRotation: {x: 0.3696438, y: 0.23911767, z: -0.099045776, w: 0.89239913}
+  m_LocalRotation: {x: 0.38268346, y: -0.000000029802322, z: 0.0000000042685855, w: 0.9238796}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697831320}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 30, z: 0}
+--- !u!114 &978796483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 978796477}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c03f8c87a94f42cb87b8e767921ff67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panSpeed: 30
+  panBoardThickness: 10
 --- !u!1001 &981871333
 Prefab:
   m_ObjectHideFlags: 0
