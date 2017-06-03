@@ -16,10 +16,7 @@ public class TargetSelection : MonoBehaviour {
 
 	void OnMouseDown ()
 	{
-		GameObject[] target = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ().currentTarget;
-		GameObject aux = target[0];
-		target [0] = this.gameObject;  // Current target
-		target [1] = aux;              // Anterior target
+		GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ().SetTarget (this.gameObject);
 	}
 
 	void OnTriggerEnter (Collider other)
