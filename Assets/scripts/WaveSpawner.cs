@@ -33,6 +33,7 @@ public class WaveSpawner : MonoBehaviour {
 		UpdateUI();
 	}
 
+	//Coroutine for the spawn, it delays spawnDelay for each instantiation
 	IEnumerator SpawnWave(){
 		for (int i = 0; i < waveNumber; i++) {
 			EnemySpawn ();
@@ -41,10 +42,12 @@ public class WaveSpawner : MonoBehaviour {
 		waveNumber++;
 	}
 
+	//instantiate the Enemy
 	void EnemySpawn(){
 		Instantiate (enemyPrefab,spawnPoint.position,spawnPoint.rotation);
 	}
 
+	//Update the User Interface with wave and time remain for next wave information
 	void UpdateUI(){
 		waveCountdownText.text = Mathf.Round(countdown).ToString();
 		waveNumberText.text = Mathf.Round (waveNumber - 1 ).ToString ();
