@@ -50,7 +50,15 @@ public class PlayerController : MonoBehaviour {
 
 		if (currentTarget != null) {
 			// Look at target
-			transform.LookAt (currentTarget.transform.position);
+			transform.LookAt 
+			(
+				new Vector3
+				(
+					currentTarget.transform.position.x,
+					transform.position.y,
+					currentTarget.transform.position.z
+				)
+			);
 
 			if (Time.time - time > currentSkill.GetComponent<SkillsProperties> ().cooldown
 				&& IsInRange(transform, currentTarget.transform)) {
