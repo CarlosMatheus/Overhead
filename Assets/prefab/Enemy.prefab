@@ -284,6 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumHealth: 100
   enemyHealthBar: {fileID: 1211502269624032}
+  overMaterial: {fileID: 2100000, guid: b3dd3cd9d38b8e645a54ec7cc2358f03, type: 2}
   originalMaterial: {fileID: 0}
   HP: 0
 --- !u!114 &114958677098440408
