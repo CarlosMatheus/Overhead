@@ -10,9 +10,9 @@ public class GameController : MonoBehaviour {
 	[Header("To assign")]
 
 	public Slider healthBar;
-	public GameObject enemyHealthBar;
 	public Material targetMaterial;
 
+	private GameObject enemyHealthBar;
 	private GameObject currentTarget;
 	private float maximumHealth = 100.0f;
 	private float currentHealth;
@@ -21,16 +21,17 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		currentHealth = maximumHealth;
 		healthBar.value = SetHealth(currentHealth);
-		enemyHealthBar.SetActive (false);
+		healthBar.gameObject.transform.rotation = GameObject.FindGameObjectWithTag ("MainCamera").gameObject.transform.rotation;
 	}
 
 	void Update () {
-		
-		if (enemyHealthBar.activeInHierarchy) {   // If had target someone
+		if (enemyHealthBar != null) {
+			if (enemyHealthBar.activeInHierarchy) {   // If had target someone
 			
-			// Shows enemy HP
-			enemyHealthBar.GetComponent<Slider> ().value = SetHealth (currentTarget.GetComponent<TargetSelection> ().HP);
+				// Shows enemy HP
+				enemyHealthBar.GetComponent<Slider> ().value = SetHealth (currentTarget.GetComponent<TargetSelection> ().HP);
 
+			}
 		}
 	}
 
@@ -52,6 +53,7 @@ public class GameController : MonoBehaviour {
 
 		// Turns new target into currentTarget
 		currentTarget = _newTarget;
+		enemyHealthBar = _newTarget.GetComponent<TargetSelection>().enemyHealthBar;
 
 		// Turns targetMaterial color into originalMaterial color and atribute it to targetObject
 		targetMaterial.color = currentTarget.GetComponent<TargetSelection> ().originalMaterial.color;

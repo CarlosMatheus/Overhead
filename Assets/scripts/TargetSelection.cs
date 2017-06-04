@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class TargetSelection : MonoBehaviour {
 
-	public float HP;
-
+	[Header("To assign")]
 	public float maximumHealth = 100.0f;
+	public GameObject enemyHealthBar;
+
+	[Header("Auto assign (No need to assign)")]
 	public Material originalMaterial;
+	public float HP;
 
 	void Start () {
 		HP = maximumHealth;
 		originalMaterial = GetComponent<MeshRenderer> ().material;
+		enemyHealthBar.transform.rotation = GameObject.FindGameObjectWithTag ("MainCamera").gameObject.transform.rotation;
 	}
 
 	void OnMouseDown ()
