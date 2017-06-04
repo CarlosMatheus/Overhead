@@ -5,41 +5,49 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
-	const int FIRST = 0, SECOND = 1;
-
 	[Header("To assign")]
 
 	public Slider healthBar;
 	public Material targetMaterial;
 
+	[Header("Auto assign")]
+	public GameObject currentTarget;
+
+	// Private stuff
 	private GameObject enemyHealthBar;
 	private float maximumHealth = 100.0f;
 	private float currentHealth;
 
-	[Header("Auto assign")]
-	public GameObject currentTarget;
+	const int FIRST = 0, SECOND = 1;
 
-	// Use this for initialization
 	void Start () {
+		
+		// Sets player health
 		currentHealth = maximumHealth;
 		healthBar.value = SetHealth(currentHealth);
+
+		// Turns healthBar to camera
 		healthBar.gameObject.transform.rotation = GameObject.FindGameObjectWithTag ("MainCamera").gameObject.transform.rotation;
 	}
 
 	void Update () {
+		
 		if (enemyHealthBar != null) {
+			
 			if (enemyHealthBar.activeInHierarchy) {   // If had target someone
 			
-				// Shows enemy HP
+				// Shows enemy (target) HP
 				enemyHealthBar.GetComponent<Slider> ().value = SetHealth (currentTarget.GetComponent<TargetSelection> ().HP);
 
 			}
 		}
 	}
 
+	// Function to be called by the new target when clicked
 	public void SetTarget (GameObject _newTarget) {
 		
 		if (currentTarget != null) {
+			
 			// Sets target material (color in actual one and emission on tempMaterial) into original one
 			currentTarget.GetComponent<MeshRenderer> ().material = currentTarget.GetComponent<TargetSelection> ().originalMaterial;
 			currentTarget.GetComponent<TargetSelection> ().tempMaterial = currentTarget.GetComponent<TargetSelection> ().originalMaterial;
@@ -47,6 +55,7 @@ public class PlayerController : MonoBehaviour {
 
 			// If had double clicked the same target, just destarget it
 			if (_newTarget == currentTarget) {
+				
 				currentTarget = null;
 				return;
 			}
@@ -67,7 +76,9 @@ public class PlayerController : MonoBehaviour {
 		enemyHealthBar.SetActive (true);
 	}
 
+	// Function to set health valor into "canvas language"
 	float SetHealth (float currentHealth) {
+		
 		return currentHealth / maximumHealth;
 	}
 }
