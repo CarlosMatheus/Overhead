@@ -22,14 +22,15 @@ public class TargetSelection : MonoBehaviour {
 		originalMaterial = GetComponent<MeshRenderer> ().material;
 		tempMaterial = GetComponent<MeshRenderer> ().material;
 
-		// Rotating enemy UI (health bar) at beginning
+		// Rotating enemy UI (health bar) at beginning and desactivating it
 		enemyHealthBar.transform.rotation = GameObject.FindGameObjectWithTag ("MainCamera").gameObject.transform.rotation;
+		enemyHealthBar.SetActive (false);
 	}
 
 	void OnMouseDown ()  // If this.gameObject had been clicked
 	{
 		// Target it! (logic for untargetting happens on GameController script)
-		GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ().SetTarget (this.gameObject);
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ().SetTarget (this.gameObject);
 	}
 
 	void OnMouseEnter ()  // If mouse is over this.gameObject

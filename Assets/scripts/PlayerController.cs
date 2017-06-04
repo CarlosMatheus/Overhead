@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameController : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
 	const int FIRST = 0, SECOND = 1;
 
@@ -13,9 +13,11 @@ public class GameController : MonoBehaviour {
 	public Material targetMaterial;
 
 	private GameObject enemyHealthBar;
-	private GameObject currentTarget;
 	private float maximumHealth = 100.0f;
 	private float currentHealth;
+
+	[Header("Auto assign")]
+	public GameObject currentTarget;
 
 	// Use this for initialization
 	void Start () {
@@ -41,20 +43,20 @@ public class GameController : MonoBehaviour {
 			// Sets target material (color in actual one and emission on tempMaterial) into original one
 			currentTarget.GetComponent<MeshRenderer> ().material = currentTarget.GetComponent<TargetSelection> ().originalMaterial;
 			currentTarget.GetComponent<TargetSelection> ().tempMaterial = currentTarget.GetComponent<TargetSelection> ().originalMaterial;
+			currentTarget.GetComponent<TargetSelection> ().enemyHealthBar.SetActive (false);
 
 			// If had double clicked the same target, just destarget it
 			if (_newTarget == currentTarget) {
-				enemyHealthBar.SetActive (false);
 				currentTarget = null;
 				return;
-			} else {
-				enemyHealthBar.SetActive (true);
 			}
 		}
 
 		// Turns new target into currentTarget
 		currentTarget = _newTarget;
-		enemyHealthBar = _newTarget.GetComponent<TargetSelection>().enemyHealthBar;
+
+		// Gets newTarget HP bar reference
+		enemyHealthBar = currentTarget.GetComponent<TargetSelection>().enemyHealthBar;
 
 		// Turns targetMaterial color into originalMaterial color and atribute it to targetObject
 		targetMaterial.color = currentTarget.GetComponent<TargetSelection> ().originalMaterial.color;
