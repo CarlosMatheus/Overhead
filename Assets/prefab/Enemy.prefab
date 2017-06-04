@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  minDist: 0.01
+  minDist: 0.1
 --- !u!136 &136714135386574144
 CapsuleCollider:
   m_ObjectHideFlags: 1
