@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.88235295, g: 0.28546715, b: 0.28546715, a: 0.5882353}
+  m_Color: {r: 0.88235295, g: 0.28546715, b: 0.28546715, a: 0.54901963}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21366784, g: 0.7647059, b: 0.24026974, a: 0.627451}
+  m_Color: {r: 0.21366784, g: 0.7647059, b: 0.24026974, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -286,6 +286,7 @@ MonoBehaviour:
   enemyHealthBar: {fileID: 1211502269624032}
   overMaterial: {fileID: 2100000, guid: b3dd3cd9d38b8e645a54ec7cc2358f03, type: 2}
   originalMaterial: {fileID: 0}
+  tempMaterial: {fileID: 0}
   HP: 0
 --- !u!114 &114958677098440408
 MonoBehaviour:
