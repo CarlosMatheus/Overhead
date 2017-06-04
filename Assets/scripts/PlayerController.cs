@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour {
 				&& IsInRange(transform, currentTarget.transform)) {
 				// Attack!
 				Attack ();
+				time = Time.time;
 			}
 
 			// Holds healthBar turned to camera at every frame rotation (healthBar is atached with player object in hierarchy
@@ -112,6 +113,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Function to instantiate a skill depending on what tower he is
 	void Attack () {
+		currentSkill.GetComponent<TowerSpell> ().Seek (currentTarget.transform);
 		Instantiate (currentSkill, shotSpawn.position, shotSpawn.rotation);
 	}
 		

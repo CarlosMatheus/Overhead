@@ -6,9 +6,11 @@ public class Untargetter : MonoBehaviour {
 
 	void OnMouseDown ()
 	{
-		GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ().SetTarget
-		(
-			GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ().currentTarget
-		);
+		if (GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ().currentTarget != null) {
+			GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ().SetTarget
+			(
+				GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ().currentTarget
+			);
+		}
 	}
 }

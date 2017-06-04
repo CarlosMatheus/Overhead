@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 33650409022014528}
   - component: {fileID: 23512380111734528}
   - component: {fileID: 114856274223333776}
+  - component: {fileID: 114958391896265772}
   m_Layer: 0
   m_Name: TowerSpellBullet
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,6 +93,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31cdeb258bf248c4823e12f7621b683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   impactEffect: {fileID: 1099177712462748, guid: 632a9d5c50156f54e8071665d60bb047,
     type: 2}
   speed: 15
+--- !u!114 &114958391896265772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076308763873118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf0493cc0b30a044b04e8f2aa0826a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  cooldown: 0.5
+  range: 4

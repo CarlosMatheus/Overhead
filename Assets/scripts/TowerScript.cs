@@ -4,14 +4,16 @@ using UnityEngine;
 public class TowerScript : MonoBehaviour {
 
 	private Transform target;
+	private GameObject player;
 
 	[Header("Unity Setup Fields")]
 
-	public Transform witch;
 	public Transform rangePiece;
 	public Transform partToRotate;
-	public GameObject bulletPrefab;
 	public Transform firePoint;
+	public Transform playerSpawnOnTower;
+	public GameObject bulletPrefab;
+	public GameObject towerSkill;
 	public string enemyTag = "Enemy";
 
 	[Header("Attributes")]
@@ -22,6 +24,9 @@ public class TowerScript : MonoBehaviour {
 	public float fireCountdown = 0f;
 
 	void Start () {
+		// Finding the player gameObject
+		player = GameObject.FindGameObjectWithTag ("Player");
+
 		//This will reapeat every 0.5 sec
 		InvokeRepeating ("UpdateTarget", 0f, 0.5f);
 	}
@@ -82,5 +87,28 @@ public class TowerScript : MonoBehaviour {
 	void OnDrawGizmosSelected(){
 		Gizmos.color = new Color(255,0,0,0.75f);
 		Gizmos.DrawWireSphere (rangePiece.position, range);
+	}
+
+	void OnMouseDown () {
+		if (IsAround (playerSpawnOnTower, player.transform)) {  // If player is at this tower, returns
+			return;
+		} else {  // If not
+
+			// Teleports
+			player.transform.position = playerSpawnOnTower.position;
+
+			// Sets new skill to player
+			player.GetComponent<PlayerController>().currentSkill = towerSkill;
+
+		}
+	}
+
+	bool IsAround (Transform trA, Transform trB) {
+
+		if (Vector3.Magnitude (trA.position - trB.position) < 1.0f)
+			return true;
+		else
+			return false;
+
 	}
 }

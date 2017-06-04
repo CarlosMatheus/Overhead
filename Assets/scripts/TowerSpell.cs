@@ -2,7 +2,7 @@
 
 public class TowerSpell : MonoBehaviour {
 
-	private Transform target;
+	public Transform target;
 	public GameObject impactEffect;
 	public float speed = 15f;
 
@@ -31,8 +31,10 @@ public class TowerSpell : MonoBehaviour {
 		transform.Translate (dir.normalized * distanceThisFrame, Space.World);
 	}
 
-	//Wil hit the target and destroy the spell and its effect
+	//Will hit the target, intantiate the impactEffect, make damage, then will destroy the spell and its effect
 	void HitTarget(){
+		target.GetComponent<TargetSelection> ().HP -= GetComponent<SkillsProperties> ().damage;
+
 		GameObject effect = (GameObject)Instantiate (impactEffect, transform.position, transform.rotation);
 		Destroy (effect, 2f);
 		Destroy (gameObject);
