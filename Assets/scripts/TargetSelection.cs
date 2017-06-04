@@ -7,6 +7,7 @@ public class TargetSelection : MonoBehaviour {
 	[Header("To assign")]
 	public float maximumHealth = 100.0f;
 	public GameObject enemyHealthBar;
+	public GameObject deathEffect;
 	public Material overMaterial;
 
 	[Header("Auto assign (No need to assign)")]
@@ -52,6 +53,15 @@ public class TargetSelection : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other)
 	{
-		HP -= 10.0f;//other.gameObject.GetComponent<SkillAttributes>.hitAmount;
+		if (other.tag == "Skill") {
+			HP -= other.gameObject.GetComponent<SkillsProperties>().damage;
+		}
+	}
+
+	void Update () {  // Put update here cause it's the last consequence
+		if (HP <= 0) {
+			Instantiate (deathEffect, transform.position, transform.rotation);
+			Destroy (gameObject);
+		}
 	}
 }

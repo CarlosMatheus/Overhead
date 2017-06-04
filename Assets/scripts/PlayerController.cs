@@ -6,28 +6,34 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
 	[Header("To assign")]
-
 	public Slider healthBar;
 	public Material targetMaterial;
+	public Transform shotSpawn;
 
 	[Header("Auto assign")]
 	public GameObject currentTarget;
+	public GameObject currentSkill;
 
 	// Private stuff
 	private GameObject enemyHealthBar;
 	private float maximumHealth = 100.0f;
 	private float currentHealth;
+	private float attackCouldown;
+	private float time;
 
 	const int FIRST = 0, SECOND = 1;
 
 	void Start () {
 		
-		// Sets player health
+		// Setting player health
 		currentHealth = maximumHealth;
 		healthBar.value = SetHealth(currentHealth);
 
-		// Turns healthBar to camera
+		// Turnning healthBar to camera
 		healthBar.gameObject.transform.rotation = GameObject.FindGameObjectWithTag ("MainCamera").gameObject.transform.rotation;
+
+		// Setting time reference
+		time = Time.time;
 	}
 
 	void Update () {
@@ -40,6 +46,20 @@ public class PlayerController : MonoBehaviour {
 				enemyHealthBar.GetComponent<Slider> ().value = SetHealth (currentTarget.GetComponent<TargetSelection> ().HP);
 
 			}
+		}
+
+		if (currentTarget != null) {
+			// Look at target
+			transform.LookAt (currentTarget.transform.position);
+
+			if (Time.time - time > currentSkill.GetComponent<SkillsProperties> ().cooldown
+				&& IsInRange(transform, currentTarget.transform)) {
+				// Attack!
+				Attack ();
+			}
+
+			// Holds healthBar turned to camera at every frame rotation (healthBar is atached with player object in hierarchy
+			healthBar.gameObject.transform.rotation = GameObject.FindGameObjectWithTag ("MainCamera").gameObject.transform.rotation;
 		}
 	}
 
@@ -80,5 +100,19 @@ public class PlayerController : MonoBehaviour {
 	float SetHealth (float currentHealth) {
 		
 		return currentHealth / maximumHealth;
+	}
+
+	// Function to instantiate a skill depending on what tower he is
+	void Attack () {
+		Instantiate (currentSkill, shotSpawn.position, shotSpawn.rotation);
+	}
+		
+	bool IsInRange (Transform trA, Transform trB) {
+
+		if (Vector3.Magnitude (trA.position - trB.position) <= currentSkill.GetComponent<SkillsProperties> ().range)
+			return true;
+		else
+			return false;
+
 	}
 }
