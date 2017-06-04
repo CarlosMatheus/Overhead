@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4219520586448250}
   - component: {fileID: 33650409022014528}
   - component: {fileID: 23512380111734528}
+  - component: {fileID: 114856274223333776}
   m_Layer: 0
   m_Name: TowerSpellBullet
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1076308763873118}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114856274223333776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076308763873118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31cdeb258bf248c4823e12f7621b683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactEffect: {fileID: 1099177712462748, guid: 632a9d5c50156f54e8071665d60bb047,
+    type: 2}
+  speed: 15

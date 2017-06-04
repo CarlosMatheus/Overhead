@@ -62,6 +62,7 @@ public class TowerScript : MonoBehaviour {
 		partToRotate.rotation = Quaternion.Euler (0f, rotation.y, 0f);
 	}
 
+	//Will make it fire with the right rate
 	void Fire(){
 		if( fireCountdown <= 0f ){
 			Shoot ();
@@ -70,8 +71,12 @@ public class TowerScript : MonoBehaviour {
 		fireCountdown -= Time.deltaTime;
 	}
 
+	//Will instantiete the shot and make it fallow the target
 	void Shoot(){
-		Debug.Log ("shoot");
+		GameObject spellGO = ( GameObject ) Instantiate (bulletPrefab,firePoint.position,firePoint.rotation);
+		TowerSpell towerSpell = spellGO.GetComponent<TowerSpell>();
+		if (towerSpell != null)
+			towerSpell.Seek (target);
 	}
 
 	void OnDrawGizmosSelected(){
