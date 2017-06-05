@@ -96,6 +96,7 @@ public class TowerScript : MonoBehaviour {
 
 			// Teleports
 			player.transform.position = playerSpawnOnTower.position;
+			player.transform.rotation = partToRotate.transform.rotation;
 
 			// Sets new skill to player
 			player.GetComponent<PlayerController>().currentSkill = towerSkill;
