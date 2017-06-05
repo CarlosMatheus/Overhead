@@ -32322,6 +32322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialIntensity: 0.5
   hoverIntensity: 1
+  shop: {fileID: 2114218535}
 --- !u!135 &925259796
 SphereCollider:
   m_ObjectHideFlags: 0
