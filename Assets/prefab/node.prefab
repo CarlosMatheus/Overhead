@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 65590223816135926}
   - component: {fileID: 23310746477684562}
   - component: {fileID: 114366623065176968}
+  - component: {fileID: 114002701954844212}
   m_Layer: 0
   m_Name: node
   m_TagString: Untagged
@@ -96,15 +97,15 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114002701954844212
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1707358765981554}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdb06bd8d671d457bb6843fc4fcc9064, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   arr:
   - {fileID: 1539836882470672, guid: c3a193bf72c1f4d8db080caff8d2b09d, type: 2}
   - {fileID: 1441964511415312, guid: b494739d00dba4388b840fdf7aae5c88, type: 2}
@@ -126,6 +127,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e1abf6f14c98402fa4d79343b388ef3, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  hoverMaterial: {fileID: 2100000, guid: c7d7581f3d34e0949a1136655d16f85c, type: 2}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transpTower: {fileID: 0}
