@@ -121,6 +121,9 @@ public class TowerScript : MonoBehaviour {
 		// Sets new skill to player
 		player.GetComponent<PlayerController>().currentSkill = towerSkill;
 
+		// Sets new target to player
+		player.GetComponent<PlayerController>().currentTarget = target.gameObject;
+
 		StopCoroutine (TeleportEvents ());
 	}
 }
