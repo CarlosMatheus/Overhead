@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour {
 
@@ -7,6 +8,8 @@ public class Node : MonoBehaviour {
 	private Renderer rend;
 	private Material originalMaterial;
 	private GameObject tower;
+	private BuildManager buildManager;
+
 
 	void Start(){
 		// Getting reference of Renderer of this.gameObject
@@ -15,9 +18,18 @@ public class Node : MonoBehaviour {
 		// Setting up material properties
 		originalMaterial = rend.material;                // originalMaterial has always to know what's the initial state
 		hoverMaterial.color = originalMaterial.color;    // hoverMaterial just carries emission info, color is from originalMaterial
+
+		buildManager = BuildManager.instance;
 	}
 		
 	void OnMouseEnter (){
+		if (EventSystem.current.IsPointerOverGameObject ()) {
+			return;
+		}
+		//if the towerToBuild variable is null dont do anything 
+		if (buildManager.GetTowerToBuild () == null) {
+			return;
+		}
 		rend.material = hoverMaterial;
 	}
 
@@ -26,6 +38,14 @@ public class Node : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
+		if (EventSystem.current.IsPointerOverGameObject ()) {
+			return;
+		}
+		//if the towerToBuild variable is null dont do anything 
+		if (buildManager.GetTowerToBuild () == null) {
+			return;
+		}
+
 		if (tower != null) {
 			Debug.Log ("can't build there! - TODO: Display on screen.");
 			return;
