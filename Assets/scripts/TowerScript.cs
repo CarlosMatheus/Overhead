@@ -14,6 +14,7 @@ public class TowerScript : MonoBehaviour {
 	public Transform playerSpawnOnTower;
 	public GameObject bulletPrefab;
 	public GameObject towerSkill;
+	public GameObject teleportEffect;
 	public string enemyTag = "Enemy";
 
 	[Header("Attributes")]
@@ -93,14 +94,7 @@ public class TowerScript : MonoBehaviour {
 		if (IsAround (playerSpawnOnTower, player.transform)) {  // If player is at this tower, returns
 			return;
 		} else {  // If not
-
-			// Teleports
-			player.transform.position = playerSpawnOnTower.position;
-			player.transform.rotation = partToRotate.transform.rotation;
-
-			// Sets new skill to player
-			player.GetComponent<PlayerController>().currentSkill = towerSkill;
-
+			StartCoroutine(TeleportEvents());
 		}
 	}
 
@@ -111,5 +105,22 @@ public class TowerScript : MonoBehaviour {
 		else
 			return false;
 
+	}
+
+	IEnumerator TeleportEvents () {
+		
+		// Animates
+		player.GetComponent<Teleporter>().TeleportFor(playerSpawnOnTower.position);
+
+		yield return new WaitUntil (() => !player.GetComponent<Animator> ().GetBool ("start"));
+
+		// Teleports
+		player.transform.position = playerSpawnOnTower.position;
+		player.transform.rotation = partToRotate.transform.rotation;
+
+		// Sets new skill to player
+		player.GetComponent<PlayerController>().currentSkill = towerSkill;
+
+		StopCoroutine (TeleportEvents ());
 	}
 }

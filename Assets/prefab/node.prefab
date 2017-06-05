@@ -105,4 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1abf6f14c98402fa4d79343b388ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverMaterial: {fileID: 2100000, guid: c7d7581f3d34e0949a1136655d16f85c, type: 2}
+  transpTower: {fileID: 1777162474150250, guid: ab91d0e8add484001b16ca9b0bd576d8,
+    type: 2}
+  buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
+    type: 2}
