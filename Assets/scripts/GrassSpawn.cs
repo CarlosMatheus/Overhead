@@ -42,7 +42,7 @@ public class GrassSpawn : MonoBehaviour {
 		Quaternion rotat = arr [i].transform.rotation;
 		Vector3 rotatInVector = rotat.eulerAngles;
 		rotatInVector = new Vector3 (rotatInVector.x, 90 * rot, rotatInVector.z);
-		GameObject inst = (GameObject)Instantiate (arr [i], transform.position, Quaternion.Euler(rotatInVector));
+		Instantiate (arr [i], transform.position, Quaternion.Euler(rotatInVector));
 		Destroy (gameObject);
 	}
 }
