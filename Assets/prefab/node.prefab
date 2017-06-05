@@ -113,9 +113,9 @@ MonoBehaviour:
   - {fileID: 1896202706455484, guid: dcabf03ef63014cfa8cca09343f18d63, type: 2}
   - {fileID: 1966480858554852, guid: 551b2bd9083ca4872984cfe827cd8d11, type: 2}
   chance:
-  - 60
-  - 10
-  - 10
-  - 10
-  - 10
-  - 7
+  - 100
+  - 8
+  - 8
+  - 8
+  - 8
+  - 5

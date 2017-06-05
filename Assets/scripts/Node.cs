@@ -31,6 +31,7 @@ public class Node : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
+		//Avoid pointing to something with a UI element in front of it
 		if (EventSystem.current.IsPointerOverGameObject ()) {
 			return;
 		}
