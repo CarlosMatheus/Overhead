@@ -5,6 +5,6 @@ using UnityEngine;
 public class SphereRotator : MonoBehaviour {
 
 	void Update () {
-		transform.Rotate (Vector3.forward * Time.deltaTime * 10);
+		transform.Rotate (Vector3.up * Time.deltaTime * 10);
 	}
 }
