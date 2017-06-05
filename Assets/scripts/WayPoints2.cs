@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class WayPoints : MonoBehaviour {
+public class WayPoints2 : MonoBehaviour {
 
 	//This array will be accessed from other script
 	public static Transform[] points;

@@ -10,7 +10,10 @@ public class WaveSpawner : MonoBehaviour {
 	[Header("Unity Setup Filds")]
 
 	public Transform enemyPrefab;
-	public Transform spawnPoint;
+	public Transform spawnPoint1;
+	public Transform spawnPoint2;
+	public Transform spawnPoint3;
+	public Transform spawnPoint4;
 	public Text waveNumberText;
 	public Text waveCountdownText;
 
@@ -44,7 +47,10 @@ public class WaveSpawner : MonoBehaviour {
 
 	//instantiate the Enemy
 	void EnemySpawn(){
-		Instantiate (enemyPrefab,spawnPoint.position,spawnPoint.rotation);
+		Instantiate (enemyPrefab,spawnPoint1.position,spawnPoint1.rotation);
+		Instantiate (enemyPrefab,spawnPoint2.position,spawnPoint2.rotation);
+		Instantiate (enemyPrefab,spawnPoint3.position,spawnPoint3.rotation);
+		Instantiate (enemyPrefab,spawnPoint4.position,spawnPoint4.rotation);
 	}
 
 	//Update the User Interface with wave and time remain for next wave information

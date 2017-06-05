@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour {
 
 	//WayPoints is a public static variable that is been accessed from here
 	void Start(){
-		target = WayPoints.points [0];
+		target = WayPoints1.points [0];
 	}
 
 	void Update (){
@@ -23,11 +23,11 @@ public class Enemy : MonoBehaviour {
 
 	//In the WayPoints array, get the next or attack the Main Tower
 	void GetNextWayPoint(){
-		if (wavepointIndex >= WayPoints.points.Length - 1) {
+		if (wavepointIndex >= WayPoints1.points.Length - 1) {
 			EnemyAttack ();
 		} else {
 			wavepointIndex++;
-			target = WayPoints.points [wavepointIndex];
+			target = WayPoints1.points [wavepointIndex];
 		}
 	}
 
