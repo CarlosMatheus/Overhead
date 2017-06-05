@@ -94,6 +94,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114002701954844212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1707358765981554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb06bd8d671d457bb6843fc4fcc9064, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  arr:
+  - {fileID: 1539836882470672, guid: c3a193bf72c1f4d8db080caff8d2b09d, type: 2}
+  - {fileID: 1441964511415312, guid: b494739d00dba4388b840fdf7aae5c88, type: 2}
+  - {fileID: 1826285924738130, guid: f74d5bb987a384383906b13297fabca7, type: 2}
+  - {fileID: 1690343739781848, guid: 61cec971526304125be0a3a6b067e1b5, type: 2}
+  - {fileID: 1896202706455484, guid: dcabf03ef63014cfa8cca09343f18d63, type: 2}
+  chance:
+  - 60
+  - 10
+  - 10
+  - 10
+  - 10
 --- !u!114 &114366623065176968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,6 +126,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e1abf6f14c98402fa4d79343b388ef3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   hoverMaterial: {fileID: 2100000, guid: c7d7581f3d34e0949a1136655d16f85c, type: 2}
