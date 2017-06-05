@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
 	[Header("To assign")]
-	public Slider healthBar;
 	public Material targetMaterial;
+	public Material inRangeMaterial;
 	public Transform shotSpawn;
 
 	[Header("Auto assign")]
@@ -16,24 +16,19 @@ public class PlayerController : MonoBehaviour {
 
 	// Private stuff
 	private GameObject enemyHealthBar;
-	private float maximumHealth = 100.0f;
-	private float currentHealth;
+	private Material materialToAssign;
 	private float attackCouldown;
 	private float time;
 
 	const int FIRST = 0, SECOND = 1;
 
 	void Start () {
-		
-		// Setting player health
-		currentHealth = maximumHealth;
-		healthBar.value = SetHealth(currentHealth);
-
-		// Turnning healthBar to camera
-		healthBar.gameObject.transform.rotation = GameObject.FindGameObjectWithTag ("MainCamera").gameObject.transform.rotation;
 
 		// Setting time reference
 		time = Time.time;
+
+		// Setting up material stuff
+		materialToAssign = targetMaterial;
 	}
 
 	void Update () {
@@ -52,23 +47,28 @@ public class PlayerController : MonoBehaviour {
 			// Look at target
 			transform.LookAt 
 			(
-				new Vector3
-				(
+				new Vector3 (
 					currentTarget.transform.position.x,
 					transform.position.y,
 					currentTarget.transform.position.z
 				)
 			);
 
-			if (Time.time - time > currentSkill.GetComponent<SkillsProperties> ().cooldown
-				&& IsInRange(transform, currentTarget.transform)) {
-				// Attack!
-				Attack ();
-				time = Time.time;
-			}
+			if (IsInRange (transform, currentTarget.transform)) {
 
-			// Holds healthBar turned to camera at every frame rotation (healthBar is atached with player object in hierarchy
-			healthBar.gameObject.transform.rotation = GameObject.FindGameObjectWithTag ("MainCamera").gameObject.transform.rotation;
+				materialToAssign = inRangeMaterial;
+
+				SetMaterial (materialToAssign);
+
+				if (Time.time - time > currentSkill.GetComponent<SkillsProperties> ().cooldown) {
+					// Attack!
+					Attack ();
+					time = Time.time;
+				}
+			} else {
+				materialToAssign = targetMaterial;
+				SetMaterial (materialToAssign);
+			}
 		}
 	}
 
@@ -78,8 +78,7 @@ public class PlayerController : MonoBehaviour {
 		if (currentTarget != null) {
 			
 			// Sets target material (color in actual one and emission on tempMaterial) into original one
-			currentTarget.GetComponent<MeshRenderer> ().material = currentTarget.GetComponent<TargetSelection> ().originalMaterial;
-			currentTarget.GetComponent<TargetSelection> ().tempMaterial = currentTarget.GetComponent<TargetSelection> ().originalMaterial;
+			SetMaterial (currentTarget.GetComponent<TargetSelection> ().originalMaterial);
 			currentTarget.GetComponent<TargetSelection> ().enemyHealthBar.SetActive (false);
 
 			// If had double clicked the same target, just destarget it
@@ -96,19 +95,17 @@ public class PlayerController : MonoBehaviour {
 		// Gets newTarget HP bar reference
 		enemyHealthBar = currentTarget.GetComponent<TargetSelection>().enemyHealthBar;
 
-		// Turns targetMaterial color into originalMaterial color and atribute it to targetObject
-		targetMaterial.color = currentTarget.GetComponent<TargetSelection> ().originalMaterial.color;
-		currentTarget.GetComponent<MeshRenderer> ().material = targetMaterial;
-		currentTarget.GetComponent<TargetSelection> ().tempMaterial = targetMaterial;
-
 		// Active HP on top screen
 		enemyHealthBar.SetActive (true);
+
+		// Turns targetMaterial color into originalMaterial color and atribute it to targetObject
+		SetMaterial (materialToAssign);
 	}
 
 	// Function to set health valor into "canvas language"
 	float SetHealth (float currentHealth) {
 		
-		return currentHealth / maximumHealth;
+		return currentHealth / currentTarget.GetComponent<TargetSelection>().maximumHealth;
 	}
 
 	// Function to instantiate a skill depending on what tower he is
@@ -124,5 +121,11 @@ public class PlayerController : MonoBehaviour {
 		else
 			return false;
 
+	}
+
+	void SetMaterial (Material mat) {
+		mat.color = currentTarget.GetComponent<TargetSelection> ().originalMaterial.color;
+		currentTarget.GetComponent<MeshRenderer> ().material = mat;
+		currentTarget.GetComponent<TargetSelection> ().tempMaterial = mat;
 	}
 }
