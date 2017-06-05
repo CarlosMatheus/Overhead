@@ -53,7 +53,7 @@ public class Node : MonoBehaviour {
 
 	IEnumerator EventInstantiator () {
 
-		GameObject tempBuildEffect = Instantiate (buildEffect, transform.position, transform.rotation);
+		GameObject tempBuildEffect = Instantiate (buildEffect, transform.position, Quaternion.identity);
 
 		yield return new WaitUntil (() => tempBuildEffect.GetComponent<Animator> ().GetBool ("finished"));
 

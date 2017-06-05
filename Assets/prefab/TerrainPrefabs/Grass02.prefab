@@ -486,3 +486,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transpTower: {fileID: 1777162474150250, guid: ab91d0e8add484001b16ca9b0bd576d8,
     type: 2}
+  buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
+    type: 2}
