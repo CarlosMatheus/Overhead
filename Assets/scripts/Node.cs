@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour {
 
 	public GameObject transpTower;
+	public GameObject buildEffect;
 
 	private Material originalMaterial;
 	private GameObject tower;
@@ -45,6 +47,21 @@ public class Node : MonoBehaviour {
 			return;
 		}
 		Destroy (transpTowerInst);
+
+		StartCoroutine (EventInstantiator ());
+	}
+
+	IEnumerator EventInstantiator () {
+
+		GameObject tempBuildEffect = Instantiate (buildEffect, transform.position, transform.rotation);
+
+		yield return new WaitUntil (() => tempBuildEffect.GetComponent<Animator> ().GetBool ("finished"));
+
+		BuildTower ();
+	}
+
+	void BuildTower () {
+		StopCoroutine (EventInstantiator ());
 		GameObject towerToBuild = BuildManager.instance.GetTowerToBuild ();
 		tower = (GameObject)Instantiate (towerToBuild, transform.position, transform.rotation);
 		tower.transform.rotation = Quaternion.Euler (0,0,0);
