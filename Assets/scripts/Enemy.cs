@@ -2,37 +2,42 @@
 
 public class Enemy : MonoBehaviour {
 
-	private Transform target;
-	private int wavepointIndex = 0;
-
 	public float speed =10f;
 	public float minDist = 0.2f;
 
-	//WayPoints is a public static variable that is been accessed from here
-	void Start(){
-		target = WayPoints.points [0];
+	private WayPoints wayPoints;
+	private Transform target;
+	private int wavepointIndex = 0;
+
+	public void SetWayPoints(GameObject wayP){
+		wayPoints = wayP.GetComponent<WayPoints>();
 	}
 
-	void Update (){
+	//WayPoints is a public static variable that is been accessed from here
+	private void Start(){
+		target = wayPoints.GetPoints (0);
+	}
+
+	private void Update (){
 		Vector3 dir = target.position - transform.position;
-		transform.Translate (dir.normalized * speed * Time.deltaTime);
+		transform.Translate (dir.normalized * speed * Time.deltaTime, Space.World);
 		if (Vector3.Distance (transform.position, target.position) <= minDist) {
 			GetNextWayPoint ();
 		}
 	}
 
 	//In the WayPoints array, get the next or attack the Main Tower
-	void GetNextWayPoint(){
-		if (wavepointIndex >= WayPoints.points.Length - 1) {
+	private void GetNextWayPoint(){
+		if (wavepointIndex >= wayPoints.GetPointsLength() - 1) {
 			EnemyAttack ();
 		} else {
 			wavepointIndex++;
-			target = WayPoints.points [wavepointIndex];
+			target = wayPoints.GetPoints (wavepointIndex);
 		}
 	}
 
 	//Attack the main tower
-	void EnemyAttack(){
+	private void EnemyAttack(){
 		Destroy (gameObject);
 	}
 }

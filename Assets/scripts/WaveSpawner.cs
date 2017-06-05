@@ -9,8 +9,15 @@ public class WaveSpawner : MonoBehaviour {
 
 	[Header("Unity Setup Filds")]
 
-	public Transform enemyPrefab;
-	public Transform spawnPoint;
+	public GameObject enemyPrefab;
+	public Transform spawnPoint1;
+	public Transform spawnPoint2;
+	public Transform spawnPoint3;
+	public Transform spawnPoint4;
+	public GameObject WayPoints1;
+	public GameObject WayPoints2;
+	public GameObject WayPoints3;
+	public GameObject WayPoints4;
 	public Text waveNumberText;
 	public Text waveCountdownText;
 
@@ -44,7 +51,15 @@ public class WaveSpawner : MonoBehaviour {
 
 	//instantiate the Enemy
 	void EnemySpawn(){
-		Instantiate (enemyPrefab,spawnPoint.position,spawnPoint.rotation);
+		GameObject instance1 = ( GameObject ) Instantiate (enemyPrefab,spawnPoint1.position,spawnPoint1.rotation);
+		GameObject instance2 = ( GameObject ) Instantiate (enemyPrefab,spawnPoint2.position,spawnPoint2.rotation);
+		GameObject instance3 = ( GameObject ) Instantiate (enemyPrefab,spawnPoint3.position,spawnPoint3.rotation);
+		GameObject instance4 = ( GameObject ) Instantiate (enemyPrefab,spawnPoint4.position,spawnPoint4.rotation);
+
+		instance1.GetComponent<Enemy> ().SetWayPoints(WayPoints1);
+		instance2.GetComponent<Enemy> ().SetWayPoints(WayPoints2);
+		instance3.GetComponent<Enemy> ().SetWayPoints(WayPoints3);
+		instance4.GetComponent<Enemy> ().SetWayPoints(WayPoints4);
 	}
 
 	//Update the User Interface with wave and time remain for next wave information
