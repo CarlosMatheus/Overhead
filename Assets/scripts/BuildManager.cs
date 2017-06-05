@@ -21,9 +21,15 @@ public class BuildManager : MonoBehaviour {
 		instance = this;
 	}
 
+	public void SetTowerToBuild (GameObject tower){
+
+	}
+
+	/*
 	private void Start(){
 		towerToBuild = standardTowerPrefab;
 	}
+	*/
 
 }
 
