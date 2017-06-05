@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrassSpawn : MonoBehaviour {
+public class RandomVoxelSpawn : MonoBehaviour {
 
 	public GameObject[] arr;
 	public float[] chance;

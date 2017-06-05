@@ -22,8 +22,7 @@ GameObject:
   - component: {fileID: 33123715326806918}
   - component: {fileID: 65590223816135926}
   - component: {fileID: 23310746477684562}
-  - component: {fileID: 114366623065176968}
-  - component: {fileID: 114002701954844212}
+  - component: {fileID: 114824141320410108}
   m_Layer: 0
   m_Name: node
   m_TagString: Untagged
@@ -95,9 +94,9 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114002701954844212
+--- !u!114 &114824141320410108
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1707358765981554}
@@ -112,21 +111,11 @@ MonoBehaviour:
   - {fileID: 1826285924738130, guid: f74d5bb987a384383906b13297fabca7, type: 2}
   - {fileID: 1690343739781848, guid: 61cec971526304125be0a3a6b067e1b5, type: 2}
   - {fileID: 1896202706455484, guid: dcabf03ef63014cfa8cca09343f18d63, type: 2}
+  - {fileID: 1966480858554852, guid: 551b2bd9083ca4872984cfe827cd8d11, type: 2}
   chance:
   - 60
   - 10
   - 10
   - 10
   - 10
---- !u!114 &114366623065176968
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1707358765981554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e1abf6f14c98402fa4d79343b388ef3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transpTower: {fileID: 0}
+  - 7

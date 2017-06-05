@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23283989499896472}
   - component: {fileID: 114023980294843844}
   - component: {fileID: 65432970978238270}
+  - component: {fileID: 114667618330999224}
   m_Layer: 0
   m_Name: Grass00
   m_TagString: Untagged
@@ -107,3 +108,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transpTower: {fileID: 1777162474150250, guid: ab91d0e8add484001b16ca9b0bd576d8,
     type: 2}
+--- !u!114 &114667618330999224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1539836882470672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16da066d9dc774d089364942b159fda8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

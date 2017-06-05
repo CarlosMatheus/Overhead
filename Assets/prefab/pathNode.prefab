@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33963990938036488}
   - component: {fileID: 65917153165368450}
   - component: {fileID: 23280045603633924}
+  - component: {fileID: 114120844452374526}
   m_Layer: 0
   m_Name: pathNode
   m_TagString: Untagged
@@ -93,3 +94,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114120844452374526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1113540060548826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb06bd8d671d457bb6843fc4fcc9064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arr:
+  - {fileID: 1540064268290396, guid: 87664e0d2bd2d467cafbfa8f08fa7c02, type: 2}
+  - {fileID: 1669508915521250, guid: e4c28551b8bd84231945c8f420354a24, type: 2}
+  - {fileID: 1780406187179560, guid: 297d7f6820f154536af9af4fbb5a2241, type: 2}
+  chance:
+  - 33
+  - 33
+  - 33
