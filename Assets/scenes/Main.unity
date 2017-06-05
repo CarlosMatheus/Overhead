@@ -17362,15 +17362,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4252199480489298, guid: d03de97c00f394bb881e4994bd3bfea6, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4252199480489298, guid: d03de97c00f394bb881e4994bd3bfea6, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4252199480489298, guid: d03de97c00f394bb881e4994bd3bfea6, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4252199480489298, guid: d03de97c00f394bb881e4994bd3bfea6, type: 2}
       propertyPath: m_LocalRotation.w
@@ -17383,6 +17383,10 @@ Prefab:
     - target: {fileID: 1244055042828164, guid: d03de97c00f394bb881e4994bd3bfea6, type: 2}
       propertyPath: m_Name
       value: WayPoint (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252199480489298, guid: d03de97c00f394bb881e4994bd3bfea6, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d03de97c00f394bb881e4994bd3bfea6, type: 2}
@@ -20126,7 +20130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 565419435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ea39190ed2ac41b08c504bb15508e1b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1336867f9a2854fcba6757e60d2697ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &569507681
@@ -20843,16 +20847,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef78957d5fe724a39b9819c1c73e2f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4787044860343518, guid: 7d1995e25f5c94dd5b7e278067c3d133,
+  enemyPrefab: {fileID: 1691258939440000, guid: 7d1995e25f5c94dd5b7e278067c3d133,
     type: 2}
   spawnPoint1: {fileID: 10800379}
   spawnPoint2: {fileID: 1960880062}
   spawnPoint3: {fileID: 779501980}
   spawnPoint4: {fileID: 18517221}
+  WayPoints1: {fileID: 310847721}
+  WayPoints2: {fileID: 565419435}
+  WayPoints3: {fileID: 1359627324}
+  WayPoints4: {fileID: 1779390711}
   waveNumberText: {fileID: 1246731473}
   waveCountdownText: {fileID: 2007121328}
-  Initialcountdown: 2
-  timeBetweenWaves: 15.5
+  Initialcountdown: 20
+  timeBetweenWaves: 30
   spawnDelay: 0.8
 --- !u!4 &600749628
 Transform:
@@ -20861,7 +20869,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 600749626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: -17, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47820,7 +47828,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1359627324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77edf17119e9e4d809e505b35950d024, type: 3}
+  m_Script: {fileID: 11500000, guid: 1336867f9a2854fcba6757e60d2697ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1360421416
@@ -62443,7 +62451,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1779390711}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e88615e8fea1b46b2b02914e24ed1436, type: 3}
+  m_Script: {fileID: 11500000, guid: 1336867f9a2854fcba6757e60d2697ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1780111346
