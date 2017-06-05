@@ -2,23 +2,27 @@
 
 public class Node : MonoBehaviour {
 
-	public Color hoverColor;
+	public Material hoverMaterial;
 
 	private Renderer rend;
-	private Color startColor;
+	private Material originalMaterial;
 	private GameObject tower;
 
 	void Start(){
+		// Getting reference of Renderer of this.gameObject
 		rend = GetComponent<Renderer> ();
-		startColor = rend.material.color;
+
+		// Setting up material properties
+		originalMaterial = rend.material;                // originalMaterial has always to know what's the initial state
+		hoverMaterial.color = originalMaterial.color;    // hoverMaterial just carries emission info, color is from originalMaterial
 	}
 		
 	void OnMouseEnter (){
-		rend.material.color = hoverColor;
+		rend.material = hoverMaterial;
 	}
 
 	void OnMouseExit (){
-		rend.material.color = startColor;
+		rend.material = originalMaterial;
 	}
 
 	void OnMouseDown(){
