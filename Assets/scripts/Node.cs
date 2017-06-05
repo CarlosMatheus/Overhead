@@ -3,22 +3,14 @@ using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour {
 
-	public Material hoverMaterial;
+	public GameObject transpTower;
 
-	private Renderer rend;
 	private Material originalMaterial;
 	private GameObject tower;
 	private BuildManager buildManager;
-
+	private GameObject transpTowerInst;
 
 	void Start(){
-		// Getting reference of Renderer of this.gameObject
-		rend = GetComponent<Renderer> ();
-
-		// Setting up material properties
-		originalMaterial = rend.material;                // originalMaterial has always to know what's the initial state
-		hoverMaterial.color = originalMaterial.color;    // hoverMaterial just carries emission info, color is from originalMaterial
-
 		buildManager = BuildManager.instance;
 	}
 		
@@ -30,11 +22,12 @@ public class Node : MonoBehaviour {
 		if (buildManager.GetTowerToBuild () == null) {
 			return;
 		}
-		rend.material = hoverMaterial;
+		transpTowerInst = (GameObject) Instantiate (transpTower, transform.position, transform.rotation);
+		transpTowerInst.transform.rotation = Quaternion.Euler (0,0,0);
 	}
 
 	void OnMouseExit (){
-		rend.material = originalMaterial;
+		Destroy (transpTowerInst);
 	}
 
 	void OnMouseDown(){
@@ -50,7 +43,9 @@ public class Node : MonoBehaviour {
 			Debug.Log ("can't build there! - TODO: Display on screen.");
 			return;
 		}
+		Destroy (transpTowerInst);
 		GameObject towerToBuild = BuildManager.instance.GetTowerToBuild ();
 		tower = (GameObject)Instantiate (towerToBuild, transform.position, transform.rotation);
+		tower.transform.rotation = Quaternion.Euler (0,0,0);
 	}
 }

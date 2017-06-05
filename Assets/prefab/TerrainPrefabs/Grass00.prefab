@@ -9,47 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1707358765981554}
+  m_RootGameObject: {fileID: 1539836882470672}
   m_IsPrefabParent: 1
---- !u!1 &1707358765981554
+--- !u!1 &1539836882470672
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4983687663724708}
-  - component: {fileID: 33123715326806918}
-  - component: {fileID: 65590223816135926}
-  - component: {fileID: 23310746477684562}
-  - component: {fileID: 114366623065176968}
-  - component: {fileID: 114002701954844212}
+  - component: {fileID: 4253428445885148}
+  - component: {fileID: 33016394252145092}
+  - component: {fileID: 23283989499896472}
+  - component: {fileID: 114023980294843844}
+  - component: {fileID: 65432970978238270}
   m_Layer: 0
-  m_Name: node
+  m_Name: Grass00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4983687663724708
+--- !u!4 &4253428445885148
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1707358765981554}
+  m_GameObject: {fileID: 1539836882470672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34096783, y: 0.8580642, z: -3.256135}
-  m_LocalScale: {x: 0.95, y: 0.1, z: 0.95}
+  m_LocalPosition: {x: -9.583011, y: 0.05658692, z: -1.7319553}
+  m_LocalScale: {x: 101, y: 100, z: 10.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23310746477684562
+--- !u!23 &23283989499896472
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1707358765981554}
+  m_GameObject: {fileID: 1539836882470672}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -57,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8f13dbfb57d214fe4845b6c59506a018, type: 2}
+  - {fileID: 2100000, guid: 744cd4c796fd2425da292096cc029e34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -65,7 +64,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
+  m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_SelectedEditorRenderState: 3
@@ -76,55 +75,35 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33123715326806918
+--- !u!33 &33016394252145092
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1707358765981554}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65590223816135926
+  m_GameObject: {fileID: 1539836882470672}
+  m_Mesh: {fileID: 4300000, guid: 96ba825617e964ff9b6f0fc5c1c4b5cf, type: 3}
+--- !u!65 &65432970978238270
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1707358765981554}
+  m_GameObject: {fileID: 1539836882470672}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114002701954844212
+  m_Size: {x: 0.009007265, y: 0.009399189, z: 0.0045341193}
+  m_Center: {x: -0.00010355864, y: -0.000018194318, z: 0.000012316417}
+--- !u!114 &114023980294843844
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1707358765981554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb06bd8d671d457bb6843fc4fcc9064, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grass00: {fileID: 1539836882470672, guid: c3a193bf72c1f4d8db080caff8d2b09d, type: 2}
-  grass01: {fileID: 1441964511415312, guid: b494739d00dba4388b840fdf7aae5c88, type: 2}
-  grass02: {fileID: 1826285924738130, guid: f74d5bb987a384383906b13297fabca7, type: 2}
-  grass03: {fileID: 1690343739781848, guid: 61cec971526304125be0a3a6b067e1b5, type: 2}
-  grass04: {fileID: 1896202706455484, guid: dcabf03ef63014cfa8cca09343f18d63, type: 2}
-  chance00: 60
-  chance01: 10
-  chance02: 10
-  chance03: 10
-  chance04: 10
---- !u!114 &114366623065176968
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1707358765981554}
+  m_GameObject: {fileID: 1539836882470672}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e1abf6f14c98402fa4d79343b388ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transpTower: {fileID: 0}
+  transpTower: {fileID: 1777162474150250, guid: ab91d0e8add484001b16ca9b0bd576d8,
+    type: 2}

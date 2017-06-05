@@ -5286,6 +5286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardTowerPrefab: {fileID: 1500846572791458, guid: 2d59f18e94daa4ae5ae0e3f46bf85837,
     type: 2}
+  anotherTowerPrefab: {fileID: 0}
 --- !u!1001 &613308626
 Prefab:
   m_ObjectHideFlags: 0
@@ -15386,6 +15387,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 284256719}
     m_Modifications:
+    - target: {fileID: 114002701954844212, guid: 65bfa902e3855440bbcc4e39e0d491ca,
+        type: 2}
+      propertyPath: arr.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4983687663724708, guid: 65bfa902e3855440bbcc4e39e0d491ca, type: 2}
       propertyPath: m_LocalPosition.x
       value: -1
@@ -19417,7 +19423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -260}
+  m_AnchoredPosition: {x: 0, y: -260.00006}
   m_SizeDelta: {x: 0, y: -520}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2114218537
