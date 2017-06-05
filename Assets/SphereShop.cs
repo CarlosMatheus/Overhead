@@ -10,45 +10,43 @@ public class SphereShop : MonoBehaviour {
 	private BuildManager buildManager;
 	private Light light;
 
-	void Start(){
+	private void Start(){
 		buildManager = BuildManager.instance;
 		light = GetComponent<Light> ();
 		light.intensity = initialIntensity;
 		shop.SetActive (false);
 	}
 
-	void Update () {
-		
+	private void Update () {
+		if (Input.GetMouseButtonDown (1))
+			DesactiveShop ();
 	}
 
-	void OnMouseEnter (){
+	private void OnMouseEnter (){
 		//Avoid pointing to something with a UI element in front of it
 		if (EventSystem.current.IsPointerOverGameObject ()) {
 			return;
 		}
 		light.intensity = hoverIntensity;
-		Debug.Log ("entrou");
 	}
 
-	void OnMouseExit (){
+	private void OnMouseExit (){
 		light.intensity = initialIntensity;
-		Debug.Log ("saiu");
 	}
 
-	void OnMouseDown(){
+	private void OnMouseDown(){
 		//Avoid pointing to something with a UI element in front of it
 		if (EventSystem.current.IsPointerOverGameObject ()) {
-			return;
-		}
-		//if the towerToBuild variable is null dont do anything 
-		if (buildManager.GetTowerToBuild () == null) {
 			return;
 		}
 		ActiveShop ();
 	}
 
-	void ActiveShop(){
+	private void ActiveShop(){
 		shop.SetActive (true);
 	}
 
+	private void DesactiveShop(){
+		shop.SetActive (false);
+	}
 }
