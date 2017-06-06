@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Update () {
 		
-		if (enemyHealthBar != null) {
+		if (enemyHealthBar != null && currentTarget != null) {
 			
 			if (enemyHealthBar.activeInHierarchy) {   // If had target someone
 			
