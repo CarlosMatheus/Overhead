@@ -25,7 +25,10 @@ public class TowerScript : MonoBehaviour {
 	private GameObject player;
 
 	public GameObject GetTarget() {
-		return target.gameObject;
+		if (target != null)
+			return target.gameObject;
+		else
+			return null;
 	}
 
 	void Start () {
