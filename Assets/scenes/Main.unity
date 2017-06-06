@@ -17974,6 +17974,26 @@ Prefab:
       propertyPath: LightsModule.intensityCurve.scalar
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 198116462533249268, guid: 2f16d96d8e95f4ee893d3f69273b7e64,
+        type: 2}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198116462533249268, guid: 2f16d96d8e95f4ee893d3f69273b7e64,
+        type: 2}
+      propertyPath: SubModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198116462533249268, guid: 2f16d96d8e95f4ee893d3f69273b7e64,
+        type: 2}
+      propertyPath: LightsModule.rangeCurve.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198116462533249268, guid: 2f16d96d8e95f4ee893d3f69273b7e64,
+        type: 2}
+      propertyPath: LightsModule.intensityCurve.scalar
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f16d96d8e95f4ee893d3f69273b7e64, type: 2}
   m_IsPrefabParent: 0
