@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class SphereShop : MonoBehaviour {
 
@@ -36,10 +35,6 @@ public class SphereShop : MonoBehaviour {
 	}
 
 	private void OnMouseEnter (){
-		//Avoid pointing to something with a UI element in front of it
-		if (EventSystem.current.IsPointerOverGameObject ()) {
-			return;
-		}
 		light.intensity = hoverIntensity;
 	}
 
@@ -48,10 +43,6 @@ public class SphereShop : MonoBehaviour {
 	}
 
 	private void OnMouseDown(){
-		//Avoid pointing to something with a UI element in front of it
-		if (EventSystem.current.IsPointerOverGameObject ()) {
-			return;
-		}
 		ActiveShop ();
 	}
 

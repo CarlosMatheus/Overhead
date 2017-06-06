@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class MasterTowerScript : MonoBehaviour {
 
 	public float initialLifes;
+	public Text lifeCounterText;
 
 	private float lifes;
 
@@ -16,13 +18,15 @@ public class MasterTowerScript : MonoBehaviour {
 
 	public void EnemyAttack(){
 		lifes--;
+		UpdateLifeText ();
 	}
 
 	private void Start(){
 		lifes = initialLifes;
+		UpdateLifeText ();
 	}
-		
-	private void Update(){
-		Debug.Log (lifes);
+
+	private void UpdateLifeText(){
+		lifeCounterText.text = Mathf.Round (lifes).ToString();
 	}
 }
