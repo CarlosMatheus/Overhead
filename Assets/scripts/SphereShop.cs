@@ -9,14 +9,14 @@ public class SphereShop : MonoBehaviour {
 	public Transform center;
 	public GameObject shop;
 
+	private GameObject gameMaster;
 	private SoulsCounter soulsCounter;
-	private ScoreCounter scoreCounter;
 	private BuildManager buildManager;
 	private Light light;
 
 	private void Start(){
-		soulsCounter = SoulsCounter.instance;
-		scoreCounter = ScoreCounter.instance;
+		gameMaster = GameObject.Find ("GameMaster");
+		soulsCounter = gameMaster.GetComponent<SoulsCounter>();
 		buildManager = BuildManager.instance;
 		light = GetComponent<Light> ();
 		light.intensity = initialIntensity;
