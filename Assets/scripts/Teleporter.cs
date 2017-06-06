@@ -14,6 +14,8 @@ public class Teleporter : MonoBehaviour {
 
 	public void TeleportFor (Vector3 _target) {
 
+		GetComponent<PlayerController> ().teleporting = true;
+
 		transform.LookAt (_target);
 
 		Vector3 distance = _target - transform.position;
@@ -28,6 +30,6 @@ public class Teleporter : MonoBehaviour {
 	}
 
 	private float CalculateScale (float a, float b, float c) {
-		return a * c / b;
+		return a * c / b * 1.05f;
 	}
 }

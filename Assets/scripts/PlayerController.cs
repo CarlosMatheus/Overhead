@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject currentTarget;
 	public GameObject currentSkill;
 	public GameObject currentTower;
+	public bool teleporting = false;
 
 	// Private stuff
 	private GameObject enemyHealthBar;
@@ -82,15 +83,19 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (currentTarget != null) {
-			// Look at target
-			transform.LookAt 
-			(
-				new Vector3 (
-					currentTarget.transform.position.x,
-					transform.position.y,
-					currentTarget.transform.position.z
-				)
-			);
+
+			if (!teleporting) {
+				// Look at target
+				transform.LookAt 
+				(
+					new Vector3 
+					(
+						currentTarget.transform.position.x,
+						transform.position.y,
+						currentTarget.transform.position.z
+					)
+				);
+			}
 
 			if (IsInRange (transform, currentTarget.transform)) {
 
