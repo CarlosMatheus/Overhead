@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2092882768}
-  m_IndirectSpecularColor: {r: 0.4482447, g: 0.49827182, b: 0.5755813, a: 1}
+  m_IndirectSpecularColor: {r: 0.4482447, g: 0.4982717, b: 0.57558084, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -21609,7 +21609,9 @@ Prefab:
       propertyPath: m_TagString
       value: Tower
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114611038020295364, guid: e7b20334173548e46b43533d17a20397, type: 2}
+    - {fileID: 135461791233461366, guid: e7b20334173548e46b43533d17a20397, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e7b20334173548e46b43533d17a20397, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &623531199
@@ -32547,6 +32549,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialIntensity: 0.5
   hoverIntensity: 1
+  player: {fileID: 1383395336}
+  center: {fileID: 1853355549}
   shop: {fileID: 2114218535}
 --- !u!135 &925259796
 SphereCollider:
@@ -49315,6 +49319,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ebd7465fadef54e8878affe03425bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1383395336 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4570669095973516, guid: 2f16d96d8e95f4ee893d3f69273b7e64,
+    type: 2}
+  m_PrefabInternal: {fileID: 513507733}
 --- !u!1001 &1383534643
 Prefab:
   m_ObjectHideFlags: 0
@@ -65923,6 +65932,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4983687663724708, guid: 65bfa902e3855440bbcc4e39e0d491ca,
     type: 2}
   m_PrefabInternal: {fileID: 1853177924}
+--- !u!4 &1853355549 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4204850257944564, guid: e7b20334173548e46b43533d17a20397,
+    type: 2}
+  m_PrefabInternal: {fileID: 620888434}
 --- !u!1001 &1854691596
 Prefab:
   m_ObjectHideFlags: 0
