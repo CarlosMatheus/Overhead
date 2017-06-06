@@ -4,9 +4,6 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour {
 
-	private float countdown;
-	private int waveNumber = 1;
-
 	[Header("Unity Setup Filds")]
 
 	public GameObject enemyPrefab;
@@ -27,8 +24,13 @@ public class WaveSpawner : MonoBehaviour {
 	public float timeBetweenWaves = 5f;
 	public float spawnDelay = 0.5f;
 
+	private float countdown;
+	private int waveNumber = 1;
+	private SoulsCounter soulsconter;
+
 	void Start(){
 		countdown = Initialcountdown;
+		soulsconter = this.GetComponent<SoulsCounter> ();
 	}
 
 	void Update () {
@@ -38,6 +40,7 @@ public class WaveSpawner : MonoBehaviour {
 		}
 		countdown -= Time.deltaTime;
 		UpdateUI();
+		UpdateSoul ();
 	}
 
 	//Coroutine for the spawn, it delays spawnDelay for each instantiation
@@ -66,5 +69,9 @@ public class WaveSpawner : MonoBehaviour {
 	void UpdateUI(){
 		waveCountdownText.text = Mathf.Round(countdown).ToString();
 		waveNumberText.text = Mathf.Round (waveNumber - 1 ).ToString ();
+	}
+
+	void UpdateSoul(){
+		soulsconter.SetWave (waveNumber - 1);
 	}
 }

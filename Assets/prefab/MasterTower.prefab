@@ -37,9 +37,9 @@ GameObject:
   - component: {fileID: 33696464887634506}
   - component: {fileID: 23277330686260360}
   - component: {fileID: 114195380737912710}
-  - component: {fileID: 108460204140365118}
-  - component: {fileID: 135461791233461366}
-  - component: {fileID: 114611038020295364}
+  - component: {fileID: 108915710131545046}
+  - component: {fileID: 135135778410967890}
+  - component: {fileID: 114012245631672158}
   m_Layer: 0
   m_Name: Icosphere
   m_TagString: Untagged
@@ -117,11 +117,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4439242901911154}
+  - component: {fileID: 114482985873309682}
   - component: {fileID: 114912826813984010}
   - component: {fileID: 65508408599510936}
   m_Layer: 0
   m_Name: MasterTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,7 +346,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.9763703, y: 4.1123204, z: 2.9651442}
   m_Center: {x: 0.017088652, y: 2.0890467, z: 0.00514555}
---- !u!108 &108460204140365118
+--- !u!108 &108915710131545046
 Light:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -381,18 +382,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114195380737912710
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1191824287383210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6641e17b0c74e14991b741923b102b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114611038020295364
+--- !u!114 &114012245631672158
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -408,6 +398,29 @@ MonoBehaviour:
   player: {fileID: 0}
   center: {fileID: 4204850257944564}
   shop: {fileID: 0}
+--- !u!114 &114195380737912710
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1191824287383210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6641e17b0c74e14991b741923b102b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114482985873309682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1545373946166816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc03328a5b8ea41d4b385715c488534a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialLifes: 5
 --- !u!114 &114912826813984010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -433,7 +446,7 @@ MonoBehaviour:
   turnSpeed: 10
   fireRate: 2
   fireCountdown: 0
---- !u!135 &135461791233461366
+--- !u!135 &135135778410967890
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour {
 	private WayPoints wayPoints;
 	private Transform target;
 	private int wavepointIndex = 0;
+	private GameObject masterTower;
+	private MasterTowerScript masterTowerScript;
 
 	public void SetWayPoints(GameObject wayP){
 		wayPoints = wayP.GetComponent<WayPoints>();
@@ -15,6 +17,8 @@ public class Enemy : MonoBehaviour {
 
 	//WayPoints is a public static variable that is been accessed from here
 	private void Start(){
+		masterTower = GameObject.Find("MasterTower");
+		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
 		target = wayPoints.GetPoints (0);
 	}
 
@@ -38,6 +42,7 @@ public class Enemy : MonoBehaviour {
 
 	//Attack the main tower
 	private void EnemyAttack(){
+		masterTowerScript.EnemyAttack ();
 		Destroy (gameObject);
 	}
 }

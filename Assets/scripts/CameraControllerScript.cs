@@ -2,8 +2,6 @@
 
 public class CameraControllerScript : MonoBehaviour {
 
-	private bool doMovement = true;
-
 	public float panSpeed = 30f;
 	public float panBoardThickness = 10f;
 	public float scrollSpeed = 5f;
@@ -16,12 +14,6 @@ public class CameraControllerScript : MonoBehaviour {
 	public float maxZ = 80f;
 
 	void Update () {
-
-		if (Input.GetKeyDown (KeyCode.Escape))
-			doMovement = !doMovement;
-		if (!doMovement)
-			return;
-
 		MoveScreen ();
 		ZoomScroll ();
 		LimitPosition ();

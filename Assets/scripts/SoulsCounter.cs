@@ -8,12 +8,23 @@ public class SoulsCounter : MonoBehaviour {
 	//Make it easier to instantiate:
 	public static SoulsCounter instance;
 	public float InitialSouls = 200f;
+	public float scoreConstant = 200f;
 	public Text soulsText;
 	public string[] killersTags;
 	public float[] killValues;
 
 	private float souls;
 	private float towerPrice;
+	private float wave;
+	private ScoreCounter scoreCounter;
+
+	public void SetWave(float value){
+		wave = value;
+	}
+
+	public float GetWave(){
+		return wave;
+	}
 
 	public void SetSouls(float value){
 		souls = value;
@@ -43,13 +54,20 @@ public class SoulsCounter : MonoBehaviour {
 	}
 
 	public void KillEnemy (string _tag) {
-		souls += KillerPrice (_tag);
+		float value = KillerPrice (_tag);
+		souls += value;
+		scoreCounter.SetScore (scoreCounter.GetScore () + ConvertToScore (value));
+	}
+
+	private float ConvertToScore(float value){
+		return value * scoreConstant * wave;
 	}
 
 	private void Start () {
 		SetSouls (InitialSouls);
 		towerPrice = 10f;
 		instance = this;
+		scoreCounter = this.GetComponent<ScoreCounter> ();
 	}
 
 	private void Update () {
