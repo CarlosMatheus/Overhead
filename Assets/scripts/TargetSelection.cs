@@ -15,6 +15,8 @@ public class TargetSelection : MonoBehaviour {
 	public Material tempMaterial;
 	public float HP;
 
+	private SoulsCounter soulsCounter;
+
 	public void TakeDamageBy (GameObject other)
 	{
 		HP -= other.GetComponent<SkillsProperties> ().damage;
@@ -34,6 +36,8 @@ public class TargetSelection : MonoBehaviour {
 		// Rotating enemy UI (health bar) at beginning and desactivating it
 		enemyHealthBar.transform.rotation = GameObject.FindGameObjectWithTag ("MainCamera").gameObject.transform.rotation;
 		enemyHealthBar.SetActive (false);
+
+		soulsCounter = SoulsCounter.instance;
 	}
 
 	void OnMouseDown ()  // If this.gameObject had been clicked
@@ -71,6 +75,9 @@ public class TargetSelection : MonoBehaviour {
 				}
 			}
 		}
+
+		// Get souls for your kill
+		soulsCounter.KillEnemy (go.tag);
 
 		// Anyway, instantiate this target's deathEffect and destroy it
 		GameObject effectInstantiated = (GameObject) Instantiate (deathEffect, transform.position, transform.rotation);
