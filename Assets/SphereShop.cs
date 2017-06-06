@@ -7,10 +7,14 @@ public class SphereShop : MonoBehaviour {
 	public float hoverIntensity = 1f;
 	public GameObject shop;
 
+	private SoulsCounter soulsCounter;
+	private ScoreCounter scoreCounter;
 	private BuildManager buildManager;
 	private Light light;
 
 	private void Start(){
+		soulsCounter = SoulsCounter.instance;
+		scoreCounter = ScoreCounter.instance;
 		buildManager = BuildManager.instance;
 		light = GetComponent<Light> ();
 		light.intensity = initialIntensity;
@@ -18,6 +22,8 @@ public class SphereShop : MonoBehaviour {
 	}
 
 	private void Update () {
+		if(!soulsCounter.CanBuild())
+			CantBuild ();
 		if (Input.GetMouseButtonDown (1))
 			DesactiveShop ();
 	}
@@ -46,7 +52,14 @@ public class SphereShop : MonoBehaviour {
 		shop.SetActive (true);
 	}
 
+	private void CantBuild(){
+		buildManager.SetTowerToBuild (null);
+		buildManager.DestroyTranspTowerInst ();
+	}
+
 	private void DesactiveShop(){
+		buildManager.SetTowerToBuild (null);
+		buildManager.DestroyTranspTowerInst ();
 		shop.SetActive (false);
 	}
 }
