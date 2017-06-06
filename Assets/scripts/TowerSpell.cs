@@ -33,7 +33,7 @@ public class TowerSpell : MonoBehaviour {
 
 	//Will hit the target, intantiate the impactEffect, make damage, then will destroy the spell and its effect
 	void HitTarget(){
-		target.GetComponent<TargetSelection> ().HP -= GetComponent<SkillsProperties> ().damage;
+		target.GetComponent<TargetSelection> ().TakeDamageBy(this.gameObject);
 
 		GameObject effect = (GameObject)Instantiate (impactEffect, transform.position, transform.rotation);
 		Destroy (effect, 2f);

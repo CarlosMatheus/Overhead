@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class TowerScript : MonoBehaviour {
 
-	private Transform target;
-	private GameObject player;
-
 	[Header("Unity Setup Fields")]
 
 	public Transform rangePiece;
@@ -23,6 +20,13 @@ public class TowerScript : MonoBehaviour {
 	public float turnSpeed = 10f;
 	public float fireRate = 1f;
 	public float fireCountdown = 0f;
+
+	private Transform target;
+	private GameObject player;
+
+	public GameObject GetTarget() {
+		return target.gameObject;
+	}
 
 	void Start () {
 		// Finding the player gameObject
@@ -42,7 +46,7 @@ public class TowerScript : MonoBehaviour {
 	}
 
 	//Check the array of enemies, find the closest, see if it is on range and target it
-	void UpdateTarget(){
+	void UpdateTarget () {
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag (enemyTag);
 		float shortestDistance = Mathf.Infinity;
 		GameObject nearestEnemy = null;
@@ -54,9 +58,29 @@ public class TowerScript : MonoBehaviour {
 			}
 		}
 		if (nearestEnemy != null && shortestDistance <= range) {
+			
 			target = nearestEnemy.transform;
+
+			if (IsAround (playerSpawnOnTower, player.transform)) {
+				if 
+				(
+					player.GetComponent<PlayerController> ().currentTarget == null ||
+				    !player.GetComponent<PlayerController> ().IsInRange
+					(
+					    player.GetComponent<PlayerController> ().currentTarget.transform, 
+					    player.transform
+				    )
+				) {
+
+					player.GetComponent<PlayerController> ().SetTarget (nearestEnemy);   // Redefine player target
+
+				}
+			}
+
 		} else {
+			
 			target = null;
+
 		}
 	}
 
@@ -81,6 +105,10 @@ public class TowerScript : MonoBehaviour {
 	void Shoot(){
 		GameObject spellGO = ( GameObject ) Instantiate (bulletPrefab,firePoint.position,firePoint.rotation);
 		TowerSpell towerSpell = spellGO.GetComponent<TowerSpell>();
+
+		// Speel need to know who instantiated him
+		spellGO.GetComponent<SkillsProperties> ().invoker = this.gameObject;
+
 		if (towerSpell != null)
 			towerSpell.Seek (target);
 	}
@@ -121,8 +149,15 @@ public class TowerScript : MonoBehaviour {
 		// Sets new skill to player
 		player.GetComponent<PlayerController>().currentSkill = towerSkill;
 
-		// Sets new target to player
-		player.GetComponent<PlayerController>().currentTarget = target.gameObject;
+		// Sets new target to player if this isn't already his
+		if (target != null && player.GetComponent<PlayerController> ().currentTarget != null) {
+			if (player.GetComponent<PlayerController> ().currentTarget != target.gameObject) {
+				player.GetComponent<PlayerController> ().SetTarget (target.gameObject);
+			}
+		}
+
+		// Telling player where he is
+		player.GetComponent<PlayerController>().currentTower = this.gameObject;
 
 		StopCoroutine (TeleportEvents ());
 	}

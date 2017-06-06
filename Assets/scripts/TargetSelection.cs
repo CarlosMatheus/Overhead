@@ -15,7 +15,15 @@ public class TargetSelection : MonoBehaviour {
 	public Material tempMaterial;
 	public float HP;
 
-	void Start () {
+	public void TakeDamageBy (GameObject other)
+	{
+		HP -= other.GetComponent<SkillsProperties> ().damage;
+		if (HP <= 0)
+			DeathBy (other.GetComponent<SkillsProperties> ().invoker);
+	}
+
+	void Start ()
+	{
 		// Setting current HP to maximumHP
 		HP = maximumHealth;
 
@@ -51,17 +59,22 @@ public class TargetSelection : MonoBehaviour {
 		gameObject.GetComponent<MeshRenderer> ().material = tempMaterial;
 	}
 
-	void OnTriggerEnter (Collider other)
+	// This.gameObject had been killed by GameObject go
+	void DeathBy (GameObject go)
 	{
-		if (other.tag == "Skill") {
-			HP -= other.gameObject.GetComponent<SkillsProperties>().damage;
+		// If player was killing this.gameObject
+		if (go.tag == "Player") {
+			if (go.GetComponent<PlayerController> ().currentTarget != null) {
+				if (go.GetComponent<PlayerController> ().currentTarget.transform == this.gameObject.transform) {
+					go.GetComponent<PlayerController> ().currentTarget = null;
+					go.GetComponent<PlayerController> ().FindNewTarget ();   // Finds a new target
+				}
+			}
 		}
-	}
 
-	void Update () {  // Put update here cause it's the last consequence
-		if (HP <= 0) {
-			Instantiate (deathEffect, transform.position, transform.rotation);
-			Destroy (gameObject);
-		}
+		// Anyway, instantiate this target's deathEffect and destroy it
+		GameObject effectInstantiated = (GameObject) Instantiate (deathEffect, transform.position, transform.rotation);
+		Destroy (effectInstantiated, 2f);
+		Destroy (gameObject);
 	}
 }
