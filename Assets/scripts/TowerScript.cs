@@ -152,6 +152,9 @@ public class TowerScript : MonoBehaviour {
 		// Sets new skill to player
 		player.GetComponent<PlayerController>().currentSkill = towerSkill;
 
+		// Habiliting player's LookAt target position
+		player.GetComponent<PlayerController> ().teleporting = false;
+
 		// Sets new target to player if this isn't already his
 		if (target != null && player.GetComponent<PlayerController> ().currentTarget != null) {
 			if (player.GetComponent<PlayerController> ().currentTarget != target.gameObject) {
