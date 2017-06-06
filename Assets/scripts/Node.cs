@@ -26,6 +26,7 @@ public class Node : MonoBehaviour {
 		}
 		transpTowerInst = (GameObject) Instantiate (transpTower, transform.position, transform.rotation);
 		transpTowerInst.transform.rotation = Quaternion.Euler (0,0,0);
+		buildManager.SetTranspTowerInst (transpTowerInst);
 	}
 
 	void OnMouseExit (){

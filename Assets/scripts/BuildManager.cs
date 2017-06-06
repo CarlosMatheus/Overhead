@@ -10,6 +10,20 @@ public class BuildManager : MonoBehaviour {
 	public GameObject anotherTowerPrefab;
 
 	private GameObject towerToBuild;
+	private GameObject transpTowerInst;
+
+	public GameObject GetTranspTowerInst(){
+		return transpTowerInst;
+	}
+
+	public void SetTranspTowerInst (GameObject tower){
+		transpTowerInst = tower;
+	}
+
+	public void DestroyTranspTowerInst(){
+		if(transpTowerInst!=null)
+			Destroy(transpTowerInst);
+	}
 
 	//Return what tower is to build:
 	public GameObject GetTowerToBuild(){

@@ -47,6 +47,8 @@ public class SphereShop : MonoBehaviour {
 	}
 
 	private void DesactiveShop(){
+		buildManager.SetTowerToBuild (null);
+		buildManager.DestroyTranspTowerInst ();
 		shop.SetActive (false);
 	}
 }
