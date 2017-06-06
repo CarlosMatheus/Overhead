@@ -11,9 +11,14 @@ public class Node : MonoBehaviour {
 	private GameObject tower;
 	private BuildManager buildManager;
 	private GameObject transpTowerInst;
+	private SoulsCounter soulsCounter;
+	private ScoreCounter scoreCounter;
+	private GameObject currentBuildingTower;
 
 	void Start(){
 		buildManager = BuildManager.instance;
+		soulsCounter = SoulsCounter.instance;
+		scoreCounter = ScoreCounter.instance;
 	}
 		
 	void OnMouseEnter (){
@@ -48,23 +53,22 @@ public class Node : MonoBehaviour {
 			return;
 		}
 		Destroy (transpTowerInst);
-
+		currentBuildingTower = buildManager.GetTowerToBuild();
+		soulsCounter.BuildTower ();
+		scoreCounter.BuildTower ();
 		StartCoroutine (EventInstantiator ());
 	}
 
 	IEnumerator EventInstantiator () {
-
 		GameObject tempBuildEffect = Instantiate (buildEffect, transform.position, Quaternion.identity);
-
 		yield return new WaitUntil (() => tempBuildEffect.GetComponent<Animator> ().GetBool ("finished"));
-
 		BuildTower ();
 	}
 
 	void BuildTower () {
 		StopCoroutine (EventInstantiator ());
 		GameObject towerToBuild = BuildManager.instance.GetTowerToBuild ();
-		tower = (GameObject)Instantiate (towerToBuild, transform.position, transform.rotation);
+		tower = (GameObject)Instantiate (currentBuildingTower, transform.position, transform.rotation);
 		tower.transform.rotation = Quaternion.Euler (0,0,0);
 	}
 }
