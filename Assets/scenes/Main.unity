@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2092882768}
-  m_IndirectSpecularColor: {r: 0.4482447, g: 0.49827182, b: 0.5755813, a: 1}
+  m_IndirectSpecularColor: {r: 0.4482447, g: 0.4982717, b: 0.57558084, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -18177,6 +18177,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4983687663724708, guid: 65bfa902e3855440bbcc4e39e0d491ca,
     type: 2}
   m_PrefabInternal: {fileID: 516007184}
+--- !u!4 &516859262 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4439242901911154, guid: e7b20334173548e46b43533d17a20397,
+    type: 2}
+  m_PrefabInternal: {fileID: 620888434}
 --- !u!1001 &519762079
 Prefab:
   m_ObjectHideFlags: 0
@@ -21598,6 +21603,22 @@ Prefab:
         type: 2}
       propertyPath: m_Center.y
       value: 2.0890467
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758658891605532, guid: e7b20334173548e46b43533d17a20397, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634203007188398, guid: e7b20334173548e46b43533d17a20397, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363856463314280, guid: e7b20334173548e46b43533d17a20397, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576514083900068, guid: e7b20334173548e46b43533d17a20397, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7b20334173548e46b43533d17a20397, type: 2}
@@ -32537,6 +32558,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialIntensity: 0.5
   hoverIntensity: 1
+  player: {fileID: 2003393760}
+  center: {fileID: 1532578928}
   shop: {fileID: 2114218535}
 --- !u!135 &925259796
 SphereCollider:
@@ -54301,6 +54324,34 @@ Transform:
   m_PrefabParentObject: {fileID: 4112127174766540, guid: ae5311576c207401a9689d2fcc09e2a9,
     type: 2}
   m_PrefabInternal: {fileID: 1532437196}
+--- !u!1 &1532578927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1532578928}
+  m_Layer: 0
+  m_Name: Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1532578928
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1532578927}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalScale: {x: 70, y: 70.00006, z: 62.50006}
+  m_Children: []
+  m_Father: {fileID: 516859262}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1532752186
 Prefab:
   m_ObjectHideFlags: 0
@@ -70774,6 +70825,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ebd7465fadef54e8878affe03425bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2003393760 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4570669095973516, guid: 2f16d96d8e95f4ee893d3f69273b7e64,
+    type: 2}
+  m_PrefabInternal: {fileID: 513507733}
 --- !u!1001 &2004176110
 Prefab:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ public class SphereShop : MonoBehaviour {
 
 	public float initialIntensity = 0.5f;
 	public float hoverIntensity = 1f;
+	public Transform player;
+	public Transform center;
 	public GameObject shop;
 
 	private SoulsCounter soulsCounter;
@@ -22,10 +24,15 @@ public class SphereShop : MonoBehaviour {
 	}
 
 	private void Update () {
-		if(!soulsCounter.CanBuild())
+		if (IsInMainTower ()) {
+			if (!soulsCounter.CanBuild ())
+				CantBuild ();
+			if (Input.GetMouseButtonDown (1))
+				DesactiveShop ();
+		} else {
 			CantBuild ();
-		if (Input.GetMouseButtonDown (1))
 			DesactiveShop ();
+		}
 	}
 
 	private void OnMouseEnter (){
@@ -61,5 +68,12 @@ public class SphereShop : MonoBehaviour {
 		buildManager.SetTowerToBuild (null);
 		buildManager.DestroyTranspTowerInst ();
 		shop.SetActive (false);
+	}
+
+	private bool IsInMainTower(){
+		if (Vector3.Distance (player.position, center.position) <= 1f) {
+			return true;
+		} else
+			return false;
 	}
 }
