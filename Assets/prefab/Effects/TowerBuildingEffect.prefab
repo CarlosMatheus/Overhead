@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 198199295857305334}
   - component: {fileID: 199731805839335184}
   m_Layer: 0
-  m_Name: DeathEffect02
+  m_Name: BuildEffectOnGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,8 +314,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0107293, y: 1.4826049, z: 1}
-  m_Center: {x: 0.006093979, y: 0.811192, z: 0}
+  m_Size: {x: 1.0400876, y: 1.4826049, z: 1.0220187}
+  m_Center: {x: -0.0012456775, y: 0.811192, z: 0.003669858}
 --- !u!95 &95495302025695218
 Animator:
   serializedVersion: 3
@@ -390,7 +390,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 722739131
+  randomSeed: -1255818407
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3412,7 +3412,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8f13dbfb57d214fe4845b6c59506a018, type: 2}
+  - {fileID: 2100000, guid: 744cd4c796fd2425da292096cc029e34, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

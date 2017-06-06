@@ -9,6 +9,8 @@ public class SoulsCounter : MonoBehaviour {
 	public static SoulsCounter instance;
 	public float InitialSouls = 200f;
 	public Text soulsText;
+	public string[] killersTags;
+	public float[] killValues;
 
 	private float souls;
 	private float towerPrice;
@@ -40,17 +42,28 @@ public class SoulsCounter : MonoBehaviour {
 			return false;
 	}
 
+	public void KillEnemy (string _tag) {
+		souls += KillerPrice (_tag);
+	}
+
 	private void Start () {
 		SetSouls (InitialSouls);
 		towerPrice = 10f;
 		instance = this;
 	}
 
-	private void Update(){
+	private void Update () {
 		UpdateUI ();
 	}
 
-	private void UpdateUI(){
+	private void UpdateUI () {
 		soulsText.text = Mathf.Round(GetSouls()).ToString();
+	}
+
+	private float KillerPrice (string _toSearch) {
+		for (int i = 0; i < killersTags.Length; i++)
+			if (killersTags [i] == _toSearch)
+				return killValues[i];
+		return killValues [0];
 	}
 }

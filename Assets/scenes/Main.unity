@@ -21086,6 +21086,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialSouls: 80
   soulsText: {fileID: 766809532}
+  killersTags:
+  - Tower
+  - Player
+  killValues:
+  - 1
+  - 5
 --- !u!114 &600749632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21598,6 +21604,10 @@ Prefab:
         type: 2}
       propertyPath: m_Center.y
       value: 2.0890467
+      objectReference: {fileID: 0}
+    - target: {fileID: 1545373946166816, guid: e7b20334173548e46b43533d17a20397, type: 2}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7b20334173548e46b43533d17a20397, type: 2}
