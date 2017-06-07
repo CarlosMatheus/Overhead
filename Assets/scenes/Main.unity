@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2092882768}
-  m_IndirectSpecularColor: {r: 0.4482447, g: 0.49827182, b: 0.5755813, a: 1}
+  m_IndirectSpecularColor: {r: 0.4482447, g: 0.4982717, b: 0.57558084, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -20975,8 +20975,8 @@ MonoBehaviour:
   WayPoints4: {fileID: 1779390711}
   waveNumberText: {fileID: 1246731473}
   waveCountdownText: {fileID: 2007121328}
-  Initialcountdown: 20
-  timeBetweenWaves: 30
+  Initialcountdown: 30
+  timeBetweenWaves: 45
   spawnDelay: 0.8
 --- !u!4 &600749628
 Transform:
@@ -21096,7 +21096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1073512d1344efeaae7c18a90275b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialSouls: 50
+  InitialSouls: 60
   scoreConstant: 200
   soulsText: {fileID: 766809532}
   killersTags:
