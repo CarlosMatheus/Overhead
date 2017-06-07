@@ -26,11 +26,15 @@ public class WaveSpawner : MonoBehaviour {
 
 	private float countdown;
 	private int waveNumber = 1;
-	private SoulsCounter soulsconter;
+	private SoulsCounter soulsConter;
+	private GameObject masterTower;
+	private MasterTowerScript masterTowerScript;
 
 	void Start(){
+		masterTower = GameObject.Find ("MasterTower");
 		countdown = Initialcountdown;
-		soulsconter = this.GetComponent<SoulsCounter> ();
+		soulsConter = this.GetComponent<SoulsCounter> ();
+		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
 	}
 
 	void Update () {
@@ -40,7 +44,6 @@ public class WaveSpawner : MonoBehaviour {
 		}
 		countdown -= Time.deltaTime;
 		UpdateUI();
-		UpdateSoul ();
 	}
 
 	//Coroutine for the spawn, it delays spawnDelay for each instantiation
@@ -50,6 +53,8 @@ public class WaveSpawner : MonoBehaviour {
 			yield return new WaitForSeconds (spawnDelay);
 		}
 		waveNumber++;
+		UpdateSoul ();
+		UpdateLifes ();
 	}
 
 	//instantiate the Enemy
@@ -73,6 +78,10 @@ public class WaveSpawner : MonoBehaviour {
 	}
 
 	void UpdateSoul(){
-		soulsconter.SetWave (waveNumber - 1);
+		soulsConter.SetWave (waveNumber - 1);
+	}
+
+	void UpdateLifes(){
+		masterTowerScript.NewWave ();
 	}
 }
