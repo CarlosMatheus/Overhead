@@ -4,9 +4,12 @@ public class WayPoints : MonoBehaviour {
 
 	private Transform[] points;
 
+
+
 	public Transform GetPoints(int i){
 		return points[i];
 	}
+
 	public int GetPointsLength(){
 		return points.Length;
 	}
@@ -19,4 +22,6 @@ public class WayPoints : MonoBehaviour {
 			points [i] = transform.GetChild (i);
 		}
 	}
+
+
 }
