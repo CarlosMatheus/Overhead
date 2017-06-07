@@ -26,32 +26,35 @@ public class PlayerController : MonoBehaviour {
 
 	// Function to be called by the new target when clicked
 	public void SetTarget (GameObject _newTarget) {
+		
+		if (_newTarget != null) {
+			
+			if (currentTarget != null) {
 
-		if (currentTarget != null) {
+				// Sets target material (color in actual one and emission on tempMaterial) into original one
+				SetMaterial (currentTarget.GetComponent<TargetSelection> ().originalMaterial);
+				currentTarget.GetComponent<TargetSelection> ().enemyHealthBar.SetActive (false);
 
-			// Sets target material (color in actual one and emission on tempMaterial) into original one
-			SetMaterial (currentTarget.GetComponent<TargetSelection> ().originalMaterial);
-			currentTarget.GetComponent<TargetSelection> ().enemyHealthBar.SetActive (false);
+				// If had double clicked the same target, just destarget it
+				if (_newTarget == currentTarget) {
 
-			// If had double clicked the same target, just destarget it
-			if (_newTarget == currentTarget) {
-
-				currentTarget = null;
-				return;
+					currentTarget = null;
+					return;
+				}
 			}
+
+			// Turns new target into currentTarget
+			currentTarget = _newTarget;
+
+			// Gets newTarget HP bar reference
+			enemyHealthBar = currentTarget.GetComponent<TargetSelection> ().enemyHealthBar;
+
+			// Active HP on top screen
+			enemyHealthBar.SetActive (true);
+
+			// Turns targetMaterial color into originalMaterial color and atribute it to targetObject
+			SetMaterial (materialToAssign);
 		}
-
-		// Turns new target into currentTarget
-		currentTarget = _newTarget;
-
-		// Gets newTarget HP bar reference
-		enemyHealthBar = currentTarget.GetComponent<TargetSelection>().enemyHealthBar;
-
-		// Active HP on top screen
-		enemyHealthBar.SetActive (true);
-
-		// Turns targetMaterial color into originalMaterial color and atribute it to targetObject
-		SetMaterial (materialToAssign);
 	}
 
 	// Search for a new target (this is only called when a enemy dies killed by a player)

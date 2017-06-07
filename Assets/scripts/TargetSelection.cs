@@ -40,6 +40,12 @@ public class TargetSelection : MonoBehaviour {
 		soulsCounter = SoulsCounter.instance;
 	}
 
+	void Update () {
+
+		// Rotating enemy UI (health bar) at beginning and desactivating it
+		enemyHealthBar.transform.rotation = GameObject.FindGameObjectWithTag ("MainCamera").gameObject.transform.rotation;
+	}
+
 	void OnMouseDown ()  // If this.gameObject had been clicked
 	{
 		// Target it! (logic for untargetting happens on GameController script)

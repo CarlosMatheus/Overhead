@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour {
 	private int wavepointIndex = 0;
 	private GameObject masterTower;
 	private MasterTowerScript masterTowerScript;
+	private float originalHeight;
 
 	public void SetWayPoints(GameObject wayP){
 		wayPoints = wayP.GetComponent<WayPoints>();
@@ -20,11 +21,15 @@ public class Enemy : MonoBehaviour {
 		masterTower = GameObject.Find("MasterTower");
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
 		target = wayPoints.GetPoints (0);
+		originalHeight = transform.position.y;
 	}
 
 	private void Update (){
 		Vector3 dir = target.position - transform.position;
 		transform.Translate (dir.normalized * speed * Time.deltaTime, Space.World);
+
+		transform.LookAt (target.position);
+
 		if (Vector3.Distance (transform.position, target.position) <= minDist) {
 			GetNextWayPoint ();
 		}
