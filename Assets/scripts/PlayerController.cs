@@ -127,6 +127,16 @@ public class PlayerController : MonoBehaviour {
 	// Function to instantiate a skill depending on what tower he is
 	void Attack () {
 		currentSkill.GetComponent<TowerSpell> ().Seek (currentTarget.transform);
+
+		if (currentSkill.GetComponent<SkillsProperties> ().effect != null) {
+			EffectScaler.Scaler (
+				currentSkill.GetComponent<SkillsProperties> ().effect,
+				currentTarget,
+				this.gameObject,
+				currentSkill.GetComponent<SkillsProperties> ().effect.GetComponent<EffectProperties>().range
+			);
+		}
+
 		GameObject currentSpell = (GameObject) Instantiate (currentSkill, shotSpawn.position, shotSpawn.rotation);
 		currentSpell.GetComponent<SkillsProperties> ().invoker = this.gameObject;
 	}
@@ -134,7 +144,13 @@ public class PlayerController : MonoBehaviour {
 	// Verify if A and B are in range
 	public bool IsInRange (Transform trA, Transform trB) {
 
-		if (Vector3.Magnitude (trA.position - trB.position) <= currentSkill.GetComponent<SkillsProperties> ().range)
+		Vector3 a = trA.position;
+		Vector3 b = trB.position;
+
+		a.y = 0;
+		b.y = 0;
+
+		if (Vector3.Magnitude (a - b) <= currentSkill.GetComponent<SkillsProperties> ().range)
 			return true;
 		else
 			return false;

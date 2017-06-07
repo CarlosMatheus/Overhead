@@ -8,6 +8,7 @@ public class SkillsProperties : MonoBehaviour {
 	public float damage;
 	public float cooldown;
 	public float range;
+	public GameObject effect;
 
 	[Header("Auto assign")]
 	public GameObject invoker;

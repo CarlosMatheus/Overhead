@@ -12,24 +12,14 @@ public class Teleporter : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 	}
 
-	public void TeleportFor (Vector3 _target) {
+	public void TeleportFor (GameObject _target) {
 
 		GetComponent<PlayerController> ().teleporting = true;
 
-		transform.LookAt (_target);
+		transform.LookAt (_target.transform.position);
 
-		Vector3 distance = _target - transform.position;
-
-		lightAnimationObject.transform.localScale = new Vector3 (
-			lightAnimationObject.transform.localScale.x,
-			lightAnimationObject.transform.localScale.y,
-			CalculateScale (1.0f, 6.0f, Vector3.Magnitude (distance))
-		);
+		EffectScaler.Scaler (lightAnimationObject, _target, GameObject.FindGameObjectWithTag("Player"), 6.0f);
 
 		anim.SetBool ("start", true);
-	}
-
-	private float CalculateScale (float a, float b, float c) {
-		return a * c / b * 1.05f;
 	}
 }

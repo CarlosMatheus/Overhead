@@ -141,7 +141,7 @@ public class TowerScript : MonoBehaviour {
 	IEnumerator TeleportEvents () {
 		
 		// Animates
-		player.GetComponent<Teleporter>().TeleportFor(playerSpawnOnTower.position);
+		player.GetComponent<Teleporter>().TeleportFor(playerSpawnOnTower.gameObject);
 
 		yield return new WaitUntil (() => !player.GetComponent<Animator> ().GetBool ("start"));
 

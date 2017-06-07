@@ -28,6 +28,7 @@ public class TowerSpell : MonoBehaviour {
 			HitTarget ();
 			return;
 		}
+		transform.LookAt (target.position);
 		transform.Translate (dir.normalized * distanceThisFrame, Space.World);
 	}
 
@@ -35,8 +36,10 @@ public class TowerSpell : MonoBehaviour {
 	void HitTarget(){
 		target.GetComponent<TargetSelection> ().TakeDamageBy(this.gameObject);
 
-		GameObject effect = (GameObject)Instantiate (impactEffect, transform.position, transform.rotation);
-		Destroy (effect, 2f);
+		if (impactEffect != null) {
+			GameObject effect = (GameObject)Instantiate (impactEffect, transform.position, transform.rotation);
+			Destroy (effect, 2f);
+		}
 		Destroy (gameObject);
 	}
 }
