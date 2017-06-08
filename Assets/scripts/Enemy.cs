@@ -5,18 +5,18 @@ public class Enemy : MonoBehaviour {
 	public float speed =10f;
 	public float minDist = 0.2f;
 
-	private WayPoints wayPoints;
+	private WayPointsScript wayPoints;
 	private Transform target;
 	private int wavepointIndex = 0;
 	private GameObject masterTower;
 	private MasterTowerScript masterTowerScript;
 	private float originalHeight;
 
-	public void SetWayPoints(GameObject wayP){
-		wayPoints = wayP.GetComponent<WayPoints>();
+	//WaveSpawner will use this to set the waypoint
+	public void SetWayPoints(WayPointsScript wayP){
+		wayPoints = wayP;
 	}
 
-	//WayPoints is a public static variable that is been accessed from here
 	private void Start(){
 		masterTower = GameObject.Find("MasterTower");
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
@@ -27,9 +27,7 @@ public class Enemy : MonoBehaviour {
 	private void Update (){
 		Vector3 dir = target.position - transform.position;
 		transform.Translate (dir.normalized * speed * Time.deltaTime, Space.World);
-
 		transform.LookAt (target.position);
-
 		if (Vector3.Distance (transform.position, target.position) <= minDist) {
 			GetNextWayPoint ();
 		}

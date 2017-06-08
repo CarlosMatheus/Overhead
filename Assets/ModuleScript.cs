@@ -4,10 +4,16 @@ using UnityEngine;
 public class ModuleScript : MonoBehaviour {
 
 	private Transform spawnPoint;
-	private GameObject WayPoints;
+	private WayPointsScript wayPoints;
+	private WaveSpawner waveSpawner;
 
-	void Awake () {
+	private void Awake () {
 		spawnPoint = GetComponentInChildren<SpawnPointScript> ().transform;
-		Debug.Log (spawnPoint.position);
+		wayPoints = GetComponentInChildren<WayPointsScript> ();
+	}
+
+	private void Start(){
+		waveSpawner = GameObject.Find ("GameMaster").GetComponent<WaveSpawner> ();
+		waveSpawner.SetModule (spawnPoint,wayPoints);
 	}
 }

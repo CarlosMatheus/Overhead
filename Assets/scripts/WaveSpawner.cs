@@ -7,14 +7,6 @@ public class WaveSpawner : MonoBehaviour {
 	[Header("Unity Setup Filds")]
 
 	public GameObject enemyPrefab;
-	public Transform spawnPoint1;
-	public Transform spawnPoint2;
-	public Transform spawnPoint3;
-	public Transform spawnPoint4;
-	public GameObject WayPoints1;
-	public GameObject WayPoints2;
-	public GameObject WayPoints3;
-	public GameObject WayPoints4;
 	public Text waveNumberText;
 	public Text waveCountdownText;
 
@@ -29,25 +21,18 @@ public class WaveSpawner : MonoBehaviour {
 	private SoulsCounter soulsConter;
 	private GameObject masterTower;
 	private MasterTowerScript masterTowerScript;
+	private Transform[] spawnPoint;
+	private WayPointsScript[] wayPoints;
+	private int moduleIndex = 0;
 
-	void Start(){
-		masterTower = GameObject.Find ("MasterTower");
-		countdown = Initialcountdown;
-		soulsConter = this.GetComponent<SoulsCounter> ();
-		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
-	}
-
-	void Update () {
-		if ( countdown <= 0f ) {
-			StartCoroutine (SpawnWave ());
-			countdown = timeBetweenWaves;
-		}
-		countdown -= Time.deltaTime;
-		UpdateUI();
+	public void SetModule(Transform spawnP, WayPointsScript wayP){
+		spawnPoint [moduleIndex] = spawnP;
+		wayPoints [moduleIndex] = wayP;
+		moduleIndex++;
 	}
 
 	//Coroutine for the spawn, it delays spawnDelay for each instantiation
-	IEnumerator SpawnWave(){
+	private IEnumerator SpawnWave(){
 		for (int i = 0; i < waveNumber; i++) {
 			EnemySpawn ();
 			yield return new WaitForSeconds (spawnDelay);
@@ -57,31 +42,47 @@ public class WaveSpawner : MonoBehaviour {
 		UpdateLifes ();
 	}
 
-	//instantiate the Enemy
-	void EnemySpawn(){
+	private void Awake(){
+		moduleIndex = 0;
+		spawnPoint = new Transform[4];
+		wayPoints = new WayPointsScript[4];
+	}
 
-		GameObject instance1 = ( GameObject ) Instantiate (enemyPrefab,spawnPoint1.position,spawnPoint1.rotation);
-		GameObject instance2 = ( GameObject ) Instantiate (enemyPrefab,spawnPoint2.position,spawnPoint2.rotation);
-		GameObject instance3 = ( GameObject ) Instantiate (enemyPrefab,spawnPoint3.position,spawnPoint3.rotation);
-		GameObject instance4 = ( GameObject ) Instantiate (enemyPrefab,spawnPoint4.position,spawnPoint4.rotation);
+	private void Start(){
+		masterTower = GameObject.Find ("MasterTower");
+		countdown = Initialcountdown;
+		soulsConter = this.GetComponent<SoulsCounter> ();
+		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
+	}
 
-		instance1.GetComponent<Enemy> ().SetWayPoints(WayPoints1);
-		instance2.GetComponent<Enemy> ().SetWayPoints(WayPoints2);
-		instance3.GetComponent<Enemy> ().SetWayPoints(WayPoints3);
-		instance4.GetComponent<Enemy> ().SetWayPoints(WayPoints4);
+	private void Update () {
+		if ( countdown <= 0f ) {
+			StartCoroutine (SpawnWave ());
+			countdown = timeBetweenWaves;
+		}
+		countdown -= Time.deltaTime;
+		UpdateUI();
+	}
+
+	//Instantiate the Enemy and set the waypoints
+	private void EnemySpawn(){
+		for (int i = 0; i < 4; i++) {
+			GameObject enemyGameObj = (GameObject)Instantiate (enemyPrefab, spawnPoint [i].position, spawnPoint [i].rotation);
+			enemyGameObj.GetComponent<Enemy> ().SetWayPoints (wayPoints [i]);
+		}
 	}
 
 	//Update the User Interface with wave and time remain for next wave information
-	void UpdateUI(){
+	private void UpdateUI(){
 		waveCountdownText.text = Mathf.Round(countdown).ToString();
 		waveNumberText.text = Mathf.Round (waveNumber - 1 ).ToString ();
 	}
 
-	void UpdateSoul(){
+	private void UpdateSoul(){
 		soulsConter.SetWave (waveNumber - 1);
 	}
 
-	void UpdateLifes(){
+	private void UpdateLifes(){
 		masterTowerScript.NewWave ();
 	}
 }
