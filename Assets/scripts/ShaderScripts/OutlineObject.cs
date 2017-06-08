@@ -23,7 +23,6 @@ public class OutlineObject : MonoBehaviour {
 
     private void OnMouseEnter()
     {
-        Debug.Log("Entrouu");
         _targetColor = GlowColor; //If the mouse is on the collider, select the color to glow
         enabled = true;
     }
