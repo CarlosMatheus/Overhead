@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 136219084140275100}
   - component: {fileID: 114006691423060548}
   - component: {fileID: 114470179286269742}
+  - component: {fileID: 95649749232607842}
   m_Layer: 0
   m_Name: EnemyKnight
   m_TagString: Enemy
@@ -447,6 +448,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1489908465015530}
   m_Mesh: {fileID: 4300002, guid: fb97b4527190a4305aa7698b9b25b8fd, type: 3}
+--- !u!95 &95649749232607842
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1843476635464596}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 68d1c66318f555a4ca104a6bcd987e1e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95993378768109798
 Animator:
   serializedVersion: 3
