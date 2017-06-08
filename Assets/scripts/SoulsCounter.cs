@@ -14,9 +14,13 @@ public class SoulsCounter : MonoBehaviour {
 	public float[] killValues;
 
 	private float souls;
-	private float towerPrice;
 	private float wave;
 	private ScoreCounter scoreCounter;
+	private float[] towerValue;
+
+	public void setInitialTowersValues(float[] towerV){
+		towerValue = towerV;
+	}
 
 	public void SetWave(float value){
 		wave = value;
@@ -34,20 +38,20 @@ public class SoulsCounter : MonoBehaviour {
 		return souls;
 	}
 
-	public void SetTowerPrice(float value){
-		towerPrice = value;
+	public void SetTowerPrice(float value, int index){
+		towerValue[index] = value;
 	}
 
-	public float GetTowerPrice(){
-		return towerPrice;
+	public float GetTowerPrice(int index){
+		return towerValue[index];
 	}
 
-	public void BuildTower(){
-		souls -= towerPrice;
+	public void BuildTower( int index){
+		souls -= towerValue[index];
 	}
 
-	public bool CanBuild(){
-		if (towerPrice <= souls)
+	public bool CanBuild(int towerIndex){
+		if (towerValue[towerIndex] <= souls)
 			return true;
 		else
 			return false;
@@ -65,7 +69,6 @@ public class SoulsCounter : MonoBehaviour {
 
 	private void Start () {
 		SetSouls (InitialSouls);
-		towerPrice = 10f;
 		instance = this;
 		scoreCounter = this.GetComponent<ScoreCounter> ();
 	}
