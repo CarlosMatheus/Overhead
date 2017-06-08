@@ -17,9 +17,31 @@ public class Shop : MonoBehaviour {
 	/// Purcheses the tower0.
 	/// </summary>
 	public void PurcheseTower0(){
+		Debug.Log ("0");
 		int indexOfThisTower = 0;
 		if ( !soulsCounter.CanBuild (indexOfThisTower) )
 			return;
+		buildManager.SetTowerToBuildIndex (indexOfThisTower);
+		buildManager.SetTowerToBuild (buildManager.tower[indexOfThisTower]);
+		buildManager.SetSelectionTowerToBuild (buildManager.selectionTower [indexOfThisTower]);
+	}
+
+	public void PurcheseTower1(){
+		Debug.Log ("1");
+		int indexOfThisTower = 1;
+		if ( !soulsCounter.CanBuild (indexOfThisTower) )
+			return;
+		buildManager.SetTowerToBuildIndex (indexOfThisTower);
+		buildManager.SetTowerToBuild (buildManager.tower[indexOfThisTower]);
+		buildManager.SetSelectionTowerToBuild (buildManager.selectionTower [indexOfThisTower]);
+	}
+
+	public void PurcheseTower2(){
+		Debug.Log ("2");
+		int indexOfThisTower = 2;
+		if ( !soulsCounter.CanBuild (indexOfThisTower) )
+			return;
+		buildManager.SetTowerToBuildIndex (indexOfThisTower);
 		buildManager.SetTowerToBuild (buildManager.tower[indexOfThisTower]);
 		buildManager.SetSelectionTowerToBuild (buildManager.selectionTower [indexOfThisTower]);
 	}

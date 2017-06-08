@@ -56,8 +56,8 @@ public class Node : MonoBehaviour {
 		}
 		buildManager.DestroySelectionTowerToBuildInstance ();
 		currentBuildingTower = buildManager.GetTowerToBuild();
-		soulsCounter.BuildTower ();
-		scoreCounter.BuildTower ();
+		soulsCounter.BuildTower (buildManager.GetTowerToBuildIndex());
+		scoreCounter.BuildTower (buildManager.GetTowerToBuildIndex());
 		StartCoroutine (EventInstantiator ());
 	}
 

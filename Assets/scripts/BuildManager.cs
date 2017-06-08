@@ -18,6 +18,7 @@ public class BuildManager : MonoBehaviour {
 
 	/// <summary>
 	/// Gets the selection tower to build.
+	/// This is used by the Node
 	/// </summary>
 	/// <returns>The selection tower to build.</returns>
 	public GameObject GetSelectionTowerToBuild(){
@@ -41,6 +42,11 @@ public class BuildManager : MonoBehaviour {
 		Destroy(selectionTowerToBuildInstance);
 	}
 
+	/// <summary>
+	/// Sets the selection tower to build instance.
+	/// this is used by the node
+	/// </summary>
+	/// <param name="selectionT">Selection t.</param>
 	public void SetSelectionTowerToBuildInstance(GameObject selectionT){
 		selectionTowerToBuildInstance = selectionT;
 	}
