@@ -21,6 +21,11 @@ public class MasterTowerScript : MonoBehaviour {
 		UpdateLifeText ();
 	}
 
+	public void NewWave(){
+		lifes++;
+		UpdateLifeText ();
+	}
+
 	private void Start(){
 		lifes = initialLifes;
 		UpdateLifeText ();

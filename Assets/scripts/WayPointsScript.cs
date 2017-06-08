@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
-public class WayPoints : MonoBehaviour {
+public class WayPointsScript : MonoBehaviour {
 
 	private Transform[] points;
 
 	public Transform GetPoints(int i){
 		return points[i];
 	}
+
 	public int GetPointsLength(){
 		return points.Length;
 	}
