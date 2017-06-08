@@ -4,21 +4,23 @@ using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour {
 
-	public GameObject transpTower;
 	public GameObject buildEffect;
 
 	private Material originalMaterial;
 	private GameObject tower;
 	private BuildManager buildManager;
-	private GameObject transpTowerInst;
 	private SoulsCounter soulsCounter;
 	private ScoreCounter scoreCounter;
 	private GameObject currentBuildingTower;
+	private SphereShop sphereShop;
+	private GameObject towerToBuild;
 
 	void Start(){
-		buildManager = BuildManager.instance;
+		buildManager = GameObject.Find ("GameMaster").GetComponent<BuildManager> ();
+		sphereShop = GameObject.Find ("Icosphere").GetComponent<SphereShop> ();
 		soulsCounter = SoulsCounter.instance;
 		scoreCounter = ScoreCounter.instance;
+		towerToBuild = null;
 	}
 		
 	void OnMouseEnter (){
@@ -29,13 +31,13 @@ public class Node : MonoBehaviour {
 		if (buildManager.GetTowerToBuild () == null) {
 			return;
 		}
-		transpTowerInst = (GameObject) Instantiate (transpTower, transform.position, transform.rotation);
-		transpTowerInst.transform.rotation = Quaternion.Euler (0,0,0);
-		buildManager.SetTranspTowerInst (transpTowerInst);
+		GameObject selecTowerInst = (GameObject) Instantiate (buildManager.GetSelectionTowerToBuild(), transform.position, transform.rotation);
+		selecTowerInst.transform.rotation = Quaternion.Euler (0,0,0);
+		buildManager.SetSelectionTowerToBuildInstance (selecTowerInst);
 	}
 
 	void OnMouseExit (){
-		Destroy (transpTowerInst);
+		buildManager.DestroySelectionTowerToBuildInstance ();
 	}
 
 	void OnMouseDown(){
@@ -52,7 +54,7 @@ public class Node : MonoBehaviour {
 			Debug.Log ("can't build there! - TODO: Display on screen.");
 			return;
 		}
-		Destroy (transpTowerInst);
+		buildManager.DestroySelectionTowerToBuildInstance ();
 		currentBuildingTower = buildManager.GetTowerToBuild();
 		soulsCounter.BuildTower ();
 		scoreCounter.BuildTower ();
@@ -67,8 +69,15 @@ public class Node : MonoBehaviour {
 
 	void BuildTower () {
 		StopCoroutine (EventInstantiator ());
-		GameObject towerToBuild = BuildManager.instance.GetTowerToBuild ();
+		towerToBuild = buildManager.GetTowerToBuild ();
 		tower = (GameObject)Instantiate (currentBuildingTower, transform.position, transform.rotation);
 		tower.transform.rotation = Quaternion.Euler (0,0,0);
+	}
+
+	/// <summary>
+	/// Tells the sphere shop tower to build.
+	/// </summary>
+	private void TellSphereShopTowerToBuild(){
+		sphereShop.SetTowerToBuild (towerToBuild);
 	}
 }

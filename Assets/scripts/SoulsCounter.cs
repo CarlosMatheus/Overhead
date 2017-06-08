@@ -17,6 +17,11 @@ public class SoulsCounter : MonoBehaviour {
 	private float towerPrice;
 	private float wave;
 	private ScoreCounter scoreCounter;
+	private float[] towerValue;
+
+	public void setInitialTowersValues(float[] towerV){
+		towerValue = towerV;
+	}
 
 	public void SetWave(float value){
 		wave = value;
@@ -46,8 +51,8 @@ public class SoulsCounter : MonoBehaviour {
 		souls -= towerPrice;
 	}
 
-	public bool CanBuild(){
-		if (towerPrice <= souls)
+	public bool CanBuild(int towerIndex){
+		if (towerValue[towerIndex] <= souls)
 			return true;
 		else
 			return false;

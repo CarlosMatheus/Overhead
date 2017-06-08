@@ -6,32 +6,54 @@ public class SphereShop : MonoBehaviour {
 	public float hoverIntensity = 1f;
 	public Transform player;
 	public Transform center;
-	public GameObject shop;
 
 	private GameObject gameMaster;
+	private GameObject towerToBuild;
 	private SoulsCounter soulsCounter;
 	private BuildManager buildManager;
 	private Light light;
+	private Shop shop;
+	private GameObject ShopGObj;
+
+	public void SetTowerToBuild(GameObject towerToB){
+		towerToBuild = towerToB;
+	}
 
 	private void Start(){
 		gameMaster = GameObject.Find ("GameMaster");
 		soulsCounter = gameMaster.GetComponent<SoulsCounter>();
-		buildManager = BuildManager.instance;
+		buildManager = GameObject.Find("GameMaster").GetComponent<BuildManager>();
+		ShopGObj = GameObject.Find ("Shop");
+		shop = ShopGObj.GetComponent<Shop> ();
 		light = GetComponent<Light> ();
 		light.intensity = initialIntensity;
-		shop.SetActive (false);
+		ShopGObj.SetActive (false);
 	}
 
+	/// <summary>
+	/// Update this instance.
+	/// every frame check if player is is main tower and if he 
+	/// can buy the tower he selects
+	/// </summary>
 	private void Update () {
 		if (IsInMainTower ()) {
-			if (!soulsCounter.CanBuild ())
-				CantBuild ();
+			checkIfCanBuild ();
+			//Mouse right click makes the store close
 			if (Input.GetMouseButtonDown (1))
 				DesactiveShop ();
 		} else {
 			CantBuild ();
 			DesactiveShop ();
 		}
+	}
+
+	/// <summary>
+	/// Checks if can build the tower you have in selection
+	/// </summary>
+	private void checkIfCanBuild (){
+		if(buildManager.GetTowerToBuild() != null)
+			if ( !soulsCounter.CanBuild( buildManager.GetTowerToBuildIndex () ) )
+				CantBuild ();
 	}
 
 	private void OnMouseEnter (){
@@ -47,18 +69,18 @@ public class SphereShop : MonoBehaviour {
 	}
 
 	private void ActiveShop(){
-		shop.SetActive (true);
-	}
-
-	private void CantBuild(){
-		buildManager.SetTowerToBuild (null);
-		buildManager.DestroyTranspTowerInst ();
+		ShopGObj.SetActive (true);
 	}
 
 	private void DesactiveShop(){
 		buildManager.SetTowerToBuild (null);
-		buildManager.DestroyTranspTowerInst ();
-		shop.SetActive (false);
+		buildManager.DestroySelectionTowerToBuildInstance ();
+		ShopGObj.SetActive (false);
+	}
+
+	private void CantBuild(){
+		buildManager.SetTowerToBuild (null);     	   //
+		buildManager.DestroySelectionTowerToBuildInstance ();  //The one that is been used in the moment
 	}
 
 	private bool IsInMainTower(){
