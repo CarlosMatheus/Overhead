@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2092882768}
-  m_IndirectSpecularColor: {r: 0.4482447, g: 0.4982717, b: 0.57558084, a: 1}
+  m_IndirectSpecularColor: {r: 0.4482447, g: 0.49827182, b: 0.5755813, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -108,11 +108,6 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &10800379 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4113502272342008, guid: dee29a8d3bdc448c89bde488b8cc8a79,
-    type: 2}
-  m_PrefabInternal: {fileID: 1830510023}
 --- !u!1 &27972336
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +381,16 @@ Prefab:
     - target: {fileID: 1308225388777810, guid: 2f16d96d8e95f4ee893d3f69273b7e64, type: 2}
       propertyPath: m_Name
       value: Witch
+      objectReference: {fileID: 0}
+    - target: {fileID: 198690274827116916, guid: 2f16d96d8e95f4ee893d3f69273b7e64,
+        type: 2}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 198690274827116916, guid: 2f16d96d8e95f4ee893d3f69273b7e64,
+        type: 2}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f16d96d8e95f4ee893d3f69273b7e64, type: 2}
@@ -710,11 +715,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4135920127585762, guid: 82d36f36394974db5bc54e66ce1f032e,
     type: 2}
   m_PrefabInternal: {fileID: 305385946}
---- !u!1 &310847721 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1202455771766822, guid: dee29a8d3bdc448c89bde488b8cc8a79,
-    type: 2}
-  m_PrefabInternal: {fileID: 1830510023}
 --- !u!1001 &369508192
 Prefab:
   m_ObjectHideFlags: 0
@@ -1242,14 +1242,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1843476635464596, guid: 27d0e1beab2c4604bb5fe9f6d9ade2b3,
     type: 2}
-  spawnPoint1: {fileID: 10800379}
-  spawnPoint2: {fileID: 0}
-  spawnPoint3: {fileID: 0}
-  spawnPoint4: {fileID: 0}
-  WayPoints1: {fileID: 310847721}
-  WayPoints2: {fileID: 0}
-  WayPoints3: {fileID: 0}
-  WayPoints4: {fileID: 0}
   waveNumberText: {fileID: 1246731473}
   waveCountdownText: {fileID: 2007121328}
   Initialcountdown: 30
