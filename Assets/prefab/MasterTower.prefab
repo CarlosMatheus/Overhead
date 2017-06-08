@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 108915710131545046}
   - component: {fileID: 135135778410967890}
   - component: {fileID: 114012245631672158}
+  - component: {fileID: 114148962861993472}
   m_Layer: 0
   m_Name: Icosphere
   m_TagString: Untagged
@@ -120,6 +121,7 @@ GameObject:
   - component: {fileID: 114482985873309682}
   - component: {fileID: 114912826813984010}
   - component: {fileID: 65508408599510936}
+  - component: {fileID: 114712822026287812}
   m_Layer: 0
   m_Name: MasterTower
   m_TagString: Tower
@@ -398,6 +400,19 @@ MonoBehaviour:
   player: {fileID: 0}
   center: {fileID: 4204850257944564}
   shop: {fileID: 0}
+--- !u!114 &114148962861993472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1191824287383210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95c9be8b534b964aa2d38834ec2b888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 0.15862082, g: 0, b: 1, a: 0}
+  FadeFactor: 5
 --- !u!114 &114195380737912710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -422,6 +437,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialLifes: 5
   lifeCounterText: {fileID: 0}
+--- !u!114 &114712822026287812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1545373946166816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95c9be8b534b964aa2d38834ec2b888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 1, g: 0, b: 0, a: 0}
+  FadeFactor: 5
 --- !u!114 &114912826813984010
 MonoBehaviour:
   m_ObjectHideFlags: 1

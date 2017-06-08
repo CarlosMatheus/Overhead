@@ -68,6 +68,7 @@ GameObject:
   - component: {fileID: 4500873372251294}
   - component: {fileID: 114623369097560350}
   - component: {fileID: 65853142933077740}
+  - component: {fileID: 114699446148116006}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Tower
@@ -339,3 +340,16 @@ MonoBehaviour:
   turnSpeed: 10
   fireRate: 1
   fireCountdown: 0
+--- !u!114 &114699446148116006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1500846572791458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95c9be8b534b964aa2d38834ec2b888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 1, g: 0.5586207, b: 0, a: 0}
+  FadeFactor: 5
