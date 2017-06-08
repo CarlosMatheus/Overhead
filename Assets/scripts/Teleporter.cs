@@ -14,8 +14,6 @@ public class Teleporter : MonoBehaviour {
 
 	public void TeleportFor (GameObject _target) {
 
-		GetComponent<PlayerController> ().teleporting = true;
-
 		transform.LookAt (_target.transform.position);
 
 		EffectScaler.Scaler (lightAnimationObject, _target, GameObject.FindGameObjectWithTag("Player"), 6.0f);

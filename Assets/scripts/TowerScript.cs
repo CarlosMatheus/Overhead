@@ -124,8 +124,9 @@ public class TowerScript : MonoBehaviour {
 	void OnMouseDown () {
 		if (IsAround (playerSpawnOnTower, player.transform)) {  // If player is at this tower, returns
 			return;
-		} else {  // If not
-			StartCoroutine(TeleportEvents());
+		} else if (!player.GetComponent<PlayerController> ().teleporting) {  // If not and player is not teleporting
+			player.GetComponent<PlayerController> ().teleporting = true;
+			StartCoroutine (TeleportEvents ());
 		}
 	}
 
@@ -152,9 +153,6 @@ public class TowerScript : MonoBehaviour {
 		// Sets new skill to player
 		player.GetComponent<PlayerController>().currentSkill = towerSkill;
 
-		// Habiliting player's LookAt target position
-		player.GetComponent<PlayerController> ().teleporting = false;
-
 		// Sets new target to player if this isn't already his
 		if (target != null && player.GetComponent<PlayerController> ().currentTarget != null) {
 			if (player.GetComponent<PlayerController> ().currentTarget != target.gameObject) {
@@ -164,6 +162,9 @@ public class TowerScript : MonoBehaviour {
 
 		// Telling player where he is
 		player.GetComponent<PlayerController>().currentTower = this.gameObject;
+
+		// Habiliting player's LookAt target position
+		player.GetComponent<PlayerController> ().teleporting = false;
 
 		StopCoroutine (TeleportEvents ());
 	}

@@ -152,7 +152,6 @@ GameObject:
   - component: {fileID: 136219084140275100}
   - component: {fileID: 114006691423060548}
   - component: {fileID: 114470179286269742}
-  - component: {fileID: 23144489322287782}
   m_Layer: 0
   m_Name: EnemyKnight
   m_TagString: Enemy
@@ -364,38 +363,6 @@ Transform:
   m_Father: {fileID: 4353378575860080}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23144489322287782
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1843476635464596}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 7d8875fc3686aa644981c014c0992908, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!23 &23636745611585202
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -621,9 +588,6 @@ MonoBehaviour:
   enemyHealthBar: {fileID: 1374926427234664}
   deathEffect: {fileID: 1432811619508178, guid: c437ea0344f1ee248900e43dd41d9ad1,
     type: 2}
-  overMaterial: {fileID: 2100000, guid: b3dd3cd9d38b8e645a54ec7cc2358f03, type: 2}
-  originalMaterial: {fileID: 0}
-  tempMaterial: {fileID: 0}
   HP: 0
 --- !u!114 &114655299370250458
 MonoBehaviour:

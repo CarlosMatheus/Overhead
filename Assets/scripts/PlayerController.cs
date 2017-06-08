@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
 	[Header("To assign")]
-	public Material targetMaterial;
-	public Material inRangeMaterial;
 	public Transform shotSpawn;
 
 	[Header("Auto assign")]
@@ -18,7 +16,6 @@ public class PlayerController : MonoBehaviour {
 
 	// Private stuff
 	private GameObject enemyHealthBar;
-	private Material materialToAssign;
 	private float attackCouldown;
 	private float time;
 
@@ -32,7 +29,7 @@ public class PlayerController : MonoBehaviour {
 			if (currentTarget != null) {
 
 				// Sets target material (color in actual one and emission on tempMaterial) into original one
-				SetMaterial (currentTarget.GetComponent<TargetSelection> ().originalMaterial);
+				//SetMaterial (currentTarget.GetComponent<TargetSelection> ().originalMaterial);
 				currentTarget.GetComponent<TargetSelection> ().enemyHealthBar.SetActive (false);
 
 				// If had double clicked the same target, just destarget it
@@ -53,7 +50,7 @@ public class PlayerController : MonoBehaviour {
 			enemyHealthBar.SetActive (true);
 
 			// Turns targetMaterial color into originalMaterial color and atribute it to targetObject
-			SetMaterial (materialToAssign);
+			//SetMaterial (materialToAssign);
 		}
 	}
 
@@ -68,9 +65,6 @@ public class PlayerController : MonoBehaviour {
 
 		// Setting time reference
 		time = Time.time;
-
-		// Setting up material stuff
-		materialToAssign = targetMaterial;
 	}
 
 	void Update () {
@@ -91,8 +85,7 @@ public class PlayerController : MonoBehaviour {
 				// Look at target
 				transform.LookAt 
 				(
-					new Vector3 
-					(
+					new Vector3 (
 						currentTarget.transform.position.x,
 						transform.position.y,
 						currentTarget.transform.position.z
@@ -102,18 +95,11 @@ public class PlayerController : MonoBehaviour {
 
 			if (IsInRange (transform, currentTarget.transform)) {
 
-				materialToAssign = inRangeMaterial;
-
-				SetMaterial (materialToAssign);
-
 				if (Time.time - time > currentSkill.GetComponent<SkillsProperties> ().cooldown) {
 					// Attack!
 					Attack ();
 					time = Time.time;
 				}
-			} else {
-				materialToAssign = targetMaterial;
-				SetMaterial (materialToAssign);
 			}
 		}
 	}
@@ -155,11 +141,5 @@ public class PlayerController : MonoBehaviour {
 		else
 			return false;
 
-	}
-
-	void SetMaterial (Material mat) {
-		mat.color = currentTarget.GetComponent<TargetSelection> ().originalMaterial.color;
-		currentTarget.GetComponent<MeshRenderer> ().material = mat;
-		currentTarget.GetComponent<TargetSelection> ().tempMaterial = mat;
 	}
 }
