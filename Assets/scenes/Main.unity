@@ -2520,7 +2520,6 @@ GameObject:
   - component: {fileID: 1129076719}
   - component: {fileID: 1129076718}
   - component: {fileID: 1129076717}
-  - component: {fileID: 1129076716}
   - component: {fileID: 1129076715}
   m_Layer: 0
   m_Name: Camera
@@ -2553,13 +2552,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ebb67449d83611408eccdd7f7af295f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!81 &1129076716
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1129076713}
-  m_Enabled: 1
 --- !u!92 &1129076717
 Behaviour:
   m_ObjectHideFlags: 0
@@ -2600,7 +2592,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 1784498947}
+  m_TargetTexture: {fileID: 1230625077}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -2724,6 +2716,30 @@ Transform:
   m_PrefabParentObject: {fileID: 4135920127585762, guid: 82d36f36394974db5bc54e66ce1f032e,
     type: 2}
   m_PrefabInternal: {fileID: 1159031921}
+--- !u!84 &1230625077
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 476
+  m_Height: 268
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapMode: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1246731470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3747,30 +3763,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &1784498947
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1061
-  m_Height: 597
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapMode: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &1815746114
 Prefab:
   m_ObjectHideFlags: 0
