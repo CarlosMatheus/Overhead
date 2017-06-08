@@ -11,7 +11,7 @@ public class OutlineObjectMainTower : MonoBehaviour {
     private Renderer[] _renderers;
     private List<Material> _materials = new List<Material>();
     private Color _targetColor;
-    private Color _currentColor;
+    public Color _currentColor;
 
     void Start()
     {
@@ -41,10 +41,8 @@ public class OutlineObjectMainTower : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(entrou.ToString());
         if (entrou)
         {
-            Debug.Log("Entrouu");
             _targetColor = GlowColor; //If the mouse is on the collider, select the color to glow
             enabled = true;
         }

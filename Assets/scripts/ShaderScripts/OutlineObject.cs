@@ -10,7 +10,7 @@ public class OutlineObject : MonoBehaviour {
     private Renderer[] _renderers;
     private List<Material> _materials = new List<Material>();
     private Color _targetColor;
-    private Color _currentColor;
+    public Color _currentColor;
 
 	void Start () {
         _renderers = GetComponentsInChildren<Renderer>(); //Gets all the Children Renderers, to get access to their materials
