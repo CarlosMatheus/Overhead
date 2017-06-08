@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 4363856463314280}
   - component: {fileID: 33761808720862278}
   - component: {fileID: 23474237358225040}
+  - component: {fileID: 114874625663767412}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -137,7 +138,7 @@ GameObject:
   - component: {fileID: 114482985873309682}
   - component: {fileID: 114912826813984010}
   - component: {fileID: 65508408599510936}
-  - component: {fileID: 114712822026287812}
+  - component: {fileID: 114705004966340192}
   m_Layer: 0
   m_Name: MasterTower
   m_TagString: Tower
@@ -534,7 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialLifes: 5
   lifeCounterText: {fileID: 0}
---- !u!114 &114712822026287812
+--- !u!114 &114705004966340192
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -542,11 +543,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1545373946166816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a95c9be8b534b964aa2d38834ec2b888, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f843448f6037414a908f72b3cbff759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cilinder: {fileID: 1416106720696678}
+--- !u!114 &114874625663767412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1416106720696678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0782aa6be446dd47a68169088085bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GlowColor: {r: 1, g: 0, b: 0, a: 0}
   FadeFactor: 5
+  entrou: 0
 --- !u!114 &114912826813984010
 MonoBehaviour:
   m_ObjectHideFlags: 1
