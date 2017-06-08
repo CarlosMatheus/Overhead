@@ -7,11 +7,11 @@ public class ScoreCounter : MonoBehaviour {
 
 	public static ScoreCounter instance;
 	public float InitialScore = 0f;
-	public float InitialTowerScore = 1000f;
 	public Text scoreText;
 
 	private float score;
-	private float scoreTower;
+	private BuildManager buildManager;
+	private float[] towerScore;
 
 	public void SetScore(float value){
 		score = value;
@@ -21,14 +21,22 @@ public class ScoreCounter : MonoBehaviour {
 		return score;
 	}
 
-	public void BuildTower(){
-		score += scoreTower;
+	public void BuildTower(int index){
+		score += towerScore[index];
 	}
 
 	private void Start () {
+		buildManager = GameObject.Find ("GameMaster").GetComponent<BuildManager> ();
+		towerScore = new float[buildManager.initialTowerScore.Length];
+		SetTowerInitialScores ();
 		SetScore (InitialScore);
-		scoreTower = InitialTowerScore;
 		instance = this;
+	}
+
+	private void SetTowerInitialScores(){
+		for(int i = 0 ; i < buildManager.initialTowerScore.Length; i ++){
+			towerScore[i] = buildManager.initialTowerScore[i];
+		}
 	}
 
 	private void Update(){
