@@ -27,8 +27,20 @@ public class Enemy : MonoBehaviour {
 	/// <summary> Gets the HP </summary>
 	/// This is accessed by the targetSelection
 	/// <returns> The HP </returns>
-	public float getHP(){
+	public float getHP() {
 		return hp;
+	}
+
+	public void SetSpeed (float _speed) {
+		speed = _speed;
+	}
+
+	public float GetSpeed () {
+		return speed;
+	}
+
+	public void ReturnToOriginalSpeed () {
+		speed = waveSpawner.getBaseSpeed () * speedEnemyConst;
 	}
 
 	private void Awake(){
@@ -39,14 +51,14 @@ public class Enemy : MonoBehaviour {
 	private void Start(){
 		masterTower = GameObject.Find("MasterTower");
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
-		speed = waveSpawner.getBaseSpeed() * speedEnemyConst;
+		SetSpeed (waveSpawner.getBaseSpeed() * speedEnemyConst);
 		target = wayPoints.GetPoints (0);
 		originalHeight = transform.position.y;
 	}
 
 	private void Update (){
 		Vector3 dir = target.position - transform.position;
-		transform.Translate (dir.normalized * speed * Time.deltaTime, Space.World);
+		transform.Translate (dir.normalized * GetSpeed() * Time.deltaTime, Space.World);
 		transform.LookAt (target.position);
 		if (Vector3.Distance (transform.position, target.position) <= minDistToChangeDirection) {
 			GetNextWayPoint ();

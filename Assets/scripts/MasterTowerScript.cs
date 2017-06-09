@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class MasterTowerScript : MonoBehaviour {
 
 	public float initialLifes;
-	public Text lifeCounterText;
 
 	private float lifes;
+	private Text lifeCounterText;
 
 	public void SetLifes(float value){
 		lifes = value;
@@ -27,6 +27,7 @@ public class MasterTowerScript : MonoBehaviour {
 	}
 
 	private void Start(){
+		lifeCounterText = GameObject.Find ("LifeCounter").GetComponent<Text> ();
 		lifes = initialLifes;
 		UpdateLifeText ();
 	}
