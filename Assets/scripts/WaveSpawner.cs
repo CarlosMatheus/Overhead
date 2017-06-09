@@ -80,16 +80,16 @@ public class WaveSpawner : MonoBehaviour {
 		UpdateLifes ();
 	}
 
+	/// <summary>
+	/// Ajusts the array of enemies for the corrent wave
+	/// </summary>
 	private void AjustArray(){
 		int sizeArrEn = ArrayEnemies[waveNumber - 1].Length;
-		///
-		int[] auxArr = new int[sizeArrEn]; 
-		/////
+		int[] auxArr = new int[sizeArrEn];
 		int auxArrIdx = 0;
 		int indexVal = 0;
 		int mult = 1;
 		int actualVal = 0;
-		///
 		for ( int i = sizeArrEn-1; i >= 0; i -- ){
 			actualVal = (ArrayEnemies[waveNumber - 1][i] - '0');
 			if(actualVal == (','- '0') ){
@@ -105,33 +105,34 @@ public class WaveSpawner : MonoBehaviour {
 			}
 		}
 		auxArr[auxArrIdx] = indexVal;
-		///
 		thisWaveSpawnEnemies = new GameObject[auxArrIdx + 1];
-		/// 
 		int j = 0; 
 		for (int i = auxArrIdx; i >= 0; i--) {
-			Debug.Log (j);
-			Debug.Log (i);
-			Debug.Log (auxArr[i]);
-			Debug.Log (auxArr[i] - 1);
-			Debug.Log (enemyPrefab[ auxArr[i] - 1 ]);
-			Debug.Log (thisWaveSpawnEnemies[j]);
 			thisWaveSpawnEnemies[j] = enemyPrefab[ auxArr[i] - 1 ];
 			j++;
 		}
 	}
 
+	/// <summary>
+	/// Ajusts the difficulty for the next wave
+	/// </summary>
 	private void AjustDifficulty(){
 		baseSpeed = baseSpeed * SpeedWaveConst;
 		baseHP = baseHP * HPWaveConst;
 	}
 
+	/// <summary>
+	/// Awake this instance.
+	/// </summary>
 	private void Awake(){
 		moduleIndex = 0;
 		spawnPoint = new Transform[4];
 		wayPoints = new WayPointsScript[4];
 	}
 
+	/// <summary>
+	/// Start this instance.
+	/// </summary>
 	private void Start(){
 		masterTower = GameObject.Find ("MasterTower");
 		countdown = initialcountdown;
@@ -153,16 +154,6 @@ public class WaveSpawner : MonoBehaviour {
 		}
 		countdown -= Time.deltaTime;
 		UpdateUI();
-
-		//teste:
-//		string[] coisa = new string[2];
-//		coisa[0] = "abcdef";
-//		coisa[1] = "ghijk";
-//
-//		Debug.Log (coisa [0][0]);
-//		Debug.Log (coisa [1][1]);
-//		Debug.Log (coisa [1][4]);
-
 	}
 
 	//Instantiate the Enemy and set the waypoints

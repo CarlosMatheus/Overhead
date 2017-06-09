@@ -100,8 +100,8 @@ public class Shop : MonoBehaviour {
 	//Instantiate and initialize 
 	private void Start(){
 		buildManager = GameObject.Find ("GameMaster").GetComponent<BuildManager> ();
-		soulsCounter = SoulsCounter.instance;
-		scoreCounter = ScoreCounter.instance;
+		soulsCounter = GameObject.Find ("GameMaster").GetComponent<SoulsCounter> ();
+		scoreCounter = GameObject.Find ("GameMaster").GetComponent<ScoreCounter> ();
 
 		InitialCantBuildImageSet ();
 	}
