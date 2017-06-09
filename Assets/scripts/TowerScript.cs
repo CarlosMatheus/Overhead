@@ -110,7 +110,7 @@ public class TowerScript : MonoBehaviour {
 		TowerSpell towerSpell = spellGO.GetComponent<TowerSpell>();
 
 		// Speel need to know who instantiated him
-		spellGO.GetComponent<SkillsProperties> ().invoker = this.gameObject;
+		spellGO.GetComponent<SkillsProperties> ().invoker = gameObject;
 
 		if (towerSpell != null)
 			towerSpell.Seek (target);

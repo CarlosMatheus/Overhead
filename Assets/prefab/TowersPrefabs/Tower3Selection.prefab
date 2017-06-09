@@ -51,9 +51,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4128807236649130}
-  - component: {fileID: 114313190171453052}
-  - component: {fileID: 65466961955882196}
-  - component: {fileID: 114089419530780774}
   m_Layer: 0
   m_Name: Tower3Selection
   m_TagString: Tower
@@ -216,54 +213,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1959610977153914}
   m_Mesh: {fileID: 4300000, guid: 20380a648338242f39dfbc4d358ddf36, type: 3}
---- !u!65 &65466961955882196
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1674007290332340}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.62086827, y: 1.1592151, z: 1}
-  m_Center: {x: -0.0061603487, y: 0.6494971, z: 0}
---- !u!114 &114089419530780774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1674007290332340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a95c9be8b534b964aa2d38834ec2b888, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlowColor: {r: 0, g: 0.46206903, b: 1, a: 0}
-  FadeFactor: 5
-  _currentColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &114313190171453052
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1674007290332340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e189b4cb99cfb4a5e99eb66f07e15b40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rangePiece: {fileID: 0}
-  partToRotate: {fileID: 4790490075353000}
-  firePoint: {fileID: 0}
-  playerSpawnOnTower: {fileID: 0}
-  bulletPrefab: {fileID: 1076308763873118, guid: 81d8a83a09a4b4d4183eb78e46bb9eed,
-    type: 2}
-  towerSkill: {fileID: 1076308763873118, guid: 81d8a83a09a4b4d4183eb78e46bb9eed, type: 2}
-  teleportEffect: {fileID: 1628781945723574, guid: b790363590f171b42b9ff9508e1faa56,
-    type: 2}
-  enemyTag: Enemy
-  range: 4
-  turnSpeed: 10
-  fireRate: 1
-  fireCountdown: 0

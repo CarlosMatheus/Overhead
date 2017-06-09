@@ -353,3 +353,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GlowColor: {r: 1, g: 0.5586207, b: 0, a: 0}
   FadeFactor: 5
+  _currentColor: {r: 0, g: 0, b: 0, a: 0}

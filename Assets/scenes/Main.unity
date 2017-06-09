@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.64705884, g: 0.5614187, b: 0.5614187, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.035
+  m_FogDensity: 0.03
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -433,7 +433,7 @@ Prefab:
     - target: {fileID: 224992129436268646, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -77.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224026440099591260, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
@@ -453,7 +453,7 @@ Prefab:
     - target: {fileID: 224026440099591260, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -77.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224301140839805270, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
@@ -473,7 +473,7 @@ Prefab:
     - target: {fileID: 224301140839805270, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -77.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b856abfdd5ce4931b2113cd82c17491, type: 2}
@@ -611,7 +611,7 @@ Prefab:
     - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: timeBetweenWaves
-      value: 45
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
@@ -756,7 +756,7 @@ Prefab:
     - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: initialcountdown
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114481859035547284, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
@@ -766,17 +766,56 @@ Prefab:
     - target: {fileID: 114606223264522626, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: initialTowerScore.Array.data[0]
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114606223264522626, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: initialTowerScore.Array.data[1]
-      value: 50
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 114606223264522626, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: initialTowerScore.Array.data[2]
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114606223264522626, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: tower.Array.data[1]
+      value: 
+      objectReference: {fileID: 1500846572791458, guid: 917d86caf115c4349b17b2d9f19b3f3a,
+        type: 2}
+    - target: {fileID: 114606223264522626, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: selectionTower.Array.data[1]
+      value: 
+      objectReference: {fileID: 1470717830022824, guid: 39b91ae42e8051641b79131abd583d3a,
+        type: 2}
+    - target: {fileID: 114606223264522626, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: tower.Array.data[2]
+      value: 
+      objectReference: {fileID: 1500846572791458, guid: 88597a9b907de97409796bb0c30aede2,
+        type: 2}
+    - target: {fileID: 114606223264522626, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: selectionTower.Array.data[2]
+      value: 
+      objectReference: {fileID: 1674007290332340, guid: 0370de2c70aef5947af4b535996af664,
+        type: 2}
+    - target: {fileID: 114606223264522626, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: initialTowerValue.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114606223264522626, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: initialTowerValue.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114606223264522626, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: initialTowerValue.Array.data[2]
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0ae3f0160a394622b2556300039986c, type: 2}
@@ -909,7 +948,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 2062156055}
+  m_TargetTexture: {fileID: 1957892340}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -1002,7 +1041,7 @@ Prefab:
     - {fileID: 114602057675560126, guid: 6849b8a20f320f04dabdfd7ed9070271, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6849b8a20f320f04dabdfd7ed9070271, type: 2}
   m_IsPrefabParent: 0
---- !u!84 &2062156055
+--- !u!84 &1957892340
 RenderTexture:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1011,8 +1050,8 @@ RenderTexture:
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
-  m_Width: 768
-  m_Height: 432
+  m_Width: 1678
+  m_Height: 944
   m_AntiAliasing: 1
   m_DepthFormat: 2
   m_ColorFormat: 0
