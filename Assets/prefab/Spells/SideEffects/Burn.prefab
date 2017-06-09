@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f8e4726cd548e4d892e267fa143853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 4
+  duration: 3
   freeze: 0
   slowFactor: 0.9
   burn: 1
-  burnRate: 1
+  burnRate: 0.5
 --- !u!198 &198548462599930194
 ParticleSystem:
   m_ObjectHideFlags: 1

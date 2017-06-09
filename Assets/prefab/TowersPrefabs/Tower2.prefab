@@ -336,9 +336,9 @@ MonoBehaviour:
   teleportEffect: {fileID: 1628781945723574, guid: b790363590f171b42b9ff9508e1faa56,
     type: 2}
   enemyTag: Enemy
-  range: 5
-  turnSpeed: 13
-  fireRate: 0.75
+  range: 4.5
+  turnSpeed: 8
+  fireRate: 3
   fireCountdown: 0
 --- !u!114 &114699446148116006
 MonoBehaviour:
