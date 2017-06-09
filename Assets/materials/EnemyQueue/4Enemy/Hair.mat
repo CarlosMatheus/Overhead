@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: HelmetVisor
+  m_Name: Hair
   m_Shader: {fileID: 4800000, guid: 070ec3b559264554c8f96b68159025ac, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -71,5 +71,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.59959024, g: 0.63827044, b: 0.43426844, a: 1}
+    - _Color: {r: 0.2647059, g: 0.16577527, b: 0.13235295, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

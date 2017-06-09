@@ -152,10 +152,10 @@ GameObject:
   - component: {fileID: 136219084140275100}
   - component: {fileID: 114006691423060548}
   - component: {fileID: 114470179286269742}
-  - component: {fileID: 95649749232607842}
   - component: {fileID: 114282338635328292}
+  - component: {fileID: 95649749232607842}
   m_Layer: 0
-  m_Name: EnemyKnight
+  m_Name: 6Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,8 +273,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1934478921279170}
   m_LocalRotation: {x: 0.6324555, y: -0.03513642, z: 0.035136417, w: 0.77300125}
-  m_LocalPosition: {x: -0.0026930636, y: -0.0075562834, z: 0.002321975}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.0027, y: -0.0105, z: 0.00275}
+  m_LocalScale: {x: 1.2, y: 1.8, z: 1.3}
   m_Children:
   - {fileID: 4040308374348330}
   - {fileID: 4504377074130734}
@@ -289,7 +289,7 @@ Transform:
   m_GameObject: {fileID: 1877198157526220}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.5, z: 1.3}
   m_Children:
   - {fileID: 4887023556613690}
   - {fileID: 4588573045834086}
@@ -329,8 +329,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1843476635464596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.46115446, y: 0.05, z: 5.604203}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -3.135, y: 200, z: 5.604203}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4210007515505478}
   - {fileID: 224177567056014396}
@@ -412,11 +412,11 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: c3d6cd35cb177d94ba23da2eed4f0aba, type: 2}
-  - {fileID: 2100000, guid: 65bb80c37a2b72f46aa3bc9e3a63a840, type: 2}
-  - {fileID: 2100000, guid: 7da903d077cb2284a935e51349052c09, type: 2}
-  - {fileID: 2100000, guid: 7d8875fc3686aa644981c014c0992908, type: 2}
-  - {fileID: 2100000, guid: 7343c2c892c518a469402495216e93cd, type: 2}
+  - {fileID: 2100000, guid: a23de95018d3740f9bef19c7188d431e, type: 2}
+  - {fileID: 2100000, guid: 66d6e1487488849349604e2dd4f4e1e0, type: 2}
+  - {fileID: 2100000, guid: fa58552f2103d450db62f3b6d5801542, type: 2}
+  - {fileID: 2100000, guid: 4fbbe225ee81f4c35a45e9ad301de56b, type: 2}
+  - {fileID: 2100000, guid: 5f2a93778ac034158b77f47b6a4eceb4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -494,8 +494,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eba8945e3aa4df7bb6c8a74f57500e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  minDist: 0.1
+  speedEnemyConst: 2.5
+  hpEnemyConst: 7
+  minDistToChangeDirection: 0.2
 --- !u!114 &114083855588062584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -617,7 +618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dfb474501fb5648999f11c64d640f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumHealth: 100
   enemyHealthBar: {fileID: 1374926427234664}
   deathEffect: {fileID: 1432811619508178, guid: c437ea0344f1ee248900e43dd41d9ad1,
     type: 2}

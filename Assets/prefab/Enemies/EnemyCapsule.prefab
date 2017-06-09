@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 114123884056091614}
   - component: {fileID: 114834156477381768}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyCapsule
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,8 +178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eba8945e3aa4df7bb6c8a74f57500e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  minDist: 0.2
+  speedEnemyConst: 1
+  hpEnemyConst: 1
+  minDistToChangeDirection: 0.2
 --- !u!114 &114168456400640476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,7 +283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dfb474501fb5648999f11c64d640f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumHealth: 100
   enemyHealthBar: {fileID: 1211502269624032}
   deathEffect: {fileID: 1432811619508178, guid: c437ea0344f1ee248900e43dd41d9ad1,
     type: 2}
