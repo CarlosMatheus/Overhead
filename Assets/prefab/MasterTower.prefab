@@ -497,7 +497,6 @@ MonoBehaviour:
   hoverIntensity: 1
   player: {fileID: 0}
   center: {fileID: 4204850257944564}
-  shop: {fileID: 0}
 --- !u!114 &114148962861993472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -511,6 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GlowColor: {r: 0.15862082, g: 0, b: 1, a: 0}
   FadeFactor: 5
+  _currentColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114195380737912710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -558,9 +558,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0782aa6be446dd47a68169088085bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlowColor: {r: 1, g: 0, b: 0, a: 0}
+  GlowColor: {r: 0, g: 1, b: 0.006896496, a: 0}
   FadeFactor: 5
   entrou: 0
+  _currentColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114912826813984010
 MonoBehaviour:
   m_ObjectHideFlags: 1

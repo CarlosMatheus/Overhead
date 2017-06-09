@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 114006691423060548}
   - component: {fileID: 114470179286269742}
   - component: {fileID: 95649749232607842}
+  - component: {fileID: 114282338635328292}
   m_Layer: 0
   m_Name: EnemyKnight
   m_TagString: Enemy
@@ -522,6 +523,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114282338635328292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1843476635464596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a95c9be8b534b964aa2d38834ec2b888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 0.71323526, g: 0.2464857, b: 0.2464857, a: 0}
+  FadeFactor: 5
+  _currentColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114354716960084244
 MonoBehaviour:
   m_ObjectHideFlags: 1

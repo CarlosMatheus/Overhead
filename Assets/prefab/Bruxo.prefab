@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 114951209562384568}
   - component: {fileID: 95612504055217306}
   - component: {fileID: 114897073125900292}
+  - component: {fileID: 114898444391773294}
   m_Layer: 0
   m_Name: Bruxo
   m_TagString: Player
@@ -650,8 +651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ebe2f2ef04a064e9daa44719861daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetMaterial: {fileID: 2100000, guid: 93da00fa381f4584eba0411cd4e97ba5, type: 2}
-  inRangeMaterial: {fileID: 2100000, guid: 0ea5dc355af2ff547a606fe6eac1f91a, type: 2}
   shotSpawn: {fileID: 4639946631702168}
   currentTarget: {fileID: 0}
   currentSkill: {fileID: 1795519070530490, guid: 44c2f812a1dc8eb45918c88c1beac83d,
@@ -670,6 +669,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightAnimationObject: {fileID: 1106071897270060}
+--- !u!114 &114898444391773294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536250208252664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83e2b887245d8a4f86a341b7610a7cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114951209562384568
 MonoBehaviour:
   m_ObjectHideFlags: 1
