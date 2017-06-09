@@ -10,6 +10,7 @@ public class TargetSelection : MonoBehaviour {
 
 	[Header("Auto assign (No need to assign)")]
 	public float HP;
+	public bool sideAffected = false;
 
 	private float maximumHealth;
 	private Enemy enemy;

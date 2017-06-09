@@ -40,6 +40,25 @@ public class TowerSpell : MonoBehaviour {
 			GameObject effect = (GameObject)Instantiate (impactEffect, transform.position, transform.rotation);
 			Destroy (effect, 2f);
 		}
+
+		if (GetComponent<SkillsProperties> ().effect != null) {  // If this spell has a effect
+
+			// Instatiate it
+			GameObject sideEffect = (GameObject)Instantiate (
+				GetComponent<SkillsProperties> ().effect, 
+				target.gameObject.transform.position, 
+				target.gameObject.transform.rotation
+			);
+
+			// Set sideEffect target
+			sideEffect.GetComponent<SideEffect> ().SetTarget (target.gameObject);
+
+			// Set sideEffect invoker
+			sideEffect.GetComponent<SkillsProperties> ().invoker = GetComponent<SkillsProperties>().invoker;
+
+			// Start sideEffect effects
+			sideEffect.GetComponent<SideEffect> ().StartEffect ();
+		}
 		Destroy (gameObject);
 	}
 }

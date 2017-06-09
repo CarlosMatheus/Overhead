@@ -27,9 +27,7 @@ public class PlayerController : MonoBehaviour {
 		if (_newTarget != null) {
 			
 			if (currentTarget != null) {
-
-				// Sets target material (color in actual one and emission on tempMaterial) into original one
-				//SetMaterial (currentTarget.GetComponent<TargetSelection> ().originalMaterial);
+				
 				currentTarget.GetComponent<TargetSelection> ().enemyHealthBar.SetActive (false);
 
 				// If had double clicked the same target, just destarget it
@@ -48,9 +46,6 @@ public class PlayerController : MonoBehaviour {
 
 			// Active HP on top screen
 			enemyHealthBar.SetActive (true);
-
-			// Turns targetMaterial color into originalMaterial color and atribute it to targetObject
-			//SetMaterial (materialToAssign);
 		}
 	}
 
@@ -82,6 +77,7 @@ public class PlayerController : MonoBehaviour {
 		if (currentTarget != null) {
 
 			if (!teleporting) {
+				
 				// Look at target
 				transform.LookAt 
 				(
@@ -113,15 +109,6 @@ public class PlayerController : MonoBehaviour {
 	// Function to instantiate a skill depending on what tower he is
 	void Attack () {
 		currentSkill.GetComponent<TowerSpell> ().Seek (currentTarget.transform);
-
-		if (currentSkill.GetComponent<SkillsProperties> ().effect != null) {
-			EffectScaler.Scaler (
-				currentSkill.GetComponent<SkillsProperties> ().effect,
-				currentTarget,
-				this.gameObject,
-				currentSkill.GetComponent<SkillsProperties> ().effect.GetComponent<EffectProperties>().range
-			);
-		}
 
 		GameObject currentSpell = (GameObject) Instantiate (currentSkill, shotSpawn.position, shotSpawn.rotation);
 		currentSpell.GetComponent<SkillsProperties> ().invoker = this.gameObject;
