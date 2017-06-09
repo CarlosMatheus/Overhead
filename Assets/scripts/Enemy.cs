@@ -2,24 +2,44 @@
 
 public class Enemy : MonoBehaviour {
 
-	public float speed =10f;
-	public float minDist = 0.2f;
+	[Header("This Enemy Prefab constants")]
 
-	private WayPointsScript wayPoints;
-	private Transform target;
+	public float speedEnemyConst = 1f;
+	public float hpEnemyConst = 1f;
+	public float minDistToChangeDirection = 0.2f;
+
 	private int wavepointIndex = 0;
-	private GameObject masterTower;
-	private MasterTowerScript masterTowerScript;
+	private float hp;
+	private float speed;
 	private float originalHeight;
+
+	private Transform target;
+	private GameObject masterTower;
+	private WaveSpawner waveSpawner;
+	private WayPointsScript wayPoints;
+	private MasterTowerScript masterTowerScript;
 
 	//WaveSpawner will use this to set the waypoint
 	public void SetWayPoints(WayPointsScript wayP){
 		wayPoints = wayP;
 	}
 
+	/// <summary> Gets the HP </summary>
+	/// This is accessed by the targetSelection
+	/// <returns> The HP </returns>
+	public float getHP(){
+		return hp;
+	}
+
+	private void Awake(){
+		waveSpawner = GameObject.Find ("GameMaster").GetComponent<WaveSpawner> ();
+		hp = waveSpawner.getBaseHP() * hpEnemyConst;
+	}
+
 	private void Start(){
 		masterTower = GameObject.Find("MasterTower");
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
+		speed = waveSpawner.getBaseSpeed() * speedEnemyConst;
 		target = wayPoints.GetPoints (0);
 		originalHeight = transform.position.y;
 	}
@@ -28,7 +48,7 @@ public class Enemy : MonoBehaviour {
 		Vector3 dir = target.position - transform.position;
 		transform.Translate (dir.normalized * speed * Time.deltaTime, Space.World);
 		transform.LookAt (target.position);
-		if (Vector3.Distance (transform.position, target.position) <= minDist) {
+		if (Vector3.Distance (transform.position, target.position) <= minDistToChangeDirection) {
 			GetNextWayPoint ();
 		}
 	}

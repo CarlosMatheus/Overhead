@@ -5,14 +5,19 @@ using UnityEngine;
 public class TargetSelection : MonoBehaviour {
 
 	[Header("To assign")]
-	public float maximumHealth = 100.0f;
 	public GameObject enemyHealthBar;
 	public GameObject deathEffect;
 
 	[Header("Auto assign (No need to assign)")]
 	public float HP;
 
+	private float maximumHealth;
+	private Enemy enemy;
 	private SoulsCounter soulsCounter;
+
+	public float getMaximumHealth(){
+		return maximumHealth;
+	}
 
 	public void TakeDamageBy (GameObject other)
 	{
@@ -23,8 +28,11 @@ public class TargetSelection : MonoBehaviour {
 
 	void Start ()
 	{
+		enemy = gameObject.GetComponent<Enemy> ();
+
 		// Setting current HP to maximumHP
-		HP = maximumHealth;
+		HP = enemy.getHP();
+		maximumHealth = HP;
 
 		// Rotating enemy UI (health bar) at beginning and desactivating it
 		enemyHealthBar.transform.rotation = GameObject.FindGameObjectWithTag ("MainCamera").gameObject.transform.rotation;

@@ -4,57 +4,149 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour {
 
-	[Header("Unity Setup Filds")]
+	[Header("Spawn Attributes")]
 
-	public GameObject enemyPrefab;
-	public Text waveNumberText;
-	public Text waveCountdownText;
-
-	[Header("Attributes")]
-
-	public float Initialcountdown = 5f;
+	public float initialcountdown = 5f;
 	public float timeBetweenWaves = 5f;
 	public float spawnDelay = 0.5f;
 
-	private float countdown;
-	private int waveNumber = 1;
-	private SoulsCounter soulsConter;
-	private GameObject masterTower;
-	private MasterTowerScript masterTowerScript;
-	private Transform[] spawnPoint;
-	private WayPointsScript[] wayPoints;
-	private int moduleIndex = 0;
+	[Header("Base Enemy Attributes")]
 
+	public float baseSpeedConst = 1f;
+	public float baseHPConst = 100f;
+	public float SpeedWaveConst = 1.1f;
+	public float HPWaveConst = 1.1f;
+
+	[Header("Define The EnemyPrefab Array")]
+
+	public GameObject[] enemyPrefab;
+
+	[Header("Define The Waves Enemies")]
+
+	public string[] ArrayEnemies;
+
+	private int waveNumber = 1;
+	private int moduleIndex = 0;
+	private int numOfSpawnEnemy;
+	private float countdown;
+	private float baseSpeed;
+	private float baseHP;
+	private Text waveNumberText;
+	private Text waveCountdownText;
+	private Transform[] spawnPoint;
+	private GameObject masterTower;
+	private GameObject[] thisWaveSpawnEnemies;
+	private SoulsCounter soulsConter;
+	private WayPointsScript[] wayPoints;
+	private MasterTowerScript masterTowerScript;
+
+	/// <summary>
+	/// Sets the module.
+	/// </summary>
+	/// <param name="spawnP">Spawn p.</param>
+	/// <param name="wayP">Way p.</param>
 	public void SetModule(Transform spawnP, WayPointsScript wayP){
 		spawnPoint [moduleIndex] = spawnP;
 		wayPoints [moduleIndex] = wayP;
 		moduleIndex++;
 	}
 
+	/// <summary>
+	/// Gets the base speed.
+	/// </summary>
+	/// <returns>The base speed.</returns>
+	public float getBaseSpeed (){
+		return baseSpeed;
+	}
+
+	/// <summary>
+	/// Gets the base H.
+	/// </summary>
+	/// <returns>The base H.</returns>
+	public float getBaseHP (){
+		return baseHP;
+	}
+
 	//Coroutine for the spawn, it delays spawnDelay for each instantiation
 	private IEnumerator SpawnWave(){
-		for (int i = 0; i < waveNumber; i++) {
-			EnemySpawn ();
+		AjustArray ();
+		for (int i = 0; i < thisWaveSpawnEnemies.Length; i++) {    // not wave number  ???
+			EnemySpawn (thisWaveSpawnEnemies[i]);
 			yield return new WaitForSeconds (spawnDelay);
 		}
 		waveNumber++;
+		AjustDifficulty();
 		UpdateSoul ();
 		UpdateLifes ();
 	}
 
+	/// <summary>
+	/// Ajusts the array of enemies for the corrent wave
+	/// </summary>
+	private void AjustArray(){
+		int sizeArrEn = ArrayEnemies[waveNumber - 1].Length;
+		int[] auxArr = new int[sizeArrEn];
+		int auxArrIdx = 0;
+		int indexVal = 0;
+		int mult = 1;
+		int actualVal = 0;
+		for ( int i = sizeArrEn-1; i >= 0; i -- ){
+			actualVal = (ArrayEnemies[waveNumber - 1][i] - '0');
+			if(actualVal == (','- '0') ){
+				auxArr[auxArrIdx] = indexVal;
+				auxArrIdx++;
+				mult = 1;
+				indexVal = 0;
+				continue;
+			}
+			else {
+				indexVal += actualVal * mult;
+				mult = mult * 10;
+			}
+		}
+		auxArr[auxArrIdx] = indexVal;
+		thisWaveSpawnEnemies = new GameObject[auxArrIdx + 1];
+		int j = 0; 
+		for (int i = auxArrIdx; i >= 0; i--) {
+			thisWaveSpawnEnemies[j] = enemyPrefab[ auxArr[i] - 1 ];
+			j++;
+		}
+	}
+
+	/// <summary>
+	/// Ajusts the difficulty for the next wave
+	/// </summary>
+	private void AjustDifficulty(){
+		baseSpeed = baseSpeed * SpeedWaveConst;
+		baseHP = baseHP * HPWaveConst;
+	}
+
+	/// <summary>
+	/// Awake this instance.
+	/// </summary>
 	private void Awake(){
 		moduleIndex = 0;
 		spawnPoint = new Transform[4];
 		wayPoints = new WayPointsScript[4];
 	}
 
+	/// <summary>
+	/// Start this instance.
+	/// </summary>
 	private void Start(){
 		masterTower = GameObject.Find ("MasterTower");
-		countdown = Initialcountdown;
+		countdown = initialcountdown;
 		soulsConter = this.GetComponent<SoulsCounter> ();
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
+		waveNumberText = GameObject.Find ("wave").GetComponent<Text>();
+		waveCountdownText = GameObject.Find ("waveCountdownText").GetComponent<Text>();
+		baseSpeed = baseSpeedConst;
+		baseHP = baseHPConst;
 	}
 
+	/// <summary>
+	/// Update this instance.
+	/// </summary>
 	private void Update () {
 		if ( countdown <= 0f ) {
 			StartCoroutine (SpawnWave ());
@@ -65,7 +157,7 @@ public class WaveSpawner : MonoBehaviour {
 	}
 
 	//Instantiate the Enemy and set the waypoints
-	private void EnemySpawn(){
+	private void EnemySpawn(GameObject enemyPrefab){
 		for (int i = 0; i < 4; i++) {
 			GameObject enemyGameObj = (GameObject)Instantiate (enemyPrefab, spawnPoint [i].position, spawnPoint [i].rotation);
 			enemyGameObj.GetComponent<Enemy> ().SetWayPoints (wayPoints [i]);
@@ -78,10 +170,16 @@ public class WaveSpawner : MonoBehaviour {
 		waveNumberText.text = Mathf.Round (waveNumber - 1 ).ToString ();
 	}
 
+	/// <summary>
+	/// Updates the soul.
+	/// </summary>
 	private void UpdateSoul(){
 		soulsConter.SetWave (waveNumber - 1);
 	}
 
+	/// <summary>
+	/// Updates the lifes.
+	/// </summary>
 	private void UpdateLifes(){
 		masterTowerScript.NewWave ();
 	}

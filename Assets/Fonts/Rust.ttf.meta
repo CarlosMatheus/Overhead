@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 3596909b72a4ca149ab32629cc5d2b60
+timeCreated: 1496990992
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Rust
+  fontNames:
+  - Rust
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

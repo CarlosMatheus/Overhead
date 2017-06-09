@@ -7,8 +7,8 @@ public class SoulsCounter : MonoBehaviour {
 
 	//Make it easier to instantiate:
 	public static SoulsCounter instance;
-	public float InitialSouls = 200f;
-	public float scoreConstant = 200f;
+	public float InitialSouls = 60f;
+	public float scoreConstant = 2f;
 	public Text soulsText;
 	public string[] killersTags;
 	public float[] killValues;
@@ -60,7 +60,7 @@ public class SoulsCounter : MonoBehaviour {
 	public void KillEnemy (string _tag) {
 		float value = KillerPrice (_tag);
 		souls += value;
-		scoreCounter.SetScore (scoreCounter.GetScore () + ConvertToScore (value));
+		scoreCounter.KillEnemy(ConvertToScore (value));
 	}
 
 	private float ConvertToScore(float value){

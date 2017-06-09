@@ -21,6 +21,10 @@ public class ScoreCounter : MonoBehaviour {
 		return score;
 	}
 
+	public void KillEnemy(float scr){
+		score += scr;
+	}
+
 	public void BuildTower(int index){
 		score += towerScore[index];
 	}
