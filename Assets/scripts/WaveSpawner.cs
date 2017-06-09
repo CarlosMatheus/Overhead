@@ -47,18 +47,14 @@ public class WaveSpawner : MonoBehaviour {
 	private IEnumerator SpawnWave(){
 		AjustArray ();
 		AjustDifficulty();
-		SpawnFunc();
-		UpdateSoul ();
-		UpdateLifes ();
-	}
-
-	private void SpawnFunc(){
 		for (int i = 0; i < waveNumber; i++) {
 			EnemySpawn ();
 			yield return new WaitForSeconds (spawnDelay);
 		}
 		numOfSpawnEnemy++;
 		waveNumber++;
+		UpdateSoul ();
+		UpdateLifes ();
 	}
 
 	private void AjustArray(){
