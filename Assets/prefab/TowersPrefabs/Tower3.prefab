@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 65853142933077740}
   - component: {fileID: 114699446148116006}
   m_Layer: 0
-  m_Name: Tower2
+  m_Name: Tower3
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,7 +156,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1492714952514788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.009, y: 1.084, z: 0.7638623}
+  m_LocalPosition: {x: 0, y: 1.167, z: 0}
   m_LocalScale: {x: 1, y: 1.1494253, z: 1}
   m_Children: []
   m_Father: {fileID: 4617022393554412}
@@ -169,7 +169,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1500846572791458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0072541, y: -0.9999999, z: 0.44065267}
+  m_LocalPosition: {x: -0.98220634, y: -0.9999999, z: -0.26605785}
   m_LocalScale: {x: 1, y: 1.37, z: 1}
   m_Children:
   - {fileID: 4617022393554412}
@@ -199,8 +199,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1150374367655236}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0.099, z: 0}
-  m_LocalScale: {x: 85, y: 85, z: 85}
+  m_LocalPosition: {x: 0, y: -0.133, z: 0}
+  m_LocalScale: {x: 115, y: 115, z: 115}
   m_Children: []
   m_Father: {fileID: 4617022393554412}
   m_RootOrder: 0
@@ -233,10 +233,10 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3663944aee10248d2978cb7b26f658b0, type: 2}
-  - {fileID: 2100000, guid: 37adee46595e4465eb5e1aaa0462aa89, type: 2}
-  - {fileID: 2100000, guid: 0d5c8399b0a67480db9f38a0af03a12a, type: 2}
-  - {fileID: 2100000, guid: 2de8811d0e4374a37a74f869cf9acc39, type: 2}
+  - {fileID: 2100000, guid: 9281d05393b29364cb113c46f7062b96, type: 2}
+  - {fileID: 2100000, guid: 2c6226ec9356aa445b5fe9b8c36a8bcc, type: 2}
+  - {fileID: 2100000, guid: 73f4c00803bfe9e49ad169ec9c76e10d, type: 2}
+  - {fileID: 2100000, guid: 1e329834d1e0b5742b51512c6356d3fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -268,9 +268,9 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3663944aee10248d2978cb7b26f658b0, type: 2}
-  - {fileID: 2100000, guid: 1e45fc2fac85a4736b84a1e8c23add7d, type: 2}
-  - {fileID: 2100000, guid: 0d5c8399b0a67480db9f38a0af03a12a, type: 2}
+  - {fileID: 2100000, guid: 9281d05393b29364cb113c46f7062b96, type: 2}
+  - {fileID: 2100000, guid: 42982ea4f76a9cc44ad0889c46e5f8e1, type: 2}
+  - {fileID: 2100000, guid: 73f4c00803bfe9e49ad169ec9c76e10d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -351,6 +351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95c9be8b534b964aa2d38834ec2b888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlowColor: {r: 0, g: 0.46206903, b: 1, a: 0}
+  GlowColor: {r: 1, g: 0, b: 0, a: 0}
   FadeFactor: 5
   _currentColor: {r: 0, g: 0, b: 0, a: 0}
