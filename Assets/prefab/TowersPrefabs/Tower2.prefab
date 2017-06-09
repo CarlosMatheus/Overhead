@@ -330,15 +330,15 @@ MonoBehaviour:
   partToRotate: {fileID: 4617022393554412}
   firePoint: {fileID: 4184551153125886}
   playerSpawnOnTower: {fileID: 4124896166766700}
-  bulletPrefab: {fileID: 1076308763873118, guid: 81d8a83a09a4b4d4183eb78e46bb9eed,
+  bulletPrefab: {fileID: 1279783995638840, guid: 79516ce57c986c141b96de4c4537c487,
     type: 2}
-  towerSkill: {fileID: 1076308763873118, guid: 81d8a83a09a4b4d4183eb78e46bb9eed, type: 2}
+  towerSkill: {fileID: 1279783995638840, guid: 79516ce57c986c141b96de4c4537c487, type: 2}
   teleportEffect: {fileID: 1628781945723574, guid: b790363590f171b42b9ff9508e1faa56,
     type: 2}
   enemyTag: Enemy
-  range: 4
-  turnSpeed: 10
-  fireRate: 1
+  range: 4.5
+  turnSpeed: 8
+  fireRate: 3
   fireCountdown: 0
 --- !u!114 &114699446148116006
 MonoBehaviour:

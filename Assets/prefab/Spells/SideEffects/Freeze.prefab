@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f8e4726cd548e4d892e267fa143853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
+  duration: 7
   freeze: 1
   slowFactor: 0.9
   burn: 0

@@ -171,9 +171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  cooldown: 0.25
+  cooldown: 0.2
   range: 4.75
-  effect: {fileID: 0}
+  effect: {fileID: 1572256132303590, guid: 991d7cf752f7dc840b0bbe21dfd01e79, type: 2}
   invoker: {fileID: 0}
 --- !u!198 &198017901100224176
 ParticleSystem:
