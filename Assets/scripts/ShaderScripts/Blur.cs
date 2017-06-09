@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Blur : MonoBehaviour {
 
+    public int NumberOfIterations = 10;
+    public int Resolution = 0;
+
     private Material _blurMaterial;
 
     private void OnEnable()
@@ -13,13 +16,16 @@ public class Blur : MonoBehaviour {
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 0);
+        int width = Screen.width >> Resolution;
+        int height = Screen.height >> Resolution;
+
+        RenderTexture rt = new RenderTexture(width, height, 0);
 
         Graphics.Blit(source, rt, _blurMaterial);
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < NumberOfIterations; i++)
         {
-            RenderTexture rt2 = RenderTexture.GetTemporary(Screen.width, Screen.height, 0);
+            RenderTexture rt2 = RenderTexture.GetTemporary(width, height, 0);
             Graphics.Blit(rt, rt2, _blurMaterial);
             Graphics.Blit(rt2, rt, _blurMaterial);
             RenderTexture.ReleaseTemporary(rt2);

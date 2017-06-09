@@ -51,6 +51,10 @@ public class WaveSpawner : MonoBehaviour {
 		moduleIndex++;
 	}
 
+    public float GetWave(){
+        return waveNumber;
+    }
+
 	/// <summary>
 	/// Gets the base speed.
 	/// </summary>
