@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -108,6 +108,91 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &127428638
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: enemyPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: ArrayEnemies.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447888224134530, guid: a0ae3f0160a394622b2556300039986c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447888224134530, guid: a0ae3f0160a394622b2556300039986c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447888224134530, guid: a0ae3f0160a394622b2556300039986c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447888224134530, guid: a0ae3f0160a394622b2556300039986c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447888224134530, guid: a0ae3f0160a394622b2556300039986c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447888224134530, guid: a0ae3f0160a394622b2556300039986c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447888224134530, guid: a0ae3f0160a394622b2556300039986c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447888224134530, guid: a0ae3f0160a394622b2556300039986c, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: enemyPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 1843476635464596, guid: fab5a7a7ddb7a46479fcac4fa1e03014,
+        type: 2}
+    - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: enemyPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 1843476635464596, guid: 3201a128561c8466d851157665c55519,
+        type: 2}
+    - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: enemyPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 1843476635464596, guid: 68dfd87f773f74ccaaeec1b66ff7ac6f,
+        type: 2}
+    - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: ArrayEnemies.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: ArrayEnemies.Array.data[1]
+      value: 1,1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: ArrayEnemies.Array.data[2]
+      value: 1,1,1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a0ae3f0160a394622b2556300039986c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &160362928
 GameObject:
   m_ObjectHideFlags: 0
