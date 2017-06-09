@@ -9,8 +9,6 @@ public class WaveSpawner : MonoBehaviour {
 	public float initialcountdown = 5f;
 	public float timeBetweenWaves = 5f;
 	public float spawnDelay = 0.5f;
-	public int minSpawnEnemy=1;
-	public int maxSpawnEnemy=10;
 
 	[Header("Base Enemy Attributes")]
 
@@ -23,15 +21,16 @@ public class WaveSpawner : MonoBehaviour {
 
 	[Header("Define The Waves Enemies")]
 
-	public int[][] ArrayEnemies;
+	public string[] ArrayEnemies;
 
 	private int waveNumber = 1;
 	private int moduleIndex = 0;
 	private int numOfSpawnEnemy;
 	private float countdown;
-	public Text waveNumberText;
-	public Text waveCountdownText;
+	private Text waveNumberText;
+	private Text waveCountdownText;
 	private GameObject masterTower;
+	private GameObject[] thisWaveSpawnEnemies;
 	private Transform[] spawnPoint;
 	private SoulsCounter soulsConter;
 	private WayPointsScript[] wayPoints;
@@ -47,23 +46,55 @@ public class WaveSpawner : MonoBehaviour {
 	private IEnumerator SpawnWave(){
 		AjustArray ();
 		AjustDifficulty();
-		for (int i = 0; i < waveNumber; i++) {
-			EnemySpawn ();
+		for (int i = 0; i < numOfSpawnEnemy; i++) {    // not wave number  ???
+			EnemySpawn (thisWaveSpawnEnemies[i]);
 			yield return new WaitForSeconds (spawnDelay);
 		}
-		numOfSpawnEnemy++;
 		waveNumber++;
 		UpdateSoul ();
 		UpdateLifes ();
 	}
 
 	private void AjustArray(){
-		numOfSpawnEnemy = Mathf.Clamp (numOfSpawnEnemy, minSpawnEnemy, maxSpawnEnemy);
-
+		///
+		int[] auxArr = new int[ArrayEnemies [waveNumber - 1].Length]; 
+		/////
+		int auxArrIdx = 0;
+		int indexVal = 0;
+		int mult = 1;
+		int actualVal = 0;
+		///
+		for ( int i = (ArrayEnemies[waveNumber - 1].Length - 1) ; i >= 0 ; i -- ){
+			actualVal = ArrayEnemies[waveNumber - 1][i];
+			if(actualVal == ','){
+				auxArr[auxArrIdx] = indexVal;
+				auxArrIdx++;
+				mult = 1;
+				indexVal = 0;
+				continue;
+			}
+			else {
+				indexVal += actualVal * mult;
+				mult = mult * 10;
+			}
+		}
+		auxArr[auxArrIdx] = indexVal;
+		///
+		thisWaveSpawnEnemies = new GameObject[auxArrIdx + 1];
+		/// 
+		int j = 0; 
+		for (int i = indexVal; i >= 0; i--) {
+			thisWaveSpawnEnemies[j] = enemyPrefab[ auxArr[i] ];
+			j++;
+		}
 	}
 
 	private void AjustDifficulty(){
 
+	}
+
+	private void StringToArray(){
+		
 	}
 
 	private void Awake(){
@@ -73,11 +104,12 @@ public class WaveSpawner : MonoBehaviour {
 	}
 
 	private void Start(){
-		numOfSpawnEnemy = 1;
 		masterTower = GameObject.Find ("MasterTower");
 		countdown = initialcountdown;
 		soulsConter = this.GetComponent<SoulsCounter> ();
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
+		waveNumberText = GameObject.Find ("wave").GetComponent<Text>();
+		waveCountdownText = GameObject.Find ("waveCountdownText").GetComponent<Text>();
 	}
 
 	/// <summary>
@@ -90,10 +122,20 @@ public class WaveSpawner : MonoBehaviour {
 		}
 		countdown -= Time.deltaTime;
 		UpdateUI();
+
+		//teste:
+//		string[] coisa = new string[2];
+//		coisa[0] = "abcdef";
+//		coisa[1] = "ghijk";
+//
+//		Debug.Log (coisa [0][0]);
+//		Debug.Log (coisa [1][1]);
+//		Debug.Log (coisa [1][4]);
+
 	}
 
 	//Instantiate the Enemy and set the waypoints
-	private void EnemySpawn(){
+	private void EnemySpawn(GameObject enemyPrefab){
 		for (int i = 0; i < 4; i++) {
 			GameObject enemyGameObj = (GameObject)Instantiate (enemyPrefab, spawnPoint [i].position, spawnPoint [i].rotation);
 			enemyGameObj.GetComponent<Enemy> ().SetWayPoints (wayPoints [i]);
