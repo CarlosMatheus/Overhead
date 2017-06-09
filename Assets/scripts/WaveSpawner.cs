@@ -12,8 +12,10 @@ public class WaveSpawner : MonoBehaviour {
 
 	[Header("Base Enemy Attributes")]
 
-	public float baseSpeed = 1f;
-	public float baseHP = 100f;
+	public float baseSpeedConst = 1f;
+	public float baseHPConst = 100f;
+	public float SpeedWaveConst = 1.1f;
+	public float HPWaveConst = 1.1f;
 
 	[Header("Define The EnemyPrefab Array")]
 
@@ -27,46 +29,70 @@ public class WaveSpawner : MonoBehaviour {
 	private int moduleIndex = 0;
 	private int numOfSpawnEnemy;
 	private float countdown;
+	private float baseSpeed;
+	private float baseHP;
 	private Text waveNumberText;
 	private Text waveCountdownText;
+	private Transform[] spawnPoint;
 	private GameObject masterTower;
 	private GameObject[] thisWaveSpawnEnemies;
-	private Transform[] spawnPoint;
 	private SoulsCounter soulsConter;
 	private WayPointsScript[] wayPoints;
 	private MasterTowerScript masterTowerScript;
 
+	/// <summary>
+	/// Sets the module.
+	/// </summary>
+	/// <param name="spawnP">Spawn p.</param>
+	/// <param name="wayP">Way p.</param>
 	public void SetModule(Transform spawnP, WayPointsScript wayP){
 		spawnPoint [moduleIndex] = spawnP;
 		wayPoints [moduleIndex] = wayP;
 		moduleIndex++;
 	}
 
+	/// <summary>
+	/// Gets the base speed.
+	/// </summary>
+	/// <returns>The base speed.</returns>
+	public float getBaseSpeed (){
+		return baseSpeed;
+	}
+
+	/// <summary>
+	/// Gets the base H.
+	/// </summary>
+	/// <returns>The base H.</returns>
+	public float getBaseHP (){
+		return baseHP;
+	}
+
 	//Coroutine for the spawn, it delays spawnDelay for each instantiation
 	private IEnumerator SpawnWave(){
 		AjustArray ();
-		AjustDifficulty();
-		for (int i = 0; i < numOfSpawnEnemy; i++) {    // not wave number  ???
+		for (int i = 0; i < thisWaveSpawnEnemies.Length; i++) {    // not wave number  ???
 			EnemySpawn (thisWaveSpawnEnemies[i]);
 			yield return new WaitForSeconds (spawnDelay);
 		}
 		waveNumber++;
+		AjustDifficulty();
 		UpdateSoul ();
 		UpdateLifes ();
 	}
 
 	private void AjustArray(){
+		int sizeArrEn = ArrayEnemies[waveNumber - 1].Length;
 		///
-		int[] auxArr = new int[ArrayEnemies [waveNumber - 1].Length]; 
+		int[] auxArr = new int[sizeArrEn]; 
 		/////
 		int auxArrIdx = 0;
 		int indexVal = 0;
 		int mult = 1;
 		int actualVal = 0;
 		///
-		for ( int i = (ArrayEnemies[waveNumber - 1].Length - 1) ; i >= 0 ; i -- ){
-			actualVal = ArrayEnemies[waveNumber - 1][i];
-			if(actualVal == ','){
+		for ( int i = sizeArrEn-1; i >= 0; i -- ){
+			actualVal = (ArrayEnemies[waveNumber - 1][i] - '0');
+			if(actualVal == (','- '0') ){
 				auxArr[auxArrIdx] = indexVal;
 				auxArrIdx++;
 				mult = 1;
@@ -83,18 +109,21 @@ public class WaveSpawner : MonoBehaviour {
 		thisWaveSpawnEnemies = new GameObject[auxArrIdx + 1];
 		/// 
 		int j = 0; 
-		for (int i = indexVal; i >= 0; i--) {
-			thisWaveSpawnEnemies[j] = enemyPrefab[ auxArr[i] ];
+		for (int i = auxArrIdx; i >= 0; i--) {
+			Debug.Log (j);
+			Debug.Log (i);
+			Debug.Log (auxArr[i]);
+			Debug.Log (auxArr[i] - 1);
+			Debug.Log (enemyPrefab[ auxArr[i] - 1 ]);
+			Debug.Log (thisWaveSpawnEnemies[j]);
+			thisWaveSpawnEnemies[j] = enemyPrefab[ auxArr[i] - 1 ];
 			j++;
 		}
 	}
 
 	private void AjustDifficulty(){
-
-	}
-
-	private void StringToArray(){
-		
+		baseSpeed = baseSpeed * SpeedWaveConst;
+		baseHP = baseHP * HPWaveConst;
 	}
 
 	private void Awake(){
@@ -110,6 +139,8 @@ public class WaveSpawner : MonoBehaviour {
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
 		waveNumberText = GameObject.Find ("wave").GetComponent<Text>();
 		waveCountdownText = GameObject.Find ("waveCountdownText").GetComponent<Text>();
+		baseSpeed = baseSpeedConst;
+		baseHP = baseHPConst;
 	}
 
 	/// <summary>

@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour {
 	// Function to set health valor into "canvas language"
 	float SetHealth (float currentHealth) {
 		
-		return currentHealth / currentTarget.GetComponent<TargetSelection>().maximumHealth;
+		return currentHealth / currentTarget.GetComponent<TargetSelection>().getMaximumHealth();
 	}
 
 	// Function to instantiate a skill depending on what tower he is
