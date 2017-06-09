@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4135920127585762}
   - component: {fileID: 33223181376286074}
   - component: {fileID: 23090597602242418}
-  - component: {fileID: 114419370354055500}
   - component: {fileID: 65010628764767002}
   m_Layer: 0
   m_Name: Grass00
@@ -94,18 +93,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.009007265, y: 0.009399189, z: 0.0045341193}
   m_Center: {x: -0.00010355864, y: -0.000018194318, z: 0.000012316417}
---- !u!114 &114419370354055500
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1275455062521548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e1abf6f14c98402fa4d79343b388ef3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transpTower: {fileID: 1777162474150250, guid: ab91d0e8add484001b16ca9b0bd576d8,
-    type: 2}
-  buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
-    type: 2}
