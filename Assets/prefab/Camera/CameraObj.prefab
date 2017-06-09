@@ -138,8 +138,13 @@ MonoBehaviour:
   panSpeed: 10
   panBoardThickness: 60
   scrollSpeed: 1
+  scrollMaxSensibility: 1
+  minX: 10
+  maxX: 80
   minY: 3
   maxY: 18
+  minZ: 10
+  maxZ: 80
 --- !u!114 &114602057675560126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,8 +159,13 @@ MonoBehaviour:
   panSpeed: 30
   panBoardThickness: 10
   scrollSpeed: 5
+  scrollMaxSensibility: 1
+  minX: 10
+  maxX: 80
   minY: 10
   maxY: 80
+  minZ: 10
+  maxZ: 80
 --- !u!124 &124436835320183600
 Behaviour:
   m_ObjectHideFlags: 1
