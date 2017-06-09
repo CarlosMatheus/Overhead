@@ -9,12 +9,12 @@ public class SoulsCounter : MonoBehaviour {
 	public static SoulsCounter instance;
 	public float InitialSouls = 60f;
 	public float scoreConstant = 2f;
-	public Text soulsText;
 	public string[] killersTags;
 	public float[] killValues;
 
 	private float souls;
 	private float wave;
+	private Text soulsText;
 	private ScoreCounter scoreCounter;
 	private float[] towerValue;
 
@@ -71,6 +71,7 @@ public class SoulsCounter : MonoBehaviour {
 		SetSouls (InitialSouls);
 		instance = this;
 		scoreCounter = this.GetComponent<ScoreCounter> ();
+		soulsText = GameObject.Find ("SoulsNum").GetComponent<Text> ();
 	}
 
 	private void Update () {

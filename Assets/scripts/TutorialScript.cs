@@ -8,13 +8,12 @@ public class TutorialScript : MonoBehaviour {
 	public float welcomeTextTime = 5f;
 	public float Countdown1 = 1f;
 
-
 	private GameObject welcomeText;
 	private GameObject wasdKeysText;
-	private CanvasGroup canvasGrup;
+	private CanvasGroup canvasGroup;
 
 	private void Start(){
-		canvasGrup = GameObject.Find ("").GetComponent<CanvasGroup> ();
+		canvasGroup = GameObject.Find ("TutorialCanvas").GetComponent<CanvasGroup> ();
 		welcomeText = GameObject.Find("WelcomeText");
 		wasdKeysText = GameObject.Find("WASD Keys");
 		StartCoroutine(TutorialFlow ());
@@ -34,13 +33,16 @@ public class TutorialScript : MonoBehaviour {
 //		yield return new WaitWhile (!Input.GetKey ("a"));
 //		yield return new WaitWhile (!Input.GetKey ("s"));
 //		yield return new WaitWhile (!Input.GetKey ("d"));
-
 	}
-
-
 
 	private void Update () {
-//		//test
-//		Time.timeScale = 0;
+		canvasGroup.alpha = 0.4f;
 	}
+
+
+	private void FadeCanvasGroupApha(){
+		
+		canvasGroup.alpha = 0.4f;
+	}
+
 }
