@@ -6,17 +6,26 @@ public class CameraControllerScript : MonoBehaviour {
 	public float panBoardThickness = 10f;
 	public float scrollSpeed = 5f;
 	public float scrollMaxSensibility = 1f;
-	public float minX = 10f;
-	public float maxX = 80f;
+	public float moduleDimension;
 	public float minY = 10f;
 	public float maxY = 80f;
-	public float minZ = 10f;
-	public float maxZ = 80f;
+
+	private float minX = 10f;
+	private float maxX = 80f;
+	private float minZ = 10f;
+	private float maxZ = 80f;
 
 	void Update () {
 		MoveScreen ();
 		ZoomScroll ();
 		LimitPosition ();
+	}
+
+	private void Start(){
+		minX = (-1f)*moduleDimension;
+		maxX = moduleDimension - 3;
+		minZ = (-1f)*moduleDimension - 4f;
+		maxZ = moduleDimension - 4;
 	}
 
 	//move the camera white awsd or with mouse in the border

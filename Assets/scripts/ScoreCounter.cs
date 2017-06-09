@@ -7,11 +7,11 @@ public class ScoreCounter : MonoBehaviour {
 
 	public static ScoreCounter instance;
 	public float InitialScore = 0f;
-	public Text scoreText;
 
 	private float score;
-	private BuildManager buildManager;
 	private float[] towerScore;
+	private Text scoreText;
+	private BuildManager buildManager;
 
 	public void SetScore(float value){
 		score = value;
@@ -31,6 +31,7 @@ public class ScoreCounter : MonoBehaviour {
 
 	private void Start () {
 		buildManager = GameObject.Find ("GameMaster").GetComponent<BuildManager> ();
+		scoreText = GameObject.Find ("ScoreNum").GetComponent<Text> ();
 		towerScore = new float[buildManager.initialTowerScore.Length];
 		SetTowerInitialScores ();
 		SetScore (InitialScore);
