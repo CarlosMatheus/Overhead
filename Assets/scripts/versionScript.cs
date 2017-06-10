@@ -85,7 +85,7 @@ public class versionScript : MonoBehaviour {
 		yield return new WaitForSeconds (fadeTime);
 		image.SetActive (false);
 		yield return new WaitForSeconds (startCountdown);
-		SceneManager.LoadScene (0);
+		SceneManager.LoadScene ("MainMenu");
 	}
 		
 

@@ -86,7 +86,8 @@ public class TutorialScript : MonoBehaviour {
 
 		yield return new WaitForSeconds (mainCountdown);
 
-		SceneManager.LoadScene (0);
+        GameObject.Find("GameMaster").GetComponent<MenuManager>().LoadScene(2);
+		SceneManager.LoadScene ("MainMenu");
 	}
 
 

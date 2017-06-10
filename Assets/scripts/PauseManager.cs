@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour {
 
@@ -8,6 +9,8 @@ public class PauseManager : MonoBehaviour {
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject pauseCanvas;
     private bool isPaused = false;
+
+    private float previousValue;
 
     public bool IsPaused()
     {
@@ -32,6 +35,11 @@ public class PauseManager : MonoBehaviour {
         camera.GetComponent<Blur>().NumberOfIterations = 10;
         camera.GetComponent<Blur>().enabled = true;
         canvas.GetComponent<CanvasGroup>().alpha = 0.1f;
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            previousValue = GameObject.Find("TutorialCanvas").GetComponent<CanvasGroup>().alpha;
+            GameObject.Find("TutorialCanvas").GetComponent<CanvasGroup>().alpha = 0;
+        }
     }
 
     public void ResumeGame()
@@ -41,5 +49,7 @@ public class PauseManager : MonoBehaviour {
         pauseCanvas.SetActive(false);
         camera.GetComponent<Blur>().enabled = false;
         canvas.GetComponent<CanvasGroup>().alpha = 1;
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+            GameObject.Find("TutorialCanvas").GetComponent<CanvasGroup>().alpha = previousValue;
     }
 }

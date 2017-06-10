@@ -376,6 +376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 600938162}
   - component: {fileID: 600938161}
+  - component: {fileID: 600938163}
   m_Layer: 0
   m_Name: VersionSceneMaster
   m_TagString: Untagged
@@ -413,6 +414,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &600938163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 600938160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edcfe502ae8723a4bbf4a150b981e184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneName: MainMenu
 --- !u!1 &1272259565
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +492,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Luiz Henrique Aquiar de Lima Alves
 --- !u!222 &1272259568
@@ -532,8 +545,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -268.2}
-  m_SizeDelta: {x: 444, y: 15.4}
+  m_AnchoredPosition: {x: 0, y: -266.8}
+  m_SizeDelta: {x: 444, y: 18.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1542370297
 MonoBehaviour:
@@ -565,7 +578,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Carlos Matheus Barros da Silva
 --- !u!222 &1542370298
@@ -618,8 +631,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -283.6}
-  m_SizeDelta: {x: 444, y: 15.3}
+  m_AnchoredPosition: {x: 0, y: -281.7}
+  m_SizeDelta: {x: 444, y: 19.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1688094771
 MonoBehaviour:
@@ -651,7 +664,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Francisco Matheus Moreira de Castro
 --- !u!222 &1688094772
@@ -828,7 +841,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Overhead - v1.0 - All Rights Reserved
+  m_Text: Overhead - v1.0
 --- !u!222 &2004729034
 CanvasRenderer:
   m_ObjectHideFlags: 0

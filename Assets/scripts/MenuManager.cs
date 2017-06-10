@@ -26,7 +26,7 @@ public class MenuManager : MonoBehaviour {
         Application.Quit();
     }
 
-    IEnumerator Fade(int sceneNumber)
+    public IEnumerator Fade(int sceneNumber)
     {
         Canvas.SetActive(true);
         fadeCanvas.SetActive(true);
