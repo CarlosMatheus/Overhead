@@ -52,7 +52,7 @@ public class DeathManager : MonoBehaviour {
 		score = GetComponent<ScoreCounter>().GetScore();
 		GetComponent<ScoreCounter>().enabled = false;
 		GetComponent<SoulsCounter>().enabled = false;
-        wave = GetComponent<WaveSpawner>().GetWave();
+        wave = GetComponent<WaveSpawner>().GetWave() - 1;
         DeathCamera.SetActive(true);
         MainCamera.SetActive(false);
         MainCamera.transform.Find("OutlineCamera").gameObject.SetActive(false);

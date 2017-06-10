@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2092882768}
-  m_IndirectSpecularColor: {r: 0.4482453, g: 0.49827206, b: 0.5755818, a: 1}
+  m_IndirectSpecularColor: {r: 0.4482447, g: 0.4982717, b: 0.57558084, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -555,30 +555,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1072156806754846, guid: 6849b8a20f320f04dabdfd7ed9070271,
     type: 2}
   m_PrefabInternal: {fileID: 1611023307}
---- !u!84 &387417258
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 907
-  m_Height: 510
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapMode: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &388654348
 Prefab:
   m_ObjectHideFlags: 0
@@ -736,8 +712,13 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
+      propertyPath: enemyPrefab.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
       propertyPath: ArrayEnemies.Array.size
-      value: 50
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4447888224134530, guid: a0ae3f0160a394622b2556300039986c, type: 2}
       propertyPath: m_LocalPosition.x
@@ -974,32 +955,32 @@ Prefab:
     - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: ArrayEnemies.Array.data[39]
-      value: 1
+      value: 6,6,6,6,6,6,6,7
       objectReference: {fileID: 0}
     - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: ArrayEnemies.Array.data[40]
-      value: 1
+      value: 6,5,6,5,6,5,6,6,6,6,7,7
       objectReference: {fileID: 0}
     - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: ArrayEnemies.Array.data[41]
-      value: 1
+      value: 6,5,6,5,6,5,6,5,6,5,6,6,7,7,7
       objectReference: {fileID: 0}
     - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: ArrayEnemies.Array.data[42]
-      value: 1
+      value: 6,5,6,5,6,5,6,5,6,5,6,5,6,6,7,7,7,7
       objectReference: {fileID: 0}
     - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: ArrayEnemies.Array.data[43]
-      value: 1
+      value: 6,6,6,6,6,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7
       objectReference: {fileID: 0}
     - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: ArrayEnemies.Array.data[44]
-      value: 1
+      value: 6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,1,7,7,7,7,7
       objectReference: {fileID: 0}
     - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
@@ -1041,33 +1022,25 @@ Prefab:
       propertyPath: ArrayEnemies.Array.data[29]
       value: 6,6
       objectReference: {fileID: 0}
+    - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: enemyPrefab.Array.data[6]
+      value: 
+      objectReference: {fileID: 1843476635464596, guid: 3925b887faf13440eaa7f1b9cd0e1e54,
+        type: 2}
+    - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: SpeedWaveConst
+      value: 1.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 114348083562371108, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: HPWaveConst
+      value: 1.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0ae3f0160a394622b2556300039986c, type: 2}
   m_IsPrefabParent: 0
---- !u!84 &781085747
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 569
-  m_Height: 320
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapMode: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &880828908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,7 +1241,7 @@ Prefab:
     - target: {fileID: 224992129436268646, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -77.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224026440099591260, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
@@ -1288,7 +1261,7 @@ Prefab:
     - target: {fileID: 224026440099591260, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -77.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224301140839805270, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
@@ -1308,7 +1281,7 @@ Prefab:
     - target: {fileID: 224301140839805270, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -77.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 225557218207857574, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
@@ -1861,6 +1834,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114041757862916714, guid: 74f4d1f54da024845bcab1fd08899c37,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114046189841898152, guid: 74f4d1f54da024845bcab1fd08899c37,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 74f4d1f54da024845bcab1fd08899c37, type: 2}
   m_IsPrefabParent: 0
@@ -1951,7 +1934,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2053,6 +2036,30 @@ Transform:
   m_PrefabParentObject: {fileID: 4570669095973516, guid: 2f16d96d8e95f4ee893d3f69273b7e64,
     type: 2}
   m_PrefabInternal: {fileID: 182574045}
+--- !u!84 &1395492447
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 459
+  m_Height: 258
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapMode: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!114 &1573586643 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114812045155361606, guid: a0ae3f0160a394622b2556300039986c,
@@ -2102,7 +2109,7 @@ Prefab:
         type: 2}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 387417258}
+      objectReference: {fileID: 1395492447}
     - target: {fileID: 114647825517582250, guid: 6849b8a20f320f04dabdfd7ed9070271,
         type: 2}
       propertyPath: m_Enabled
