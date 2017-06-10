@@ -65,25 +65,24 @@ public class Node : MonoBehaviour {
 			currentBuildingTower = buildManager.GetTowerToBuild ();
 			soulsCounter.BuildTower (buildManager.GetTowerToBuildIndex ());
 			scoreCounter.BuildTower (buildManager.GetTowerToBuildIndex ());
-			StartCoroutine (EventInstantiator ());
+			//StartCoroutine (EventInstantiator ());
+			BuildTower ();
 		}
 	}
 
-	IEnumerator EventInstantiator () {
+	/*IEnumerator EventInstantiator () {
 		/*
 		for (int i = 0; i < buildSample.Length; i++) {
 			if (buildSample [i] == currentBuildingTower) {
 
 			}
-		}*/
+		}
 
 		GameObject tempBuildEffect = Instantiate (buildEffect, transform.position, Quaternion.identity);
 		yield return new WaitUntil (() => tempBuildEffect.GetComponent<Animator> ().GetBool ("finished"));
-		BuildTower ();
-	}
-
+	}*/
 	void BuildTower () {
-		StopCoroutine (EventInstantiator ());
+		//StopCoroutine (EventInstantiator ());
 		towerToBuild = buildManager.GetTowerToBuild ();
 		tower = (GameObject)Instantiate (currentBuildingTower, transform.position, transform.rotation);
 		tower.transform.rotation = Quaternion.Euler (0,0,0);

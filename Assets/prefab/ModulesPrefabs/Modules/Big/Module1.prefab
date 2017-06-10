@@ -2048,6 +2048,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4759435926548888}
+  - component: {fileID: 65480454414369360}
   m_Layer: 0
   m_Name: Village
   m_TagString: Untagged
@@ -50973,6 +50974,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65480454414369360
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1153551841387308}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.043108, y: 3.1303637, z: 4.9612427}
+  m_Center: {x: -2.021554, y: 1.5816337, z: 0.009654999}
 --- !u!65 &65480745340170294
 BoxCollider:
   m_ObjectHideFlags: 1
