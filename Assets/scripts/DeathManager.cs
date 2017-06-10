@@ -18,9 +18,14 @@ public class DeathManager : MonoBehaviour {
     private bool previousState = false;
     private bool lost = false;
     private GameObject _currentUI;
+	private bool isDead = false;
 	
 	void Start () {
 		
+	}
+
+	public bool IsDead(){
+		return isDead;
 	}
 	
 	void Update () {
@@ -42,22 +47,21 @@ public class DeathManager : MonoBehaviour {
 
     void LoseTheGame ()
     {
-        score = GetComponent<ScoreCounter>().GetScore();
+		isDead = true;
+		LifeManager.GetComponent<MasterTowerScript>().enabled = false;
+		score = GetComponent<ScoreCounter>().GetScore();
+		GetComponent<ScoreCounter>().enabled = false;
+		GetComponent<SoulsCounter>().enabled = false;
         wave = GetComponent<WaveSpawner>().GetWave();
         DeathCamera.SetActive(true);
         MainCamera.SetActive(false);
         MainCamera.transform.Find("OutlineCamera").gameObject.SetActive(false);
-
         StartCoroutine(FadeCanvas());
         //Disabling stuff
         GetComponent<BuildManager>().enabled = false;
-        GetComponent<SoulsCounter>().enabled = false;
-        GetComponent<ScoreCounter>().enabled = false;
         GetComponent<ExtraFunctionalities>().enabled = false;
         MainCamera.transform.parent.gameObject.GetComponent<CameraControllerScript>().enabled = false;
-        LifeManager.GetComponent<MasterTowerScript>().enabled = false;
         GameObject.Find("Bruxo").GetComponent<PlayerController>().enabled = false;
-
         StartCoroutine(Blur());
         StartCoroutine(AppearCanvas());
     }

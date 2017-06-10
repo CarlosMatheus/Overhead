@@ -88,14 +88,23 @@ public class WaveSpawner : MonoBehaviour {
 	/// Ajusts the array of enemies for the corrent wave
 	/// </summary>
 	private void AjustArray(){
-		int sizeArrEn = ArrayEnemies[waveNumber - 1].Length;
+		int sizeArrEn;
+		int waveNumIdx;
+		if (waveNumber > ArrayEnemies.Length) {
+			killPlayer ();
+			waveNumIdx = ArrayEnemies.Length - 1;
+			sizeArrEn = ArrayEnemies [waveNumIdx].Length;
+		} else {
+			waveNumIdx = waveNumber - 1;
+			sizeArrEn = ArrayEnemies [waveNumIdx].Length;
+		}
 		int[] auxArr = new int[sizeArrEn];
 		int auxArrIdx = 0;
 		int indexVal = 0;
 		int mult = 1;
 		int actualVal = 0;
 		for ( int i = sizeArrEn-1; i >= 0; i -- ){
-			actualVal = (ArrayEnemies[waveNumber - 1][i] - '0');
+			actualVal = (ArrayEnemies[waveNumIdx][i] - '0');
 			if(actualVal == (','- '0') ){
 				auxArr[auxArrIdx] = indexVal;
 				auxArrIdx++;
@@ -118,10 +127,19 @@ public class WaveSpawner : MonoBehaviour {
 	}
 
 	/// <summary>
+	/// Kills the player.
+	/// </summary>
+	private void killPlayer(){
+		for (int i = 0; i < 10; i++)
+			AjustDifficulty ();
+	}
+
+	/// <summary>
 	/// Ajusts the difficulty for the next wave
 	/// </summary>
 	private void AjustDifficulty(){
 		baseSpeed = baseSpeed * SpeedWaveConst;
+		baseSpeed = Mathf.Clamp (baseSpeed, 1f, 2f);
 		baseHP = baseHP * HPWaveConst;
 	}
 

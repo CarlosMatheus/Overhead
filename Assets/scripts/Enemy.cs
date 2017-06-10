@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour {
 		return hp;
 	}
 
-	public void SetSpeed (float _speed) {
+	public void SetSpeed ( float _speed ) {
 		speed = _speed;
 	}
 

@@ -496,7 +496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedEnemyConst: 2.5
   hpEnemyConst: 7
-  minDistToChangeDirection: 0.2
+  minDistToChangeDirection: 0.5
 --- !u!114 &114083855588062584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -622,6 +622,7 @@ MonoBehaviour:
   deathEffect: {fileID: 1432811619508178, guid: c437ea0344f1ee248900e43dd41d9ad1,
     type: 2}
   HP: 0
+  sideAffected: 0
 --- !u!114 &114655299370250458
 MonoBehaviour:
   m_ObjectHideFlags: 1

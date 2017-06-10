@@ -33,6 +33,6 @@ public class MasterTowerScript : MonoBehaviour {
 	}
 
 	private void UpdateLifeText(){
-		lifeCounterText.text = Mathf.Round (lifes).ToString();
+		lifeCounterText.text = Mathf.Round (Mathf.Clamp(lifes, 0, 1000)).ToString();
 	}
 }

@@ -16,8 +16,10 @@ public class Node : MonoBehaviour {
 	private GameObject currentBuildingTower;
 	private SphereShop sphereShop;
 	private GameObject towerToBuild;
+	private DeathManager deathManager;
 
 	void Start(){
+		deathManager = GameObject.Find ("GameMaster").GetComponent<DeathManager> ();
 		buildManager = GameObject.Find ("GameMaster").GetComponent<BuildManager> ();
 		sphereShop = GameObject.Find ("Icosphere").GetComponent<SphereShop> ();
 		soulsCounter = SoulsCounter.instance;
@@ -26,16 +28,18 @@ public class Node : MonoBehaviour {
 	}
 		
 	void OnMouseEnter (){
-		if (EventSystem.current.IsPointerOverGameObject ()) {
-			return;
+		if (!deathManager.IsDead ()) {
+			if (EventSystem.current.IsPointerOverGameObject ()) {
+				return;
+			}
+			//if the towerToBuild variable is null dont do anything 
+			if (buildManager.GetTowerToBuild () == null) {
+				return;
+			}
+			GameObject selecTowerInst = (GameObject)Instantiate (buildManager.GetSelectionTowerToBuild (), transform.position, transform.rotation);
+			selecTowerInst.transform.rotation = Quaternion.Euler (0, 0, 0);
+			buildManager.SetSelectionTowerToBuildInstance (selecTowerInst);
 		}
-		//if the towerToBuild variable is null dont do anything 
-		if (buildManager.GetTowerToBuild () == null) {
-			return;
-		}
-		GameObject selecTowerInst = (GameObject) Instantiate (buildManager.GetSelectionTowerToBuild(), transform.position, transform.rotation);
-		selecTowerInst.transform.rotation = Quaternion.Euler (0,0,0);
-		buildManager.SetSelectionTowerToBuildInstance (selecTowerInst);
 	}
 
 	void OnMouseExit (){
@@ -43,24 +47,26 @@ public class Node : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		//Avoid pointing to something with a UI element in front of it
-		if (EventSystem.current.IsPointerOverGameObject ()) {
-			return;
-		}
-		//if the towerToBuild variable is null dont do anything 
-		if (buildManager.GetTowerToBuild () == null) {
-			return;
-		}
+		if (!deathManager.IsDead ()) {
+			//Avoid pointing to something with a UI element in front of it
+			if (EventSystem.current.IsPointerOverGameObject ()) {
+				return;
+			}
+			//if the towerToBuild variable is null dont do anything 
+			if (buildManager.GetTowerToBuild () == null) {
+				return;
+			}
 
-		if (tower != null) {
-			Debug.Log ("can't build there! - TODO: Display on screen.");
-			return;
+			if (tower != null) {
+				Debug.Log ("can't build there! - TODO: Display on screen.");
+				return;
+			}
+			buildManager.DestroySelectionTowerToBuildInstance ();
+			currentBuildingTower = buildManager.GetTowerToBuild ();
+			soulsCounter.BuildTower (buildManager.GetTowerToBuildIndex ());
+			scoreCounter.BuildTower (buildManager.GetTowerToBuildIndex ());
+			StartCoroutine (EventInstantiator ());
 		}
-		buildManager.DestroySelectionTowerToBuildInstance ();
-		currentBuildingTower = buildManager.GetTowerToBuild();
-		soulsCounter.BuildTower (buildManager.GetTowerToBuildIndex());
-		scoreCounter.BuildTower (buildManager.GetTowerToBuildIndex());
-		StartCoroutine (EventInstantiator ());
 	}
 
 	IEnumerator EventInstantiator () {
