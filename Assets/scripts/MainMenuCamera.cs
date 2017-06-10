@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class MainMenuCamera : MonoBehaviour {
 
-    public float speed;
-	
-	
-	void Update () {
+    [SerializeField] private float speed = 1;
+
+    private void Awake()
+    {
+        speed = 1;
+    }
+
+    private void Start()
+    {
+        speed = 1;
+    }
+
+    void Update () {
         OrbitAround();
 	}
 
