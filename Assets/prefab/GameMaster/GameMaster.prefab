@@ -313,10 +313,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a943b6769e75754ea3b0050c1a5a7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseButton: 112
+  pauseButton: 0
   advanceTimeButton: 122
   showAllHPButton: 0
   closeStore: 0
-  quitGame: 27
+  quitGame: 0
   setVolumeUp: 0
   setVolumeDown: 0
