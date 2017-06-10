@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 23283989499896472}
   - component: {fileID: 114023980294843844}
   - component: {fileID: 65432970978238270}
-  - component: {fileID: 114667618330999224}
   m_Layer: 0
   m_Name: Grass00
   m_TagString: Grass
@@ -38,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1539836882470672}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -9.583011, y: 0.05658692, z: -1.7319553}
+  m_LocalPosition: {x: 1.5, y: 0, z: -2.52}
   m_LocalScale: {x: 101, y: 100, z: 10.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 744cd4c796fd2425da292096cc029e34, type: 2}
+  - {fileID: 2100000, guid: 3354a7411bfd748f6a685da69522b333, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,21 +109,5 @@ MonoBehaviour:
     type: 2}
   destroyEffect: {fileID: 1432811619508178, guid: c437ea0344f1ee248900e43dd41d9ad1,
     type: 2}
-  deathNode: {fileID: 1539836882470672, guid: c5e656f1dba9f40bf974310c00cf3760, type: 2}
-  towerDist: 0.5
---- !u!114 &114667618330999224
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1539836882470672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16da066d9dc774d089364942b159fda8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arr:
-  - {fileID: 1739056587045120, guid: 82ab66996e3c840a48a459773617f26c, type: 2}
-  chance:
-  - 1
-  - 20
+  deathNode: {fileID: 1539836882470672}
+  towerDist: 2.2

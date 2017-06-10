@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 public class Node : MonoBehaviour {
 
 	public GameObject buildEffect;
+	public GameObject destroyEffect;
+	public GameObject deathNode;
+	public float towerDist = 2.2f;
 	//public GameObject[] buildEffect;
 	//public GameObject[] buildSample;
 
@@ -65,22 +68,19 @@ public class Node : MonoBehaviour {
 			currentBuildingTower = buildManager.GetTowerToBuild ();
 			soulsCounter.BuildTower (buildManager.GetTowerToBuildIndex ());
 			scoreCounter.BuildTower (buildManager.GetTowerToBuildIndex ());
+			GameObject[] treeArr;
+			treeArr = GameObject.FindGameObjectsWithTag ("Tree");
+			for(int i = 0; i < treeArr.Length;i ++ ){
+				if (Vector3.Distance (treeArr [i].transform.position, transform.position) < towerDist + 1.5f) {
+					Destroy (treeArr[i]);
+					GameObject eff = (GameObject)Instantiate (destroyEffect, treeArr [i].transform.position, treeArr [i].transform.rotation);
+					Destroy (eff,2f);
+				}
+			}
 			//StartCoroutine (EventInstantiator ());
 			BuildTower ();
 		}
 	}
-
-	/*IEnumerator EventInstantiator () {
-		/*
-		for (int i = 0; i < buildSample.Length; i++) {
-			if (buildSample [i] == currentBuildingTower) {
-
-			}
-		}
-
-		GameObject tempBuildEffect = Instantiate (buildEffect, transform.position, Quaternion.identity);
-		yield return new WaitUntil (() => tempBuildEffect.GetComponent<Animator> ().GetBool ("finished"));
-	}*/
 	void BuildTower () {
 		//StopCoroutine (EventInstantiator ());
 		towerToBuild = buildManager.GetTowerToBuild ();
