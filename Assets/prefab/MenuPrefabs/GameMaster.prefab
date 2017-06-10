@@ -136,12 +136,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modules:
-  - {fileID: 1026134706115208, guid: e5d97afa5a9024ee7859161d6f52f5d4, type: 2}
-  - {fileID: 1477899113756818, guid: ccbfa8ec0b471422a9a65f1965035c58, type: 2}
-  - {fileID: 1240018192997506, guid: f78a796977fc945c5a895b795db75254, type: 2}
-  - {fileID: 1481481561253658, guid: 330a93796611d49e9983255b99b6b9cb, type: 2}
-  - {fileID: 1493386892467706, guid: 344688f12d92c45d28c569b0cf2da066, type: 2}
-  - {fileID: 1507551564931164, guid: 2a8742ec9b2d04177b097be1290a93d8, type: 2}
+  - {fileID: 1413899701541712, guid: 21ab3a4e06c5d4258ac1fc6d843ebcb7, type: 2}
+  - {fileID: 1413899701541712, guid: 21ab3a4e06c5d4258ac1fc6d843ebcb7, type: 2}
+  - {fileID: 1413899701541712, guid: 21ab3a4e06c5d4258ac1fc6d843ebcb7, type: 2}
+  - {fileID: 1413899701541712, guid: 21ab3a4e06c5d4258ac1fc6d843ebcb7, type: 2}
 --- !u!114 &114481101833733096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,8 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef78957d5fe724a39b9819c1c73e2f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialcountdown: 1
-  timeBetweenWaves: 1
+  initialcountdown: 5
+  timeBetweenWaves: 20
   spawnDelay: 0.8
   baseSpeedConst: 1
   baseHPConst: 100
