@@ -25,7 +25,11 @@ GameObject:
   - component: {fileID: 114481859035547284}
   - component: {fileID: 114908832511345626}
   - component: {fileID: 114984236687860478}
+<<<<<<< HEAD
   - component: {fileID: 114832654938499062}
+=======
+  - component: {fileID: 114139453986324786}
+>>>>>>> 9c77982f3dc9450fa499b34ecbb16a6f786a4b73
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -126,6 +130,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114139453986324786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314678458617260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aefb26073ffb744c48dfb35713fe9fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modules:
+  - {fileID: 1026134706115208, guid: e5d97afa5a9024ee7859161d6f52f5d4, type: 2}
+  - {fileID: 1477899113756818, guid: ccbfa8ec0b471422a9a65f1965035c58, type: 2}
+  - {fileID: 1240018192997506, guid: f78a796977fc945c5a895b795db75254, type: 2}
+  - {fileID: 1481481561253658, guid: 330a93796611d49e9983255b99b6b9cb, type: 2}
+  - {fileID: 1493386892467706, guid: 344688f12d92c45d28c569b0cf2da066, type: 2}
+  - {fileID: 1507551564931164, guid: 2a8742ec9b2d04177b097be1290a93d8, type: 2}
 --- !u!114 &114348083562371108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,8 +159,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef78957d5fe724a39b9819c1c73e2f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   initialcountdown: 30
   timeBetweenWaves: 45
+=======
+  initialcountdown: 10
+  timeBetweenWaves: 10
+>>>>>>> 9c77982f3dc9450fa499b34ecbb16a6f786a4b73
   spawnDelay: 0.8
   baseSpeedConst: 1
   baseHPConst: 100
@@ -221,13 +248,14 @@ MonoBehaviour:
   - {fileID: 1470717830022824, guid: 39b91ae42e8051641b79131abd583d3a, type: 2}
   - {fileID: 1674007290332340, guid: 0370de2c70aef5947af4b535996af664, type: 2}
   initialTowerValue:
-  - 10
-  - 30
-  - 100
+  - 1
+  - 1
+  - 1
   initialTowerScore:
   - 20
   - 80
   - 200
+<<<<<<< HEAD
 --- !u!114 &114832654938499062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -246,6 +274,8 @@ MonoBehaviour:
   - {fileID: 1481481561253658, guid: 330a93796611d49e9983255b99b6b9cb, type: 2}
   - {fileID: 1493386892467706, guid: 344688f12d92c45d28c569b0cf2da066, type: 2}
   - {fileID: 1507551564931164, guid: 2a8742ec9b2d04177b097be1290a93d8, type: 2}
+=======
+>>>>>>> 9c77982f3dc9450fa499b34ecbb16a6f786a4b73
 --- !u!114 &114908832511345626
 MonoBehaviour:
   m_ObjectHideFlags: 1
