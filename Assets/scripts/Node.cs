@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 public class Node : MonoBehaviour {
 
 	public GameObject buildEffect;
+	//public GameObject[] buildEffect;
+	//public GameObject[] buildSample;
 
 	private Material originalMaterial;
 	private GameObject tower;
@@ -62,6 +64,13 @@ public class Node : MonoBehaviour {
 	}
 
 	IEnumerator EventInstantiator () {
+		/*
+		for (int i = 0; i < buildSample.Length; i++) {
+			if (buildSample [i] == currentBuildingTower) {
+
+			}
+		}*/
+
 		GameObject tempBuildEffect = Instantiate (buildEffect, transform.position, Quaternion.identity);
 		yield return new WaitUntil (() => tempBuildEffect.GetComponent<Animator> ().GetBool ("finished"));
 		BuildTower ();
