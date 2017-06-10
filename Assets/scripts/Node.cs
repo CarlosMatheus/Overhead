@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class Node : MonoBehaviour {
 
@@ -28,22 +29,24 @@ public class Node : MonoBehaviour {
 	}
 		
 	void OnMouseEnter (){
-		if (!deathManager.IsDead ()) {
-			if (EventSystem.current.IsPointerOverGameObject ()) {
-				return;
-			}
-			//if the towerToBuild variable is null dont do anything 
-			if (buildManager.GetTowerToBuild () == null) {
-				return;
-			}
-			GameObject selecTowerInst = (GameObject)Instantiate (buildManager.GetSelectionTowerToBuild (), transform.position, transform.rotation);
-			selecTowerInst.transform.rotation = Quaternion.Euler (0, 0, 0);
-			buildManager.SetSelectionTowerToBuildInstance (selecTowerInst);
-		}
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            if (!deathManager.IsDead ()) {
+			    if (EventSystem.current.IsPointerOverGameObject ()) {
+				    return;
+			    }
+			    //if the towerToBuild variable is null dont do anything 
+			    if (buildManager.GetTowerToBuild () == null) {
+				    return;
+			    }
+			    GameObject selecTowerInst = (GameObject)Instantiate (buildManager.GetSelectionTowerToBuild (), transform.position, transform.rotation);
+			    selecTowerInst.transform.rotation = Quaternion.Euler (0, 0, 0);
+			    buildManager.SetSelectionTowerToBuildInstance (selecTowerInst);
+		    }
 	}
 
 	void OnMouseExit (){
-		buildManager.DestroySelectionTowerToBuildInstance ();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            buildManager.DestroySelectionTowerToBuildInstance ();
 	}
 
 	void OnMouseDown(){

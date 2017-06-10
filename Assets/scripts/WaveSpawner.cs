@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour {
 
@@ -160,8 +161,10 @@ public class WaveSpawner : MonoBehaviour {
 		countdown = initialcountdown;
 		soulsConter = this.GetComponent<SoulsCounter> ();
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
-		waveNumberText = GameObject.Find ("wave").GetComponent<Text>();
-		waveCountdownText = GameObject.Find ("waveCountdownText").GetComponent<Text>();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+		    waveNumberText = GameObject.Find ("wave").GetComponent<Text>();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            waveCountdownText = GameObject.Find ("waveCountdownText").GetComponent<Text>();
 		baseSpeed = baseSpeedConst;
 		baseHP = baseHPConst;
 	}
@@ -188,21 +191,25 @@ public class WaveSpawner : MonoBehaviour {
 
 	//Update the User Interface with wave and time remain for next wave information
 	private void UpdateUI(){
-		waveCountdownText.text = Mathf.Round(countdown).ToString();
-		waveNumberText.text = Mathf.Round (waveNumber - 1 ).ToString ();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            waveCountdownText.text = Mathf.Round(countdown).ToString();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            waveNumberText.text = Mathf.Round (waveNumber - 1 ).ToString ();
 	}
 
 	/// <summary>
 	/// Updates the soul.
 	/// </summary>
 	private void UpdateSoul(){
-		soulsConter.SetWave (waveNumber - 1);
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            soulsConter.SetWave (waveNumber - 1);
 	}
 
 	/// <summary>
 	/// Updates the lifes.
 	/// </summary>
 	private void UpdateLifes(){
-		masterTowerScript.NewWave ();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            masterTowerScript.NewWave ();
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SphereShop : MonoBehaviour {
 
@@ -28,10 +29,12 @@ public class SphereShop : MonoBehaviour {
 		soulsCounter = gameMaster.GetComponent<SoulsCounter>();
 		buildManager = GameObject.Find("GameMaster").GetComponent<BuildManager>();
 		ShopGObj = GameObject.Find ("Shop");
+        if (SceneManager.GetActiveScene().buildIndex != 0)
 		shop = ShopGObj.GetComponent<Shop> ();
 		light = GetComponent<Light> ();
 		light.intensity = initialIntensity;
-		ShopGObj.SetActive (false);
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            ShopGObj.SetActive (false);
 	}
 
 	/// <summary>
@@ -40,15 +43,16 @@ public class SphereShop : MonoBehaviour {
 	/// can buy the tower he selects
 	/// </summary>
 	private void Update () {
-		if (IsInMainTower ()) {
-			checkIfCanBuild ();
-			//Mouse right click makes the store close
-			if (Input.GetMouseButtonDown (1))
-				DesactiveShop ();
-		} else {
-			CantBuild ();
-			DesactiveShop ();
-		}
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            if (IsInMainTower ()) {
+			    checkIfCanBuild ();
+			    //Mouse right click makes the store close
+			    if (Input.GetMouseButtonDown (1))
+				    DesactiveShop ();
+		    } else {
+			    CantBuild ();
+			    DesactiveShop ();
+		    }
 	}
 
 	/// <summary>
