@@ -7904,6 +7904,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4828939479979850}
+  - component: {fileID: 65179471954907086}
   m_Layer: 0
   m_Name: Village
   m_TagString: Untagged
@@ -48613,6 +48614,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65179471954907086
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1607601250338600}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.043108, y: 3.1303637, z: 4.9612427}
+  m_Center: {x: -2.021554, y: 1.5816337, z: 0.009654999}
 --- !u!65 &65180095856335262
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -56184,6 +56197,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114036951632567782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -57420,6 +57436,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114100178853281626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -57884,6 +57903,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114119254092917394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -58198,6 +58220,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114134234634954360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -58280,6 +58305,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114142521553911812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -58293,6 +58321,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114142666695859158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -58306,6 +58337,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114143751323578016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -60187,6 +60221,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114221575993092474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -61244,6 +61281,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114270000200172222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -63563,6 +63603,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114376699662743444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -64133,6 +64176,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114416514040233292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65429,6 +65475,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114479829881925304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66311,6 +66360,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114525821163129396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66523,6 +66575,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114533315280959754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67535,6 +67590,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114594203375243194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67548,6 +67606,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114595196598090332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69079,6 +69140,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114656279277201102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69682,6 +69746,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114684268356571524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71007,6 +71074,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114741362151956024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74862,6 +74932,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114937095471708970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75113,6 +75186,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114949997678793256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75755,6 +75831,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114973255687396370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75829,6 +75908,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114975260720309086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76452,6 +76534,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 0}
+  deathNode: {fileID: 0}
+  towerDist: 2.2
 --- !u!114 &114997455609773346
 MonoBehaviour:
   m_ObjectHideFlags: 1
