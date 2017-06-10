@@ -170,10 +170,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf0493cc0b30a044b04e8f2aa0826a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  cooldown: 0.25
+  damage: 5
+  cooldown: 0.2
   range: 4.75
-  effect: {fileID: 1837622240758894, guid: 640ff9511b903344792d80b9836821e3, type: 2}
+  effect: {fileID: 1572256132303590, guid: 991d7cf752f7dc840b0bbe21dfd01e79, type: 2}
   invoker: {fileID: 0}
 --- !u!198 &198017901100224176
 ParticleSystem:

@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf0493cc0b30a044b04e8f2aa0826a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   cooldown: 0
   range: 0
   effect: {fileID: 0}
@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f8e4726cd548e4d892e267fa143853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 4
+  duration: 5
   freeze: 0
   slowFactor: 0.9
   burn: 1
-  burnRate: 1
+  burnRate: 0.5
 --- !u!198 &198548462599930194
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -759,7 +759,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 15
       minScalar: 0
       maxCurve:
         serializedVersion: 2
