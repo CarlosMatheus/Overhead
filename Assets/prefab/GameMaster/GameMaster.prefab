@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114832654938499062}
   - component: {fileID: 114062466384089198}
   - component: {fileID: 114292562531580396}
+  - component: {fileID: 114812045155361606}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -166,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef78957d5fe724a39b9819c1c73e2f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialcountdown: 1
-  timeBetweenWaves: 1
+  initialcountdown: 30
+  timeBetweenWaves: 45
   spawnDelay: 0.8
   baseSpeedConst: 1
   baseHPConst: 100
@@ -257,6 +258,20 @@ MonoBehaviour:
   - 20
   - 80
   - 200
+--- !u!114 &114812045155361606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314678458617260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e133ad96aa3bcdc41b1365bd179cfaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  canvas: {fileID: 0}
+  pauseCanvas: {fileID: 0}
 --- !u!114 &114832654938499062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,10 +313,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a943b6769e75754ea3b0050c1a5a7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseButton: 112
+  pauseButton: 0
   advanceTimeButton: 122
   showAllHPButton: 0
   closeStore: 0
-  quitGame: 27
+  quitGame: 0
   setVolumeUp: 0
   setVolumeDown: 0

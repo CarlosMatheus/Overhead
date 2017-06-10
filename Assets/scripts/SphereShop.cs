@@ -15,6 +15,7 @@ public class SphereShop : MonoBehaviour {
 	private Shop shop;
 	private GameObject ShopGObj;
 	private DeathManager deathManager;
+    private PauseManager pauseManager;
 
 	public void SetTowerToBuild(GameObject towerToB){
 		towerToBuild = towerToB;
@@ -22,7 +23,8 @@ public class SphereShop : MonoBehaviour {
 
 	private void Start(){
 		deathManager = GameObject.Find ("GameMaster").GetComponent<DeathManager> ();
-		gameMaster = GameObject.Find ("GameMaster");
+        pauseManager = GameObject.Find("GameMaster").GetComponent<PauseManager>();
+        gameMaster = GameObject.Find ("GameMaster");
 		soulsCounter = gameMaster.GetComponent<SoulsCounter>();
 		buildManager = GameObject.Find("GameMaster").GetComponent<BuildManager>();
 		ShopGObj = GameObject.Find ("Shop");
@@ -59,7 +61,7 @@ public class SphereShop : MonoBehaviour {
 	}
 
 	private void OnMouseEnter (){
-		if (!deathManager.IsDead ()) {
+		if (!deathManager.IsDead () && !pauseManager.IsPaused()) {
 			light.intensity = hoverIntensity;
 		}
 	}
@@ -69,7 +71,7 @@ public class SphereShop : MonoBehaviour {
 	}
 
 	private void OnMouseDown(){
-		if (!deathManager.IsDead ()) {
+		if (!deathManager.IsDead () && !pauseManager.IsPaused()) {
 			ActiveShop ();
 		}
 	}
