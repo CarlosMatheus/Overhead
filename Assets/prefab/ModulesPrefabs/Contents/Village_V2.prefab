@@ -657,6 +657,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4294671471902644}
   - component: {fileID: 95139679795359288}
+  - component: {fileID: 65255624936916812}
   m_Layer: 0
   m_Name: Village_V2
   m_TagString: Untagged
@@ -1200,7 +1201,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1542148653867032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.5, y: 0, z: -10.5}
+  m_LocalPosition: {x: -0.74902344, y: 0.29342502, z: 5.8751683}
   m_LocalScale: {x: 0.85, y: 1.65, z: 0.85}
   m_Children:
   - {fileID: 4788702322246316}
@@ -3200,6 +3201,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.009007265, y: 0.009399189, z: 0.0045341193}
   m_Center: {x: -0.00010355864, y: -0.000018194318, z: 0.000012316417}
+--- !u!65 &65255624936916812
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542148653867032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.592841, y: 1.9348639, z: 5.547495}
+  m_Center: {x: -0.01120427, y: 1.0098829, z: 0.03333498}
 --- !u!65 &65325104665974966
 BoxCollider:
   m_ObjectHideFlags: 1

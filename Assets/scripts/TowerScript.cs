@@ -35,6 +35,9 @@ public class TowerScript : MonoBehaviour {
 		// Finding the player gameObject
 		player = GameObject.FindGameObjectWithTag ("Player");
 
+		if (player == null)
+			Debug.Log ("It's goind bad");
+
 		//This will reapeat every 0.5 sec
 		InvokeRepeating ("UpdateTarget", 0f, 0.5f);
 	}
