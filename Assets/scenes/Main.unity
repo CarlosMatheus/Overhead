@@ -376,16 +376,6 @@ Prefab:
       propertyPath: pauseCanvas
       value: 
       objectReference: {fileID: 1344477235}
-    - target: {fileID: 114984236687860478, guid: a0ae3f0160a394622b2556300039986c,
-        type: 2}
-      propertyPath: quitGame
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114984236687860478, guid: a0ae3f0160a394622b2556300039986c,
-        type: 2}
-      propertyPath: pauseButton
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0ae3f0160a394622b2556300039986c, type: 2}
   m_IsPrefabParent: 0
