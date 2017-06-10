@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TutorialScript : MonoBehaviour {
 
@@ -23,7 +24,7 @@ public class TutorialScript : MonoBehaviour {
 	private GameObject sKey;
 	private GameObject dKey;
 	private GameObject flow;
-	private float mainCountdown = 3.5f;
+	private float mainCountdown = 5f;
 
 	private void Start(){
 		flow = GameObject.Find ("Flow");
@@ -31,6 +32,7 @@ public class TutorialScript : MonoBehaviour {
 		texts = new GameObject[flow.transform.childCount];
 		for(int i = 0; i < flow.transform.childCount; i ++){
 			texts [i] = flow.transform.GetChild (i).gameObject;
+			texts [i].SetActive (false);
 		}
 		wKey = GameObject.Find ("wKey");
 		aKey = GameObject.Find ("aKey");
@@ -82,6 +84,9 @@ public class TutorialScript : MonoBehaviour {
 			texts [i].SetActive (false);
 		}
 
+		yield return new WaitForSeconds (mainCountdown);
+
+		SceneManager.LoadScene (0);
 	}
 
 
