@@ -4107,7 +4107,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialLifes: 5
-  lifeCounterText: {fileID: 0}
 --- !u!114 &114418525825306534
 MonoBehaviour:
   m_ObjectHideFlags: 1

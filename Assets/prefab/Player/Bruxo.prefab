@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4467734813377360}
   - component: {fileID: 95918802407237304}
   m_Layer: 0
-  m_Name: WitchModel
+  m_Name: Witch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ GameObject:
   m_Layer: 0
   m_Name: Bruxo
   m_TagString: Player
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -7044,8 +7044,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.18
-      minScalar: 0.15
+      scalar: 0.15
+      minScalar: 0.12
       maxCurve:
         serializedVersion: 2
         m_Curve:

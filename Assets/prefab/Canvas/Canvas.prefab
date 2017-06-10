@@ -1374,7 +1374,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 20test
+  m_Text: "30\x03\x03 Souls"
 --- !u!114 &114614000029187858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1614,7 +1614,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100test
+  m_Text: "100\x03 Souls"
 --- !u!114 &114915313367433362
 MonoBehaviour:
   m_ObjectHideFlags: 1
