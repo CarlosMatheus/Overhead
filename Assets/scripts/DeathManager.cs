@@ -85,7 +85,6 @@ public class DeathManager : MonoBehaviour {
             Canvas.GetComponent<CanvasGroup>().alpha = Canvas.GetComponent<CanvasGroup>().alpha - 1/7f;
             yield return new WaitForSeconds(0.05f);
         }
-
         Canvas.SetActive(false);
     }
 

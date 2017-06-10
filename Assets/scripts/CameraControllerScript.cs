@@ -31,19 +31,23 @@ public class CameraControllerScript : MonoBehaviour {
 	//move the camera white awsd or with mouse in the border
 	void MoveScreen(){
 		if ( Input.GetKey ("w") || 
-			( Input.mousePosition.y >= (Screen.height - panBoardThickness) && Input.mousePosition.y <= Screen.height) ) {
+			( Input.mousePosition.y >= (Screen.height - panBoardThickness) && Input.mousePosition.y <= Screen.height)
+			|| Input.GetKey(KeyCode.UpArrow)) {
 			transform.Translate ( Vector3.forward * panSpeed * Time.deltaTime, Space.Self );
 		}
 		if ( Input.GetKey ("s") || 
-			( Input.mousePosition.y <= panBoardThickness && Input.mousePosition.y >= 0f )  ) {
+			( Input.mousePosition.y <= panBoardThickness && Input.mousePosition.y >= 0f ) ||
+			Input.GetKey(KeyCode.DownArrow)) {
 			transform.Translate ( Vector3.back * panSpeed * Time.deltaTime, Space.Self );
 		}
 		if ( Input.GetKey ("d") || 
-			( Input.mousePosition.x >= Screen.width - panBoardThickness && Input.mousePosition.x <= Screen.width) ) {
+			( Input.mousePosition.x >= Screen.width - panBoardThickness && Input.mousePosition.x <= Screen.width) ||
+			Input.GetKey(KeyCode.RightArrow)) {
 			transform.Translate ( Vector3.right * panSpeed * Time.deltaTime, Space.Self );
 		}
 		if (Input.GetKey ("a") || 
-			(Input.mousePosition.x <= panBoardThickness && Input.mousePosition.x >= 0f) ) {
+			(Input.mousePosition.x <= panBoardThickness && Input.mousePosition.x >= 0f) ||
+			Input.GetKey(KeyCode.LeftArrow)) {
 			transform.Translate ( Vector3.left * panSpeed * Time.deltaTime, Space.Self );
 		}
 	}

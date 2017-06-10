@@ -8,6 +8,8 @@ TagManager:
   - Skill
   - Tower
   - SpawnPoint
+  - Grass
+  - Tree
   layers:
   - Default
   - TransparentFX

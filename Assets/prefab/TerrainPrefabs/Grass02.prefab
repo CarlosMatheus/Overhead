@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 65833173324361192}
   m_Layer: 0
   m_Name: Grass02
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -484,7 +484,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1abf6f14c98402fa4d79343b388ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transpTower: {fileID: 1777162474150250, guid: ab91d0e8add484001b16ca9b0bd576d8,
-    type: 2}
   buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
     type: 2}
+  destroyEffect: {fileID: 1432811619508178, guid: c437ea0344f1ee248900e43dd41d9ad1,
+    type: 2}
+  deathNode: {fileID: 1539836882470672, guid: c5e656f1dba9f40bf974310c00cf3760, type: 2}
+  towerDist: 0.5

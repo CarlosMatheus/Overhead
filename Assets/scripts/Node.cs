@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 public class Node : MonoBehaviour {
 
 	public GameObject buildEffect;
+	public GameObject destroyEffect;
+	public GameObject deathNode;
+	public float towerDist = 2.2f;
 	//public GameObject[] buildEffect;
 	//public GameObject[] buildSample;
 
@@ -70,23 +73,35 @@ public class Node : MonoBehaviour {
 	}
 
 	IEnumerator EventInstantiator () {
-		/*
-		for (int i = 0; i < buildSample.Length; i++) {
-			if (buildSample [i] == currentBuildingTower) {
+		GameObject tower = currentBuildingTower;
+//		GameObject[] grassArr;
+		GameObject[] treeArr;
+		int dist;
+//		grassArr = GameObject.FindGameObjectsWithTag ("Grass");
+//		for(int i = 0; i < grassArr.Length;i ++ ){
+//			if (Vector3.Distance (grassArr [i].transform.position, transform.position) < towerDist) {
+//				Instantiate (deathNode, grassArr [i].transform.position, Quaternion.Euler (-90f, 0, 0));
+//				Destroy (grassArr [i],2f);
+//				GameObject eff = (GameObject)Instantiate (destroyEffect, grassArr [i].transform.position, grassArr [i].transform.rotation);
+//				Destroy (eff,2f);
+//			}
+//		}
 
+
+		treeArr = GameObject.FindGameObjectsWithTag ("Tree");
+		for(int i = 0; i < treeArr.Length;i ++ ){
+			if (Vector3.Distance (treeArr [i].transform.position, transform.position) < towerDist + 1.5f) {
+				Destroy (treeArr[i]);
+				Instantiate (destroyEffect, transform.position, transform.rotation);
+				GameObject eff = (GameObject)Instantiate (destroyEffect, treeArr [i].transform.position, treeArr [i].transform.rotation);
+				Destroy (eff,2f);
 			}
-		}*/
-
+		}
 		GameObject tempBuildEffect = Instantiate (buildEffect, transform.position, Quaternion.identity);
 		yield return new WaitUntil (() => tempBuildEffect.GetComponent<Animator> ().GetBool ("finished"));
-		BuildTower ();
-	}
-
-	void BuildTower () {
-		StopCoroutine (EventInstantiator ());
-		towerToBuild = buildManager.GetTowerToBuild ();
-		tower = (GameObject)Instantiate (currentBuildingTower, transform.position, transform.rotation);
+		tower = (GameObject)Instantiate (tower, transform.position, transform.rotation);
 		tower.transform.rotation = Quaternion.Euler (0,0,0);
+		StopCoroutine (EventInstantiator ());
 	}
 
 	/// <summary>
