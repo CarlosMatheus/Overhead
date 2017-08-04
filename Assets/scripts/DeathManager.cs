@@ -19,9 +19,10 @@ public class DeathManager : MonoBehaviour {
     private bool lost = false;
     private GameObject _currentUI;
 	private bool isDead = false;
+	private LeaderBoardControllerScript leaderBoardControllerScript;
 	
 	void Start () {
-		
+		leaderBoardControllerScript = GameObject.Find ("LeaderBoardController").GetComponent<LeaderBoardControllerScript> ();
 	}
 
 	public bool IsDead(){
@@ -57,13 +58,15 @@ public class DeathManager : MonoBehaviour {
         MainCamera.SetActive(false);
         MainCamera.transform.Find("OutlineCamera").gameObject.SetActive(false);
         StartCoroutine(FadeCanvas());
+		leaderBoardControllerScript.SetScore (score);
+		leaderBoardControllerScript.SetWave (wave);
         //Disabling stuff
         GetComponent<BuildManager>().enabled = false;
         GetComponent<ExtraFunctionalities>().enabled = false;
         MainCamera.transform.parent.gameObject.GetComponent<CameraControllerScript>().enabled = false;
         GameObject.Find("Bruxo").GetComponent<PlayerController>().enabled = false;
         StartCoroutine(Blur());
-        StartCoroutine(AppearCanvas());
+		AppearPlayerScoreCanvas ();
     }
 
     IEnumerator Blur()
@@ -88,48 +91,78 @@ public class DeathManager : MonoBehaviour {
         Canvas.SetActive(false);
     }
 
-    IEnumerator AppearCanvas()
+	public void AppearPlayerScoreCanvas(){
+		StartCoroutine (FadePlayerScoreCanvas(1));
+	}
+
+	public void DisappearPlayerScoreCanvas(){
+		StartCoroutine (FadePlayerScoreCanvas(-1));
+	}
+
+	public void AppearErrorMessageCanvas(){
+		
+	}
+
+	public void DisappearErrorMessageCanvas(){
+
+	}
+
+	public void AppearLeaderBoardCanvas(bool cancel){
+		
+	}
+
+	IEnumerator FadePlayerScoreCanvas(int inOrOut)
     {
         yield return new WaitForSeconds(0.5f);
 
-        GameOverCanvas.SetActive(true);
+		if (inOrOut==1) {
+			GameOverCanvas.SetActive (true);
+			GameOverCanvas.transform.Find("Waves").gameObject.GetComponent<Text>().text = wave.ToString();
+			GameOverCanvas.transform.Find("Score").gameObject.GetComponent<Text>().text = score.ToString();
+		}
 
         _currentUI = GameOverCanvas.transform.Find("FinalScoreText").gameObject;
         for (int i = 1; i <= 8; i++)
         {
-            _currentUI.GetComponent<CanvasGroup>().alpha = _currentUI.GetComponent<CanvasGroup>().alpha + 1 / 8f;
+			_currentUI.GetComponent<CanvasGroup>().alpha = _currentUI.GetComponent<CanvasGroup>().alpha + inOrOut*1 / 8f;
             yield return new WaitForSeconds(0.07f);
         }
 
         _currentUI = GameOverCanvas.transform.Find("WaveNumberText").gameObject;
         for (int i = 1; i <= 8; i++)
         {
-            _currentUI.GetComponent<CanvasGroup>().alpha = _currentUI.GetComponent<CanvasGroup>().alpha + 1 / 8f;
+			_currentUI.GetComponent<CanvasGroup>().alpha = _currentUI.GetComponent<CanvasGroup>().alpha + inOrOut*1 / 8f;
             yield return new WaitForSeconds(0.07f);
         }
 
         _currentUI = GameOverCanvas.transform.Find("Score").gameObject;
-        _currentUI.GetComponent<Text>().text = score.ToString();
         for (int i = 1; i <= 4; i++)
         {
-            _currentUI.GetComponent<CanvasGroup>().alpha = _currentUI.GetComponent<CanvasGroup>().alpha + 1 / 4f;
+			_currentUI.GetComponent<CanvasGroup>().alpha = _currentUI.GetComponent<CanvasGroup>().alpha + inOrOut*1 / 4f;
             yield return new WaitForSeconds(0.05f);
         }
 
         _currentUI = GameOverCanvas.transform.Find("Waves").gameObject;
-        _currentUI.GetComponent<Text>().text = wave.ToString();
         for (int i = 1; i <= 4; i++)
         {
-            _currentUI.GetComponent<CanvasGroup>().alpha = _currentUI.GetComponent<CanvasGroup>().alpha + 1 / 4f;
+			_currentUI.GetComponent<CanvasGroup>().alpha = _currentUI.GetComponent<CanvasGroup>().alpha + inOrOut*1 / 4f;
             yield return new WaitForSeconds(0.05f);
         }
 
-        _currentUI = GameOverCanvas.transform.Find("PlayAgain").gameObject;
         for (int i = 1; i <= 5; i++)
         {
-            GameOverCanvas.transform.Find("PlayAgain").gameObject.GetComponent<CanvasGroup>().alpha = GameOverCanvas.transform.Find("PlayAgain").gameObject.GetComponent<CanvasGroup>().alpha + 1 / 5f;
-            GameOverCanvas.transform.Find("MainMenu").gameObject.GetComponent<CanvasGroup>().alpha = GameOverCanvas.transform.Find("MainMenu").gameObject.GetComponent<CanvasGroup>().alpha + 1 / 5f;
+			GameOverCanvas.transform.Find("PlayAgain").gameObject.GetComponent<CanvasGroup>().alpha = GameOverCanvas.transform.Find("PlayAgain").gameObject.GetComponent<CanvasGroup>().alpha + inOrOut*1 / 5f;
+			GameOverCanvas.transform.Find("MainMenu").gameObject.GetComponent<CanvasGroup>().alpha = GameOverCanvas.transform.Find("MainMenu").gameObject.GetComponent<CanvasGroup>().alpha + inOrOut*1 / 5f;
             yield return new WaitForSeconds(0.07f);
         }
+
+		if (inOrOut == -1) 
+			GameOverCanvas.SetActive (false);
+		
     }
+
+//	IEnumerator AppearGameOverCanvas(){
+//
+//	}
+
 }

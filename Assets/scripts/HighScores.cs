@@ -8,6 +8,8 @@ public class HighScores : MonoBehaviour {
 	private const string publicCode = "5980c12cb0b05c1ad4651d7a";
 	private const string webURL = "http://dreamlo.com/lb/";
 
+	private LeaderBoardControllerScript leaderBoardControllerScript;
+
 	public Highscore[] highscoreList;
 
 	public void AddNewHighscore(string username, int score){
@@ -17,29 +19,27 @@ public class HighScores : MonoBehaviour {
 	public void DownloadHighscores(){
 		StartCoroutine ("DownloadHighscoresFromDatabase");
 	}
-
-
-
+		
 	private void Awake(){
 		AddNewHighscore ("Carlos", 600);
-
-
 		DownloadHighscores ();
 	}
 
-
+	private void Start(){
+		leaderBoardControllerScript = GameObject.Find ("LeaderboarController").GetComponent<LeaderBoardControllerScript> ();
+	}
 
 	IEnumerator UploadNewHighScore(string username, int score){
 		WWW www = new WWW (webURL + privateCode + "/add/" + WWW.EscapeURL (username) + "/" + score);
 		yield return www;
-
-		if (string.IsNullOrEmpty (www.error))
+		if (string.IsNullOrEmpty (www.error)) {
 			print ("Upload Successful");
-		else
+
+		} else {
 			print ("Upload failed: " + www.error);
+			leaderBoardControllerScript.ConnectionError (www.error);
+		}
 	}
-
-
 
 	IEnumerator DownloadHighscoresFromDatabase(){
 		WWW www = new WWW (webURL + publicCode + "/pipe/");
@@ -47,8 +47,10 @@ public class HighScores : MonoBehaviour {
 
 		if (string.IsNullOrEmpty (www.error))
 			FormatHighscores (www.text);
+			
 		else
 			print ("Upload failed: " + www.error);
+			
 	}
 
 	void FormatHighscores(string textStream){
