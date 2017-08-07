@@ -48,14 +48,14 @@ public class Fading : MonoBehaviour {
 		GameObject gObj = GameObject.Find ("OfflineScoreCanvas");
 		StartCoroutine (FadeCanvasComponents(1,gObj));
 	}
-
-	public void DisappearOfflineScoreCanvas(){
-		GameObject gObj = GameObject.Find ("OfflineScoreCanvas");
-		StartCoroutine (FadeCanvasComponents(-1,gObj));
-	}
 		
 	public void AppearLeaderBoardCanvas(bool cancel){
 		GameObject gObj = GameObject.Find ("LeaderBoadCanvas");
+		StartCoroutine (FadeCanvasComponents(1,gObj));
+	}
+
+	public void AppearLeaderBoadCanceledCanvas(){
+		GameObject gObj = GameObject.Find ("LeaderBoadCanceledCanvas");
 		StartCoroutine (FadeCanvasComponents(1,gObj));
 	}
 

@@ -20,12 +20,30 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 		UploadHighscore();
 	}
 
-	public void Cancel(){
+	/// <summary>
+	/// Determines whether this instance cancel with no error.
+	/// </summary>
+	/// <returns><c>true</c> if this instance cancel with no error; otherwise, <c>false</c>.</returns>
+	public void CancelWithNoError(){
 		cancel = true;
 		fading.DisappearPlayerScoreCanvas ();
+		fading.AppearLeaderBoadCanceledCanvas ();
+	}
+
+	/// <summary>
+	/// Determines whether this instance cancel due to error.
+	/// </summary>
+	/// <returns><c>true</c> if this instance cancel due to error; otherwise, <c>false</c>.</returns>
+	public void CancelDueToError(){
+		cancel = true;
+		fading.DisappearErrorMessageCanvas ();
 		fading.AppearOfflineScoreCanvas ();
 	}
 
+	/// <summary>
+	/// Connections the error.
+	/// </summary>
+	/// <param name="ErrorMessage">Error message.</param>
 	public void ConnectionError(string ErrorMessage){
 		Debug.Log ("Upload failed: " + ErrorMessage);
 		GameObject.Find("ErrorMessage").gameObject.GetComponent<Text>().text = ("Error message: " + ErrorMessage);
@@ -33,6 +51,10 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 
 	public void UploadHighscore(){
 		highScores.AddNewHighscore (name, (int)score);
+	}
+
+	public void OpenLeaderBoard(){
+
 	}
 
 	public void SetWave(float _wave){
