@@ -5,7 +5,13 @@ using UnityEngine.UI;
 
 public class LeaderBoardControllerScript : MonoBehaviour {
 
-	private HighScores highScores;
+    [SerializeField] GameObject playerScoreCanvas;
+    [SerializeField] GameObject connectionErrorCanvas;
+    [SerializeField] GameObject offlineScoreCanvas;
+    [SerializeField] GameObject leaderBoadCanvas;
+    [SerializeField] GameObject leaderBoadCanceledCanvas;
+
+    private HighScores highScores;
 	private DeathManager deathManager;
 	private Fading fading;
 	private bool cancel = false; 
@@ -13,8 +19,32 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 	private float score;
 	private string name;
 
+    public void SetPlayerScoreCanvasActive(bool setActive)
+    {
+        playerScoreCanvas.SetActive(setActive);
+    }
 
-	public void GetInput(string _name){
+    public void SetConnectionErrorCanvas(bool setActive)
+    {
+        connectionErrorCanvas.SetActive(setActive);
+    }
+
+    public void SetOfflineScoreCanvas(bool setActive)
+    {
+        offlineScoreCanvas.SetActive(setActive);
+    }
+
+    public void SetleaderBoadCanvas(bool setActive)
+    {
+        leaderBoadCanvas.SetActive(setActive);
+    }
+
+    public void SetleaderBoadCanceledCanvas(bool setActive)
+    {
+        leaderBoadCanceledCanvas.SetActive(setActive);
+    }
+
+    public void GetInput(string _name){
 		name = _name;
 		Debug.Log (name);
 		UploadHighscore();

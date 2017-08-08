@@ -10,6 +10,7 @@ public class DeathManager : MonoBehaviour {
     [SerializeField] private GameObject DeathCamera;
     [SerializeField] private GameObject Canvas;
     [SerializeField] private GameObject GameOverCanvas;
+    [SerializeField] private bool deathTester = false;
 
     private float numberOfLives = 10;
     private float score = 0;
@@ -22,12 +23,15 @@ public class DeathManager : MonoBehaviour {
 	private LeaderBoardControllerScript leaderBoardControllerScript;
 	private Fading fading;
 	
-	void Start () {
-		leaderBoardControllerScript = GameObject.Find ("LeaderBoardController").GetComponent<LeaderBoardControllerScript> ();
+	void Start ()
+    {
+		leaderBoardControllerScript = GameObject.Find ("LeaderboardController").GetComponent<LeaderBoardControllerScript> ();
 		fading = GameObject.Find ("GameMaster").GetComponent<Fading> ();
+        Invoke("DeathTesterFunc", 5f);
 	}
 
-	public bool IsDead(){
+	public bool IsDead()
+    {
 		return isDead;
 	}
 	
@@ -94,5 +98,13 @@ public class DeathManager : MonoBehaviour {
 		}
 		Canvas.SetActive(false);
 	}
+
+    private void DeathTesterFunc()
+    {
+        if (deathTester == true)
+        {
+            LoseTheGame();
+        }
+    }
 
 }

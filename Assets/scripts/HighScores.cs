@@ -26,7 +26,7 @@ public class HighScores : MonoBehaviour {
 	}
 
 	private void Start(){
-		leaderBoardControllerScript = GameObject.Find ("LeaderboarController").GetComponent<LeaderBoardControllerScript> ();
+		leaderBoardControllerScript = GameObject.Find ("LeaderboardController").GetComponent<LeaderBoardControllerScript> ();
 	}
 
 	IEnumerator UploadNewHighScore(string username, int score){
