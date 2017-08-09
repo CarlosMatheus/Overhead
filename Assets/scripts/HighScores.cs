@@ -30,16 +30,16 @@ public class HighScores : MonoBehaviour {
 		
 	private void Awake()
     {
-		AddNewHighscore("Carlos", 4564);
-        AddNewHighscore("asdf", 546);
-        AddNewHighscore("fdas", 786);
-        AddNewHighscore("Carasdflos", 4575);
-        AddNewHighscore("sdafsad", 76887);
-        AddNewHighscore("asldfj", 34315);
-        AddNewHighscore("asldfj", 454);
-        AddNewHighscore("asldfj", 79);
+		//AddNewHighscore("Carlos", 4564);
+  //      AddNewHighscore("asdf", 546);
+  //      AddNewHighscore("fdas", 786);
+  //      AddNewHighscore("Carasdflos", 4575);
+  //      AddNewHighscore("sdafsad", 76887);
+  //      AddNewHighscore("asldfj", 34315);
+  //      AddNewHighscore("asldfj", 454);
+  //      AddNewHighscore("asldfj", 79);
 
-        DownloadHighscores ();
+  //      DownloadHighscores ();
 	}
 
 	private void Start()
