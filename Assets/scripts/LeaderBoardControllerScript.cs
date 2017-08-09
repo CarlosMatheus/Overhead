@@ -13,6 +13,7 @@ public class LeaderBoardControllerScript : MonoBehaviour {
     [SerializeField] GameObject list;
     [SerializeField] GameObject listC;
 
+    private PlayerDataCanvas[] playerDataCanvas;
     private GameObject nameList;
     private GameObject waveList;
     private GameObject scoreList;
@@ -22,10 +23,12 @@ public class LeaderBoardControllerScript : MonoBehaviour {
     private HighScores highScores;
 	private DeathManager deathManager;
 	private Fading fading;
-	private bool cancel = false; 
+	private bool cancel = false;
+    private bool isPlayerInList = false;
 	private float wave;
 	private float score;
-	private string name;
+    private int playerRank;
+	private string playerName;
 
     public void SetPlayerScoreCanvasActive(bool setActive)
     {
@@ -53,8 +56,8 @@ public class LeaderBoardControllerScript : MonoBehaviour {
     }
 
     public void GetInput(string _name){
-		name = _name;
-		Debug.Log (name);
+		playerName = _name;
+		Debug.Log (playerName);
 		UploadHighscore();
 	}
 
@@ -135,7 +138,7 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 
     private void SetHighScoreBoard()
     {
-        PlayerDataCanvas[] playerDataCanvas = highScores.GetPlayerDataCanvas();
+        playerDataCanvas = highScores.GetPlayerDataCanvas();
 
         for (int i = 0; i < 7; i ++)
         {
@@ -144,10 +147,10 @@ public class LeaderBoardControllerScript : MonoBehaviour {
             waveList.transform.GetChild(i).gameObject.GetComponent<Text>().text = playerDataCanvas[i].GetWave();
         }
 
-
-
-        //must have the system to verify if the player is a new highscore
-
+        FindPlayerInList();
+        PlayerHighScore();
+        AjustPlayerBoard();
+        
     }
 
     private void SetHighScoreBoardCancelled()
@@ -155,5 +158,47 @@ public class LeaderBoardControllerScript : MonoBehaviour {
         PlayerDataCanvas[] playerDataCanvas = highScores.GetPlayerDataCanvas();
 
 
+
     }
+
+    private void AjustPlayerBoard()
+    {
+        GameObject.Find("WavePlayer").GetComponent<Text>().text = wave.ToString();
+        GameObject.Find("ScorePlayer").GetComponent<Text>().text = score.ToString();
+        GameObject.Find("NamePlayer").GetComponent<Text>().text = playerName;
+        GameObject.Find("MassagePlayer").GetComponent<Text>().text = (playerName + ", your corrent hightest score is:");
+
+        if(isPlayerInList == true)
+            GameObject.Find("RankPlayer").GetComponent<Text>().text = playerRank.ToString();
+        else
+            GameObject.Find("RankPlayer").GetComponent<Text>().text = ">1000.";
+    }
+
+    private void FindPlayerInList()
+    {
+        int i;
+        for (i = 1; i <=playerDataCanvas.Length ; i++)
+        {
+            if (string.Equals(playerDataCanvas[i].GetPlayerName(), playerName) == true)
+            {
+                isPlayerInList = true;
+                playerRank = i;
+                break;
+            }
+        }
+    }
+
+    private void PlayerHighScore()
+    {
+        if (playerRank < 8)
+        {
+            float gap = 40f;
+
+            GameObject highScoreBadge = GameObject.Find("HighScoreBadge");
+            highScoreBadge.GetComponent<CanvasGroup>().alpha = 1f;
+            Vector3 position = highScoreBadge.GetComponent<RectTransform>().position;
+            highScoreBadge.GetComponent<RectTransform>().position = new Vector3(position.x,position.y - gap*(playerRank-1),position.z);
+        }
+    }
+
 }
