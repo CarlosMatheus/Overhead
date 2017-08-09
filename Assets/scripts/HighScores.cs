@@ -9,54 +9,48 @@ public class HighScores : MonoBehaviour {
 	private const string webURL = "http://dreamlo.com/lb/";
 
 	private LeaderBoardControllerScript leaderBoardControllerScript;
+    private PlayerDataCanvas[] playerDataCanvas;
 
-	public Highscore[] highscoreList;
+	//public Highscore[] highscoreList;
 
-	public void AddNewHighscore(string username, int score){
+	public void AddNewHighscore(string username, int score)
+    {
 		StartCoroutine (UploadNewHighScore (username, score));
 	}
 
-	public void DownloadHighscores(){
+	public void DownloadHighscores()
+    {
 		StartCoroutine ("DownloadHighscoresFromDatabase");
 	}
+
+    public PlayerDataCanvas[] GetPlayerDataCanvas()
+    {
+        return playerDataCanvas;
+    }
 		
-	private void Awake(){
-		AddNewHighscore ("Carlos", 600);
-		DownloadHighscores ();
+	private void Awake()
+    {
+		AddNewHighscore("Carlos", 4564);
+        AddNewHighscore("asdf", 546);
+        AddNewHighscore("fdas", 786);
+        AddNewHighscore("Carasdflos", 4575);
+        AddNewHighscore("sdafsad", 76887);
+        AddNewHighscore("asldfj", 34315);
+        AddNewHighscore("asldfj", 454);
+        AddNewHighscore("asldfj", 79);
+
+        DownloadHighscores ();
 	}
 
-	private void Start(){
+	private void Start()
+    {
 		leaderBoardControllerScript = GameObject.Find ("LeaderboardController").GetComponent<LeaderBoardControllerScript> ();
 	}
 
-	IEnumerator UploadNewHighScore(string username, int score){
-		WWW www = new WWW (webURL + privateCode + "/add/" + WWW.EscapeURL (username) + "/" + score);
-		yield return www;
-		if (string.IsNullOrEmpty (www.error)) {
-			print ("Upload Successful");
-
-		} else {
-			print ("Upload failed: " + www.error);
-			leaderBoardControllerScript.ConnectionError (www.error);
-		}
-	}
-
-	IEnumerator DownloadHighscoresFromDatabase(){
-		WWW www = new WWW (webURL + publicCode + "/pipe/");
-		yield return www;
-
-		if (string.IsNullOrEmpty (www.error))
-			FormatHighscores (www.text);
-			
-		else
-			print ("Upload failed: " + www.error);
-			
-	}
-
-	void FormatHighscores(string textStream){
+	private void FormatHighscores(string textStream){
 		string[] entries = textStream.Split (new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
-		highscoreList = new Highscore[entries.Length];
-
+        //highscoreList = new Highscore[entries.Length];
+        playerDataCanvas = new PlayerDataCanvas[entries.Length];
 
 		for(int i = 0; i < entries.Length; i ++){
 			string[] entryInfo = entries[i].Split (new char[] { '|' });
@@ -64,23 +58,57 @@ public class HighScores : MonoBehaviour {
 			string username = entryInfo[0];
 			int score = int.Parse(entryInfo[1]);
 
-			highscoreList[i] = new Highscore (username,score);
+            playerDataCanvas[i] = new PlayerDataCanvas(username,score, 47);
 
-			print (highscoreList [i].username + ": " + highscoreList [i].score);
-		}
+            //print (playerDataCanvas [i].username + ": " + highscoreList [i].score);
+
+            print(playerDataCanvas[i].GetPlayerName() + ": " + playerDataCanvas[i].GetScore());
+        }
 	}
 
-	public struct Highscore{
-		public string username;
-		public int score;
+    IEnumerator DownloadHighscoresFromDatabase()
+    {
+        WWW www = new WWW(webURL + publicCode + "/pipe/");
+        yield return www;
 
-		//the structs constructor:
-		public Highscore( string _username , int _score ){
-			username = _username;
-			score = _score;
-		}
-	}
+        if (string.IsNullOrEmpty(www.error))
+        {
+            FormatHighscores(www.text);
+            leaderBoardControllerScript.OpenLeaderBoard();
+        }
+        else
+        {
+            print("Upload failed: " + www.error);
+            leaderBoardControllerScript.ConnectionError(www.error);
+        }
 
+    }
 
+    IEnumerator UploadNewHighScore(string username, int score)
+    {
+        WWW www = new WWW(webURL + privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
+        yield return www;
+        if (string.IsNullOrEmpty(www.error))
+        {
+            print("Upload Successful");
+            DownloadHighscores();
+        }
+        else
+        {
+            print("Upload failed: " + www.error);
+            leaderBoardControllerScript.ConnectionError(www.error);
+        }
+    }
+
+    //public struct Highscore{
+    //	public string username;
+    //	public int score;
+
+    //	//the structs constructor:
+    //	public Highscore( string _username , int _score ){
+    //		username = _username;
+    //		score = _score;
+    //	}
+    //}
 
 }

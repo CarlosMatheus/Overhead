@@ -10,8 +10,9 @@ public class Fading : MonoBehaviour {
 
 	private int drawDepth = -1000;   //the layer of the texture
 	private float alpha = 1.0f;      //the a alpha of the texture
+    private LeaderBoardControllerScript leaderBoardControllerScript;
 
-	void OnGUI(){
+    public void OnGUI(){
 		alpha += fadeDir * fadeSpeed * Time.deltaTime; 
 		alpha = Mathf.Clamp01 (alpha);
 		GUI.color = new Color (GUI.color.r, GUI.color.g, GUI.color.b, alpha);
@@ -25,6 +26,7 @@ public class Fading : MonoBehaviour {
 	}
 
 	public void AppearPlayerScoreCanvas(){
+        leaderBoardControllerScript.SetPlayerScoreCanvasActive(true);
 		GameObject gObj = GameObject.Find ("PlayerScoreCanvas");
 		StartCoroutine (FadeCanvasComponents(1,gObj));
 	}
@@ -34,50 +36,56 @@ public class Fading : MonoBehaviour {
 		StartCoroutine (FadeCanvasComponents(-1,gObj));
 	}
 
-	public void AppearErrorMessageCanvas(){
-		GameObject gObj = GameObject.Find ("ConnectionErrorCanvas");
+	public void AppearConnectionErrorMessageCanvas(){
+        leaderBoardControllerScript.SetConnectionErrorCanvas(true);
+        GameObject gObj = GameObject.Find ("ConnectionErrorCanvas");
 		StartCoroutine (FadeCanvasComponents(1,gObj));
 	}
 
-	public void DisappearErrorMessageCanvas(){
+	public void DisappearConnectionErrorMessageCanvas(){
 		GameObject gObj = GameObject.Find ("ConnectionErrorCanvas");
 		StartCoroutine (FadeCanvasComponents(-1,gObj));
 	}
 
 	public void AppearOfflineScoreCanvas(){
+        leaderBoardControllerScript.SetOfflineScoreCanvas(true);
 		GameObject gObj = GameObject.Find ("OfflineScoreCanvas");
 		StartCoroutine (FadeCanvasComponents(1,gObj));
 	}
 		
-	public void AppearLeaderBoardCanvas(bool cancel){
+	public void AppearLeaderBoardCanvas(){
+        leaderBoardControllerScript.SetleaderBoadCanvas(true);
 		GameObject gObj = GameObject.Find ("LeaderBoadCanvas");
 		StartCoroutine (FadeCanvasComponents(1,gObj));
 	}
 
 	public void AppearLeaderBoadCanceledCanvas(){
+        leaderBoardControllerScript.SetleaderBoadCanceledCanvas(true);
 		GameObject gObj = GameObject.Find ("LeaderBoadCanceledCanvas");
 		StartCoroutine (FadeCanvasComponents(1,gObj));
 	}
 
-	IEnumerator FadeCanvasComponents(int inOrOut, GameObject gObj)
-	{
-		int numOfChild = gObj.transform.childCount;
-		GameObject correntChild;
+    IEnumerator FadeCanvasComponents(int inOrOut, GameObject gObj)
+    {
+        int numOfChild = gObj.transform.childCount;
+        GameObject correntChild;
 
-		if (inOrOut==1) {
-			yield return new WaitForSeconds(0.5f);
-			gObj.SetActive (true);
-		}
+        if (inOrOut == 1) {
+            yield return new WaitForSeconds(0.5f);
+        }
 
-		for (int i = 0; i <numOfChild ; i++)
-		{
-			correntChild = gObj.transform.GetChild (i).gameObject;
-			for (int j = 1; j <= 4; j++)
-			{
-				correntChild.GetComponent<CanvasGroup>().alpha = correntChild.GetComponent<CanvasGroup>().alpha + inOrOut*1 / 4f;
-				yield return new WaitForSeconds(0.05f);
-			}
-		}
+        float deltaTime;
+        deltaTime = (0.8f / numOfChild);
+
+        for (int j = 1; j <= 8; j++)
+        {
+            for (int i = 0; i < numOfChild; i++)
+            {
+                correntChild = gObj.transform.GetChild(i).gameObject;
+                correntChild.GetComponent<CanvasGroup>().alpha = correntChild.GetComponent<CanvasGroup>().alpha + inOrOut * 1 / 8f;
+            }
+            yield return new WaitForSeconds(0.07f);
+        }
 
 		if (inOrOut == -1) 
 			gObj.SetActive (false);
@@ -118,5 +126,10 @@ public class Fading : MonoBehaviour {
 //		}
 
 	}
+
+    private void Start()
+    {
+        leaderBoardControllerScript = GameObject.Find("LeaderboardController").GetComponent<LeaderBoardControllerScript>();
+    }
 
 }

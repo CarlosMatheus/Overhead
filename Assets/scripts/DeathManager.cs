@@ -66,8 +66,6 @@ public class DeathManager : MonoBehaviour {
         StartCoroutine(FadeCanvas());
 		leaderBoardControllerScript.SetScore (score);
 		leaderBoardControllerScript.SetWave (wave);
-		GameOverCanvas.transform.Find("Waves").gameObject.GetComponent<Text>().text = wave.ToString();
-		GameOverCanvas.transform.Find("Score").gameObject.GetComponent<Text>().text = score.ToString();
         //Disabling stuff
         GetComponent<BuildManager>().enabled = false;
         GetComponent<ExtraFunctionalities>().enabled = false;
@@ -75,6 +73,8 @@ public class DeathManager : MonoBehaviour {
         GameObject.Find("Bruxo").GetComponent<PlayerController>().enabled = false;
         StartCoroutine(Blur());
 		fading.AppearPlayerScoreCanvas ();
+        GameObject.Find("Waves").GetComponent<Text>().text = wave.ToString();
+        GameObject.Find("Score").GetComponent<Text>().text = score.ToString();
     }
 
     IEnumerator Blur()

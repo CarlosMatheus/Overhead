@@ -10,7 +10,15 @@ public class LeaderBoardControllerScript : MonoBehaviour {
     [SerializeField] GameObject offlineScoreCanvas;
     [SerializeField] GameObject leaderBoadCanvas;
     [SerializeField] GameObject leaderBoadCanceledCanvas;
+    [SerializeField] GameObject list;
+    [SerializeField] GameObject listC;
 
+    private GameObject nameList;
+    private GameObject waveList;
+    private GameObject scoreList;
+    private GameObject nameListC;
+    private GameObject waveListC;
+    private GameObject scoreListC;
     private HighScores highScores;
 	private DeathManager deathManager;
 	private Fading fading;
@@ -66,7 +74,7 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 	/// <returns><c>true</c> if this instance cancel due to error; otherwise, <c>false</c>.</returns>
 	public void CancelDueToError(){
 		cancel = true;
-		fading.DisappearErrorMessageCanvas ();
+		fading.DisappearConnectionErrorMessageCanvas ();
 		fading.AppearOfflineScoreCanvas ();
 	}
 
@@ -80,14 +88,27 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 	}
 
 	public void UploadHighscore(){
+        Debug.Log((int)score);
+        fading.DisappearPlayerScoreCanvas();
 		highScores.AddNewHighscore (name, (int)score);
 	}
 
-	public void OpenLeaderBoard(){
+	public void OpenLeaderBoard()
+    {
+        if(cancel == false)
+        {
+            fading.AppearLeaderBoardCanvas();
+            SetHighScoreBoard();
+        }
+        else
+        {
+            fading.AppearLeaderBoadCanceledCanvas();
+            SetHighScoreBoardCancelled();
+        }
 
 	}
 
-	public void SetWave(float _wave){
+    public void SetWave(float _wave){
 		wave = _wave;
 	}
 
@@ -99,5 +120,40 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 		highScores = GameObject.Find ("GameMaster").GetComponent<HighScores> ();
 		deathManager = GameObject.Find ("GameMaster").GetComponent<DeathManager> ();
 		fading = GameObject.Find ("GameMaster").GetComponent<Fading> ();
-	}
+
+        SetleaderBoadCanvas(true);
+        SetOfflineScoreCanvas(true);
+        nameList = GameObject.Find("NameList");
+        waveList = GameObject.Find("WaveList");
+        scoreList = GameObject.Find("ScoreList");
+        nameListC = GameObject.Find("NameListC");
+        waveListC = GameObject.Find("WaveListC");
+        scoreListC = GameObject.Find("ScoreListC");
+        SetleaderBoadCanvas(false);
+        SetOfflineScoreCanvas(false);
+    }
+
+    private void SetHighScoreBoard()
+    {
+        PlayerDataCanvas[] playerDataCanvas = highScores.GetPlayerDataCanvas();
+
+        for (int i = 0; i < 7; i ++)
+        {
+            nameList.transform.GetChild(i).gameObject.GetComponent<Text>().text = playerDataCanvas[i].GetPlayerName();
+            scoreList.transform.GetChild(i).gameObject.GetComponent<Text>().text = playerDataCanvas[i].GetScore();
+            waveList.transform.GetChild(i).gameObject.GetComponent<Text>().text = playerDataCanvas[i].GetWave();
+        }
+
+
+
+        //must have the system to verify if the player is a new highscore
+
+    }
+
+    private void SetHighScoreBoardCancelled()
+    {
+        PlayerDataCanvas[] playerDataCanvas = highScores.GetPlayerDataCanvas();
+
+
+    }
 }
