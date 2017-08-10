@@ -17,7 +17,6 @@ public class Shop : MonoBehaviour {
 	/// Purcheses the tower0.
 	/// </summary>
 	public void PurcheseTower0(){
-		Debug.Log ("0");
 		int indexOfThisTower = 0;
 		if ( !soulsCounter.CanBuild (indexOfThisTower) )
 			return;
@@ -27,7 +26,6 @@ public class Shop : MonoBehaviour {
 	}
 
 	public void PurcheseTower1(){
-		Debug.Log ("1");
 		int indexOfThisTower = 1;
 		if ( !soulsCounter.CanBuild (indexOfThisTower) )
 			return;
@@ -37,7 +35,6 @@ public class Shop : MonoBehaviour {
 	}
 
 	public void PurcheseTower2(){
-		Debug.Log ("2");
 		int indexOfThisTower = 2;
 		if ( !soulsCounter.CanBuild (indexOfThisTower) )
 			return;

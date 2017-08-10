@@ -82,49 +82,14 @@ public class Fading : MonoBehaviour {
             for (int i = 0; i < numOfChild; i++)
             {
                 correntChild = gObj.transform.GetChild(i).gameObject;
-                correntChild.GetComponent<CanvasGroup>().alpha = correntChild.GetComponent<CanvasGroup>().alpha + inOrOut * 1 / 8f;
+                if(gameObject.activeSelf==true)
+                    correntChild.GetComponent<CanvasGroup>().alpha = correntChild.GetComponent<CanvasGroup>().alpha + inOrOut * 1 / 8f;
             }
             yield return new WaitForSeconds(0.07f);
         }
 
 		if (inOrOut == -1) 
 			gObj.SetActive (false);
-
-//		_currentUI = GameOverCanvas.transform.Find("FinalScoreText").gameObject;
-//		for (int i = 1; i <= 8; i++)
-//		{
-//			_currentUI.GetComponent<CanvasGroup>().alpha = _currentUI.GetComponent<CanvasGroup>().alpha + inOrOut*1 / 8f;
-//			yield return new WaitForSeconds(0.07f);
-//		}
-//
-//		_currentUI = GameOverCanvas.transform.Find("WaveNumberText").gameObject;
-//		for (int i = 1; i <= 8; i++)
-//		{
-//			_currentUI.GetComponent<CanvasGroup>().alpha = _currentUI.GetComponent<CanvasGroup>().alpha + inOrOut*1 / 8f;
-//			yield return new WaitForSeconds(0.07f);
-//		}
-//
-//		_currentUI = GameOverCanvas.transform.Find("Score").gameObject;
-//		for (int i = 1; i <= 4; i++)
-//		{
-//			_currentUI.GetComponent<CanvasGroup>().alpha = _currentUI.GetComponent<CanvasGroup>().alpha + inOrOut*1 / 4f;
-//			yield return new WaitForSeconds(0.05f);
-//		}
-//
-//		_currentUI = GameOverCanvas.transform.Find("Waves").gameObject;
-//		for (int i = 1; i <= 4; i++)
-//		{
-//			_currentUI.GetComponent<CanvasGroup>().alpha = _currentUI.GetComponent<CanvasGroup>().alpha + inOrOut*1 / 4f;
-//			yield return new WaitForSeconds(0.05f);
-//		}
-//
-//		for (int i = 1; i <= 5; i++)
-//		{
-//			GameOverCanvas.transform.Find("PlayAgain").gameObject.GetComponent<CanvasGroup>().alpha = GameOverCanvas.transform.Find("PlayAgain").gameObject.GetComponent<CanvasGroup>().alpha + inOrOut*1 / 5f;
-//			GameOverCanvas.transform.Find("MainMenu").gameObject.GetComponent<CanvasGroup>().alpha = GameOverCanvas.transform.Find("MainMenu").gameObject.GetComponent<CanvasGroup>().alpha + inOrOut*1 / 5f;
-//			yield return new WaitForSeconds(0.07f);
-//		}
-
 	}
 
     private void Start()

@@ -30,16 +30,7 @@ public class HighScores : MonoBehaviour {
 		
 	private void Awake()
     {
-		//AddNewHighscore("Carlos", 4564);
-  //      AddNewHighscore("asdf", 546);
-  //      AddNewHighscore("fdas", 786);
-  //      AddNewHighscore("Carasdflos", 4575);
-  //      AddNewHighscore("sdafsad", 76887);
-  //      AddNewHighscore("asldfj", 34315);
-  //      AddNewHighscore("asldfj", 454);
-  //      AddNewHighscore("asldfj", 79);
-
-  //      DownloadHighscores ();
+		
 	}
 
 	private void Start()
@@ -49,7 +40,6 @@ public class HighScores : MonoBehaviour {
 
 	private void FormatHighscores(string textStream){
 		string[] entries = textStream.Split (new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
-        //highscoreList = new Highscore[entries.Length];
         playerDataCanvas = new PlayerDataCanvas[entries.Length];
 
 		for(int i = 0; i < entries.Length; i ++){
@@ -59,10 +49,7 @@ public class HighScores : MonoBehaviour {
 			int score = int.Parse(entryInfo[1]);
 
             playerDataCanvas[i] = new PlayerDataCanvas(username,score, 47);
-
-            //print (playerDataCanvas [i].username + ": " + highscoreList [i].score);
-
-            print(playerDataCanvas[i].GetPlayerName() + ": " + playerDataCanvas[i].GetScore());
+            
         }
 	}
 
@@ -88,9 +75,13 @@ public class HighScores : MonoBehaviour {
     {
         WWW www = new WWW(webURL + privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
         yield return www;
+
+        print(webURL + privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
+
         if (string.IsNullOrEmpty(www.error))
         {
-            print("Upload Successful");
+            //print("Fez upload de " + username + " com sucesso!");
+            //print("Upload Successful");
             DownloadHighscores();
         }
         else
@@ -99,16 +90,4 @@ public class HighScores : MonoBehaviour {
             leaderBoardControllerScript.ConnectionError(www.error);
         }
     }
-
-    //public struct Highscore{
-    //	public string username;
-    //	public int score;
-
-    //	//the structs constructor:
-    //	public Highscore( string _username , int _score ){
-    //		username = _username;
-    //		score = _score;
-    //	}
-    //}
-
 }

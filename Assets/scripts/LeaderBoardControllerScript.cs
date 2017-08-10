@@ -14,6 +14,7 @@ public class LeaderBoardControllerScript : MonoBehaviour {
     [SerializeField] GameObject listC;
 
     private PlayerDataCanvas[] playerDataCanvas;
+    private GameObject invalidInput;
     private GameObject nameList;
     private GameObject waveList;
     private GameObject scoreList;
@@ -25,6 +26,7 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 	private Fading fading;
 	private bool cancel = false;
     private bool isPlayerInList = false;
+    private bool isFirstTime = true;
 	private float wave;
 	private float score;
     private int playerRank;
@@ -33,6 +35,8 @@ public class LeaderBoardControllerScript : MonoBehaviour {
     public void SetPlayerScoreCanvasActive(bool setActive)
     {
         playerScoreCanvas.SetActive(setActive);
+        invalidInput = GameObject.Find("InvalidInput");
+        invalidInput.SetActive(false);
     }
 
     public void SetConnectionErrorCanvas(bool setActive)
@@ -56,45 +60,60 @@ public class LeaderBoardControllerScript : MonoBehaviour {
     }
 
     public void GetInput(string _name){
-		playerName = _name;
-		Debug.Log (playerName);
-		UploadHighscore();
+        if (IsNameAllowed(_name) == true)
+            UploadHighscore(_name);
+        else
+            invalidInput.SetActive(true);
 	}
 
-	/// <summary>
-	/// Determines whether this instance cancel with no error.
-	/// </summary>
-	/// <returns><c>true</c> if this instance cancel with no error; otherwise, <c>false</c>.</returns>
 	public void CancelWithNoError(){
 		cancel = true;
 		fading.DisappearPlayerScoreCanvas ();
 		fading.AppearLeaderBoadCanceledCanvas ();
 	}
 
-	/// <summary>
-	/// Determines whether this instance cancel due to error.
-	/// </summary>
-	/// <returns><c>true</c> if this instance cancel due to error; otherwise, <c>false</c>.</returns>
 	public void CancelDueToError(){
 		cancel = true;
 		fading.DisappearConnectionErrorMessageCanvas ();
 		fading.AppearOfflineScoreCanvas ();
 	}
 
-	/// <summary>
-	/// Connections the error.
-	/// </summary>
-	/// <param name="ErrorMessage">Error message.</param>
 	public void ConnectionError(string ErrorMessage){
 		Debug.Log ("Upload failed: " + ErrorMessage);
 		GameObject.Find("ErrorMessage").gameObject.GetComponent<Text>().text = ("Error message: " + ErrorMessage);
 	}
 
-	public void UploadHighscore(){
-        Debug.Log((int)score);
-        fading.DisappearPlayerScoreCanvas();
-		highScores.AddNewHighscore (name, (int)score);
+	public void UploadHighscore(string _name){
+        if (isFirstTime == true)
+        {
+            playerName = _name;
+            isFirstTime = false;
+            //FilterName();
+            //Debug.Log(playerName);
+            //Debug.Log((int)score);
+            fading.DisappearPlayerScoreCanvas();
+            highScores.AddNewHighscore(playerName, (int)score);
+        }
 	}
+
+    public bool IsNameAllowed(string _name)
+    {
+        for(int i = 0; i < _name.Length; i++)
+        {
+            if (char.IsLetterOrDigit(_name[i]) == false)
+                return false;
+        }
+        return true;
+    }
+
+    //public void FilterName()
+    //{
+    //    print("name of the player before filter: " + playerName);
+    //    //playerName = playerName.Trim( new char[] { '|','.' } );
+    //    playerName = playerName.Replace('|', '0');
+    //    playerName = playerName.Replace(' ', '0');
+    //    print("name of the player filted: " + playerName);
+    //}
 
 	public void OpenLeaderBoard()
     {
@@ -163,26 +182,33 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 
     private void AjustPlayerBoard()
     {
+        if (isPlayerInList == true)
+        {
+            GameObject.Find("RankPlayer").GetComponent<Text>().text = playerRank.ToString();
+            wave = float.Parse(playerDataCanvas[playerRank - 1].GetWave());
+            score = float.Parse(playerDataCanvas[playerRank - 1].GetScore());
+        }
+        else
+        {
+            GameObject.Find("RankPlayer").GetComponent<Text>().text = ">1000.";
+        }
+
         GameObject.Find("WavePlayer").GetComponent<Text>().text = wave.ToString();
         GameObject.Find("ScorePlayer").GetComponent<Text>().text = score.ToString();
         GameObject.Find("NamePlayer").GetComponent<Text>().text = playerName;
         GameObject.Find("MassagePlayer").GetComponent<Text>().text = (playerName + ", your corrent hightest score is:");
-
-        if(isPlayerInList == true)
-            GameObject.Find("RankPlayer").GetComponent<Text>().text = playerRank.ToString();
-        else
-            GameObject.Find("RankPlayer").GetComponent<Text>().text = ">1000.";
     }
 
     private void FindPlayerInList()
     {
         int i;
-        for (i = 1; i <=playerDataCanvas.Length ; i++)
+        for (i = 0; i < playerDataCanvas.Length ; i++)
         {
             if (string.Equals(playerDataCanvas[i].GetPlayerName(), playerName) == true)
             {
+                Debug.Log("Encontrou");
                 isPlayerInList = true;
-                playerRank = i;
+                playerRank = i+1;
                 break;
             }
         }
@@ -192,12 +218,22 @@ public class LeaderBoardControllerScript : MonoBehaviour {
     {
         if (playerRank < 8)
         {
+            Debug.Log("Passou 1");
             float gap = 40f;
 
-            GameObject highScoreBadge = GameObject.Find("HighScoreBadge");
+            GameObject highScoreBadge = GameObject.Find("HighScoreBadge"+playerRank.ToString());
             highScoreBadge.GetComponent<CanvasGroup>().alpha = 1f;
-            Vector3 position = highScoreBadge.GetComponent<RectTransform>().position;
-            highScoreBadge.GetComponent<RectTransform>().position = new Vector3(position.x,position.y - gap*(playerRank-1),position.z);
+            GameObject highScoreBadges = GameObject.Find("HighScoreBadges");
+            for (int i= 0; i < 7; i ++)
+                highScoreBadges.transform.GetChild(i).gameObject.SetActive(false);
+            highScoreBadge.SetActive(true);
+    
+        }
+        else
+        {
+            Debug.Log("Passou 2");
+            GameObject highScoreBadges = GameObject.Find("HighScoreBadges");
+            highScoreBadges.SetActive(false);
         }
     }
 
