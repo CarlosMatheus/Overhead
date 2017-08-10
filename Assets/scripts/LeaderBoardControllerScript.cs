@@ -60,7 +60,9 @@ public class LeaderBoardControllerScript : MonoBehaviour {
     }
 
     public void GetInput(string _name){
-        if (IsNameAllowed(_name) == true)
+        if (string.IsNullOrEmpty(_name))
+            return;
+        else if (IsNameAllowed(_name) == true)
             UploadHighscore(_name);
         else
             invalidInput.SetActive(true);
@@ -98,7 +100,12 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 
     public bool IsNameAllowed(string _name)
     {
-        for(int i = 0; i < _name.Length; i++)
+        if (_name.Length > 20)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < _name.Length; i++)
         {
             if (char.IsLetterOrDigit(_name[i]) == false)
                 return false;
