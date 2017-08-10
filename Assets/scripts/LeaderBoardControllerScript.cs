@@ -94,7 +94,7 @@ public class LeaderBoardControllerScript : MonoBehaviour {
             //Debug.Log(playerName);
             //Debug.Log((int)score);
             fading.DisappearPlayerScoreCanvas();
-            highScores.AddNewHighscore(playerName, (int)score);
+            highScores.AddNewHighscore(playerName, (int)score, (int)wave);
         }
 	}
 

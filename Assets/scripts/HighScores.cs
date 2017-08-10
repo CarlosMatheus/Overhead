@@ -13,9 +13,9 @@ public class HighScores : MonoBehaviour {
 
 	//public Highscore[] highscoreList;
 
-	public void AddNewHighscore(string username, int score)
+	public void AddNewHighscore(string username, int score, int wave)
     {
-		StartCoroutine (UploadNewHighScore (username, score));
+		StartCoroutine (UploadNewHighScore (username, score, wave));
 	}
 
 	public void DownloadHighscores()
@@ -27,11 +27,6 @@ public class HighScores : MonoBehaviour {
     {
         return playerDataCanvas;
     }
-		
-	private void Awake()
-    {
-		
-	}
 
 	private void Start()
     {
@@ -47,9 +42,9 @@ public class HighScores : MonoBehaviour {
 
 			string username = entryInfo[0];
 			int score = int.Parse(entryInfo[1]);
+            int wave = int.Parse(entryInfo[2]);
 
-            playerDataCanvas[i] = new PlayerDataCanvas(username,score, 47);
-            
+            playerDataCanvas[i] = new PlayerDataCanvas(username,score, wave);
         }
 	}
 
@@ -71,9 +66,9 @@ public class HighScores : MonoBehaviour {
 
     }
 
-    IEnumerator UploadNewHighScore(string username, int score)
+    IEnumerator UploadNewHighScore(string username, int score, int wave)
     {
-        WWW www = new WWW(webURL + privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
+        WWW www = new WWW(webURL + privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score + "/" + wave);
         yield return www;
 
         print(webURL + privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
