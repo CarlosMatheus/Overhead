@@ -68,6 +68,26 @@ public class LeaderBoardControllerScript : MonoBehaviour {
             invalidInput.SetActive(true);
 	}
 
+    public void RetryButton()
+    {
+        if (cancel == true)
+        {
+            fading.DisappearConnectionErrorMessageCanvas();
+            highScores.DownloadHighscores();
+        }
+        else
+        {
+            fading.DisappearConnectionErrorMessageCanvas();
+            highScores.AddNewHighscore(playerName, (int)score, (int)wave);
+        }
+    }
+
+    public void CancelConnectionButton()
+    {
+        fading.DisappearConnectionErrorMessageCanvas();
+        fading.AppearOfflineScoreCanvas();
+    }
+
 	public void CancelWithNoError(){
 		cancel = true;
 		fading.DisappearPlayerScoreCanvas ();
@@ -82,8 +102,9 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 
 	public void ConnectionError(string ErrorMessage){
 		Debug.Log ("Upload failed: " + ErrorMessage);
-		GameObject.Find("ErrorMessage").gameObject.GetComponent<Text>().text = ("Error message: " + ErrorMessage);
-	}
+        fading.AppearConnectionErrorMessageCanvas();
+        GameObject.Find("ErrorMessage").gameObject.GetComponent<Text>().text = ("Error message: " + ErrorMessage);
+    }
 
 	public void UploadHighscore(string _name){
         if (isFirstTime == true)
@@ -173,7 +194,6 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 
     private void SetHighScoreBoardCancelled()
     {
-        print("entrou");
 
         PlayerDataCanvas[] playerDataCanvas = highScores.GetPlayerDataCanvas();
 

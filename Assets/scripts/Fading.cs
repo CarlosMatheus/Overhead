@@ -6,8 +6,9 @@ public class Fading : MonoBehaviour {
 
 	public Texture2D fadeOutTexture;
 	public float fadeSpeed = 0.8f;
-	public int fadeDir = -1;         
+	public int fadeDir = -1;
 
+    private bool isRunnig = false;
 	private int drawDepth = -1000;   //the layer of the texture
 	private float alpha = 1.0f;      //the a alpha of the texture
     private LeaderBoardControllerScript leaderBoardControllerScript;
@@ -71,6 +72,7 @@ public class Fading : MonoBehaviour {
         GameObject correntChild;
 
         if (inOrOut == 1) {
+            isRunnig = true;
             yield return new WaitForSeconds(0.5f);
         }
 
@@ -88,13 +90,16 @@ public class Fading : MonoBehaviour {
             yield return new WaitForSeconds(0.07f);
         }
 
-		if (inOrOut == -1) 
-			gObj.SetActive (false);
-	}
+        if (inOrOut == -1 && isRunnig == false)
+            gObj.SetActive(false);
+        else
+            isRunnig = false;
+    }
 
     private void Start()
     {
         leaderBoardControllerScript = GameObject.Find("LeaderboardController").GetComponent<LeaderBoardControllerScript>();
+        isRunnig = false;
     }
 
 }

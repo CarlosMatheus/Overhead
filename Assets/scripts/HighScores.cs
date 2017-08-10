@@ -60,7 +60,6 @@ public class HighScores : MonoBehaviour {
         }
         else
         {
-            print("Upload failed: " + www.error);
             leaderBoardControllerScript.ConnectionError(www.error);
         }
 
@@ -79,7 +78,6 @@ public class HighScores : MonoBehaviour {
         }
         else
         {
-            print("Upload failed: " + www.error);
             leaderBoardControllerScript.ConnectionError(www.error);
         }
     }
