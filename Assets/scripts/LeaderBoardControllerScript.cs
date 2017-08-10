@@ -71,8 +71,8 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 	public void CancelWithNoError(){
 		cancel = true;
 		fading.DisappearPlayerScoreCanvas ();
-		fading.AppearLeaderBoadCanceledCanvas ();
-	}
+        highScores.DownloadHighscores();
+    }
 
 	public void CancelDueToError(){
 		cancel = true;
@@ -90,9 +90,6 @@ public class LeaderBoardControllerScript : MonoBehaviour {
         {
             playerName = _name;
             isFirstTime = false;
-            //FilterName();
-            //Debug.Log(playerName);
-            //Debug.Log((int)score);
             fading.DisappearPlayerScoreCanvas();
             highScores.AddNewHighscore(playerName, (int)score, (int)wave);
         }
@@ -113,15 +110,6 @@ public class LeaderBoardControllerScript : MonoBehaviour {
         return true;
     }
 
-    //public void FilterName()
-    //{
-    //    print("name of the player before filter: " + playerName);
-    //    //playerName = playerName.Trim( new char[] { '|','.' } );
-    //    playerName = playerName.Replace('|', '0');
-    //    playerName = playerName.Replace(' ', '0');
-    //    print("name of the player filted: " + playerName);
-    //}
-
 	public void OpenLeaderBoard()
     {
         if(cancel == false)
@@ -134,7 +122,6 @@ public class LeaderBoardControllerScript : MonoBehaviour {
             fading.AppearLeaderBoadCanceledCanvas();
             SetHighScoreBoardCancelled();
         }
-
 	}
 
     public void SetWave(float _wave){
@@ -145,13 +132,18 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 		score = _score;
 	}
 
+    public bool GetIsCancelled()
+    {
+        return cancel;
+    }
+
 	private void Start(){
 		highScores = GameObject.Find ("GameMaster").GetComponent<HighScores> ();
 		deathManager = GameObject.Find ("GameMaster").GetComponent<DeathManager> ();
 		fading = GameObject.Find ("GameMaster").GetComponent<Fading> ();
 
         SetleaderBoadCanvas(true);
-        SetOfflineScoreCanvas(true);
+        SetleaderBoadCanceledCanvas(true);
         nameList = GameObject.Find("NameList");
         waveList = GameObject.Find("WaveList");
         scoreList = GameObject.Find("ScoreList");
@@ -159,7 +151,7 @@ public class LeaderBoardControllerScript : MonoBehaviour {
         waveListC = GameObject.Find("WaveListC");
         scoreListC = GameObject.Find("ScoreListC");
         SetleaderBoadCanvas(false);
-        SetOfflineScoreCanvas(false);
+        SetleaderBoadCanceledCanvas(false);
     }
 
     private void SetHighScoreBoard()
@@ -181,9 +173,16 @@ public class LeaderBoardControllerScript : MonoBehaviour {
 
     private void SetHighScoreBoardCancelled()
     {
+        print("entrou");
+
         PlayerDataCanvas[] playerDataCanvas = highScores.GetPlayerDataCanvas();
 
-
+        for (int i = 0; i < 7; i++)
+        {
+            nameListC.transform.GetChild(i).gameObject.GetComponent<Text>().text = playerDataCanvas[i].GetPlayerName();
+            scoreListC.transform.GetChild(i).gameObject.GetComponent<Text>().text = playerDataCanvas[i].GetScore();
+            waveListC.transform.GetChild(i).gameObject.GetComponent<Text>().text = playerDataCanvas[i].GetWave();
+        }
 
     }
 

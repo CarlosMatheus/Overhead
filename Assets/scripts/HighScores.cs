@@ -75,8 +75,6 @@ public class HighScores : MonoBehaviour {
 
         if (string.IsNullOrEmpty(www.error))
         {
-            //print("Fez upload de " + username + " com sucesso!");
-            //print("Upload Successful");
             DownloadHighscores();
         }
         else
