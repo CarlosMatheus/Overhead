@@ -222,7 +222,7 @@ public class LeaderBoardControllerScript : MonoBehaviour {
         GameObject.Find("WavePlayer").GetComponent<Text>().text = wave.ToString();
         GameObject.Find("ScorePlayer").GetComponent<Text>().text = score.ToString();
         GameObject.Find("NamePlayer").GetComponent<Text>().text = playerName;
-        GameObject.Find("MassagePlayer").GetComponent<Text>().text = (playerName + ", your corrent hightest score is:");
+        GameObject.Find("MassagePlayer").GetComponent<Text>().text = (playerName + ", your current hightest score is:");
     }
 
     private void FindPlayerInList()
@@ -244,9 +244,6 @@ public class LeaderBoardControllerScript : MonoBehaviour {
     {
         if (playerRank < 8)
         {
-            Debug.Log("Passou 1");
-            float gap = 40f;
-
             GameObject highScoreBadge = GameObject.Find("HighScoreBadge"+playerRank.ToString());
             highScoreBadge.GetComponent<CanvasGroup>().alpha = 1f;
             GameObject highScoreBadges = GameObject.Find("HighScoreBadges");
@@ -257,7 +254,6 @@ public class LeaderBoardControllerScript : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Passou 2");
             GameObject highScoreBadges = GameObject.Find("HighScoreBadges");
             highScoreBadges.SetActive(false);
         }

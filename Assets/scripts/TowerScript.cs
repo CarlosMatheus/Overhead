@@ -31,6 +31,11 @@ public class TowerScript : MonoBehaviour {
 			return null;
 	}
 
+    public float GetRange()
+    {
+        return range;
+    }
+
 	void Start () {
 		// Finding the player gameObject
 		player = GameObject.FindGameObjectWithTag ("Player");

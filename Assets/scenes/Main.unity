@@ -231,6 +231,52 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 13087530}
+--- !u!1001 &35191307
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4773463213521530, guid: ab91d0e8add484001b16ca9b0bd576d8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.052183
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773463213521530, guid: ab91d0e8add484001b16ca9b0bd576d8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 9.328
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773463213521530, guid: ab91d0e8add484001b16ca9b0bd576d8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3.76231
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773463213521530, guid: ab91d0e8add484001b16ca9b0bd576d8, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773463213521530, guid: ab91d0e8add484001b16ca9b0bd576d8, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773463213521530, guid: ab91d0e8add484001b16ca9b0bd576d8, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773463213521530, guid: ab91d0e8add484001b16ca9b0bd576d8, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773463213521530, guid: ab91d0e8add484001b16ca9b0bd576d8, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1777162474150250, guid: ab91d0e8add484001b16ca9b0bd576d8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ab91d0e8add484001b16ca9b0bd576d8, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &37052658
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,7 +963,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4563528017051808, guid: da42a4da83762402ab84356f1fafda0e, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114779885614857912, guid: da42a4da83762402ab84356f1fafda0e,
         type: 2}
@@ -1266,7 +1312,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4253545777130690, guid: 419af1581e79b3741a87e722bf2e61d2, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 419af1581e79b3741a87e722bf2e61d2, type: 2}
@@ -1431,7 +1477,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4570669095973516, guid: 2f16d96d8e95f4ee893d3f69273b7e64, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114068820416195024, guid: 2f16d96d8e95f4ee893d3f69273b7e64,
         type: 2}
@@ -1489,7 +1535,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 185036728}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -1956,8 +2002,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -70.72002}
-  m_SizeDelta: {x: 408.29, y: 22.52}
+  m_AnchoredPosition: {x: 0, y: -68.17}
+  m_SizeDelta: {x: 497.86, y: 27.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &272544221
 CanvasGroup:
@@ -2028,11 +2074,11 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 80
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: The name contain invalid symbols or is too long
 --- !u!222 &272544225
@@ -2488,7 +2534,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4928703781297044, guid: fd8f4e47073344c99a79b8809ef561ac, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd8f4e47073344c99a79b8809ef561ac, type: 2}
@@ -2950,7 +2996,7 @@ RectTransform:
   m_Children:
   - {fileID: 880828909}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3258,7 +3304,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 450851086}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -4808,33 +4854,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 576035218}
---- !u!84 &576146937
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1115
-  m_Height: 869
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &585563421
 GameObject:
   m_ObjectHideFlags: 0
@@ -5239,33 +5258,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 620940344}
---- !u!84 &628497987
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1857
-  m_Height: 30
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &649738781
 GameObject:
   m_ObjectHideFlags: 0
@@ -6049,6 +6041,33 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 702217815}
+--- !u!84 &702451161
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1857
+  m_Height: 30
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &743987231
 GameObject:
   m_ObjectHideFlags: 0
@@ -7712,7 +7731,7 @@ Prefab:
     - target: {fileID: 224211405682033542, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224211405682033542, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
@@ -8039,7 +8058,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4370622839781960, guid: 6e9038100a8c87f4281d60107dda34f4, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e9038100a8c87f4281d60107dda34f4, type: 2}
@@ -8215,7 +8234,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1086063998}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -9600,7 +9619,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1276908000}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -9772,7 +9791,7 @@ RectTransform:
   - {fileID: 1075233155}
   - {fileID: 1345171012}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9947,7 +9966,7 @@ Prefab:
     - target: {fileID: 224708047992953664, guid: 74f4d1f54da024845bcab1fd08899c37,
         type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 224708047992953664, guid: 74f4d1f54da024845bcab1fd08899c37,
         type: 2}
@@ -11798,13 +11817,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4120947682014248, guid: 6849b8a20f320f04dabdfd7ed9070271, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 20139175998373164, guid: 6849b8a20f320f04dabdfd7ed9070271,
         type: 2}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 628497987}
+      objectReference: {fileID: 702451161}
     - target: {fileID: 114647825517582250, guid: 6849b8a20f320f04dabdfd7ed9070271,
         type: 2}
       propertyPath: m_Enabled
@@ -12323,7 +12342,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1670473742}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -13194,6 +13213,33 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1746179235}
+--- !u!84 &1768050454
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1115
+  m_Height: 869
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1780610340
 GameObject:
   m_ObjectHideFlags: 0
@@ -13969,7 +14015,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4209023626302368, guid: dea061d447ced4c26a34a0e311102897, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1583782463582036, guid: dea061d447ced4c26a34a0e311102897, type: 2}
       propertyPath: m_Name
@@ -14663,7 +14709,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1993134540}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
