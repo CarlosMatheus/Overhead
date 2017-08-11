@@ -13,6 +13,7 @@ public class TowerScript : MonoBehaviour {
 	public GameObject towerSkill;
 	public GameObject teleportEffect;
 	public string enemyTag = "Enemy";
+    [SerializeField] private GameObject rangeObject;
 
 	[Header("Attributes")]
 
@@ -36,9 +37,18 @@ public class TowerScript : MonoBehaviour {
         return range;
     }
 
+    public void StartBuildingTower(){
+        rangeObject.SetActive(true);
+    }
+
+    public void StopBuildingTower(){
+        rangeObject.SetActive(false);
+    }
+
 	void Start () {
 		// Finding the player gameObject
 		player = GameObject.FindGameObjectWithTag ("Player");
+        SetRangeObject();
 
 		if (player == null)
 			Debug.Log ("It's goind bad");
@@ -176,4 +186,11 @@ public class TowerScript : MonoBehaviour {
 
 		StopCoroutine (TeleportEvents ());
 	}
+
+    private void SetRangeObject()
+    {
+        rangeObject.transform.localScale = new Vector3(range * 2, 0.01f, range * 2);
+        rangeObject.SetActive(false);
+    }
+
 }

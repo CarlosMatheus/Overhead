@@ -84,6 +84,7 @@ public class Node : MonoBehaviour {
 			BuildTower ();
 		}
 	}
+
 	void BuildTower () {
 		//StopCoroutine (EventInstantiator ());
 		towerToBuild = buildManager.GetTowerToBuild ();
