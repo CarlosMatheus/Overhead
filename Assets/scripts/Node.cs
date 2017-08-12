@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Node : MonoBehaviour {
 
-	public GameObject buildEffect;
+    [SerializeField] private GameObject gameMaster;
+    [SerializeField] private GameObject icosphere;
+    [SerializeField] private GameObject shopGObj;
+
+    public GameObject buildEffect;
 	public GameObject destroyEffect;
 	public GameObject deathNode;
 	public float towerDist = 2.2f;
@@ -21,24 +25,39 @@ public class Node : MonoBehaviour {
 	private SphereShop sphereShop;
 	private GameObject towerToBuild;
 	private DeathManager deathManager;
+    private TowerManager towerManager;
+    private int towerTobuildIdx;
+    private Shop shopScript;
 
 	void Start(){
-		deathManager = GameObject.Find ("GameMaster").GetComponent<DeathManager> ();
-		buildManager = GameObject.Find ("GameMaster").GetComponent<BuildManager> ();
-		sphereShop = GameObject.Find ("Icosphere").GetComponent<SphereShop> ();
-		soulsCounter = SoulsCounter.instance;
+        gameMaster = GameObject.Find("GameMaster");
+        sphereShop = GameObject.Find("Icosphere").GetComponent<SphereShop>();
+        deathManager = gameMaster.GetComponent<DeathManager> ();
+		buildManager = gameMaster.GetComponent<BuildManager> ();
+        towerManager = gameMaster.GetComponent<TowerManager>();
+        shopScript = gameMaster.GetComponent<InstancesManager>().GetShopGObj().GetComponent<Shop>();
+        soulsCounter = SoulsCounter.instance;
 		scoreCounter = ScoreCounter.instance;
 		towerToBuild = null;
 	}
+
+    public void SetTowerToBuildIdx(int idx)
+    {
+        towerTobuildIdx = idx;
+    }
 		
-	void OnMouseEnter (){
+	void OnMouseEnter ()
+    {
         if (SceneManager.GetActiveScene().buildIndex != 0)
-            if (!deathManager.IsDead ()) {
-			    if (EventSystem.current.IsPointerOverGameObject ()) {
+            if (!deathManager.IsDead ())
+            {
+			    if (EventSystem.current.IsPointerOverGameObject ())
+                {
 				    return;
 			    }
 			    //if the towerToBuild variable is null dont do anything 
-			    if (buildManager.GetTowerToBuild () == null) {
+			    if ( buildManager.GetTowerToBuild () == null)
+                {
 				    return;
 			    }
 			    GameObject selecTowerInst = (GameObject)Instantiate (buildManager.GetSelectionTowerToBuild (), transform.position, transform.rotation);
@@ -47,7 +66,8 @@ public class Node : MonoBehaviour {
 		    }
 	}
 
-	void OnMouseExit (){
+	void OnMouseExit ()
+    {
         if (SceneManager.GetActiveScene().buildIndex != 0)
             buildManager.DestroySelectionTowerToBuildInstance ();
 	}
@@ -67,6 +87,7 @@ public class Node : MonoBehaviour {
 				Debug.Log ("can't build there! - TODO: Display on screen.");
 				return;
 			}
+
 			buildManager.DestroySelectionTowerToBuildInstance ();
 			currentBuildingTower = buildManager.GetTowerToBuild ();
 			soulsCounter.BuildTower (buildManager.GetTowerToBuildIndex ());
@@ -82,20 +103,27 @@ public class Node : MonoBehaviour {
 			}
 			//StartCoroutine (EventInstantiator ());
 			BuildTower ();
+
 		}
 	}
 
-	void BuildTower () {
+	void BuildTower ()
+    {
 		//StopCoroutine (EventInstantiator ());
 		towerToBuild = buildManager.GetTowerToBuild ();
 		tower = (GameObject)Instantiate (currentBuildingTower, transform.position, transform.rotation);
 		tower.transform.rotation = Quaternion.Euler (0,0,0);
+        towerManager.AddTower(tower, shopScript.GetTowerToBuildIndex());
+        buildManager.SetTowerToBuild(null);
+        buildManager.SetSelectionTowerToBuild(null);
+        towerManager.TowerDiselected();
 	}
 
 	/// <summary>
 	/// Tells the sphere shop tower to build.
 	/// </summary>
-	private void TellSphereShopTowerToBuild(){
+	private void TellSphereShopTowerToBuild()
+    {
 		sphereShop.SetTowerToBuild (towerToBuild);
 	}
 }

@@ -220,7 +220,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1360362137407910}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.068499565, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 14, y: 0.01, z: 14}
   m_Children: []
   m_Father: {fileID: 4052804218701712}
@@ -246,7 +246,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1500846572791458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.716905, y: 100, z: -4.8688135}
+  m_LocalPosition: {x: 135.58217, y: -0.45, z: 72.94618}
   m_LocalScale: {x: 1, y: 1.37, z: 1}
   m_Children:
   - {fileID: 4617022393554412}
@@ -360,7 +360,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 55b5c575db6317341b5acfcd376637a9, type: 2}
+  - {fileID: 2100000, guid: 0e7ffd9e72d44954099b48ff1b2e4c57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -484,7 +484,7 @@ MonoBehaviour:
   teleportEffect: {fileID: 1628781945723574, guid: b790363590f171b42b9ff9508e1faa56,
     type: 2}
   enemyTag: Enemy
-  rangeObject: {fileID: 0}
+  rangeObject: {fileID: 1360362137407910}
   range: 7
   turnSpeed: 10
   fireRate: 1

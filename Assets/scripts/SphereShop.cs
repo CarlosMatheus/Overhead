@@ -17,17 +17,19 @@ public class SphereShop : MonoBehaviour {
 	private GameObject ShopGObj;
 	private DeathManager deathManager;
     private PauseManager pauseManager;
+    private TowerManager towerManager;
 
 	public void SetTowerToBuild(GameObject towerToB){
 		towerToBuild = towerToB;
 	}
 
 	private void Start(){
-		deathManager = GameObject.Find ("GameMaster").GetComponent<DeathManager> ();
-        pauseManager = GameObject.Find("GameMaster").GetComponent<PauseManager>();
-        gameMaster = GameObject.Find ("GameMaster");
+        gameMaster = GameObject.Find("GameMaster");
+        deathManager = gameMaster.GetComponent<DeathManager> ();
+        pauseManager = gameMaster.GetComponent<PauseManager>();
 		soulsCounter = gameMaster.GetComponent<SoulsCounter>();
-		buildManager = GameObject.Find("GameMaster").GetComponent<BuildManager>();
+		buildManager = gameMaster.GetComponent<BuildManager>();
+        towerManager = gameMaster.GetComponent<TowerManager>();
 		ShopGObj = GameObject.Find ("Shop");
         if (SceneManager.GetActiveScene().buildIndex != 0)
 		shop = ShopGObj.GetComponent<Shop> ();
@@ -44,27 +46,43 @@ public class SphereShop : MonoBehaviour {
 	/// </summary>
 	private void Update () {
         if (SceneManager.GetActiveScene().buildIndex != 0)
-            if (IsInMainTower ()) {
-			    checkIfCanBuild ();
-			    //Mouse right click makes the store close
-			    if (Input.GetMouseButtonDown (1))
-				    DesactiveShop ();
-		    } else {
-			    CantBuild ();
-			    DesactiveShop ();
-		    }
+        {
+            if ( IsInMainTower() )
+            {
+                CheckIfCanBuild();
+                GetMouseRightMouseButtonDown();
+            }
+            else
+            {
+                CantBuild();
+                DesactiveShop();
+            }
+        }
 	}
+
+    private void GetMouseRightMouseButtonDown()
+    {
+        //Mouse right click makes the store close
+        if (Input.GetMouseButtonDown(1))
+            DesactiveShop();
+    }
 
 	/// <summary>
 	/// Checks if can build the tower you have in selection
 	/// </summary>
-	private void checkIfCanBuild (){
-		if(buildManager.GetTowerToBuild() != null)
-			if ( !soulsCounter.CanBuild( buildManager.GetTowerToBuildIndex () ) )
-				CantBuild ();
+	private void CheckIfCanBuild ()
+    {
+        if ( buildManager.GetTowerToBuild() != null )
+        {
+            if ( !soulsCounter.CanBuild( buildManager.GetTowerToBuildIndex() ) )
+            {
+                CantBuild();
+            }
+        }
 	}
 
-	private void OnMouseEnter (){
+	private void OnMouseEnter ()
+    {
 		if (!deathManager.IsDead () && !pauseManager.IsPaused()) {
 			light.intensity = hoverIntensity;
 		}
@@ -84,18 +102,23 @@ public class SphereShop : MonoBehaviour {
 		ShopGObj.SetActive (true);
 	}
 
-	private void DesactiveShop(){
+	private void DesactiveShop()
+    {
 		buildManager.SetTowerToBuild (null);
 		buildManager.DestroySelectionTowerToBuildInstance ();
 		ShopGObj.SetActive (false);
+        towerManager.TowerDiselected();
 	}
 
-	private void CantBuild(){
+	private void CantBuild()
+    {
 		buildManager.SetTowerToBuild (null);     	   //
 		buildManager.DestroySelectionTowerToBuildInstance ();  //The one that is been used in the moment
+        towerManager.TowerDiselected();
 	}
 
-	private bool IsInMainTower(){
+	private bool IsInMainTower()
+    {
 		if (Vector3.Distance (player.position, center.position) <= 1f) {
 			return true;
 		} else

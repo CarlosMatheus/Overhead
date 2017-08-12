@@ -19,7 +19,7 @@ public class TowerManager : MonoBehaviour {
         {
             for (int i = 0; i < towerListArr[j].Count; i++)
             {
-                towerListArr[j][i].GetComponent<TowerScript>().StartBuildingTower();
+                towerListArr[j][i].GetComponent<TowerScript>().AppearRange();
             }
         }
     }
@@ -30,8 +30,17 @@ public class TowerManager : MonoBehaviour {
 		{
 			for (int i = 0; i < towerListArr[j].Count; i++)
 			{
-				towerListArr[j][i].GetComponent<TowerScript>().StopBuildingTower();
+				towerListArr[j][i].GetComponent<TowerScript>().DisappearRange();
 			}
 		}
+    }
+
+    private void Awake()
+    {
+        towerListArr = new List<GameObject>[numOfTowers];
+        for(int i = 0; i < numOfTowers ; i++)
+        {
+            towerListArr[i] = new List<GameObject>();
+        }
     }
 }

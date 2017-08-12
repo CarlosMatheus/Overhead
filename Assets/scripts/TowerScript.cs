@@ -37,11 +37,13 @@ public class TowerScript : MonoBehaviour {
         return range;
     }
 
-    public void StartBuildingTower(){
+    public void AppearRange()
+    {
         rangeObject.SetActive(true);
     }
 
-    public void StopBuildingTower(){
+    public void DisappearRange()
+    {
         rangeObject.SetActive(false);
     }
 

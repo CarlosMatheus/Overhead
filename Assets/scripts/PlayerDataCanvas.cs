@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PlayerDataCanvas : MonoBehaviour {
+﻿public class PlayerDataCanvas{
 
     private string playerName;
     private int score;
@@ -29,5 +25,4 @@ public class PlayerDataCanvas : MonoBehaviour {
     {
         return wave.ToString();
     }
-
 }

@@ -12,36 +12,47 @@ public class Shop : MonoBehaviour {
 	private SoulsCounter soulsCounter;
 	private ScoreCounter scoreCounter;
 	private BuildManager buildManager;
+    private int indexOfThisTower;
+    private GameObject gameMaster;
+    private TowerManager towerManager;
 
 	/// <summary>
 	/// Purcheses the tower0.
 	/// </summary>
 	public void PurcheseTower0(){
-		int indexOfThisTower = 0;
+		indexOfThisTower = 0;
 		if ( !soulsCounter.CanBuild (indexOfThisTower) )
 			return;
 		buildManager.SetTowerToBuildIndex (indexOfThisTower);
 		buildManager.SetTowerToBuild (buildManager.tower[indexOfThisTower]);
 		buildManager.SetSelectionTowerToBuild (buildManager.selectionTower [indexOfThisTower]);
-	}
+        towerManager.TowerSelected();
+    }
 
 	public void PurcheseTower1(){
-		int indexOfThisTower = 1;
+		indexOfThisTower = 1;
 		if ( !soulsCounter.CanBuild (indexOfThisTower) )
 			return;
 		buildManager.SetTowerToBuildIndex (indexOfThisTower);
 		buildManager.SetTowerToBuild (buildManager.tower[indexOfThisTower]);
 		buildManager.SetSelectionTowerToBuild (buildManager.selectionTower [indexOfThisTower]);
-	}
+        towerManager.TowerSelected();
+    }
 
 	public void PurcheseTower2(){
-		int indexOfThisTower = 2;
+		indexOfThisTower = 2;
 		if ( !soulsCounter.CanBuild (indexOfThisTower) )
 			return;
 		buildManager.SetTowerToBuildIndex (indexOfThisTower);
 		buildManager.SetTowerToBuild (buildManager.tower[indexOfThisTower]);
 		buildManager.SetSelectionTowerToBuild (buildManager.selectionTower [indexOfThisTower]);
-	}
+        towerManager.TowerSelected();
+    }
+
+    public int GetTowerToBuildIndex()
+    {
+        return indexOfThisTower;
+    }
 
 	/// <summary>
 	/// Determines whether this instance can build tower the specified index.
@@ -96,9 +107,11 @@ public class Shop : MonoBehaviour {
 
 	//Instantiate and initialize 
 	private void Start(){
-		buildManager = GameObject.Find ("GameMaster").GetComponent<BuildManager> ();
-		soulsCounter = GameObject.Find ("GameMaster").GetComponent<SoulsCounter> ();
-		scoreCounter = GameObject.Find ("GameMaster").GetComponent<ScoreCounter> ();
+        gameMaster = GameObject.Find("GameMaster");
+        buildManager = gameMaster.GetComponent<BuildManager> ();
+		soulsCounter = gameMaster.GetComponent<SoulsCounter> ();
+		scoreCounter = gameMaster.GetComponent<ScoreCounter> ();
+        towerManager = gameMaster.GetComponent<TowerManager>();
 
 		InitialCantBuildImageSet ();
 	}

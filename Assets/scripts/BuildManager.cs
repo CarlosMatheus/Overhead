@@ -21,7 +21,8 @@ public class BuildManager : MonoBehaviour {
 	/// This is used by the Node
 	/// </summary>
 	/// <returns>The selection tower to build.</returns>
-	public GameObject GetSelectionTowerToBuild(){
+	public GameObject GetSelectionTowerToBuild()
+    {
 		return selectionTowerToBuild;
 	}
 
@@ -30,7 +31,8 @@ public class BuildManager : MonoBehaviour {
 	/// This is used by the Shop
 	/// </summary>
 	/// <param name="selecTower">Selec tower.</param>
-	public void SetSelectionTowerToBuild (GameObject selecTower){
+	public void SetSelectionTowerToBuild (GameObject selecTower)
+    {
 		selectionTowerToBuild = selecTower;
 	}
 
@@ -38,7 +40,8 @@ public class BuildManager : MonoBehaviour {
 	/// Destroies the selection tower.
 	/// This is used by the SphereShop
 	/// </summary>
-	public void DestroySelectionTowerToBuildInstance(){
+	public void DestroySelectionTowerToBuildInstance()
+    {
 		Destroy(selectionTowerToBuildInstance);
 	}
 
@@ -47,7 +50,8 @@ public class BuildManager : MonoBehaviour {
 	/// this is used by the node
 	/// </summary>
 	/// <param name="selectionT">Selection t.</param>
-	public void SetSelectionTowerToBuildInstance(GameObject selectionT){
+	public void SetSelectionTowerToBuildInstance(GameObject selectionT)
+    {
 		selectionTowerToBuildInstance = selectionT;
 	}
 
@@ -56,7 +60,8 @@ public class BuildManager : MonoBehaviour {
 	/// This is accessed by the node, by the SphereShop
 	/// </summary>
 	/// <returns>The tower to build.</returns>
-	public GameObject GetTowerToBuild(){
+	public GameObject GetTowerToBuild()
+    {
 		return towerToBuild;
 	}
 		
@@ -65,7 +70,8 @@ public class BuildManager : MonoBehaviour {
 	/// This is accessed by the SphereShop
 	/// </summary>
 	/// <returns>The tower to build index.</returns>
-	public int GetTowerToBuildIndex(){
+	public int GetTowerToBuildIndex()
+    {
 		return towerToBuildIndex;
 	}
 
@@ -75,7 +81,8 @@ public class BuildManager : MonoBehaviour {
 	/// the shops button
 	/// </summary>
 	/// <param name="tower">Tower.</param>
-	public void SetTowerToBuild (GameObject tower){
+	public void SetTowerToBuild (GameObject tower)
+    {
 		towerToBuild = tower;
 	}
 
@@ -85,17 +92,20 @@ public class BuildManager : MonoBehaviour {
 	/// the shops button
 	/// </summary>
 	/// <param name="index">Index.</param>
-	public void SetTowerToBuildIndex (int index){
+	public void SetTowerToBuildIndex (int index)
+    {
 		towerToBuildIndex = index;
 	}
 
-	private void Awake(){
+	private void Awake()
+    {
 		towerToBuildIndex = 0;
 		towerToBuild = null;
 		soulsCounter = gameObject.GetComponent<SoulsCounter> ();
 	}
 
-	private void Start(){
+	private void Start()
+    {
 		soulsCounter.setInitialTowersValues (initialTowerValue);
 	}
 }	
