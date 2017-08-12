@@ -141,16 +141,23 @@ public class TowerScript : MonoBehaviour {
 		Gizmos.DrawWireSphere (rangePiece.position, range);
 	}
 
-	void OnMouseDown () {
-		if (IsAround (playerSpawnOnTower, player.transform)) {  // If player is at this tower, returns
-			return;
-		} else if (!player.GetComponent<PlayerController> ().teleporting) {  // If not and player is not teleporting
-			player.GetComponent<PlayerController> ().teleporting = true;
-			StartCoroutine (TeleportEvents ());
-		}
-	}
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (IsAround(playerSpawnOnTower, player.transform))
+            {   // If player is at this tower, returns
+                return;
+            }
+            else if (!player.GetComponent<PlayerController>().teleporting)
+            {   // If not and player is not teleporting
+                player.GetComponent<PlayerController>().teleporting = true;
+                StartCoroutine(TeleportEvents());
+            }
+        }
+    }
 
-	bool IsAround (Transform trA, Transform trB) {
+    bool IsAround (Transform trA, Transform trB) {
 
 		if (Vector3.Magnitude (trA.position - trB.position) < 1.0f)
 			return true;
