@@ -25,6 +25,7 @@ public class Node : MonoBehaviour {
     private SphereShop sphereShop;
     private Shop shopScript;
 
+    private bool isAlreadBuilt;
     private int towerTobuildIdx;
 
     void Start()
@@ -38,6 +39,7 @@ public class Node : MonoBehaviour {
         soulsCounter = SoulsCounter.instance;
 		scoreCounter = ScoreCounter.instance;
 		towerToBuild = null;
+        isAlreadBuilt = false;
 	}
 
     public void SetTowerToBuildIdx(int idx)
@@ -47,28 +49,36 @@ public class Node : MonoBehaviour {
 		
 	void OnMouseEnter ()
     {
-        if ( SceneManager.GetActiveScene().buildIndex != 0 )
-            if ( !deathManager.IsDead () )
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            if (!deathManager.IsDead())
             {
-			    if (EventSystem.current.IsPointerOverGameObject ())
+                if (isAlreadBuilt == true)
                 {
-				    return;
-			    }
-			    //if the towerToBuild variable is null dont do anything 
-			    if ( buildManager.GetTowerToBuild () == null)
+                    return;
+                }
+                if (EventSystem.current.IsPointerOverGameObject())
                 {
-				    return;
-			    }
-			    GameObject selecTowerInst = (GameObject)Instantiate (buildManager.GetSelectionTowerToBuild (), transform.position, transform.rotation);
-			    selecTowerInst.transform.rotation = Quaternion.Euler (0, 0, 0);
-			    buildManager.SetSelectionTowerToBuildInstance (selecTowerInst);
-		    }
+                    return;
+                }
+                //if the towerToBuild variable is null dont do anything 
+                if (buildManager.GetTowerToBuild() == null)
+                {
+                    return;
+                }
+                GameObject selecTowerInst = (GameObject)Instantiate(buildManager.GetSelectionTowerToBuild(), transform.position, transform.rotation);
+                selecTowerInst.transform.rotation = Quaternion.Euler(0, 0, 0);
+                buildManager.SetSelectionTowerToBuildInstance(selecTowerInst);
+            }
+        }
 	}
 
 	void OnMouseExit ()
     {
         if (SceneManager.GetActiveScene().buildIndex != 0)
-            buildManager.DestroySelectionTowerToBuildInstance ();
+        {
+            buildManager.DestroySelectionTowerToBuildInstance();
+        }
 	}
 
 	void OnMouseDown(){
@@ -86,6 +96,11 @@ public class Node : MonoBehaviour {
 				Debug.Log ("can't build there! - TODO: Display on screen.");
 				return;
 			}
+
+            if ( isAlreadBuilt == true )
+            {
+                return;
+            }
 
 			buildManager.DestroySelectionTowerToBuildInstance ();
 			currentBuildingTower = buildManager.GetTowerToBuild ();
@@ -116,6 +131,7 @@ public class Node : MonoBehaviour {
         buildManager.SetTowerToBuild(null);
         buildManager.SetSelectionTowerToBuild(null);
         towerManager.TowerDiselected();
+        isAlreadBuilt = true;
 	}
 
 	/// <summary>
