@@ -22,10 +22,10 @@ public class CameraControllerScript : MonoBehaviour {
 	}
 
 	private void Start(){
-		minX = (-1f)*moduleDimension;
-		maxX = moduleDimension - 3;
-		minZ = (-1f)*moduleDimension - 4f;
-		maxZ = moduleDimension - 4;
+        minX = (-1f) * moduleDimension - 3f;
+        maxX = moduleDimension - 10f;
+		minZ = (-1f)*moduleDimension - 10f;
+        maxZ = moduleDimension - 15f;
 	}
 
 	//move the camera white awsd or with mouse in the border
