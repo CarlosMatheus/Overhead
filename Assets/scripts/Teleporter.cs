@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teleporter : MonoBehaviour {
-
+public class Teleporter : MonoBehaviour
+{
 	private Animator anim;
-
 	public GameObject lightAnimationObject;
 
-	void Start () {
+	void Start ()
+    {
 		anim = GetComponent<Animator> ();
 	}
 
-	public void TeleportFor (GameObject _target) {
+	public void TeleportFor (GameObject _target)
+    {
 
 		transform.LookAt (_target.transform.position);
 

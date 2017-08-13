@@ -10,6 +10,8 @@ TagManager:
   - SpawnPoint
   - Grass
   - Tree
+  - GameMaster
+  - Icosphere
   layers:
   - Default
   - TransparentFX

@@ -29,9 +29,13 @@ GameObject:
   - component: {fileID: 114062466384089198}
   - component: {fileID: 114292562531580396}
   - component: {fileID: 114812045155361606}
+  - component: {fileID: 114479091355818390}
+  - component: {fileID: 114600698673747036}
+  - component: {fileID: 114099972934301102}
+  - component: {fileID: 114277739385761156}
   m_Layer: 0
   m_Name: GameMaster
-  m_TagString: Untagged
+  m_TagString: GameMaster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,6 +144,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf6257e4bc5c454f838e8891970da0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Canvas: {fileID: 0}
+--- !u!114 &114099972934301102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314678458617260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9173f5de5d02d4c03b69fbfc390647fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfTowers: 4
+--- !u!114 &114277739385761156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314678458617260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cbd7abd419adf841b578ed5f73febe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopGObj: {fileID: 0}
 --- !u!114 &114292562531580396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,6 +185,7 @@ MonoBehaviour:
   DeathCamera: {fileID: 0}
   Canvas: {fileID: 0}
   GameOverCanvas: {fileID: 0}
+  deathTester: 0
 --- !u!114 &114348083562371108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -167,13 +197,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef78957d5fe724a39b9819c1c73e2f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialcountdown: 30
-  timeBetweenWaves: 45
+  initialcountdown: 5
+  timeBetweenWaves: 30
   spawnDelay: 0.8
   baseSpeedConst: 1
   baseHPConst: 100
   SpeedWaveConst: 1.05
-  HPWaveConst: 1.05
+  HPWaveConst: 1.07
   enemyPrefab:
   - {fileID: 1843476635464596, guid: fab5a7a7ddb7a46479fcac4fa1e03014, type: 2}
   - {fileID: 1843476635464596, guid: 3201a128561c8466d851157665c55519, type: 2}
@@ -181,37 +211,64 @@ MonoBehaviour:
   - {fileID: 1843476635464596, guid: 221cd2f9c30f94837baf48fddd81bc61, type: 2}
   - {fileID: 1843476635464596, guid: 83e7cc0677b2b4ef19a5ed8423b0ba2b, type: 2}
   - {fileID: 1843476635464596, guid: 8708c61fc62be4e38b0865dc596f7ebc, type: 2}
+  - {fileID: 1843476635464596, guid: 3925b887faf13440eaa7f1b9cd0e1e54, type: 2}
   ArrayEnemies:
   - 1
   - 1,1
   - 1,1,1,1
   - 1,1,2
   - 1,2,1,2
+  - 2,2,2
   - 2,2,2,2
-  - 2,2,2,2,2,2
-  - 2,2,2,2,2,3
+  - 2,2,2,2,2
+  - 2,2,2,3
   - 2,3,2,3
-  - 2,2,3,3,2,2
-  - 3,3,3,3,3,3,3
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 2,3,2,3,2,3
+  - 2,2,2,3,3,3,2
+  - 3,3,3,3
+  - 3,3,3,3,3
+  - 4,3,3,3
+  - 4,3,3,3,3,2,2,2,2
+  - 4,4,3,3
+  - 4,3,4,3,4,3
+  - 4,3,4,3,4,3,3,3,3
+  - 4,3,4,3,4,3,3,3,3,2,2,2,2
+  - 4,3,4,3,4,3,3,3,3,3,3,2,2,2,2,2,2,1,1,1
+  - 4,4,4,4,4
+  - 4,4,4,4,4,4
+  - 5,4,4
+  - 5,4,4,4,4
+  - 5,5,4,4,4,4
+  - 5,5,5,3,3,3,3,3,3,3
+  - 5,4,4,4,4,4,5,5,5,4,4,4
+  - 5,5,5,5,5,5
+  - 6,6
+  - 6,5,5,5,5
+  - 6,6,5,5,5
+  - 6,6,5,5,5,4,4,4,4
+  - 6,6,6,3,3,3,3,3,3,3,3,3,3,3,3,3
+  - 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+  - 3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3
+  - 6,6,6,6,6
+  - 6,6,6,5,5,5,5,5,6,6
+  - 6,5,6,5,6,5,3,3,3,3
+  - 6,6,6,6,6,6,6,7
+  - 6,5,6,5,6,5,6,6,6,6,7,7
+  - 6,5,6,5,6,5,6,5,6,5,6,6,7,7,7
+  - 6,5,6,5,6,5,6,5,6,5,6,5,6,6,7,7,7,7
+  - 6,6,6,6,6,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7
+  - 6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,1,7,7,7,7,7
+--- !u!114 &114479091355818390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314678458617260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9bf1bc54d2c4a43b949dfd7d1a17a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114481859035547284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,6 +288,20 @@ MonoBehaviour:
   killValues:
   - 1
   - 5
+--- !u!114 &114600698673747036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314678458617260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a70fdeb88084436895852bf35fa71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutTexture: {fileID: 0}
+  fadeSpeed: 0.8
+  fadeDir: -1
 --- !u!114 &114606223264522626
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -12,13 +12,15 @@ public class RandomObjectSpawn : MonoBehaviour {
 	private float rot;
 	private float tam;
 
-	void Start () {
+	void Start ()
+    {
 		Ajust ();
 		Select ();
 	}
 
 	//Ajust correctly the chances and randoms rotations values
-	void Ajust(){
+	void Ajust()
+    {
 		sum = 0;
 		for (int i = 0; i < chance.Length; i++)
 			sum += chance [i];
@@ -40,7 +42,8 @@ public class RandomObjectSpawn : MonoBehaviour {
 	}
 
 	//spawn in a random y rotation, the quaternion need to be converted to vector 3 to oparate it
-	void Spawn(int i){
+	void Spawn(int i)
+    {
 		Quaternion rotat = arr [i].transform.rotation;
 		Vector3 rotatInVector = rotat.eulerAngles;
 		rotatInVector = new Vector3 (rotatInVector.x, rot, rotatInVector.z);
@@ -49,5 +52,4 @@ public class RandomObjectSpawn : MonoBehaviour {
 		GameObject insta = (GameObject)Instantiate (arr [i], pos, Quaternion.Euler(rotatInVector));
 		insta.transform.localScale = insta.transform.localScale * tam;
 	}
-
 }

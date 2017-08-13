@@ -5,33 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class Node : MonoBehaviour {
 
-    [SerializeField] private GameObject gameMaster;
-    [SerializeField] private GameObject icosphere;
-    [SerializeField] private GameObject shopGObj;
-
     public GameObject buildEffect;
 	public GameObject destroyEffect;
 	public GameObject deathNode;
 	public float towerDist = 2.2f;
-	//public GameObject[] buildEffect;
-	//public GameObject[] buildSample;
+    //public GameObject[] buildEffect;
+    //public GameObject[] buildSample;
 
-	private Material originalMaterial;
-	private GameObject tower;
-	private BuildManager buildManager;
+    //private Material originalMaterial;
+    private DeathManager deathManager;
+    private TowerManager towerManager;
+    private BuildManager buildManager;
 	private SoulsCounter soulsCounter;
 	private ScoreCounter scoreCounter;
 	private GameObject currentBuildingTower;
-	private SphereShop sphereShop;
-	private GameObject towerToBuild;
-	private DeathManager deathManager;
-    private TowerManager towerManager;
-    private int towerTobuildIdx;
+    private GameObject towerToBuild;
+    private GameObject gameMaster;
+    private GameObject tower;
+    private SphereShop sphereShop;
     private Shop shopScript;
 
-	void Start(){
-        gameMaster = GameObject.Find("GameMaster");
-        sphereShop = GameObject.Find("Icosphere").GetComponent<SphereShop>();
+    private int towerTobuildIdx;
+
+    void Start()
+    {
+        gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
+        sphereShop = GameObject.FindGameObjectWithTag("Icosphere").GetComponent<SphereShop>();
         deathManager = gameMaster.GetComponent<DeathManager> ();
 		buildManager = gameMaster.GetComponent<BuildManager> ();
         towerManager = gameMaster.GetComponent<TowerManager>();
@@ -48,8 +47,8 @@ public class Node : MonoBehaviour {
 		
 	void OnMouseEnter ()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
-            if (!deathManager.IsDead ())
+        if ( SceneManager.GetActiveScene().buildIndex != 0 )
+            if ( !deathManager.IsDead () )
             {
 			    if (EventSystem.current.IsPointerOverGameObject ())
                 {
