@@ -388,9 +388,9 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 2100000, guid: 3fc196b7ee71f408b8e7eb545b901dab, type: 2}
   - {fileID: 2100000, guid: d6d02500dd395422f963ea0232fa9f0e, type: 2}
