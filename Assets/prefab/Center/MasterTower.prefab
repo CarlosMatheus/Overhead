@@ -561,6 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc03328a5b8ea41d4b385715c488534a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterTowerIndex: 0
   initialLifes: 5
 --- !u!114 &114705004966340192
 MonoBehaviour:
@@ -3037,7 +3038,7 @@ ParticleSystem:
       type: 1
       properties: 0
   LightsModule:
-    enabled: 1
+    enabled: 0
     ratio: 1
     light: {fileID: 108545299946147608}
     randomDistribution: 1

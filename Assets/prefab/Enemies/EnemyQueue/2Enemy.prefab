@@ -494,8 +494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92eba8945e3aa4df7bb6c8a74f57500e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedEnemyConst: 1.2
-  hpEnemyConst: 1.5
+  speedEnemyConst: 1.1
+  hpEnemyConst: 1
   minDistToChangeDirection: 0.4
 --- !u!114 &114083855588062584
 MonoBehaviour:

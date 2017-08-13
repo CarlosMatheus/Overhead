@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -106,6 +106,6 @@ public class BuildManager : MonoBehaviour {
 
 	private void Start()
     {
-		soulsCounter.setInitialTowersValues (initialTowerValue);
+		soulsCounter.SetInitialTowersValues (initialTowerValue);
 	}
 }	

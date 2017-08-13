@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedEnemyConst: 1
-  hpEnemyConst: 1
+  hpEnemyConst: 0.7
   minDistToChangeDirection: 0.3
 --- !u!114 &114083855588062584
 MonoBehaviour:

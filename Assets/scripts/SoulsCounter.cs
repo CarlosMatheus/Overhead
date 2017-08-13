@@ -5,20 +5,23 @@ using UnityEngine.UI;
 
 public class SoulsCounter : MonoBehaviour {
 
-	//Make it easier to instantiate:
-	public static SoulsCounter instance;
-	public float InitialSouls = 60f;
-	public float scoreConstant = 2f;
-	public string[] killersTags;
-	public float[] killValues;
+    public static SoulsCounter instance;
 
+	[SerializeField] private string[] killersTags;
+	[SerializeField] private float[] baseKillValues;
+    [SerializeField] private float initialSouls = 30f;
+    [SerializeField] private float initialScoreConst = 3f;
+    [SerializeField] private float waveKillConst;
+
+    private float scoreConstant;
 	private float souls;
 	private float wave;
 	private Text soulsText;
 	private ScoreCounter scoreCounter;
+    private WaveSpawner waveSpawner;
 	private float[] towerValue;
 
-	public void setInitialTowersValues(float[] towerV){
+	public void SetInitialTowersValues(float[] towerV){
 		towerValue = towerV;
 	}
 
@@ -68,10 +71,12 @@ public class SoulsCounter : MonoBehaviour {
 	}
 
 	private void Start () {
-		SetSouls (InitialSouls);
+		SetSouls (initialSouls);
+        scoreConstant = initialScoreConst;
 		instance = this;
 		scoreCounter = this.GetComponent<ScoreCounter> ();
 		soulsText = GameObject.Find ("SoulsNum").GetComponent<Text> ();
+        waveSpawner = gameObject.GetComponent<WaveSpawner>();
 	}
 
 	private void Update () {
@@ -82,10 +87,18 @@ public class SoulsCounter : MonoBehaviour {
 		soulsText.text = Mathf.Round(GetSouls()).ToString();
 	}
 
-	private float KillerPrice (string _toSearch) {
+    private float GetKillingValue(int i)
+    {
+        float val = Mathf.Round((baseKillValues[i] * (Mathf.Pow(waveKillConst, waveSpawner.GetWave()))));
+        Debug.Log(val);
+        return val;
+    }
+
+	private float KillerPrice (string _toSearch)
+    {
 		for (int i = 0; i < killersTags.Length; i++)
 			if (killersTags [i] == _toSearch)
-				return killValues[i];
-		return killValues [0];
+                return GetKillingValue(i);
+        return GetKillingValue (0);
 	}
 }
