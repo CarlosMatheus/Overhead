@@ -81,30 +81,33 @@ public class TowerScript : MonoBehaviour {
 				nearestEnemy = enemy;
 			}
 		}
-		if (nearestEnemy != null && shortestDistance <= range) {
-			
-			target = nearestEnemy.transform;
+		if (nearestEnemy != null && shortestDistance <= range) 
+        {
+            if (IsInCorrectScene())
+            {
+                target = nearestEnemy.transform;
+                if (IsAround(playerSpawnOnTower, player.transform))
+                {
+                    if
+                    (
+                        player.GetComponent<PlayerController>().currentTarget == null ||
+                        !player.GetComponent<PlayerController>().IsInRange
+                        (
+                            player.GetComponent<PlayerController>().currentTarget.transform,
+                            player.transform
+                        )
+                    )
+                    {
 
-			if (IsAround (playerSpawnOnTower, player.transform)) {
-				if 
-				(
-					player.GetComponent<PlayerController> ().currentTarget == null ||
-				    !player.GetComponent<PlayerController> ().IsInRange
-					(
-					    player.GetComponent<PlayerController> ().currentTarget.transform, 
-					    player.transform
-				    )
-				) {
+                        player.GetComponent<PlayerController>().SetTarget(nearestEnemy);   // Redefine player target
 
-					player.GetComponent<PlayerController> ().SetTarget (nearestEnemy);   // Redefine player target
-
-				}
-			}
-
-		} else {
-			
+                    }
+                }
+            }
+		} 
+        else 
+        {
 			target = null;
-
 		}
 	}
 
