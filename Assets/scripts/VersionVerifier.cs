@@ -13,6 +13,11 @@ public class VersionVerifier : MonoBehaviour {
     private string versionOnServer;
     private bool isUpdated;
 
+    public void OkButton()
+    {
+        versionAlertCanvas.SetActive(false);
+    }
+
     private void Start()
     {
         versionAlertCanvas = GameObject.Find("VersionAlertCanvas");
@@ -29,12 +34,9 @@ public class VersionVerifier : MonoBehaviour {
     private void VerifyVersion(string _version)
     {
         versionOnServer = _version;
-
         isUpdated = string.Equals(versionOnServer,versionOfThisGame);
-
-        //isUpdated == false
-
-        if (true)
+        Debug.Log(isUpdated);
+        if (isUpdated == false)
         {
             AppearAlert();
         }
@@ -50,6 +52,12 @@ public class VersionVerifier : MonoBehaviour {
         versionAlertCanvas.GetComponent<Animator>().Play("VersionAlert");
     }
 
+    private string AjustText(string _text)
+    {
+        Debug.Log(_text.Split(new char[] { '|' }, System.StringSplitOptions.RemoveEmptyEntries)[0]);
+        return _text.Split(new char[] { '|' }, System.StringSplitOptions.RemoveEmptyEntries)[0];
+    }
+
     IEnumerator DownloadVersionFromDatabase()
     {
         WWW www = new WWW(webURL + publicCode + "/pipe/");
@@ -58,7 +66,7 @@ public class VersionVerifier : MonoBehaviour {
         if(string.IsNullOrEmpty(www.error))
         {
             yield return new WaitForSeconds(0.5f);
-            VerifyVersion(www.text);
+            VerifyVersion( AjustText(www.text) );
         }
         else
         {
