@@ -161,13 +161,19 @@ public class WaveSpawner : MonoBehaviour {
 		countdown = initialcountdown;
 		soulsConter = this.GetComponent<SoulsCounter> ();
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
-        if (SceneManager.GetActiveScene().buildIndex != 0)
-		    waveNumberText = GameObject.Find ("wave").GetComponent<Text>();
-        if (SceneManager.GetActiveScene().buildIndex != 0)
-            waveCountdownText = GameObject.Find ("waveCountdownText").GetComponent<Text>();
+        if (IsInCorrectScene())
+        {
+            waveNumberText = GameObject.Find("wave").GetComponent<Text>();
+            waveCountdownText = GameObject.Find("waveCountdownText").GetComponent<Text>();
+        }
 		baseSpeed = baseSpeedConst;
 		baseHP = baseHPConst;
 	}
+
+    private bool IsInCorrectScene()
+    {
+        return (SceneManager.GetActiveScene().buildIndex != 0 && string.Equals(SceneManager.GetActiveScene().name, "MainMenu") == false);
+    }
 
 	/// <summary>
 	/// Update this instance.
@@ -191,17 +197,18 @@ public class WaveSpawner : MonoBehaviour {
 
 	//Update the User Interface with wave and time remain for next wave information
 	private void UpdateUI(){
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (IsInCorrectScene())
+        {
             waveCountdownText.text = Mathf.Round(countdown).ToString();
-        if (SceneManager.GetActiveScene().buildIndex != 0)
-            waveNumberText.text = Mathf.Round (waveNumber - 1 ).ToString ();
+            waveNumberText.text = Mathf.Round(waveNumber - 1).ToString();
+        }
 	}
 
 	/// <summary>
 	/// Updates the soul.
 	/// </summary>
 	private void UpdateSoul(){
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (IsInCorrectScene())
             soulsConter.SetWave (waveNumber - 1);
 	}
 
@@ -209,7 +216,7 @@ public class WaveSpawner : MonoBehaviour {
 	/// Updates the lifes.
 	/// </summary>
 	private void UpdateLifes(){
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (IsInCorrectScene())
             masterTowerScript.NewWave ();
 	}
 }

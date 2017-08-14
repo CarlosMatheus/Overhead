@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TargetSelection : MonoBehaviour {
 
@@ -50,8 +51,11 @@ public class TargetSelection : MonoBehaviour {
 
 	void OnMouseDown ()  // If this.gameObject had been clicked
 	{
-		// Target it! (logic for untargetting happens on GameController script)
-		GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ().SetTarget (this.gameObject);
+        if (IsInCorrectScene())
+        {
+            // Target it! (logic for untargetting happens on GameController script)
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().SetTarget(this.gameObject);
+        }
 	}
 
 	// This.gameObject had been killed by GameObject go
@@ -75,4 +79,10 @@ public class TargetSelection : MonoBehaviour {
 		Destroy (effectInstantiated, 2f);
 		Destroy (gameObject);
 	}
+
+    private bool IsInCorrectScene()
+    {
+        return (SceneManager.GetActiveScene().buildIndex != 0 && string.Equals(SceneManager.GetActiveScene().name, "MainMenu") == false);
+    }
+
 }

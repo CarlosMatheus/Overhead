@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour {
 
@@ -76,8 +77,18 @@ public class Enemy : MonoBehaviour {
 	}
 
 	//Attack the main tower
-	private void EnemyAttack(){
-		masterTowerScript.EnemyAttack ();
-		Destroy (gameObject);
+	private void EnemyAttack()
+    {
+        if (IsInCorrectScene())
+        {
+            masterTowerScript.EnemyAttack();
+            Destroy(gameObject);
+        }
 	}
+
+    private bool IsInCorrectScene()
+    {
+        return (SceneManager.GetActiveScene().buildIndex != 0 && string.Equals(SceneManager.GetActiveScene().name, "MainMenu") == false);
+    }
+
 }

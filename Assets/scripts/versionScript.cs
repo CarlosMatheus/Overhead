@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class versionScript : MonoBehaviour {
+public class VersionScript : MonoBehaviour {
 
 	public float fadeTime = 1.5f;
 	public float fadeSpeed = 0.8f;
@@ -27,6 +28,7 @@ public class versionScript : MonoBehaviour {
 	private GameObject name1;
 	private GameObject name2;
 	private GameObject name3;
+    private string version;
 
 	private void Start(){
 		image = GameObject.Find ("Image");
@@ -34,6 +36,7 @@ public class versionScript : MonoBehaviour {
 		name1 = GameObject.Find ("Name1");
 		name2 = GameObject.Find ("Name2");
 		name3 = GameObject.Find ("Name3");
+        version = GameObject.Find("_VERSION").GetComponent<_Version>().GetVersion();
 		StartCoroutine(VersionSceneFlow ());
 		image.SetActive (false);
 		versionText.SetActive (false);
@@ -45,6 +48,7 @@ public class versionScript : MonoBehaviour {
 		name1.GetComponent<CanvasGroup> ().alpha = 0;
 		name2.GetComponent<CanvasGroup> ().alpha = 0;
 		name3.GetComponent<CanvasGroup> ().alpha = 0;
+        versionText.GetComponent<Text>().text = "Overhead - v" + version;
 	}
 
 	private IEnumerator VersionSceneFlow(){
