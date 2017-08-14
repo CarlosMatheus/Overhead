@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TowerScript : MonoBehaviour {
 
@@ -52,8 +53,8 @@ public class TowerScript : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
         SetRangeObject();
 
-		if (player == null)
-			Debug.Log ("It's goind bad");
+		//if (player == null)
+			//Debug.Log ("It's goind bad");
 
 		//This will reapeat every 0.5 sec
 		InvokeRepeating ("UpdateTarget", 0f, 0.5f);
@@ -196,10 +197,18 @@ public class TowerScript : MonoBehaviour {
 		StopCoroutine (TeleportEvents ());
 	}
 
+    private bool IsInCorrectScene()
+    {
+        return (SceneManager.GetActiveScene().buildIndex != 0 && string.Equals(SceneManager.GetActiveScene().name, "MainMenu") == false);
+    }
+
     private void SetRangeObject()
     {
-        rangeObject.transform.localScale = new Vector3(range * 2, 0.01f, range * 2);
-        rangeObject.SetActive(false);
+        if (IsInCorrectScene())
+        {
+            rangeObject.transform.localScale = new Vector3(range * 2, 0.01f, range * 2);
+            rangeObject.SetActive(false);
+        }
     }
 
 }

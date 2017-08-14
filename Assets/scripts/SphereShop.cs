@@ -31,13 +31,19 @@ public class SphereShop : MonoBehaviour {
 		buildManager = gameMaster.GetComponent<BuildManager>();
         towerManager = gameMaster.GetComponent<TowerManager>();
 		ShopGObj = GameObject.Find ("Shop");
-        if (SceneManager.GetActiveScene().buildIndex != 0)
-		shop = ShopGObj.GetComponent<Shop> ();
+        if (IsInCorrectScene())
+        {
+            ShopGObj.SetActive(false);
+            shop = ShopGObj.GetComponent<Shop>();
+        }
 		light = GetComponent<Light> ();
 		light.intensity = initialIntensity;
-        if (SceneManager.GetActiveScene().buildIndex != 0)
-            ShopGObj.SetActive (false);
 	}
+
+    private bool IsInCorrectScene()
+    {
+        return (SceneManager.GetActiveScene().buildIndex != 0 && string.Equals(SceneManager.GetActiveScene().name, "MainMenu") == false);
+    }
 
 	/// <summary>
 	/// Update this instance.
@@ -45,7 +51,7 @@ public class SphereShop : MonoBehaviour {
 	/// can buy the tower he selects
 	/// </summary>
 	private void Update () {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (IsInCorrectScene())
         {
             if ( IsInMainTower() )
             {
@@ -83,19 +89,30 @@ public class SphereShop : MonoBehaviour {
 
 	private void OnMouseEnter ()
     {
-		if (!deathManager.IsDead () && !pauseManager.IsPaused()) {
-			light.intensity = hoverIntensity;
-		}
+        if (IsInCorrectScene())
+        {
+            if (!deathManager.IsDead() && !pauseManager.IsPaused())
+            {
+                light.intensity = hoverIntensity;
+            }
+        }
 	}
 
-	private void OnMouseExit (){
-		light.intensity = initialIntensity;
+	private void OnMouseExit ()
+    {
+        if(IsInCorrectScene())
+            light.intensity = initialIntensity;
 	}
 
-	private void OnMouseDown(){
-		if (!deathManager.IsDead () && !pauseManager.IsPaused()) {
-			ActiveShop ();
-		}
+	private void OnMouseDown()
+    {
+        if (IsInCorrectScene())
+        {
+            if (!deathManager.IsDead() && !pauseManager.IsPaused())
+            {
+                ActiveShop();
+            }
+        }
 	}
 
 	private void ActiveShop(){

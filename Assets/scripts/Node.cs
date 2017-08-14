@@ -30,17 +30,25 @@ public class Node : MonoBehaviour {
 
     void Start()
     {
-        gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
-        sphereShop = GameObject.FindGameObjectWithTag("Icosphere").GetComponent<SphereShop>();
-        deathManager = gameMaster.GetComponent<DeathManager> ();
-		buildManager = gameMaster.GetComponent<BuildManager> ();
-        towerManager = gameMaster.GetComponent<TowerManager>();
-        shopScript = gameMaster.GetComponent<InstancesManager>().GetShopGObj().GetComponent<Shop>();
-        soulsCounter = SoulsCounter.instance;
-		scoreCounter = ScoreCounter.instance;
-		towerToBuild = null;
-        isAlreadBuilt = false;
+        if (IsInCorrectScene())
+        {
+            gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
+            sphereShop = GameObject.FindGameObjectWithTag("Icosphere").GetComponent<SphereShop>();
+            deathManager = gameMaster.GetComponent<DeathManager>();
+            buildManager = gameMaster.GetComponent<BuildManager>();
+            towerManager = gameMaster.GetComponent<TowerManager>();
+            shopScript = gameMaster.GetComponent<InstancesManager>().GetShopGObj().GetComponent<Shop>();
+            soulsCounter = SoulsCounter.instance;
+            scoreCounter = ScoreCounter.instance;
+            towerToBuild = null;
+            isAlreadBuilt = false;
+        }
 	}
+
+    private bool IsInCorrectScene()
+    {
+        return (SceneManager.GetActiveScene().buildIndex != 0 && string.Equals(SceneManager.GetActiveScene().name, "MainMenu") == false);
+    }
 
     public void SetTowerToBuildIdx(int idx)
     {
@@ -49,7 +57,7 @@ public class Node : MonoBehaviour {
 		
 	void OnMouseEnter ()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (IsInCorrectScene())
         {
             if (!deathManager.IsDead())
             {
@@ -75,50 +83,60 @@ public class Node : MonoBehaviour {
 
 	void OnMouseExit ()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (IsInCorrectScene())
         {
             buildManager.DestroySelectionTowerToBuildInstance();
         }
 	}
 
-	void OnMouseDown(){
-		if (!deathManager.IsDead ()) {
-			//Avoid pointing to something with a UI element in front of it
-			if (EventSystem.current.IsPointerOverGameObject ()) {
-				return;
-			}
-			//if the towerToBuild variable is null dont do anything 
-			if (buildManager.GetTowerToBuild () == null) {
-				return;
-			}
-
-			if (tower != null) {
-				Debug.Log ("can't build there! - TODO: Display on screen.");
-				return;
-			}
-
-            if ( isAlreadBuilt == true )
+	void OnMouseDown()
+    {
+        if (IsInCorrectScene())
+        {
+            if (!deathManager.IsDead())
             {
-                return;
+                //Avoid pointing to something with a UI element in front of it
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    return;
+                }
+                //if the towerToBuild variable is null dont do anything 
+                if (buildManager.GetTowerToBuild() == null)
+                {
+                    return;
+                }
+
+                if (tower != null)
+                {
+                    Debug.Log("can't build there! - TODO: Display on screen.");
+                    return;
+                }
+
+                if (isAlreadBuilt == true)
+                {
+                    return;
+                }
+
+                buildManager.DestroySelectionTowerToBuildInstance();
+                currentBuildingTower = buildManager.GetTowerToBuild();
+                soulsCounter.BuildTower(buildManager.GetTowerToBuildIndex());
+                scoreCounter.BuildTower(buildManager.GetTowerToBuildIndex());
+                GameObject[] treeArr;
+                treeArr = GameObject.FindGameObjectsWithTag("Tree");
+                for (int i = 0; i < treeArr.Length; i++)
+                {
+                    if (Vector3.Distance(treeArr[i].transform.position, transform.position) < towerDist + 1.5f)
+                    {
+                        Destroy(treeArr[i]);
+                        GameObject eff = (GameObject)Instantiate(destroyEffect, treeArr[i].transform.position, treeArr[i].transform.rotation);
+                        Destroy(eff, 2f);
+                    }
+                }
+                //StartCoroutine (EventInstantiator ());
+                BuildTower();
+
             }
-
-			buildManager.DestroySelectionTowerToBuildInstance ();
-			currentBuildingTower = buildManager.GetTowerToBuild ();
-			soulsCounter.BuildTower (buildManager.GetTowerToBuildIndex ());
-			scoreCounter.BuildTower (buildManager.GetTowerToBuildIndex ());
-			GameObject[] treeArr;
-			treeArr = GameObject.FindGameObjectsWithTag ("Tree");
-			for(int i = 0; i < treeArr.Length;i ++ ){
-				if (Vector3.Distance (treeArr [i].transform.position, transform.position) < towerDist + 1.5f) {
-					Destroy (treeArr[i]);
-					GameObject eff = (GameObject)Instantiate (destroyEffect, treeArr [i].transform.position, treeArr [i].transform.rotation);
-					Destroy (eff,2f);
-				}
-			}
-			//StartCoroutine (EventInstantiator ());
-			BuildTower ();
-
-		}
+        }
 	}
 
 	void BuildTower ()
