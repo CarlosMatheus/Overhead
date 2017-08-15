@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4112127174766540}
   - component: {fileID: 33467064162587370}
   - component: {fileID: 23728057182366420}
-  - component: {fileID: 114111491486614626}
   - component: {fileID: 65895727447375260}
   m_Layer: 0
   m_Name: GrassNoObject
@@ -94,20 +93,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.009007265, y: 0.009399189, z: 0.0045341193}
   m_Center: {x: -0.00010355864, y: -0.000018194318, z: 0.000012316417}
---- !u!114 &114111491486614626
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1765315282483370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e1abf6f14c98402fa4d79343b388ef3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildEffect: {fileID: 1305884547848470, guid: 4d8719aa734e87645966920cbd4eb094,
-    type: 2}
-  destroyEffect: {fileID: 1432811619508178, guid: c437ea0344f1ee248900e43dd41d9ad1,
-    type: 2}
-  deathNode: {fileID: 1539836882470672, guid: c5e656f1dba9f40bf974310c00cf3760, type: 2}
-  towerDist: 0.5

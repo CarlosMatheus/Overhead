@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arr:
-  - {fileID: 1739056587045120, guid: 82ab66996e3c840a48a459773617f26c, type: 2}
+  - {fileID: 1068842944600378, guid: 2df020c0fd9483b41b0c1927a72635cf, type: 2}
   chance:
   - 1
   - 20

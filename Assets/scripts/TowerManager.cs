@@ -14,6 +14,7 @@ public class TowerManager : MonoBehaviour {
     {
         TowerListArr _towerListArr = new TowerListArr();
         _towerListArr.tower = tower;
+        _towerListArr.originalColliderSize = tower.GetComponent<BoxCollider>().size;
         towerListArr[indexOfTower].Add(_towerListArr);
     }
 
@@ -24,11 +25,9 @@ public class TowerManager : MonoBehaviour {
             for (int i = 0; i < towerListArr[j].Count; i++)
             {
                 towerListArr[j][i].tower.GetComponent<TowerScript>().AppearRange();
-                towerListArr[j][i].originalColliderSize = towerListArr[j][i].tower.GetComponent<BoxCollider>().size;
                 towerListArr[j][i].tower.GetComponent<BoxCollider>().size = new Vector3(0,0,0);
             }
         }
-        originalIcosphereColiderRadius = icosphere.GetComponent<SphereCollider>().radius;
         icosphere.GetComponent<SphereCollider>().radius = 0;
     }
 
@@ -52,6 +51,11 @@ public class TowerManager : MonoBehaviour {
         {
             towerListArr[i] = new List<TowerListArr>();
         }
+    }
+
+    private void Start()
+    {
+        originalIcosphereColiderRadius = icosphere.GetComponent<SphereCollider>().radius;
     }
 
     private class TowerListArr
