@@ -14,6 +14,7 @@ public class TowerManager : MonoBehaviour {
     {
         TowerListArr _towerListArr = new TowerListArr();
         _towerListArr.tower = tower;
+        _towerListArr.originalColliderSize = tower.GetComponent<BoxCollider>().size;
         towerListArr[indexOfTower].Add(_towerListArr);
     }
 
@@ -25,6 +26,7 @@ public class TowerManager : MonoBehaviour {
             {
                 towerListArr[j][i].tower.GetComponent<TowerScript>().AppearRange();
                 towerListArr[j][i].originalColliderSize = towerListArr[j][i].tower.GetComponent<BoxCollider>().size;
+                Debug.Log(towerListArr[j][i].originalColliderSize);
                 towerListArr[j][i].tower.GetComponent<BoxCollider>().size = new Vector3(0,0,0);
             }
         }
