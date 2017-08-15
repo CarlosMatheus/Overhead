@@ -11,18 +11,12 @@ public class TowerScript : MonoBehaviour {
 	public Transform firePoint;
 	public Transform playerSpawnOnTower;
 	public GameObject bulletPrefab;
-	public GameObject towerSkill;
 	public GameObject teleportEffect;
 	public string enemyTag = "Enemy";
     [SerializeField] private GameObject rangeObject;
 
-	[Header("Attributes")]
-
-	public float range = 4f;
-	public float turnSpeed = 10f;
-	public float fireRate = 1f;
-	public float fireCountdown = 0f;
-
+	private float fireCountdown = 0f;
+	private float turnSpeed = 10f;
 	private Transform target;
 	private GameObject player;
 
@@ -35,7 +29,7 @@ public class TowerScript : MonoBehaviour {
 
     public float GetRange()
     {
-        return range;
+		return bulletPrefab.GetComponent<SkillsProperties> ().GetRange ();
     }
 
     public void AppearRange()
@@ -81,7 +75,7 @@ public class TowerScript : MonoBehaviour {
 				nearestEnemy = enemy;
 			}
 		}
-		if (nearestEnemy != null && shortestDistance <= range) 
+		if (nearestEnemy != null && shortestDistance <= GetRange()) 
         {
             if (IsInCorrectScene())
             {
@@ -111,7 +105,7 @@ public class TowerScript : MonoBehaviour {
 		}
 	}
 
-	//rotation to follow the enemy direction
+	// Rotation to follow the enemy direction
 	void FollowRotation(){
 		Vector3 dir = target.position - transform.position;
 		Quaternion lookRotation = Quaternion.LookRotation(dir);
@@ -119,22 +113,22 @@ public class TowerScript : MonoBehaviour {
 		partToRotate.rotation = Quaternion.Euler (0f, rotation.y, 0f);
 	}
 
-	//Will make it fire with the right rate
+	// Will make it fire with the right rate
 	void Fire(){
 		if( fireCountdown <= 0f ){
 			Shoot ();
-			fireCountdown = 1f / fireRate;
+			fireCountdown = bulletPrefab.GetComponent<SkillsProperties> ().GetCooldown ();
 		}
 		fireCountdown -= Time.deltaTime;
 	}
 
-	//Will instantiete the shot and make it fallow the target
+	// Will instantiete the shot and make it fallow the target
 	void Shoot(){
 		GameObject spellGO = ( GameObject ) Instantiate (bulletPrefab,firePoint.position,firePoint.rotation);
 		TowerSpell towerSpell = spellGO.GetComponent<TowerSpell>();
 
 		// Speel need to know who instantiated him
-		spellGO.GetComponent<SkillsProperties> ().invoker = gameObject;
+		spellGO.GetComponent<SkillsProperties> ().SetInvoker (gameObject);
 
 		if (towerSpell != null)
 			towerSpell.Seek (target);
@@ -142,7 +136,7 @@ public class TowerScript : MonoBehaviour {
 
 	void OnDrawGizmosSelected(){
 		Gizmos.color = new Color(255,0,0,0.75f);
-		Gizmos.DrawWireSphere (rangePiece.position, range);
+		Gizmos.DrawWireSphere (rangePiece.position, GetRange());
 	}
 
     private void OnMouseOver()
@@ -181,8 +175,8 @@ public class TowerScript : MonoBehaviour {
 		player.transform.position = playerSpawnOnTower.position;
 		player.transform.rotation = partToRotate.transform.rotation;
 
-		// Sets new skill to player
-		player.GetComponent<PlayerController>().currentSkill = towerSkill;
+		// Sets new skill to player---------------------------------------------------------------------------------------------------
+		//player.GetComponent<PlayerController>().currentSkill = towerSkill;
 
 		// Sets new target to player if this isn't already his
 		if (target != null && player.GetComponent<PlayerController> ().currentTarget != null) {
@@ -209,7 +203,7 @@ public class TowerScript : MonoBehaviour {
     {
         if (IsInCorrectScene())
         {
-            rangeObject.transform.localScale = new Vector3(range * 2, 0.01f, range * 2);
+			rangeObject.transform.localScale = new Vector3(GetRange() * 2, 0.01f, GetRange() * 2);
             rangeObject.SetActive(false);
         }
     }

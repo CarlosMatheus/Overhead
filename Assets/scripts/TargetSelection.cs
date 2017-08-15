@@ -23,9 +23,9 @@ public class TargetSelection : MonoBehaviour {
 
 	public void TakeDamageBy (GameObject other)
 	{
-		HP -= other.GetComponent<SkillsProperties> ().damage;
+		HP -= other.GetComponent<SkillsProperties> ().GetDamage();
 		if (HP <= 0)
-			DeathBy (other.GetComponent<SkillsProperties> ().invoker);
+			DeathBy (other.GetComponent<SkillsProperties> ().GetInvoker());
 	}
 
 	void Start ()
