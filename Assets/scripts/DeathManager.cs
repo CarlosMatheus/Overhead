@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DeathManager : MonoBehaviour {
 
@@ -25,7 +26,10 @@ public class DeathManager : MonoBehaviour {
 	
 	void Start ()
     {
-		leaderBoardControllerScript = GameObject.Find ("LeaderboardController").GetComponent<LeaderBoardControllerScript> ();
+        if(IsInCorrectScene())
+        {
+            leaderBoardControllerScript = GameObject.Find("LeaderboardController").GetComponent<LeaderBoardControllerScript>();    
+        }
 		fading = GameObject.Find ("GameMaster").GetComponent<Fading> ();
         Invoke("DeathTesterFunc", 5f);
 	}
@@ -105,6 +109,11 @@ public class DeathManager : MonoBehaviour {
         {
             LoseTheGame();
         }
+    }
+
+    private bool IsInCorrectScene()
+    {
+        return (string.Equals(SceneManager.GetActiveScene().name, "Tutorial") == false);
     }
 
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4497074, g: 0.49977583, b: 0.5756327, a: 1}
+  m_IndirectSpecularColor: {r: 0.4497071, g: 0.4997756, b: 0.5756324, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -402,33 +402,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd8f4e47073344c99a79b8809ef561ac, type: 2}
   m_IsPrefabParent: 0
---- !u!84 &415364072
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1203
-  m_Height: 752
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!84 &511110861
 RenderTexture:
   m_ObjectHideFlags: 0
@@ -534,7 +507,7 @@ Prefab:
         type: 2}
       propertyPath: Canvas
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 612114638}
     - target: {fileID: 114812045155361606, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: camera
@@ -625,9 +598,51 @@ Prefab:
       propertyPath: icosphere
       value: 
       objectReference: {fileID: 1801212921}
+    - target: {fileID: 114062466384089198, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: fader
+      value: 
+      objectReference: {fileID: 612114638}
+    - target: {fileID: 114062466384089198, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: fadeCanvas
+      value: 
+      objectReference: {fileID: 1710198127}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0ae3f0160a394622b2556300039986c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &612114638 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1161922269846664, guid: e057f9a5ad71a4f15b8d50ed6d9ed9ee,
+    type: 2}
+  m_PrefabInternal: {fileID: 1710198126}
+--- !u!84 &900501907
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 723
+  m_Height: 407
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &955045869 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1319377659274120, guid: 0b856abfdd5ce4931b2113cd82c17491,
@@ -1282,9 +1297,28 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1527228898503456, guid: e057f9a5ad71a4f15b8d50ed6d9ed9ee, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 225049084863555638, guid: e057f9a5ad71a4f15b8d50ed6d9ed9ee,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225049084863555638, guid: e057f9a5ad71a4f15b8d50ed6d9ed9ee,
+        type: 2}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e057f9a5ad71a4f15b8d50ed6d9ed9ee, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1710198127 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1527228898503456, guid: e057f9a5ad71a4f15b8d50ed6d9ed9ee,
+    type: 2}
+  m_PrefabInternal: {fileID: 1710198126}
 --- !u!1 &1801212921 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1969399071226334, guid: da42a4da83762402ab84356f1fafda0e,

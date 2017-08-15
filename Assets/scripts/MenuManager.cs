@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
 
-    [SerializeField] private GameObject Canvas;
+    [SerializeField] private GameObject fader;
+    [SerializeField] private GameObject fadeCanvas;
 
     private float _currentValue;
-    private GameObject fadeCanvas;
+    //private GameObject fadeCanvas;
 
     private void Start()
     {
-        fadeCanvas = Canvas.transform.Find("FadeCanvas").gameObject;
     }
 
     public void LoadScene(int sceneNumber)
@@ -28,7 +28,7 @@ public class MenuManager : MonoBehaviour {
 
     public IEnumerator Fade(int sceneNumber)
     {
-        Canvas.SetActive(true);
+        fader.SetActive(true);
         fadeCanvas.SetActive(true);
         while (fadeCanvas.GetComponent<CanvasGroup>().alpha < 0.99)
         {

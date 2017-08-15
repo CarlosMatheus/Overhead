@@ -24,26 +24,38 @@ public class SphereShop : MonoBehaviour {
 	}
 
 	private void Start(){
-        gameMaster = GameObject.Find("GameMaster");
-        deathManager = gameMaster.GetComponent<DeathManager> ();
-        pauseManager = gameMaster.GetComponent<PauseManager>();
-		soulsCounter = gameMaster.GetComponent<SoulsCounter>();
-		buildManager = gameMaster.GetComponent<BuildManager>();
-        towerManager = gameMaster.GetComponent<TowerManager>();
-		ShopGObj = GameObject.Find ("Shop");
-        if (IsInCorrectScene())
+        if (IsNotInCutScene())
         {
-            ShopGObj.SetActive(false);
-            shop = ShopGObj.GetComponent<Shop>();
+            gameMaster = GameObject.Find("GameMaster");
+            deathManager = gameMaster.GetComponent<DeathManager>();
+            pauseManager = gameMaster.GetComponent<PauseManager>();
+            soulsCounter = gameMaster.GetComponent<SoulsCounter>();
+            buildManager = gameMaster.GetComponent<BuildManager>();
+            towerManager = gameMaster.GetComponent<TowerManager>();
+            ShopGObj = GameObject.Find("Shop");
+            if (IsInCorrectScene())
+            {
+                ShopGObj.SetActive(false);
+                shop = ShopGObj.GetComponent<Shop>();
+            }
+            light = GetComponent<Light>();
+            light.intensity = initialIntensity;
         }
-		light = GetComponent<Light> ();
-		light.intensity = initialIntensity;
 	}
 
     private bool IsInCorrectScene()
     {
-        return (SceneManager.GetActiveScene().buildIndex != 0 && string.Equals(SceneManager.GetActiveScene().name, "MainMenu") == false);
+        bool a = SceneManager.GetActiveScene().buildIndex != 0;
+        bool b = string.Equals(SceneManager.GetActiveScene().name, "MainMenu") == false;
+        return ( a && b);
     }
+
+    private bool IsNotInCutScene()
+    {
+        bool c = string.Equals(SceneManager.GetActiveScene().name, "CutScenes") == false;
+        return (c);
+    }
+
 
 	/// <summary>
 	/// Update this instance.

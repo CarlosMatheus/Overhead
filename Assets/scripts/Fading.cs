@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Fading : MonoBehaviour {
 
@@ -98,8 +99,16 @@ public class Fading : MonoBehaviour {
 
     private void Start()
     {
-        leaderBoardControllerScript = GameObject.Find("LeaderboardController").GetComponent<LeaderBoardControllerScript>();
+        if (IsInCorrectScene())
+        {
+            leaderBoardControllerScript = GameObject.Find("LeaderboardController").GetComponent<LeaderBoardControllerScript>();
+        }
         isRunnig = false;
+    }
+
+    private bool IsInCorrectScene()
+    {
+        return (!string.Equals(SceneManager.GetActiveScene().name, "Tutorial"));
     }
 
 }

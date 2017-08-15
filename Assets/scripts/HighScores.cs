@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HighScores : MonoBehaviour {
 
@@ -30,7 +31,8 @@ public class HighScores : MonoBehaviour {
 
 	private void Start()
     {
-		leaderBoardControllerScript = GameObject.Find ("LeaderboardController").GetComponent<LeaderBoardControllerScript> ();
+        if(IsInCorrectScene())
+		    leaderBoardControllerScript = GameObject.Find ("LeaderboardController").GetComponent<LeaderBoardControllerScript> ();
 	}
 
 	private void FormatHighscores(string textStream){
@@ -81,4 +83,10 @@ public class HighScores : MonoBehaviour {
             leaderBoardControllerScript.ConnectionError(www.error);
         }
     }
+
+    private bool IsInCorrectScene()
+    {
+        return (!string.Equals(SceneManager.GetActiveScene().name, "Tutorial"));
+    }
+
 }

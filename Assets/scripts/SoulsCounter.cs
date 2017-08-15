@@ -89,8 +89,7 @@ public class SoulsCounter : MonoBehaviour {
 
     private float GetKillingValue(int i)
     {
-        float val = Mathf.Round((baseKillValues[i] * (Mathf.Pow(waveKillConst, waveSpawner.GetWave()))));
-        Debug.Log(val);
+        float val = Mathf.Round( (baseKillValues[i] * (Mathf.Pow(waveKillConst, waveSpawner.GetWave()))) );
         return val;
     }
 

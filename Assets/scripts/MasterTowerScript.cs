@@ -43,7 +43,8 @@ public class MasterTowerScript : MonoBehaviour {
         towerManager.AddTower(this.gameObject, masterTowerIndex);
     }
 
-	private void UpdateLifeText(){
+	private void UpdateLifeText()
+    {
 		lifeCounterText.text = Mathf.Round (Mathf.Clamp(lifes, 0, 1000)).ToString();
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ModuleScript : MonoBehaviour {
 
@@ -13,7 +14,16 @@ public class ModuleScript : MonoBehaviour {
 	}
 
 	private void Start(){
-		waveSpawner = GameObject.Find ("GameMaster").GetComponent<WaveSpawner> ();
-		waveSpawner.SetModule (spawnPoint,wayPoints);
+        if (IsNotInCutScene())
+        {
+            waveSpawner = GameObject.Find("GameMaster").GetComponent<WaveSpawner>();
+            waveSpawner.SetModule(spawnPoint, wayPoints);
+        }
 	}
+
+    private bool IsNotInCutScene()
+    {
+        bool c = string.Equals(SceneManager.GetActiveScene().name, "CutScenes") == false;
+        return (c);
+    }
 }

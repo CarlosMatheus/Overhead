@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45139974, g: 0.5008921, b: 0.57231385, a: 1}
+  m_IndirectSpecularColor: {r: 0.45139992, g: 0.50089186, b: 0.5723135, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -921,6 +921,21 @@ Prefab:
       propertyPath: Canvas
       value: 
       objectReference: {fileID: 1962513631}
+    - target: {fileID: 114481101833733096, guid: c0f0f701cce614d6684f87d864e45474,
+        type: 2}
+      propertyPath: fadeCanvas
+      value: 
+      objectReference: {fileID: 1293172349}
+    - target: {fileID: 114481101833733096, guid: c0f0f701cce614d6684f87d864e45474,
+        type: 2}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1962513631}
+    - target: {fileID: 114481101833733096, guid: c0f0f701cce614d6684f87d864e45474,
+        type: 2}
+      propertyPath: fader
+      value: 
+      objectReference: {fileID: 1962513631}
     m_RemovedComponents:
     - {fileID: 114570232104950592, guid: c0f0f701cce614d6684f87d864e45474, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c0f0f701cce614d6684f87d864e45474, type: 2}
@@ -1354,10 +1369,15 @@ Prefab:
         type: 2}
       propertyPath: fadeCanvas
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1293172349}
     - target: {fileID: 114609530440453420, guid: a7777ef2fdfc54130ba66b7303c839a1,
         type: 2}
       propertyPath: Canvas
+      value: 
+      objectReference: {fileID: 1962513631}
+    - target: {fileID: 114609530440453420, guid: a7777ef2fdfc54130ba66b7303c839a1,
+        type: 2}
+      propertyPath: fader
       value: 
       objectReference: {fileID: 1962513631}
     m_RemovedComponents: []
