@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 626657032f8d14a24bb7f10ecc5fc9bf
+timeCreated: 1502918293
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Blood and Blade
+  fontNames:
+  - Blood and Blade
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
