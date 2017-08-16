@@ -9,6 +9,7 @@ public class SkillTreeManager : MonoBehaviour {
 
 	void Start () {
 		skillTreeCanvas.enabled = false;
+		skillTreeCanvas.gameObject.SetActive (true);
 	}
 
 	void Update () {

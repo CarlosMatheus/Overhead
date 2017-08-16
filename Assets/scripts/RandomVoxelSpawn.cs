@@ -109,10 +109,10 @@ public class RandomVoxelSpawn : MonoBehaviour
         curPos = finalPos + new Vector3(0f, 4f, 0f);
         rotatInVector = new Vector3(rotatInVector.x, 90 * rot, rotatInVector.z);
 
-        float time = Mathf.Sqrt(transform.position.x * transform.position.x + transform.position.z * transform.position.z);
+        float time = Mathf.Pow((transform.position.x * transform.position.x + transform.position.z * transform.position.z), 0.43f);
         gameObject.GetComponent<MeshRenderer>().enabled = false;
 
-        yield return new WaitForSeconds(((time - 3f)+Random.Range(0, 1.5f))/5);
+        yield return new WaitForSeconds(((time-1)+Random.Range(0, 1.5f))/5);
         voxel = Instantiate(arr[i], curPos, Quaternion.Euler(rotatInVector));
 
         while (voxel.transform.position.y - finalPos.y >= 0.0005f)

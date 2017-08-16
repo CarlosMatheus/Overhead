@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
-  cooldown: 1
+  cooldown: 0.75
   range: 4
   effect: {fileID: 0}
 --- !u!198 &198115877608693450
