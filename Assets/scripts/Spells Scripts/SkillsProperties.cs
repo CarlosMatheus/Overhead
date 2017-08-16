@@ -48,4 +48,7 @@ public class SkillsProperties : MonoBehaviour {
 		range = _range;
 	}
 
+	public void SetEffect (GameObject _sideEffect) {
+		sideEffect = _sideEffect;
+	}
 }
