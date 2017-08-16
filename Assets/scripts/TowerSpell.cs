@@ -6,7 +6,7 @@ public class TowerSpell : MonoBehaviour {
 	public GameObject impactEffect;
 	public float speed = 15f;
 
-	//this puclic function is accessed by the caster and it passes the target
+	// This puclic function is accessed by the caster and it passes the target
 	public void Seek (Transform _target){
 		target = _target;
 	}
@@ -19,7 +19,7 @@ public class TowerSpell : MonoBehaviour {
 		Follow ();
 	}
 
-	//Fallow the target untill hit it
+	// Follow the target untill hit it
 	void Follow(){
 		Vector3 dir = target.position - transform.position;
 		float distanceThisFrame = speed * Time.deltaTime;
@@ -32,7 +32,7 @@ public class TowerSpell : MonoBehaviour {
 		transform.Translate (dir.normalized * distanceThisFrame, Space.World);
 	}
 
-	//Will hit the target, intantiate the impactEffect, make damage, then will destroy the spell and its effect
+	// Will hit the target, intantiate the impactEffect, make damage, then will destroy the spell and its effect
 	void HitTarget(){
 		target.GetComponent<TargetSelection> ().TakeDamageBy(this.gameObject);
 
@@ -41,11 +41,11 @@ public class TowerSpell : MonoBehaviour {
 			Destroy (effect, 2f);
 		}
 
-		if (GetComponent<SkillsProperties> ().effect != null) {  // If this spell has a effect
+		if (GetComponent<SkillsProperties> ().GetEffect() != null) {  // If this spell has a effect
 
 			// Instatiate it
 			GameObject sideEffect = (GameObject)Instantiate (
-				GetComponent<SkillsProperties> ().effect, 
+				GetComponent<SkillsProperties> ().GetEffect (), 
 				target.gameObject.transform.position, 
 				target.gameObject.transform.rotation
 			);
@@ -54,7 +54,7 @@ public class TowerSpell : MonoBehaviour {
 			sideEffect.GetComponent<SideEffect> ().SetTarget (target.gameObject);
 
 			// Set sideEffect invoker
-			sideEffect.GetComponent<SkillsProperties> ().invoker = GetComponent<SkillsProperties>().invoker;
+			sideEffect.GetComponent<SkillsProperties> ().SetInvoker (GetComponent<SkillsProperties>().GetInvoker ());
 
 			// Start sideEffect effects
 			sideEffect.GetComponent<SideEffect> ().StartEffect ();
