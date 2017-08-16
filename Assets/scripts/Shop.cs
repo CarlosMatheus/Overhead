@@ -3,12 +3,13 @@ using UnityEngine.UI;
 
 //This class will be used by the UI bottom to buy a new tower
 public class Shop : MonoBehaviour {
+    
+    [SerializeField] private Color normalTextColor;
+    [SerializeField] private Color cantBuildTextColor;
 
 	private int numOfButtons;
 	private bool[] canBuildTower;
-	private Image image;
 	private Transform[] buttons;
-	private GameObject[] cantBuildImage;
 	private SoulsCounter soulsCounter;
 	private ScoreCounter scoreCounter;
 	private BuildManager buildManager;
@@ -75,7 +76,6 @@ public class Shop : MonoBehaviour {
 	private void Awake(){
 		numOfButtons = transform.childCount;
 		setTheShopButtons ();
-		setTheCantBuyImages ();
 		setCanBuildTower ();
 	}
 
@@ -84,14 +84,6 @@ public class Shop : MonoBehaviour {
 		buttons = new Transform[numOfButtons];
 		for (int i = 0; i < numOfButtons; i++){
 			buttons [i] = transform.GetChild (i);
-		}
-	}
-
-	//Get the cant buy images game objects
-	private void setTheCantBuyImages(){
-		cantBuildImage = new GameObject[numOfButtons];
-		for (int i = 0; i < numOfButtons; i++){
-			cantBuildImage [i] = buttons [i].gameObject.GetComponentInChildren<CantBuildScript> ().transform.gameObject;
 		}
 	}
 
@@ -112,8 +104,6 @@ public class Shop : MonoBehaviour {
 		soulsCounter = gameMaster.GetComponent<SoulsCounter> ();
 		scoreCounter = gameMaster.GetComponent<ScoreCounter> ();
         towerManager = gameMaster.GetComponent<TowerManager>();
-
-		InitialCantBuildImageSet ();
 	}
 
 	/// <summary>
@@ -132,19 +122,11 @@ public class Shop : MonoBehaviour {
 		for (int i = 0 ; i < buildManager.tower.Length; i ++){
 			if (!soulsCounter.CanBuild (i)) {
 				canBuildTower [i] = false;
-				cantBuildImage [i].SetActive (true);
+                buttons[i].GetComponentInChildren<PriceFinder>().GetComponent<Text>().color = cantBuildTextColor;
 			} else {
 				canBuildTower [i] = true;
-				cantBuildImage [i].SetActive (false);
+                buttons[i].GetComponentInChildren<PriceFinder>().GetComponent<Text>().color = normalTextColor;
 			}
 		}
-	}
-
-	/// <summary>
-	/// Initials the cant build image set.
-	/// </summary>
-	private void InitialCantBuildImageSet(){
-		for (int i = 0 ; i < buildManager.tower.Length; i ++)
-			cantBuildImage[i].SetActive (false);
 	}
 }
