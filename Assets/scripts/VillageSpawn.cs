@@ -19,7 +19,7 @@ public class VillageSpawn : MonoBehaviour {
 
     IEnumerator Spawn()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         while (finalScale.y - transform.localScale.y >= 0.0005f)
         {
             transform.localScale = Vector3.Lerp(transform.localScale, finalScale, 0.05f);
