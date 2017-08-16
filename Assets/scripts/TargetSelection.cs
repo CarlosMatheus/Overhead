@@ -63,9 +63,9 @@ public class TargetSelection : MonoBehaviour {
 	{
 		// If player was killing this.gameObject
 		if (go.tag == "Player") {
-			if (go.GetComponent<PlayerController> ().currentTarget != null) {
-				if (go.GetComponent<PlayerController> ().currentTarget.transform == this.gameObject.transform) {
-					go.GetComponent<PlayerController> ().currentTarget = null;
+			if (go.GetComponent<PlayerController> ().GetTarget() != null) {
+				if (go.GetComponent<PlayerController> ().GetTarget().transform == this.gameObject.transform) {
+					go.GetComponent<PlayerController> ().SetTarget (null);
 					go.GetComponent<PlayerController> ().FindNewTarget ();   // Finds a new target
 				}
 			}

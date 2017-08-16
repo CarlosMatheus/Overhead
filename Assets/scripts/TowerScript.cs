@@ -15,10 +15,15 @@ public class TowerScript : MonoBehaviour {
 	public string enemyTag = "Enemy";
     [SerializeField] private GameObject rangeObject;
 
-	private float fireCountdown = 0f;
+	private float fireCountdown = 1f;
 	private float turnSpeed = 10f;
 	private Transform target;
 	private GameObject player;
+
+	// Atributes from spell
+	private float damage;
+	private float cooldown;
+	private float range;
 
 	public GameObject GetTarget() {
 		if (target != null)
@@ -42,13 +47,25 @@ public class TowerScript : MonoBehaviour {
         rangeObject.SetActive(false);
     }
 
+	public void SetDamage (float multiplicationFactor) {
+		damage = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetDamage ();
+	}
+
+	public void SetCooldown (float multiplicationFactor) {
+		cooldown = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetCooldown ();
+	}
+
+	public void SetRange (float multiplicationFactor) {
+		range = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetRange ();
+	}
+
 	void Start () {
+		// Set skill values from prefab
+		SetValues (1f);
+
 		// Finding the player gameObject
 		player = GameObject.FindGameObjectWithTag ("Player");
         SetRangeObject();
-
-		//if (player == null)
-			//Debug.Log ("It's goind bad");
 
 		//This will reapeat every 0.5 sec
 		InvokeRepeating ("UpdateTarget", 0f, 0.5f);
@@ -84,10 +101,10 @@ public class TowerScript : MonoBehaviour {
                 {
                     if
                     (
-                        player.GetComponent<PlayerController>().currentTarget == null ||
+							player.GetComponent<PlayerController>().GetTarget() == null ||
                         !player.GetComponent<PlayerController>().IsInRange
                         (
-                            player.GetComponent<PlayerController>().currentTarget.transform,
+								player.GetComponent<PlayerController>().GetTarget().transform,
                             player.transform
                         )
                     )
@@ -126,9 +143,15 @@ public class TowerScript : MonoBehaviour {
 	void Shoot(){
 		GameObject spellGO = ( GameObject ) Instantiate (bulletPrefab,firePoint.position,firePoint.rotation);
 		TowerSpell towerSpell = spellGO.GetComponent<TowerSpell>();
+		SkillsProperties skillPro = spellGO.GetComponent<SkillsProperties> ();
+
+		// Set tower values on instantiated skill prefab
+		skillPro.SetDamage (damage);
+		skillPro.SetCooldown (cooldown);
+		skillPro.SetRange (range);
 
 		// Speel need to know who instantiated him
-		spellGO.GetComponent<SkillsProperties> ().SetInvoker (gameObject);
+		skillPro.SetInvoker (gameObject);
 
 		if (towerSpell != null)
 			towerSpell.Seek (target);
@@ -136,7 +159,7 @@ public class TowerScript : MonoBehaviour {
 
 	void OnDrawGizmosSelected(){
 		Gizmos.color = new Color(255,0,0,0.75f);
-		Gizmos.DrawWireSphere (rangePiece.position, GetRange());
+		Gizmos.DrawWireSphere (rangePiece.position, range);
 	}
 
     private void OnMouseOver()
@@ -175,12 +198,9 @@ public class TowerScript : MonoBehaviour {
 		player.transform.position = playerSpawnOnTower.position;
 		player.transform.rotation = partToRotate.transform.rotation;
 
-		// Sets new skill to player---------------------------------------------------------------------------------------------------
-		//player.GetComponent<PlayerController>().currentSkill = towerSkill;
-
 		// Sets new target to player if this isn't already his
-		if (target != null && player.GetComponent<PlayerController> ().currentTarget != null) {
-			if (player.GetComponent<PlayerController> ().currentTarget != target.gameObject) {
+		if (target != null && player.GetComponent<PlayerController> ().GetTarget() != null) {
+			if (player.GetComponent<PlayerController> ().GetTarget() != target.gameObject) {
 				player.GetComponent<PlayerController> ().SetTarget (target.gameObject);
 			}
 		}
@@ -203,9 +223,15 @@ public class TowerScript : MonoBehaviour {
     {
         if (IsInCorrectScene())
         {
-			rangeObject.transform.localScale = new Vector3(GetRange() * 2, 0.01f, GetRange() * 2);
+			rangeObject.transform.localScale = new Vector3(range * 2, 0.01f, range * 2);
             rangeObject.SetActive(false);
         }
-    }
+	}
 
+	private void SetValues (float multiplicationFactor) {
+
+		damage = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetDamage ();
+		cooldown = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetCooldown ();
+		range = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetRange ();
+	}
 }
