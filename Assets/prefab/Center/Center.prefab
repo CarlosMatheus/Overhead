@@ -4223,15 +4223,10 @@ MonoBehaviour:
   playerSpawnOnTower: {fileID: 4128924877811352}
   bulletPrefab: {fileID: 1683688416457540, guid: ae304f0987e691648af41f580f608b3e,
     type: 2}
-  towerSkill: {fileID: 1795519070530490, guid: 44c2f812a1dc8eb45918c88c1beac83d, type: 2}
   teleportEffect: {fileID: 1628781945723574, guid: b790363590f171b42b9ff9508e1faa56,
     type: 2}
   enemyTag: Enemy
   rangeObject: {fileID: 1319819340153550}
-  range: 8
-  turnSpeed: 10
-  fireRate: 2
-  fireCountdown: 0
 --- !u!114 &114454858350456286
 MonoBehaviour:
   m_ObjectHideFlags: 1

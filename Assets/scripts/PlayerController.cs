@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour {
 
 			if (IsInRange (transform, currentTarget.transform)) {
 
-				if (Time.time - time > currentSkill.GetComponent<SkillsProperties> ().cooldown) {
+				if (Time.time - time > currentSkill.GetComponent<SkillsProperties> ().GetCooldown() ) {
 					// Attack!
 					Attack ();
 					time = Time.time;
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour {
 		currentSkill.GetComponent<TowerSpell> ().Seek (currentTarget.transform);
 
 		GameObject currentSpell = (GameObject) Instantiate (currentSkill, shotSpawn.position, shotSpawn.rotation);
-		currentSpell.GetComponent<SkillsProperties> ().invoker = this.gameObject;
+		currentSpell.GetComponent<SkillsProperties> ().SetInvoker (this.gameObject);
 	}
 
 	// Verify if A and B are in range
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour {
 		a.y = 0;
 		b.y = 0;
 
-		if (Vector3.Magnitude (a - b) <= currentSkill.GetComponent<SkillsProperties> ().range)
+		if (Vector3.Magnitude (a - b) <= currentSkill.GetComponent<SkillsProperties> ().GetRange ())
 			return true;
 		else
 			return false;
