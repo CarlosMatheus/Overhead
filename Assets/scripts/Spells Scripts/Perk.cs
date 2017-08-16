@@ -37,7 +37,7 @@ public class Perk : MonoBehaviour {
 
 	public void LevelUp () {
 
-		//if (gameObject.GetComponent<WaveSpawner> ().GetWave () >= minWaveToActivate) {
+		if (GameObject.FindGameObjectWithTag("GameMaster").GetComponent<WaveSpawner> ().GetWave () >= minWaveToActivate) {
 			if (isCallable) {
 				// Set childs callables
 				foreach (Perk p in childs) {
@@ -50,7 +50,7 @@ public class Perk : MonoBehaviour {
 				// Call a default function on skill gameObject to alter values
 				Debug.Log ("LevelUp!");
 			}
-		//}
+		}
 	}
 
 	public void LevelDown () {
@@ -74,8 +74,13 @@ public class Perk : MonoBehaviour {
 	public void TurnCallable () {
 		isCallable = true;
 	}
+
 	public void TurnUncallable () {
 		isCallable = false;
+	}
+
+	public void Upgrade (int increment) {
+
 	}
 }
 
