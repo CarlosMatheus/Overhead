@@ -1,20 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ExtraFunctionalities : MonoBehaviour {
 
 	public KeyCode pauseButton;
 	public KeyCode advanceTimeButton;
-	public KeyCode showAllHPButton;
-	public KeyCode closeStore;
-	public KeyCode quitGame;
-	public KeyCode setVolumeUp;
-	public KeyCode setVolumeDown;
+	public Image advanceTimeImage;
 
 	// Use this for initialization
 	void Start () {
 		Time.timeScale = 1;
+		if (advanceTimeImage != null)
+			advanceTimeImage.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -28,15 +27,21 @@ public class ExtraFunctionalities : MonoBehaviour {
 		}
 
 		if (Time.timeScale != 0) {   // If it's not paused
-			if (Input.GetKey (advanceTimeButton)) {
-				Time.timeScale = 2;
-			} else {
-				Time.timeScale = 1;
-			}
-		}
+			if (Input.GetKeyDown (advanceTimeButton)) {
 
-		if (Input.GetKeyDown (quitGame)) {
-			Application.Quit ();
+				if (advanceTimeImage != null)
+					advanceTimeImage.enabled = !advanceTimeImage.enabled;
+
+				if (Time.timeScale == 1) {
+					Time.timeScale = 3;
+					return;
+				}
+
+				if (Time.timeScale > 1) {
+					Time.timeScale = 1;
+					return;
+				}
+			}
 		}
 	}
 }
