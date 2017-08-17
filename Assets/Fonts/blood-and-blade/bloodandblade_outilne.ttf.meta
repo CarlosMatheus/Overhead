@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 437abb9c2dd544dda836b3b39fe633ed
+timeCreated: 1502918293
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Blood and Blade outline
+  fontNames:
+  - Blood and Blade outline
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
