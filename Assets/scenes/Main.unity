@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44971043, g: 0.49977738, b: 0.5756326, a: 1}
+  m_IndirectSpecularColor: {r: 0.44971055, g: 0.49977726, b: 0.5756329, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2463,6 +2463,33 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 445613907}
+--- !u!84 &477595566
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 668
+  m_Height: 376
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &483449159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2909,6 +2936,11 @@ Prefab:
         type: 2}
       propertyPath: numOfTowers
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114984236687860478, guid: a0ae3f0160a394622b2556300039986c,
+        type: 2}
+      propertyPath: screenShotButton
+      value: 102
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 82526920772506760, guid: a0ae3f0160a394622b2556300039986c, type: 2}
