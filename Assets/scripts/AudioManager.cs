@@ -1,4 +1,4 @@
-﻿using UnityEngine.Audio;
+﻿﻿using UnityEngine.Audio;
 using UnityEngine;
 using System;
 
@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
     //Set sounds that will play as the game starts:
     private void Start()
     {
-        
+        Play("MusicMainScene");
     }
 
     private void Awake () 
