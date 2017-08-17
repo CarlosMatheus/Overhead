@@ -5,10 +5,12 @@ using System;
 
 public class Perk : MonoBehaviour {
 
-	[SerializeField] private new string name;
-	[SerializeField] private GameObject skill;
+	private new string name;
+
 	[SerializeField] private Text buttonName;
 	[SerializeField] private float minWaveToActivate = 0f;
+	[SerializeField] private float maxLevel = 0f;
+	[SerializeField] private float cost = 0f;
 
 	private List<Perk> childs;
 
@@ -16,6 +18,8 @@ public class Perk : MonoBehaviour {
 	private int level = 0;
 
 	void Start () {
+		name = gameObject.name;
+
 		Perk[] _childs = gameObject.GetComponentsInChildren<Perk> ();
 		foreach (Perk p in _childs) {
 			if (p.transform.parent != this.transform)
