@@ -7,10 +7,18 @@ public class ExtraFunctionalities : MonoBehaviour {
 
 	public KeyCode pauseButton;
 	public KeyCode advanceTimeButton;
+	public KeyCode screenShotButton;
 	public Image advanceTimeImage;
+
+	private int ssNumber;
 
 	// Use this for initialization
 	void Start () {
+		ssNumber = PlayerPrefs.GetInt ("ssNumber"); Debug.Log (ssNumber);
+
+		if (ssNumber == null)
+			ssNumber = 0;
+
 		Time.timeScale = 1;
 		if (advanceTimeImage != null)
 			advanceTimeImage.enabled = false;
@@ -24,6 +32,10 @@ public class ExtraFunctionalities : MonoBehaviour {
 				Time.timeScale = 1;
 
 			Time.timeScale = 1 - Time.timeScale;
+		}
+
+		if (Input.GetKeyDown(screenShotButton)) {
+			TakeScreenShot ();
 		}
 
 		if (Time.timeScale != 0) {   // If it's not paused
@@ -43,5 +55,12 @@ public class ExtraFunctionalities : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	public void TakeScreenShot() {
+
+		ScreenCapture.CaptureScreenshot ("Screenshots/" + ssNumber + ".png", 2); Debug.Log ("Screenshoot taked!");
+		ssNumber++;
+		PlayerPrefs.SetInt ("ssNumber", ssNumber);
 	}
 }
