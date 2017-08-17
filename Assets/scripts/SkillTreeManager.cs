@@ -8,6 +8,9 @@ public class SkillTreeManager : MonoBehaviour {
 	public Canvas skillTreeCanvas;
 
 	void Start () {
+		if (skillTreeCanvas == null)
+			return;
+
 		skillTreeCanvas.enabled = false;
 		skillTreeCanvas.gameObject.SetActive (true);
 	}
@@ -19,6 +22,10 @@ public class SkillTreeManager : MonoBehaviour {
 	}
 
 	public void ActivateSkillTree () {
+		
+		if (skillTreeCanvas == null)
+			return;
+		
 		skillTreeCanvas.enabled = !skillTreeCanvas.enabled;
 	}
 }
