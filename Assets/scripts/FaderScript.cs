@@ -18,7 +18,7 @@ public class FaderScript : MonoBehaviour {
         fadeCanvas.GetComponent<CanvasGroup>().alpha = 1;
         while (fadeCanvas.GetComponent<CanvasGroup>().alpha > 0.01)
         {
-            _currentValue = fadeCanvas.GetComponent<CanvasGroup>().alpha - 0.9f * Time.deltaTime;
+            _currentValue = fadeCanvas.GetComponent<CanvasGroup>().alpha - 0.7f * Time.deltaTime;
             fadeCanvas.GetComponent<CanvasGroup>().alpha = _currentValue;
             yield return null;
         }
