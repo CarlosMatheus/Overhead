@@ -37,5 +37,6 @@ public class MenuManager : MonoBehaviour {
             yield return null;
         }
         SceneManager.LoadScene(sceneNumber);
+        //LoadManager.instance.CallLoadScene(sceneNumber);
     }
 }
