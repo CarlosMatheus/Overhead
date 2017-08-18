@@ -983,6 +983,33 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f16d96d8e95f4ee893d3f69273b7e64, type: 2}
   m_IsPrefabParent: 0
+--- !u!84 &185980802
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1178
+  m_Height: 663
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &227316646 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1072156806754846, guid: 6849b8a20f320f04dabdfd7ed9070271,
@@ -4505,33 +4532,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 825483021}
---- !u!84 &834391791
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 640
-  m_Height: 480
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &849269658
 GameObject:
   m_ObjectHideFlags: 0
@@ -5193,6 +5193,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 995735235}
+--- !u!84 &1014508893
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1178
+  m_Height: 663
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1018629785 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1523038539326692, guid: 6849b8a20f320f04dabdfd7ed9070271,
@@ -5208,7 +5235,7 @@ Prefab:
     - target: {fileID: 114609452485419446, guid: 29d749ee6243b4c488f4ff171f361ea5,
         type: 2}
       propertyPath: sounds.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4151368780124016, guid: 29d749ee6243b4c488f4ff171f361ea5, type: 2}
       propertyPath: m_LocalPosition.x
@@ -5250,7 +5277,7 @@ Prefab:
     - target: {fileID: 114609452485419446, guid: 29d749ee6243b4c488f4ff171f361ea5,
         type: 2}
       propertyPath: sounds.Array.data[0].volume
-      value: 0.5
+      value: 0.704
       objectReference: {fileID: 0}
     - target: {fileID: 114609452485419446, guid: 29d749ee6243b4c488f4ff171f361ea5,
         type: 2}
@@ -5267,6 +5294,31 @@ Prefab:
       propertyPath: sounds.Array.data[0].clip
       value: 
       objectReference: {fileID: 8300000, guid: ad6a0bd6f985b4f769208df78e3f4115, type: 3}
+    - target: {fileID: 114609452485419446, guid: 29d749ee6243b4c488f4ff171f361ea5,
+        type: 2}
+      propertyPath: sounds.Array.data[1].name
+      value: NewMusicMainScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 114609452485419446, guid: 29d749ee6243b4c488f4ff171f361ea5,
+        type: 2}
+      propertyPath: sounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f752becba7e70fd4fb1621fc78a79f21, type: 3}
+    - target: {fileID: 114609452485419446, guid: 29d749ee6243b4c488f4ff171f361ea5,
+        type: 2}
+      propertyPath: sounds.Array.data[1].volume
+      value: 0.704
+      objectReference: {fileID: 0}
+    - target: {fileID: 114609452485419446, guid: 29d749ee6243b4c488f4ff171f361ea5,
+        type: 2}
+      propertyPath: sounds.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114609452485419446, guid: 29d749ee6243b4c488f4ff171f361ea5,
+        type: 2}
+      propertyPath: sounds.Array.data[1].loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29d749ee6243b4c488f4ff171f361ea5, type: 2}
   m_IsPrefabParent: 0
@@ -6652,6 +6704,40 @@ GameObject:
   m_PrefabParentObject: {fileID: 1314678458617260, guid: a0ae3f0160a394622b2556300039986c,
     type: 2}
   m_PrefabInternal: {fileID: 572187896}
+--- !u!114 &1327736764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1327736763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc71273a3b5714c7497ce58c91a920f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1327736766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1327736763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bacca636bb2394b9ba59c266ebf72a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseCursorIdle:
+    cursorTexture: {fileID: 2800000, guid: b3ace3576da33443c8ae98b7e53737f1, type: 3}
+    cursorMode: 0
+    hotSpot: {x: 0, y: 0}
+  mouseCursorRed:
+    cursorTexture: {fileID: 0}
+    cursorMode: 0
+    hotSpot: {x: 0, y: 0}
+  mouseCursorTeleport:
+    cursorTexture: {fileID: 0}
+    cursorMode: 0
+    hotSpot: {x: 0, y: 0}
 --- !u!114 &1327736777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7823,7 +7909,7 @@ Prefab:
         type: 2}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 834391791}
+      objectReference: {fileID: 185980802}
     - target: {fileID: 114647825517582250, guid: 6849b8a20f320f04dabdfd7ed9070271,
         type: 2}
       propertyPath: m_Enabled
