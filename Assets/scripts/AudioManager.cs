@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour
     //Set sounds that will play as the game starts:
     private void Start()
     {
-        Play("MusicMainScene");
+        PlayWithFade("NewMusicMainScene", 5f);
     }
 
     private void Awake () 
@@ -111,11 +111,12 @@ public class AudioManager : MonoBehaviour
             _audio.source.Play();
         }
 
-        float deltaVol = (finalVolume - _audio.source.volume) / 10f;
-        for (int i = 0; i < 10; i ++)
+        float numOfParts = time * 10f;
+        float deltaVol = (finalVolume - _audio.source.volume) / numOfParts;
+        for (int i = 0; i < numOfParts; i ++)
         {
+            yield return new WaitForSeconds( time / numOfParts);
             _audio.source.volume += deltaVol;
-            yield return new WaitForSeconds( time / 10f);
         }
 
         if (otherAction == "stop")
