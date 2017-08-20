@@ -59,6 +59,10 @@ public class TowerScript : MonoBehaviour {
 		range *= multiplicationFactor;// * bulletPrefab.GetComponent<SkillsProperties> ().GetRange ();
 	}
 
+	public GameObject GetUpCanvas () {
+		return upSys;
+	}
+
 	void Start () {
 
 		// Set skill values from prefab
@@ -85,6 +89,9 @@ public class TowerScript : MonoBehaviour {
 	}
 
 	void Update () {
+		if (upSys != null)
+			CheckMouseButtonDown();
+
 		//do nothing in case there is no target
 		if (target == null)
 			return;
@@ -200,15 +207,23 @@ public class TowerScript : MonoBehaviour {
 		range = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetRange ();
 	}
 
+	private void CheckMouseButtonDown()
+	{
+		// Mouse right click makes the store close
+		if (Input.GetMouseButtonDown(1) && upSys.activeInHierarchy)
+			instanceManager.SetTowerOfTheTime (this);
+	}
+
 	void OnMouseDown () {
 
 		if (gameObject.name == "MasterTower")
 			return;
 
-		StartCoroutine (CheckCamera ());
+		instanceManager.SetTowerOfTheTime (this);
 
+		//StartCoroutine (CheckCamera ());
 		upSys.transform.rotation = Camera.main.transform.rotation;
-		upSys.SetActive (!upSys.activeInHierarchy);
+		//upSys.SetActive (!upSys.activeInHierarchy);
 	}
 
 	IEnumerator CheckCamera () {
