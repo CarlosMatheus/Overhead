@@ -53,10 +53,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4183365528596564}
-  - component: {fileID: 114027418839735554}
   - component: {fileID: 65983806571674308}
   - component: {fileID: 114649483188891060}
   - component: {fileID: 95683305548998686}
+  - component: {fileID: 114826421182979394}
+  - component: {fileID: 114460142172004946}
   m_Layer: 0
   m_Name: Tower4
   m_TagString: Tower
@@ -462,7 +463,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114027418839735554
+--- !u!114 &114460142172004946
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -470,19 +471,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1192856199098770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e189b4cb99cfb4a5e99eb66f07e15b40, type: 3}
+  m_Script: {fileID: 11500000, guid: 16bebf4e36bb7db47abcd963101a929f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangePiece: {fileID: 4360306448947868}
-  partToRotate: {fileID: 4871271223291634}
-  firePoint: {fileID: 4202851879754994}
-  playerSpawnOnTower: {fileID: 4162491600608182}
-  bulletPrefab: {fileID: 1043216770293996, guid: 5d75f8308cf7f374298690b42d297421,
-    type: 2}
-  teleportEffect: {fileID: 1628781945723574, guid: b790363590f171b42b9ff9508e1faa56,
-    type: 2}
-  enemyTag: Enemy
-  rangeObject: {fileID: 1334443623656402}
+  researchCanvas: {fileID: 0}
 --- !u!114 &114649483188891060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -497,6 +489,17 @@ MonoBehaviour:
   GlowColor: {r: 1, g: 0, b: 0, a: 0}
   FadeFactor: 5
   _currentColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114826421182979394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1192856199098770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8900328075f4bc4db8d649ae0a2a073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136463099654570154
 CapsuleCollider:
   m_ObjectHideFlags: 1

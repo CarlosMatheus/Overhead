@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 65853142933077740}
   - component: {fileID: 114699446148116006}
   - component: {fileID: 95893018099273226}
+  - component: {fileID: 114484957024547128}
   m_Layer: 0
   m_Name: Tower2
   m_TagString: Tower
@@ -463,6 +464,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114484957024547128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1500846572791458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8900328075f4bc4db8d649ae0a2a073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114623369097560350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -474,21 +486,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e189b4cb99cfb4a5e99eb66f07e15b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangePiece: {fileID: 4118261080884320}
   partToRotate: {fileID: 4617022393554412}
   firePoint: {fileID: 4184551153125886}
   playerSpawnOnTower: {fileID: 4124896166766700}
   bulletPrefab: {fileID: 1279783995638840, guid: 79516ce57c986c141b96de4c4537c487,
     type: 2}
-  towerSkill: {fileID: 1279783995638840, guid: 79516ce57c986c141b96de4c4537c487, type: 2}
-  teleportEffect: {fileID: 1628781945723574, guid: b790363590f171b42b9ff9508e1faa56,
-    type: 2}
-  enemyTag: Enemy
   rangeObject: {fileID: 1163888844897020}
-  range: 3
-  turnSpeed: 8
-  fireRate: 3
-  fireCountdown: 0
 --- !u!114 &114699446148116006
 MonoBehaviour:
   m_ObjectHideFlags: 1
