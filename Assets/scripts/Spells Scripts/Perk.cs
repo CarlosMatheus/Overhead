@@ -12,8 +12,10 @@ public class Perk : MonoBehaviour {
 	[SerializeField] private float maxLevel = 0f;
 	[SerializeField] private float cost = 0f;
 	[SerializeField] private float addScore = 0f;
+	[SerializeField] private Button perkButton;
 
-	private List<Perk> childs;
+	//private List<Perk> childs;
+	[SerializeField] private Perk[] childs = null;
 
 	private GameObject gameMaster;
 	private SoulsCounter soulsCounter;
@@ -23,12 +25,13 @@ public class Perk : MonoBehaviour {
 	private int level = 0;
 
 	void Start () {
-		name = gameObject.name;
+		name = buttonName.text;
 
 		gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
 		soulsCounter = gameMaster.GetComponent<SoulsCounter> ();
 		scoreCounter = gameMaster.GetComponent<ScoreCounter> ();
 
+		/* // If you wanna set automatically, try this. In our case, we choose not because of Canvas Horizontal Layout Group
 		Perk[] _childs = gameObject.GetComponentsInChildren<Perk> ();
 		foreach (Perk p in _childs) {
 			if (p.transform.parent != this.transform)
@@ -42,10 +45,9 @@ public class Perk : MonoBehaviour {
 				childs.Add (p);
 			}
 		}
+		*/
 
-		buttonName.text = name;
-
-		GetComponentInChildren<Button> ().interactable = isCallable;
+		GetButton().interactable = isCallable;
 	}
 
 	public void LevelUp () {
@@ -56,7 +58,7 @@ public class Perk : MonoBehaviour {
 					// Set childs callables
 					foreach (Perk p in childs) {
 						p.TurnCallable ();
-						p.GetComponent<Button> ().interactable = true;
+						p.GetButton().interactable = true;
 					}
 
 					// Upgrade perk
@@ -101,8 +103,8 @@ public class Perk : MonoBehaviour {
 		isCallable = false;
 	}
 
-	public void Upgrade (int increment) {
-
+	private Button GetButton () {
+		return perkButton;
 	}
 }
 

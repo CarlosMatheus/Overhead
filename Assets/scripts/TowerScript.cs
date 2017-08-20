@@ -18,6 +18,7 @@ public class TowerScript : MonoBehaviour {
 	private Transform target;
 	private GameObject player;
 	private GameObject upSys;
+	private InstancesManager instanceManager;
 
 	// Atributes from spell
 	private float damage;
@@ -59,6 +60,7 @@ public class TowerScript : MonoBehaviour {
 	}
 
 	void Start () {
+
 		// Set skill values from prefab
 		SetValues (1f);
 
@@ -66,6 +68,8 @@ public class TowerScript : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 
 		SetRangeObject();
+
+		instanceManager = GameObject.FindGameObjectWithTag ("GameMaster").GetComponent<InstancesManager> ();
 
 		//This will reapeat every 0.5 sec
 		InvokeRepeating ("UpdateTarget", 0f, 0.5f);
@@ -197,6 +201,7 @@ public class TowerScript : MonoBehaviour {
 	}
 
 	void OnMouseDown () {
+
 		if (gameObject.name == "MasterTower")
 			return;
 
@@ -208,10 +213,12 @@ public class TowerScript : MonoBehaviour {
 
 	IEnumerator CheckCamera () {
 		Vector3 camPos = Camera.main.transform.position;
-		yield return new WaitUntil (() => (
-			Camera.main.transform.position.magnitude.CompareTo (camPos.magnitude + canvasRange) > 0 
-			|| Camera.main.transform.position.magnitude.CompareTo (camPos.magnitude - canvasRange) < 0 )
+
+		yield return new WaitUntil (() => 
+			(
+				Vector3.Magnitude (Camera.main.transform.position - camPos) > canvasRange
+			)
 		);
-		upSys.SetActive (!upSys.activeInHierarchy);
+		upSys.SetActive (false);
 	}
 }
