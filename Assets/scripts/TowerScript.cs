@@ -10,7 +10,8 @@ public class TowerScript : MonoBehaviour {
 	public Transform firePoint;
 	public Transform playerSpawnOnTower;
 	public GameObject bulletPrefab;
-    [SerializeField] private GameObject rangeObject;
+    [SerializeField] private GameObject rangeObject = null;
+	[SerializeField] private float canvasRange = 1f;
 
 	private float fireCountdown = 1f;
 	private float turnSpeed = 10f;
@@ -207,7 +208,10 @@ public class TowerScript : MonoBehaviour {
 
 	IEnumerator CheckCamera () {
 		Vector3 camPos = Camera.main.transform.position;
-		yield return new WaitUntil (() => (!Camera.main.transform.position.Equals (camPos)));
+		yield return new WaitUntil (() => (
+			Camera.main.transform.position.magnitude.CompareTo (camPos.magnitude + canvasRange) > 0 
+			|| Camera.main.transform.position.magnitude.CompareTo (camPos.magnitude - canvasRange) < 0 )
+		);
 		upSys.SetActive (!upSys.activeInHierarchy);
 	}
 }

@@ -801,7 +801,8 @@ MonoBehaviour:
   minWaveToActivate: 0
   maxLevel: 0
   cost: 0
-  isCallable: 1
+  addScore: 0
+  isCallable: 0
 --- !u!114 &114171685489772736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -817,6 +818,7 @@ MonoBehaviour:
   minWaveToActivate: 0
   maxLevel: 0
   cost: 0
+  addScore: 0
   isCallable: 0
 --- !u!114 &114189106963789414
 MonoBehaviour:
@@ -887,6 +889,7 @@ MonoBehaviour:
   minWaveToActivate: 0
   maxLevel: 0
   cost: 0
+  addScore: 0
   isCallable: 1
 --- !u!114 &114299146257170308
 MonoBehaviour:
@@ -1229,8 +1232,8 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Button
 --- !u!114 &114530840963125288
@@ -1248,6 +1251,7 @@ MonoBehaviour:
   minWaveToActivate: 0
   maxLevel: 0
   cost: 0
+  addScore: 0
   isCallable: 0
 --- !u!114 &114623369097560350
 MonoBehaviour:
@@ -1266,6 +1270,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1076308763873118, guid: 81d8a83a09a4b4d4183eb78e46bb9eed,
     type: 2}
   rangeObject: {fileID: 1360362137407910}
+  canvasRange: 2.5
 --- !u!114 &114698513855778854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1445,6 +1450,7 @@ MonoBehaviour:
   minWaveToActivate: 0
   maxLevel: 0
   cost: 0
+  addScore: 0
   isCallable: 0
 --- !u!114 &114879155257455994
 MonoBehaviour:
@@ -1611,6 +1617,7 @@ MonoBehaviour:
   minWaveToActivate: 0
   maxLevel: 0
   cost: 0
+  addScore: 0
   isCallable: 0
 --- !u!198 &198415054324642114
 ParticleSystem:
@@ -5030,7 +5037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.3699996, y: 0.54}
+  m_AnchoredPosition: {x: 0.54, y: 1.33}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224168819168129220
@@ -5049,7 +5056,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.57, y: 1.45}
+  m_AnchoredPosition: {x: -0.21, y: 1.31}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224354958263400996
@@ -5145,7 +5152,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.0299995, y: 0.74}
+  m_AnchoredPosition: {x: -0.49, y: 1.26}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224792906958377990
