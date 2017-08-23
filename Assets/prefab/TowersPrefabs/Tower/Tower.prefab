@@ -2130,8 +2130,7 @@ MonoBehaviour:
   cost: 0
   addScore: 0
   perkButton: {fileID: 114360479883681976}
-  childs:
-  - {fileID: 0}
+  childs: []
   isCallable: 0
 --- !u!114 &114021935588482248
 MonoBehaviour:
@@ -2359,8 +2358,7 @@ MonoBehaviour:
   cost: 0
   addScore: 0
   perkButton: {fileID: 114286921783700026}
-  childs:
-  - {fileID: 0}
+  childs: []
   isCallable: 1
 --- !u!114 &114100257321242772
 MonoBehaviour:
@@ -2494,8 +2492,7 @@ MonoBehaviour:
   cost: 0
   addScore: 0
   perkButton: {fileID: 114317452324157746}
-  childs:
-  - {fileID: 0}
+  childs: []
   isCallable: 0
 --- !u!114 &114111291688671322
 MonoBehaviour:
@@ -2813,7 +2810,6 @@ MonoBehaviour:
   addScore: 0
   perkButton: {fileID: 114344157625089544}
   childs:
-  - {fileID: 0}
   - {fileID: 114019120648017616}
   isCallable: 1
 --- !u!114 &114191102368401974
@@ -3139,7 +3135,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114099261391084144}
         m_MethodName: LevelUp
         m_Mode: 1
         m_Arguments:
@@ -3274,7 +3270,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114111232888812648}
         m_MethodName: LevelUp
         m_Mode: 1
         m_Arguments:
@@ -3472,7 +3468,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114182392794472758}
         m_MethodName: LevelUp
         m_Mode: 1
         m_Arguments:
@@ -3535,7 +3531,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114019120648017616}
         m_MethodName: LevelUp
         m_Mode: 1
         m_Arguments:
@@ -3956,7 +3952,6 @@ MonoBehaviour:
   addScore: 0
   perkButton: {fileID: 114945533623515106}
   childs:
-  - {fileID: 0}
   - {fileID: 114111232888812648}
   isCallable: 1
 --- !u!114 &114523524658864876
@@ -5204,7 +5199,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114521791030323728}
         m_MethodName: LevelUp
         m_Mode: 1
         m_Arguments:
