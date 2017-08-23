@@ -25,9 +25,9 @@ public class SideEffect : MonoBehaviour {
 		
 		StartCoroutine (AutoDestroy ());
 
-		if (!target.GetComponent<TargetSelection> ().sideAffected) {
+		if (!target.GetComponent<TargetSelection> ().IsSideAffected ()) {
 
-			target.GetComponent<TargetSelection> ().sideAffected = true;
+			target.GetComponent<TargetSelection> ().SetSideEffect (true);
 
 			if (freeze)
 				Freeze ();
@@ -65,7 +65,7 @@ public class SideEffect : MonoBehaviour {
 
 		if (target != null) {  // If target have not died yet
 			target.GetComponent<Enemy> ().ReturnToOriginalSpeed ();
-			target.GetComponent<TargetSelection> ().sideAffected = false;
+			target.GetComponent<TargetSelection> ().SetSideEffect(false);
 		}
 
 		Destroy (gameObject);

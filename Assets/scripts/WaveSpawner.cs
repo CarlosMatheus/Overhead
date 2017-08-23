@@ -188,6 +188,7 @@ public class WaveSpawner : MonoBehaviour {
         {
 			GameObject enemyGameObj = (GameObject)Instantiate (enemyPrefab, spawnPoint [i].position, spawnPoint [i].rotation);
 			enemyGameObj.GetComponent<Enemy> ().SetWayPoints (wayPoints [i]);
+            actionManager.SpawEnemy();
 		}
 	}
 
@@ -216,7 +217,6 @@ public class WaveSpawner : MonoBehaviour {
         for (int i = 0; i < thisWaveSpawnEnemies.Length; i++)
         {  
             EnemySpawn(thisWaveSpawnEnemies[i]);
-            actionManager.SpawEnemy();
             yield return new WaitForSeconds(spawnDelay);
         }
     }

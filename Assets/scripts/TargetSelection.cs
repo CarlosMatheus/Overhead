@@ -9,13 +9,24 @@ public class TargetSelection : MonoBehaviour {
 	public GameObject enemyHealthBar;
 	public GameObject deathEffect;
 
-	[Header("Auto assign (No need to assign)")]
-	public float HP;
-	public bool sideAffected = false;
+	private float HP;
+	private bool sideAffected = false;
 
 	private float maximumHealth;
 	private Enemy enemy;
 	private SoulsCounter soulsCounter;
+
+	public float GetHP () {
+		return HP;
+	}
+
+	public bool IsSideAffected () {
+		return sideAffected;
+	}
+
+	public void SetSideEffect (bool boolean) {
+		sideAffected = boolean;
+	}
 
 	public float getMaximumHealth(){
 		return maximumHealth;
