@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class ActionManager : MonoBehaviour 
 {
-
-    [SerializeField] private float initialAnimationDuration;
-    [SerializeField] private float interval;
-    [SerializeField] private float waveTime;
+    [SerializeField] private float initialAnimationDuration = 5f;
+    [SerializeField] private float interval = 20f;
     
     private WaveSpawner waveSpawner;
     private GameObject[] ObjArray;
@@ -29,12 +27,13 @@ public class ActionManager : MonoBehaviour
         time = 0;
         countdown = initialAnimationDuration;
         waveSpawner = gameObject.GetComponent<WaveSpawner>();
+        nextAction = "Interval";
     }
 
     private void Update()
     {
         UpdateTime();
-        waveSpawner.UpdateUI();
+        waveSpawner.UpdateUI(countdown);
         CheckCountdown();
     }
 
@@ -50,21 +49,42 @@ public class ActionManager : MonoBehaviour
     {
         if( nextAction == "Interval" )
         {
-
+            
             return;
         }
-        if (nextAction == "Interval")
+        if (nextAction == "Wave")
         {
-
-
+            StartWave();
             return;
         }
-        if (nextAction == "Interval")
+        if (nextAction == "Death")
         {
-
-
+            
             return;
         }
+    }
+
+    private void StartInitialAnimation()
+    {
+
+    }
+
+    private void StartInterval()
+    {
+        countdown = interval;
+        nextAction = "Wave";
+    }
+
+    private void StartWave()
+    {
+        countdown = 10000f;
+        waveSpawner.StartNextWave();
+        nextAction = "Interval";
+    }
+
+    private void StartDeath()
+    {
+        
     }
 
     private void UpdateTime()
@@ -72,20 +92,5 @@ public class ActionManager : MonoBehaviour
         time = time + Time.deltaTime;
         countdown = countdown - Time.deltaTime;
     }
-
-    private void InitialAnimation()
-    {
-        
-    }
-
-
-
-    IEnumerator InitialAnimationCorrout()
-    {
-
-        yield return WaitForSeconds( i );
-
-    }
-
 
 }

@@ -7,7 +7,6 @@ public class WaveSpawner : MonoBehaviour {
 
 	[Header("Spawn Attributes")]
 
-	public float initialcountdown = 5f;
 	public float timeBetweenWaves = 5f;
 	public float spawnDelay = 0.5f;
 
@@ -28,7 +27,6 @@ public class WaveSpawner : MonoBehaviour {
 
 	private int waveNumber = 1;
 	private int moduleIndex = 0;
-	private int numOfSpawnEnemy;
 	private float baseSpeed;
 	private float baseHP;
 	private Text waveNumberText;
@@ -45,18 +43,24 @@ public class WaveSpawner : MonoBehaviour {
 	/// </summary>
 	/// <param name="spawnP">Spawn p.</param>
 	/// <param name="wayP">Way p.</param>
-	public void SetModule(Transform spawnP, WayPointsScript wayP){
+	public void SetModule(Transform spawnP, WayPointsScript wayP)
+    {
 		spawnPoint [moduleIndex] = spawnP;
 		wayPoints [moduleIndex] = wayP;
 		moduleIndex++;
 	}
 
-    public float GetWave(){
+    public float GetWave()
+    {
         return waveNumber;
     }
 
     public void StartNextWave()
     {
+        waveNumber++;
+        AjustDifficulty();
+        UpdateSoul();
+        UpdateLifes();
         StartCoroutine(SpawnWave());
     }
 
@@ -70,33 +74,14 @@ public class WaveSpawner : MonoBehaviour {
         }
     }
 
-	/// <summary>
-	/// Gets the base speed.
-	/// </summary>
-	/// <returns>The base speed.</returns>
-	public float getBaseSpeed (){
+	public float GetBaseSpeed ()
+    {
 		return baseSpeed;
 	}
 
-	/// <summary>
-	/// Gets the base H.
-	/// </summary>
-	/// <returns>The base H.</returns>
-	public float getBaseHP (){
+	public float GetBaseHP ()
+    {
 		return baseHP;
-	}
-
-	//Coroutine for the spawn, it delays spawnDelay for each instantiation
-	private IEnumerator SpawnWave(){
-		AjustArray ();
-		for (int i = 0; i < thisWaveSpawnEnemies.Length; i++) {    // not wave number  ???
-			EnemySpawn (thisWaveSpawnEnemies[i]);
-			yield return new WaitForSeconds (spawnDelay);
-		}
-		waveNumber++;
-		AjustDifficulty();
-		UpdateSoul ();
-		UpdateLifes ();
 	}
 
 	/// <summary>
@@ -172,7 +157,6 @@ public class WaveSpawner : MonoBehaviour {
 	/// </summary>
 	private void Start(){
 		masterTower = GameObject.Find ("MasterTower");
-		countdown = initialcountdown;
 		soulsConter = this.GetComponent<SoulsCounter> ();
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
 
@@ -218,4 +202,15 @@ public class WaveSpawner : MonoBehaviour {
         if (IsInCorrectScene())
             masterTowerScript.NewWave ();
 	}
+
+    //Coroutine for the spawn, it delays spawnDelay for each instantiation
+    private IEnumerator SpawnWave()
+    {
+        AjustArray();
+        for (int i = 0; i < thisWaveSpawnEnemies.Length; i++)
+        {  
+            EnemySpawn(thisWaveSpawnEnemies[i]);
+            yield return new WaitForSeconds(spawnDelay);
+        }
+    }
 }
