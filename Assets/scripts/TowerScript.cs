@@ -6,19 +6,19 @@ public class TowerScript : MonoBehaviour {
 
 	[Header("Unity Setup Fields")]
 
-	public Transform rangePiece;
 	public Transform partToRotate;
 	public Transform firePoint;
 	public Transform playerSpawnOnTower;
 	public GameObject bulletPrefab;
-	public GameObject teleportEffect;
-	public string enemyTag = "Enemy";
-    [SerializeField] private GameObject rangeObject;
+    [SerializeField] private GameObject rangeObject = null;
+	[SerializeField] private float canvasRange = 1f;
 
 	private float fireCountdown = 1f;
 	private float turnSpeed = 10f;
 	private Transform target;
 	private GameObject player;
+	private GameObject upSys;
+	private InstancesManager instanceManager;
 
 	// Atributes from spell
 	private float damage;
@@ -48,30 +48,50 @@ public class TowerScript : MonoBehaviour {
     }
 
 	public void SetDamage (float multiplicationFactor) {
-		damage = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetDamage ();
+		damage *= multiplicationFactor;// * bulletPrefab.GetComponent<SkillsProperties> ().GetDamage ();
 	}
 
 	public void SetCooldown (float multiplicationFactor) {
-		cooldown = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetCooldown ();
+		cooldown *= multiplicationFactor;// * bulletPrefab.GetComponent<SkillsProperties> ().GetCooldown ();
 	}
 
 	public void SetRange (float multiplicationFactor) {
-		range = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetRange ();
+		range *= multiplicationFactor;// * bulletPrefab.GetComponent<SkillsProperties> ().GetRange ();
+	}
+
+	public GameObject GetUpCanvas () {
+		return upSys;
 	}
 
 	void Start () {
+
 		// Set skill values from prefab
 		SetValues (1f);
 
 		// Finding the player gameObject
 		player = GameObject.FindGameObjectWithTag ("Player");
-        SetRangeObject();
+
+		SetRangeObject();
+
+		instanceManager = GameObject.FindGameObjectWithTag ("GameMaster").GetComponent<InstancesManager> ();
 
 		//This will reapeat every 0.5 sec
 		InvokeRepeating ("UpdateTarget", 0f, 0.5f);
+
+		// Upgrade system canvas configuration
+		Canvas towerCanvas = GetComponentInChildren<Canvas> ();
+		if (towerCanvas == null) {
+			Debug.Log ("Canvas is null no towe" + gameObject.name);
+			return;
+		}
+		upSys = towerCanvas.gameObject;
+		upSys.SetActive (false);
 	}
 
 	void Update () {
+		if (upSys != null)
+			CheckMouseButtonDown();
+
 		//do nothing in case there is no target
 		if (target == null)
 			return;
@@ -82,7 +102,7 @@ public class TowerScript : MonoBehaviour {
 
 	//Check the array of enemies, find the closest, see if it is on range and target it
 	void UpdateTarget () {
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag (enemyTag);
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 		float shortestDistance = Mathf.Infinity;
 		GameObject nearestEnemy = null;
 		foreach (GameObject enemy in enemies) {
@@ -157,27 +177,6 @@ public class TowerScript : MonoBehaviour {
 			towerSpell.Seek (target);
 	}
 
-	void OnDrawGizmosSelected(){
-		Gizmos.color = new Color(255,0,0,0.75f);
-		Gizmos.DrawWireSphere (rangePiece.position, range);
-	}
-
-    private void OnMouseOver()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (IsAround(playerSpawnOnTower, player.transform))
-            {   // If player is at this tower, returns
-                return;
-            }
-            else if (!player.GetComponent<PlayerController>().teleporting)
-            {   // If not and player is not teleporting
-                player.GetComponent<PlayerController>().teleporting = true;
-                StartCoroutine(TeleportEvents());
-            }
-        }
-    }
-
     bool IsAround (Transform trA, Transform trB) {
 
 		if (Vector3.Magnitude (trA.position - trB.position) < 1.0f)
@@ -185,33 +184,6 @@ public class TowerScript : MonoBehaviour {
 		else
 			return false;
 
-	}
-
-	IEnumerator TeleportEvents () {
-		
-		// Animates
-		player.GetComponent<Teleporter>().TeleportFor(playerSpawnOnTower.gameObject);
-
-		yield return new WaitUntil (() => !player.GetComponent<Animator> ().GetBool ("start"));
-
-		// Teleports
-		player.transform.position = playerSpawnOnTower.position;
-		player.transform.rotation = partToRotate.transform.rotation;
-
-		// Sets new target to player if this isn't already his
-		if (target != null && player.GetComponent<PlayerController> ().GetTarget() != null) {
-			if (player.GetComponent<PlayerController> ().GetTarget() != target.gameObject) {
-				player.GetComponent<PlayerController> ().SetTarget (target.gameObject);
-			}
-		}
-
-		// Telling player where he is
-		player.GetComponent<PlayerController>().currentTower = this.gameObject;
-
-		// Habiliting player's LookAt target position
-		player.GetComponent<PlayerController> ().teleporting = false;
-
-		StopCoroutine (TeleportEvents ());
 	}
 
     private bool IsInCorrectScene()
@@ -233,5 +205,35 @@ public class TowerScript : MonoBehaviour {
 		damage = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetDamage ();
 		cooldown = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetCooldown ();
 		range = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetRange ();
+	}
+
+	private void CheckMouseButtonDown()
+	{
+		// Mouse right click makes the store close
+		if (Input.GetMouseButtonDown(1) && upSys.activeInHierarchy)
+			instanceManager.SetTowerOfTheTime (this);
+	}
+
+	void OnMouseDown () {
+
+		if (gameObject.name == "MasterTower")
+			return;
+
+		instanceManager.SetTowerOfTheTime (this);
+
+		//StartCoroutine (CheckCamera ());
+		upSys.transform.rotation = Camera.main.transform.rotation;
+		//upSys.SetActive (!upSys.activeInHierarchy);
+	}
+
+	IEnumerator CheckCamera () {
+		Vector3 camPos = Camera.main.transform.position;
+
+		yield return new WaitUntil (() => 
+			(
+				Vector3.Magnitude (Camera.main.transform.position - camPos) > canvasRange
+			)
+		);
+		upSys.SetActive (false);
 	}
 }

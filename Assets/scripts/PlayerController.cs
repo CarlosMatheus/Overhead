@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour {
 			if (enemyHealthBar.activeInHierarchy) {   // If had target someone
 			
 				// Shows enemy (target) HP
-				enemyHealthBar.GetComponent<Slider> ().value = SetHealth (currentTarget.GetComponent<TargetSelection> ().HP);
+				enemyHealthBar.GetComponent<Slider> ().value = SetHealth (currentTarget.GetComponent<TargetSelection> ().GetHP());
 
 			}
 		}

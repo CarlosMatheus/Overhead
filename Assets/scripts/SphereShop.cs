@@ -12,7 +12,7 @@ public class SphereShop : MonoBehaviour {
 	private GameObject towerToBuild;
 	private SoulsCounter soulsCounter;
 	private BuildManager buildManager;
-	private Light light;
+	new private Light light;
 	private Shop shop;
 	private GameObject ShopGObj;
 	private DeathManager deathManager;
@@ -21,6 +21,26 @@ public class SphereShop : MonoBehaviour {
 
 	public void SetTowerToBuild(GameObject towerToB){
 		towerToBuild = towerToB;
+	}
+
+	public bool IsShopping () {
+		return ShopGObj.activeInHierarchy;
+	}
+
+	public void ActiveShop(){
+		InstancesManager instancesManager = gameMaster.GetComponent<InstancesManager> ();
+		TowerScript towerScript = instancesManager.GetTowerOfTheTime ();
+		if (towerScript != null)
+			instancesManager.SetTowerOfTheTime (towerScript);
+		ShopGObj.SetActive (true);
+	}
+
+	public void DesactiveShop()
+	{
+		buildManager.SetTowerToBuild (null);
+		buildManager.DestroySelectionTowerToBuildInstance ();
+		ShopGObj.SetActive (false);
+		towerManager.TowerDiselected();
 	}
 
 	private void Start(){
@@ -125,18 +145,6 @@ public class SphereShop : MonoBehaviour {
                 ActiveShop();
             }
         }
-	}
-
-	private void ActiveShop(){
-		ShopGObj.SetActive (true);
-	}
-
-	private void DesactiveShop()
-    {
-		buildManager.SetTowerToBuild (null);
-		buildManager.DestroySelectionTowerToBuildInstance ();
-		ShopGObj.SetActive (false);
-        towerManager.TowerDiselected();
 	}
 
 	private void CantBuild()

@@ -41,18 +41,18 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void ReturnToOriginalSpeed () {
-		speed = waveSpawner.getBaseSpeed () * speedEnemyConst;
+		speed = waveSpawner.GetBaseSpeed () * speedEnemyConst;
 	}
 
 	private void Awake(){
 		waveSpawner = GameObject.Find ("GameMaster").GetComponent<WaveSpawner> ();
-		hp = waveSpawner.getBaseHP() * hpEnemyConst;
+		hp = waveSpawner.GetBaseHP() * hpEnemyConst;
 	}
 
 	private void Start(){
 		masterTower = GameObject.Find("MasterTower");
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
-		SetSpeed (waveSpawner.getBaseSpeed() * speedEnemyConst);
+		SetSpeed (waveSpawner.GetBaseSpeed() * speedEnemyConst);
 		target = wayPoints.GetPoints (0);
 		originalHeight = transform.position.y;
 	}
