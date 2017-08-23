@@ -37,6 +37,7 @@ public class WaveSpawner : MonoBehaviour {
 	private SoulsCounter soulsConter;
 	private WayPointsScript[] wayPoints;
 	private MasterTowerScript masterTowerScript;
+    private ActionManager actionManager;
 
 	/// <summary>
 	/// Sets the module.
@@ -87,15 +88,19 @@ public class WaveSpawner : MonoBehaviour {
 	/// <summary>
 	/// Ajusts the array of enemies for the corrent wave
 	/// </summary>
-	private void AjustArray(){
+	private void AjustArray()
+    {
 		int sizeArrEn;
 		int waveNumIdx;
-		if (waveNumber > ArrayEnemies.Length) {
+		if ( waveNumber > ArrayEnemies.Length ) 
+        {
 			killPlayer ();
 			waveNumIdx = ArrayEnemies.Length - 1;
 			sizeArrEn = ArrayEnemies [waveNumIdx].Length;
-		} else {
-			waveNumIdx = waveNumber - 1;
+		} 
+        else
+        {
+			waveNumIdx = waveNumber - 2;
 			sizeArrEn = ArrayEnemies [waveNumIdx].Length;
 		}
 		int[] auxArr = new int[sizeArrEn];
@@ -105,7 +110,7 @@ public class WaveSpawner : MonoBehaviour {
 		int actualVal = 0;
 		for ( int i = sizeArrEn-1; i >= 0; i -- ){
 			actualVal = (ArrayEnemies[waveNumIdx][i] - '0');
-			if(actualVal == (','- '0') ){
+			if(actualVal == ( ',' - '0' ) ){
 				auxArr[auxArrIdx] = indexVal;
 				auxArrIdx++;
 				mult = 1;
@@ -159,6 +164,7 @@ public class WaveSpawner : MonoBehaviour {
 		masterTower = GameObject.Find ("MasterTower");
 		soulsConter = this.GetComponent<SoulsCounter> ();
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
+        actionManager = gameObject.GetComponent<ActionManager>();
 
         if (IsInCorrectScene())
         {
@@ -210,6 +216,7 @@ public class WaveSpawner : MonoBehaviour {
         for (int i = 0; i < thisWaveSpawnEnemies.Length; i++)
         {  
             EnemySpawn(thisWaveSpawnEnemies[i]);
+            actionManager.SpawEnemy();
             yield return new WaitForSeconds(spawnDelay);
         }
     }

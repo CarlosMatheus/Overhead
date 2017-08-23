@@ -8,15 +8,26 @@ public class ActionManager : MonoBehaviour
     [SerializeField] private float interval = 20f;
     
     private WaveSpawner waveSpawner;
-    private GameObject[] ObjArray;
-    private string nextAction;
+    private AudioManager audioManager;
+    private enum NextAction {Interval,Wave,Death};
+    private NextAction nextAction;
     private float countdown;
-    private float time;
+    private int numOfEnemies;
 
-    public void CheckEnemies()
+    public void SpawEnemy()
     {
-        ObjArray = GameObject.FindGameObjectsWithTag("Enemy");
-        if (ObjArray.Length == 0)
+        numOfEnemies++;
+    }
+
+    public void KillEnemy()
+    {
+        numOfEnemies--;
+        CheckEnemies();
+    }
+
+    private void CheckEnemies()
+    {
+        if (numOfEnemies == 0)
             countdown = -1f;
         else
             return;
@@ -24,10 +35,10 @@ public class ActionManager : MonoBehaviour
 
     private void Start()
     {
-        time = 0;
-        countdown = initialAnimationDuration;
+        audioManager = gameObject.GetComponent<AudioManager>();
         waveSpawner = gameObject.GetComponent<WaveSpawner>();
-        nextAction = "Interval";
+        StartInitialAnimation();
+        numOfEnemies = 0;
     }
 
     private void Update()
@@ -47,39 +58,45 @@ public class ActionManager : MonoBehaviour
 
     private void DoNextAction()
     {
-        if( nextAction == "Interval" )
+        if( nextAction == NextAction.Interval )
         {
-            
+            StartInterval();
             return;
         }
-        if (nextAction == "Wave")
+        if (nextAction == NextAction.Wave)
         {
             StartWave();
             return;
         }
-        if (nextAction == "Death")
+        if (nextAction == NextAction.Death)
         {
-            
+            StartDeath();
             return;
         }
     }
 
     private void StartInitialAnimation()
     {
-
+        countdown = initialAnimationDuration;
+        audioManager.Play("StartMainScene");
+        audioManager.PlayWithFade("MusicMainScene", 3f);
+        nextAction = NextAction.Interval;
     }
 
     private void StartInterval()
     {
         countdown = interval;
-        nextAction = "Wave";
+        nextAction = NextAction.Wave;
+        audioManager.SetVolumeWithFade("MusicMainScene", 0.3f, 3f);
     }
 
     private void StartWave()
     {
+        audioManager.Play("NewWave");
+        audioManager.SetVolumeWithFade("MusicMainScene", 0.6f, 3f);
         countdown = 10000f;
         waveSpawner.StartNextWave();
-        nextAction = "Interval";
+        nextAction = NextAction.Interval;
     }
 
     private void StartDeath()
@@ -89,7 +106,6 @@ public class ActionManager : MonoBehaviour
 
     private void UpdateTime()
     {
-        time = time + Time.deltaTime;
         countdown = countdown - Time.deltaTime;
     }
 

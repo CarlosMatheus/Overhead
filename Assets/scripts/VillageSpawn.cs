@@ -7,7 +7,8 @@ public class VillageSpawn : MonoBehaviour {
 
     private Vector3 finalScale;
 	
-	void Start () {
+	void Start () 
+    {
         finalScale = transform.localScale;
         if (SceneManager.GetActiveScene().name == "Main")
         {

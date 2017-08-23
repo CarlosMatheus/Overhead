@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour
     //Set sounds that will play as the game starts:
     private void Start()
     {
-        PlayWithFade("NewMusicMainScene", 5f);
+        
     }
 
     private void Awake () 
