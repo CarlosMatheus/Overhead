@@ -15,7 +15,7 @@ public class Perk : MonoBehaviour {
 	[SerializeField] private Button perkButton;
 
 	//private List<Perk> childs;
-	[SerializeField] private Perk[] childs = null;
+	[SerializeField] private Perk[] childs;
 
 	private GameObject gameMaster;
 	private SoulsCounter soulsCounter;
