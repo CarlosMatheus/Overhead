@@ -29,7 +29,6 @@ public class WaveSpawner : MonoBehaviour {
 	private int waveNumber = 1;
 	private int moduleIndex = 0;
 	private int numOfSpawnEnemy;
-	private float countdown;
 	private float baseSpeed;
 	private float baseHP;
 	private Text waveNumberText;
@@ -54,6 +53,21 @@ public class WaveSpawner : MonoBehaviour {
 
     public float GetWave(){
         return waveNumber;
+    }
+
+    public void StartNextWave()
+    {
+        StartCoroutine(SpawnWave());
+    }
+
+    //Update the User Interface with wave and time remain for next wave information
+    public void UpdateUI(float countdown)
+    {
+        if ( IsInCorrectScene() )
+        {
+            waveCountdownText.text = Mathf.Round(countdown).ToString();
+            waveNumberText.text = Mathf.Round(waveNumber - 1).ToString();
+        }
     }
 
 	/// <summary>
@@ -161,11 +175,13 @@ public class WaveSpawner : MonoBehaviour {
 		countdown = initialcountdown;
 		soulsConter = this.GetComponent<SoulsCounter> ();
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
+
         if (IsInCorrectScene())
         {
             waveNumberText = GameObject.Find("wave").GetComponent<Text>();
             waveCountdownText = GameObject.Find("waveCountdownText").GetComponent<Text>();
         }
+
 		baseSpeed = baseSpeedConst;
 		baseHP = baseHPConst;
 	}
@@ -175,39 +191,21 @@ public class WaveSpawner : MonoBehaviour {
         return (SceneManager.GetActiveScene().buildIndex != 0 && string.Equals(SceneManager.GetActiveScene().name, "MainMenu") == false);
     }
 
-	/// <summary>
-	/// Update this instance.
-	/// </summary>
-	private void Update () {
-		if ( countdown <= 0f ) {
-			StartCoroutine (SpawnWave ());
-			countdown = timeBetweenWaves;
-		}
-		countdown -= Time.deltaTime;
-		UpdateUI();
-	}
-
 	//Instantiate the Enemy and set the waypoints
-	private void EnemySpawn(GameObject enemyPrefab){
-		for (int i = 0; i < 4; i++) {
+	private void EnemySpawn(GameObject enemyPrefab)
+    {
+		for (int i = 0; i < 4; i++) 
+        {
 			GameObject enemyGameObj = (GameObject)Instantiate (enemyPrefab, spawnPoint [i].position, spawnPoint [i].rotation);
 			enemyGameObj.GetComponent<Enemy> ().SetWayPoints (wayPoints [i]);
 		}
 	}
 
-	//Update the User Interface with wave and time remain for next wave information
-	private void UpdateUI(){
-        if (IsInCorrectScene())
-        {
-            waveCountdownText.text = Mathf.Round(countdown).ToString();
-            waveNumberText.text = Mathf.Round(waveNumber - 1).ToString();
-        }
-	}
-
 	/// <summary>
 	/// Updates the soul.
 	/// </summary>
-	private void UpdateSoul(){
+	private void UpdateSoul()
+    {
         if (IsInCorrectScene())
             soulsConter.SetWave (waveNumber - 1);
 	}
@@ -215,7 +213,8 @@ public class WaveSpawner : MonoBehaviour {
 	/// <summary>
 	/// Updates the lifes.
 	/// </summary>
-	private void UpdateLifes(){
+	private void UpdateLifes()
+    {
         if (IsInCorrectScene())
             masterTowerScript.NewWave ();
 	}
