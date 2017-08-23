@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
@@ -36,7 +37,14 @@ public class MenuManager : MonoBehaviour {
             fadeCanvas.GetComponent<CanvasGroup>().alpha = _currentValue;
             yield return null;
         }
-        SceneManager.LoadScene(sceneNumber);
-        //LoadManager.instance.CallLoadScene(sceneNumber);
+        if (CheckIfTheSceneIsMenu(sceneNumber))
+            SceneManager.LoadScene(sceneNumber);
+        else
+            LoadManager.instance.CallLoadScene(sceneNumber);
+    }
+
+    bool CheckIfTheSceneIsMenu(int sceneNumber)
+    {
+        return sceneNumber == 2;
     }
 }
