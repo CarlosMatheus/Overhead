@@ -24,7 +24,8 @@ public class Perk : MonoBehaviour {
 	public bool isCallable = false;
 	private int level = 0;
 
-	void Start () {
+	void Start () 
+    {
 		name = gameObject.name;
 		buttonName.text = name;
 

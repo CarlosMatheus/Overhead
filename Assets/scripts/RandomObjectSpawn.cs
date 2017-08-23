@@ -13,6 +13,9 @@ public class RandomObjectSpawn : MonoBehaviour {
 	private float rot;
 	private float tam;
 
+    private float speed = 3f;
+    [SerializeField] float tolerance = 0.0005f;
+
 	void Start ()
     {
 		Ajust ();
@@ -62,9 +65,9 @@ public class RandomObjectSpawn : MonoBehaviour {
 		Vector3 finalScale = insta.transform.localScale * tam;
         insta.transform.localScale = Vector3.zero;
 
-        while (finalScale.y - insta.transform.localScale.y >= 0.0005f)
+        while (finalScale.y - insta.transform.localScale.y >= tolerance)
         {
-            insta.transform.localScale = Vector3.Lerp(insta.transform.localScale, finalScale, 0.05f);
+            insta.transform.localScale = insta.transform.localScale + speed * (finalScale - insta.transform.localScale) * Time.deltaTime;
             yield return null;
         }
     }

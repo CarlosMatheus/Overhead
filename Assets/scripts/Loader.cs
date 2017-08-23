@@ -19,6 +19,8 @@ public class Loader : MonoBehaviour {
         while (async.progress < 0.9f)
             yield return null;
 
+
+
         async.allowSceneActivation = true;
     }
 }

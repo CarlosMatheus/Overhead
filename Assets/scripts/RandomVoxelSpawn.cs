@@ -64,7 +64,8 @@ public class RandomVoxelSpawn : MonoBehaviour
     private Vector3 curPos;
     private Vector3 finalPos;
     private GameObject voxel;
-    private float speed = 2f;
+
+    private float speed = 6f;
 
     void Start()
     {
@@ -117,7 +118,7 @@ public class RandomVoxelSpawn : MonoBehaviour
 
         while (voxel.transform.position.y - finalPos.y >= 0.0005f)
         {
-            voxel.transform.position = Vector3.Lerp(voxel.transform.position, finalPos, 0.1f);
+            voxel.transform.position = voxel.transform.position + speed*(finalPos - voxel.transform.position)*Time.deltaTime;
             yield return null;
         }
         Destroy(gameObject);
