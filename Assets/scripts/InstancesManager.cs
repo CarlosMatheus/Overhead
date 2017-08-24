@@ -3,11 +3,13 @@
 public class InstancesManager : MonoBehaviour {
 
     [SerializeField] private GameObject shopGObj = null;
+    [SerializeField] private GameObject masterTower = null;
 
 	private TowerScript towerOfTheTime;
 	private SphereShop sphereShop;
 
-	public TowerScript GetTowerOfTheTime () {
+	public TowerScript GetTowerOfTheTime () 
+    {
 		return towerOfTheTime;
 	}
 
@@ -32,7 +34,6 @@ public class InstancesManager : MonoBehaviour {
 
 		towerOfTheTime = _set;
 		towerOfTheTime.GetUpCanvas ().SetActive (true);
-
 	}
 
     public GameObject GetShopGObj()
@@ -40,7 +41,13 @@ public class InstancesManager : MonoBehaviour {
 		return shopGObj;
     }
 
-	private void Start () {
+    public GameObject GetMasterTowerObj()
+    {
+        return masterTower;
+    }
+
+	private void Start () 
+    {
 		sphereShop = GameObject.FindGameObjectWithTag ("Icosphere").GetComponent<SphereShop>();
 	}
 }

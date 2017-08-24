@@ -27,7 +27,7 @@ public class Perk : MonoBehaviour {
 	void Start () 
     {
 		name = gameObject.name;
-		buttonName.text = name;
+		// buttonName.text = name;
 
 		gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
 		soulsCounter = gameMaster.GetComponent<SoulsCounter> ();
