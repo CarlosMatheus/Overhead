@@ -107,7 +107,7 @@ public class Perk : MonoBehaviour {
 	}
 
 	private bool CheckIfItsAvailable () {
-		if (level <= maxLevel && soulsCounter.GetSouls () >= cost && gameMaster.GetComponent<WaveSpawner> ().GetWave () >= minWaveToActivate && isCallable) {
+		if (level < maxLevel && soulsCounter.GetSouls () >= cost && gameMaster.GetComponent<WaveSpawner> ().GetWave () >= minWaveToActivate && isCallable) {
 			return true;
 		}
 		return false;

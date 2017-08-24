@@ -235,12 +235,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf0493cc0b30a044b04e8f2aa0826a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
-  cooldown: 0.1
-  range: 8
-  sideEffect: {fileID: 1572256132303590, guid: 991d7cf752f7dc840b0bbe21dfd01e79, type: 2}
-  burnRate: 1
-  slowFactor: 0.9
+  damage: 0
+  cooldown: Infinity
+  range: 0
+  sideEffect: {fileID: 0}
+  burnRate: 0
+  slowFactor: 0
+  rangeRadius: 0
+  effectDuration: 0
 --- !u!114 &114483967954686284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,7 +256,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   impactEffect: {fileID: 0}
-  speed: 15
 --- !u!198 &198515650397752864
 ParticleSystem:
   m_ObjectHideFlags: 1

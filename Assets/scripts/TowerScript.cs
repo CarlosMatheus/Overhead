@@ -59,6 +59,14 @@ public class TowerScript : MonoBehaviour {
 		return pm.GetSlowFactor ();
 	}
 
+	public float GetRangeRadius () {
+		return pm.GetRangeRadius ();
+	}
+
+	public float GetEffectDuration () {
+		return pm.GetEffectDuration ();
+	}
+
 	void Start () {
 
         gameMaster = GameObject.FindWithTag("GameMaster");
@@ -164,7 +172,7 @@ public class TowerScript : MonoBehaviour {
 		skillPro.SetDamage (GetDamage ());
 		skillPro.SetCooldown (GetCooldown ());
 		skillPro.SetRange (GetRange ());
-		skillPro.SetSideEffectValues (GetBurnValue (), GetSlowFactor ());
+		skillPro.SetSideEffectValues (GetBurnValue (), GetSlowFactor (), GetRangeRadius (), GetEffectDuration ());
 
 		// Speel need to know who instantiated him
 		skillPro.SetInvoker (gameObject);

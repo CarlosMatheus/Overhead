@@ -85,6 +85,14 @@ public class PlayerController : MonoBehaviour {
 		return pm.GetSlowFactor ();
 	}
 
+	public float GetRangeRadius () {
+		return pm.GetRangeRadius ();
+	}
+
+	public float GetEffectDuration () {
+		return pm.GetEffectDuration ();
+	}
+
 	void Start () {
 		// Get component to properties data manager
 		pm = GetComponent<PropertiesManager> ();
@@ -147,11 +155,11 @@ public class PlayerController : MonoBehaviour {
 		GameObject currentSpell = (GameObject) Instantiate (currentSkill, shotSpawn.position, shotSpawn.rotation);
 		SkillsProperties skillPro = currentSpell.GetComponent<SkillsProperties> ();
 
-		// Set spell values on instantiated skill prefab
+		// Pass PropertiesManager's information to prefab's SkillsProperties
 		skillPro.SetDamage (GetDamage());
 		skillPro.SetCooldown (GetCooldown());
 		skillPro.SetRange (GetRange());
-		skillPro.SetSideEffectValues (GetBurnValue (), GetSlowFactor ());
+		skillPro.SetSideEffectValues (GetBurnValue (), GetSlowFactor (), GetRangeRadius (), GetEffectDuration ());
 
 		// Spell need to know who instantiated him
 		skillPro.SetInvoker (this.gameObject);
