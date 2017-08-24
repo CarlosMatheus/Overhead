@@ -236,9 +236,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  cooldown: 0
-  range: Infinity
-  sideEffect: {fileID: 1572256132303590, guid: 991d7cf752f7dc840b0bbe21dfd01e79, type: 2}
+  cooldown: Infinity
+  range: 0
+  sideEffect: {fileID: 0}
   burnRate: 0
   slowFactor: 0
   rangeRadius: 0
@@ -256,7 +256,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   impactEffect: {fileID: 0}
-  speed: 15
 --- !u!198 &198515650397752864
 ParticleSystem:
   m_ObjectHideFlags: 1
