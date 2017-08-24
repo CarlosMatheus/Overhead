@@ -9,16 +9,16 @@ public class InstancesManager : MonoBehaviour {
     [SerializeField] private Mesh voxel3x3 = null;
     [SerializeField] private Mesh voxel2x2 = null;
     [SerializeField] private Mesh voxel1x1 = null;
+	[SerializeField] private GameObject player = null;
 
-	private TowerScript towerOfTheTime;
+	private UpgradeCanvasManager towerOfTheTime;
 	private SphereShop sphereShop;
 
-	public TowerScript GetTowerOfTheTime () 
-    {
+	public UpgradeCanvasManager GetTowerOfTheTime () {
 		return towerOfTheTime;
 	}
 
-	public void SetTowerOfTheTime (TowerScript _set) {
+	public void SetTowerOfTheTime (UpgradeCanvasManager _set) {
 		if (towerOfTheTime == null) {
 			towerOfTheTime = _set;
 			towerOfTheTime.GetUpCanvas ().SetActive (true);
@@ -79,8 +79,13 @@ public class InstancesManager : MonoBehaviour {
         return voxel1x1;
     }
 
-	private void Start () 
+	  public GameObject GetPlayerObj ()
     {
+		    return player;
+	  }
+
+	private void Start ()
+  {
 		sphereShop = GameObject.FindGameObjectWithTag ("Icosphere").GetComponent<SphereShop>();
 	}
 }

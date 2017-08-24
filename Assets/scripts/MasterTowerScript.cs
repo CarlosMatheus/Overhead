@@ -31,11 +31,20 @@ public class MasterTowerScript : MonoBehaviour {
 	}
 
 	private void Start(){
-        towerManager = GameObject.Find("GameMaster").GetComponent<TowerManager>();
+		GameObject gameMaster = GameObject.FindGameObjectWithTag ("GameMaster");
+
+		towerManager = gameMaster.GetComponent<TowerManager> ();
 		lifeCounterText = GameObject.Find ("LifeCounter").GetComponent<Text> ();
 		lifes = initialLifes;
 		UpdateLifeText ();
-        AddMasterTowerToTowerManager();
+		AddMasterTowerToTowerManager ();
+
+		GameObject player = gameMaster.GetComponent<InstancesManager> ().GetPlayerObj ();
+		GameObject masterTower = gameMaster.GetComponent<InstancesManager> ().GetMasterTowerObj ();
+
+		player.GetComponent<PlayerController> ().currentSkill.GetComponent<SkillsProperties> ().SetEffect (null);
+		masterTower.GetComponent<TowerScript> ().bulletPrefab.GetComponent<SkillsProperties> ().SetEffect (null);
+
 	}
 
     private void AddMasterTowerToTowerManager()

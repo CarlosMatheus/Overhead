@@ -13,6 +13,16 @@ public class PropertiesManager : MonoBehaviour {
 	private float burnRate;
 	private float slowFactor;
 
+	// Reference to objects
+	private GameObject masterTower;
+	private GameObject player;
+
+	void Start () {
+		GameObject gameMaster = GameObject.FindGameObjectWithTag ("GameMaster");
+		player = gameMaster.GetComponent<InstancesManager> ().GetPlayerObj ();
+		masterTower = gameMaster.GetComponent<InstancesManager> ().GetMasterTowerObj ();
+	}
+
 	public float GetDamage () {
 		return damage;
 	}
@@ -67,6 +77,11 @@ public class PropertiesManager : MonoBehaviour {
 
 	public void SetSoulBonusChance (float multiplicationFactor) {
 		soulBonusChance *= multiplicationFactor;
+	}
+
+	public void SetEffect (GameObject _effect) {
+		player.GetComponent<PlayerController> ().currentSkill.GetComponent<SkillsProperties> ().SetEffect (_effect);
+		masterTower.GetComponent<TowerScript> ().bulletPrefab.GetComponent<SkillsProperties> ().SetEffect (_effect);
 	}
 
 	public void SetValues (SkillsProperties sp) {

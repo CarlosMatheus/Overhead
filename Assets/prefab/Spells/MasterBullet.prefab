@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 114483967954686284}
   - component: {fileID: 114219522280435266}
   m_Layer: 0
-  m_Name: MastelBullet
+  m_Name: MasterBullet
   m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,7 +238,9 @@ MonoBehaviour:
   damage: 15
   cooldown: 0.1
   range: 8
-  effect: {fileID: 0}
+  sideEffect: {fileID: 1572256132303590, guid: 991d7cf752f7dc840b0bbe21dfd01e79, type: 2}
+  burnRate: 1
+  slowFactor: 0.9
 --- !u!114 &114483967954686284
 MonoBehaviour:
   m_ObjectHideFlags: 1

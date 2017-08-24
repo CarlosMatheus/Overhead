@@ -873,6 +873,7 @@ GameObject:
   - component: {fileID: 95269012887861862}
   - component: {fileID: 114880102893571164}
   - component: {fileID: 114398883616282538}
+  - component: {fileID: 114398969784102374}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Tower
@@ -2355,7 +2356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonName: {fileID: 114810884514956144}
   minWaveToActivate: 0
-  maxLevel: 0
+  maxLevel: 3
   cost: 0
   addScore: 0
   perkButton: {fileID: 114286921783700026}
@@ -2489,7 +2490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonName: {fileID: 114100257321242772}
   minWaveToActivate: 0
-  maxLevel: 0
+  maxLevel: 3
   cost: 0
   addScore: 0
   perkButton: {fileID: 114317452324157746}
@@ -2806,7 +2807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonName: {fileID: 114663737429179650}
   minWaveToActivate: 0
-  maxLevel: 0
+  maxLevel: 3
   cost: 0
   addScore: 0
   perkButton: {fileID: 114344157625089544}
@@ -3721,6 +3722,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696db64d46dbb1042b1b061ff4e6c48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114398969784102374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1500846572791458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6125f6014bae1e24982d668f41805b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114399795971693338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3959,7 +3971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonName: {fileID: 114996861119050006}
   minWaveToActivate: 0
-  maxLevel: 0
+  maxLevel: 3
   cost: 0
   addScore: 0
   perkButton: {fileID: 114945533623515106}
@@ -4265,7 +4277,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1076308763873118, guid: 81d8a83a09a4b4d4183eb78e46bb9eed,
     type: 2}
   rangeObject: {fileID: 1360362137407910}
-  canvasRange: 2.5
 --- !u!114 &114635895342939296
 MonoBehaviour:
   m_ObjectHideFlags: 1
