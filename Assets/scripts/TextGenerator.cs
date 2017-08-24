@@ -5,13 +5,20 @@ using UnityEngine.UI;
 
 public class TextGenerator : MonoBehaviour {
 
+    [SerializeField] private GameObject textCanvas;
+
+    public float minDisplayTime;
+    public float maxDisplayTime;
     public string[] phrases;
+
+    public bool isReady { get; private set; }
 
     private Text text;
 
 	// Use this for initialization
 	void Start () {
-        text = GetComponent<Text>();
+        isReady = false;
+        text = textCanvas.GetComponent<Text>();
         StartCoroutine(GenerateText());
 	}
 	
@@ -29,7 +36,9 @@ public class TextGenerator : MonoBehaviour {
         for (int i = 1; i < phrases.Length; i++)
         {
             text.text = phrases[i];
-            yield return new WaitForSeconds(Random.Range(0.2f, 0.6f));
+            yield return new WaitForSeconds(Random.Range(minDisplayTime, maxDisplayTime));
         }
+
+        isReady = true;
     }
 }
