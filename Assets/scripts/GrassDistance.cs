@@ -13,7 +13,7 @@ public class GrassDistance : MonoBehaviour
     {
         cameraObj = GameObject.FindWithTag("GameMaster").GetComponent<InstancesManager>().GetCameraPlayer();
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
-        InvokeRepeating("CalculateDist", 0f, 0.3f);
+        //InvokeRepeating("CalculateDist", 0f, 0.3f);
     }
 
     private void CalculateDist()

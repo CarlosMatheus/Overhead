@@ -29,7 +29,7 @@ public class VoxelDistance : MonoBehaviour {
         voxel3x3 = instanceManager.GetVoxel3x3();
         voxel4x4 = instanceManager.GetVoxel4x4();
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
-        InvokeRepeating("CalculateDist", 0f, 0.3f);
+        //InvokeRepeating("CalculateDist", 0f, 0.3f);
     }
 
     private void CalculateDist()
@@ -51,7 +51,7 @@ public class VoxelDistance : MonoBehaviour {
             meshFilter.mesh = voxel2x2;
             return;
         }
-        if (distance < limitDist1)
+        else
         {
             meshFilter.mesh = voxel1x1;
             return;
