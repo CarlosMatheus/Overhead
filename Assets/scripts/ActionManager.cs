@@ -35,7 +35,7 @@ public class ActionManager : MonoBehaviour
 
     private void Start()
     {
-        audioManager = gameObject.GetComponent<AudioManager>();
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
         waveSpawner = gameObject.GetComponent<WaveSpawner>();
         StartInitialAnimation();
         numOfEnemies = 0;

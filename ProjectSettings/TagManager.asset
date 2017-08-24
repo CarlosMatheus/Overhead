@@ -12,6 +12,7 @@ TagManager:
   - Tree
   - GameMaster
   - Icosphere
+  - AudioManager
   layers:
   - Default
   - TransparentFX
