@@ -14,7 +14,7 @@ public class UpgradeCanvasManager : MonoBehaviour {
 		// Upgrade system canvas configuration
 		Canvas towerCanvas = GetComponentInChildren<Canvas> ();
 		if (towerCanvas == null) {
-			Debug.Log ("Canvas is null no towe" + gameObject.name);
+			//Debug.Log ("Canvas is null no towe" + gameObject.name);
 			return;
 		}
 		upSys = towerCanvas.gameObject;
