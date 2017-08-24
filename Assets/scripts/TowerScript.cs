@@ -11,19 +11,14 @@ public class TowerScript : MonoBehaviour {
 	public Transform playerSpawnOnTower;
 	public GameObject bulletPrefab;
     [SerializeField] private GameObject rangeObject = null;
-	[SerializeField] private float canvasRange = 1f;
 
 	private float fireCountdown = 1f;
 	private float turnSpeed = 10f;
 	private Transform target;
 	private GameObject player;
-	private GameObject upSys;
-	private InstancesManager instanceManager;
-
-	// Atributes from spell
-	private float damage;
-	private float cooldown;
-	private float range;
+	private PropertiesManager pm;
+    private GameObject gameMaster;
+    private MouseCursorManager mouseCursorManage;
 
 	public GameObject GetTarget() {
 		if (target != null)
@@ -32,76 +27,84 @@ public class TowerScript : MonoBehaviour {
 			return null;
 	}
 
-    public float GetRange()
-    {
-		return bulletPrefab.GetComponent<SkillsProperties> ().GetRange ();
-    }
-
-    public void AppearRange()
-    {
+    public void AppearRange() {
+		if (rangeObject == null)
+			return;
         rangeObject.SetActive(true);
     }
 
-    public void DisappearRange()
-    {
+	public void DisappearRange() {
+		if (rangeObject == null)
+			return;
         rangeObject.SetActive(false);
-    }
-
-	public void SetDamage (float multiplicationFactor) {
-		damage *= multiplicationFactor;// * bulletPrefab.GetComponent<SkillsProperties> ().GetDamage ();
 	}
 
-	public void SetCooldown (float multiplicationFactor) {
-		cooldown *= multiplicationFactor;// * bulletPrefab.GetComponent<SkillsProperties> ().GetCooldown ();
+	public float GetDamage () {
+		return pm.GetDamage();
 	}
 
-	public void SetRange (float multiplicationFactor) {
-		range *= multiplicationFactor;// * bulletPrefab.GetComponent<SkillsProperties> ().GetRange ();
+	public float GetCooldown () {
+		return pm.GetCooldown ();
 	}
 
-	public GameObject GetUpCanvas () {
-		return upSys;
+	public float GetRange () {
+		return pm.GetRange ();
+	}
+
+	public float GetBurnValue () {
+		return pm.GetBurnRate ();
+	}
+
+	public float GetSlowFactor () {
+		return pm.GetSlowFactor ();
+	}
+
+	public float GetRangeRadius () {
+		return pm.GetRangeRadius ();
+	}
+
+	public float GetEffectDuration () {
+		return pm.GetEffectDuration ();
 	}
 
 	void Start () {
 
-		// Set skill values from prefab
-		SetValues (1f);
+        gameMaster = GameObject.FindWithTag("GameMaster");
+        mouseCursorManage = gameMaster.GetComponent<MouseCursorManager>();
 
 		// Finding the player gameObject
 		player = GameObject.FindGameObjectWithTag ("Player");
 
-		SetRangeObject();
+		if (bulletPrefab == null)
+			return;
 
-		instanceManager = GameObject.FindGameObjectWithTag ("GameMaster").GetComponent<InstancesManager> ();
+		pm = GetComponent<PropertiesManager> ();
+
+		// Set skill values from prefab
+		pm.SetValues (bulletPrefab.GetComponent<SkillsProperties> ());
 
 		//This will reapeat every 0.5 sec
 		InvokeRepeating ("UpdateTarget", 0f, 0.5f);
 
-		// Upgrade system canvas configuration
-		Canvas towerCanvas = GetComponentInChildren<Canvas> ();
-		if (towerCanvas == null) {
-			Debug.Log ("Canvas is null no towe" + gameObject.name);
-			return;
-		}
-		upSys = towerCanvas.gameObject;
-		upSys.SetActive (false);
+		SetRangeObject ();
+
 	}
 
 	void Update () {
-		if (upSys != null)
-			CheckMouseButtonDown();
-
+		if (bulletPrefab == null)
+			return;
+		
 		//do nothing in case there is no target
 		if (target == null)
 			return;
 
 		FollowRotation ();
 		Fire ();
+
 	}
 
 	//Check the array of enemies, find the closest, see if it is on range and target it
-	void UpdateTarget () {
+	private void UpdateTarget () {
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 		float shortestDistance = Mathf.Infinity;
 		GameObject nearestEnemy = null;
@@ -122,7 +125,7 @@ public class TowerScript : MonoBehaviour {
                     if
                     (
 							player.GetComponent<PlayerController>().GetTarget() == null ||
-                        !player.GetComponent<PlayerController>().IsInRange
+							!player.GetComponent<PlayerController>().IsInRange
                         (
 								player.GetComponent<PlayerController>().GetTarget().transform,
                             player.transform
@@ -143,7 +146,7 @@ public class TowerScript : MonoBehaviour {
 	}
 
 	// Rotation to follow the enemy direction
-	void FollowRotation(){
+	private void FollowRotation(){
 		Vector3 dir = target.position - transform.position;
 		Quaternion lookRotation = Quaternion.LookRotation(dir);
 		Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
@@ -151,7 +154,7 @@ public class TowerScript : MonoBehaviour {
 	}
 
 	// Will make it fire with the right rate
-	void Fire(){
+	private void Fire(){
 		if( fireCountdown <= 0f ){
 			Shoot ();
 			fireCountdown = bulletPrefab.GetComponent<SkillsProperties> ().GetCooldown ();
@@ -160,15 +163,16 @@ public class TowerScript : MonoBehaviour {
 	}
 
 	// Will instantiete the shot and make it fallow the target
-	void Shoot(){
-		GameObject spellGO = ( GameObject ) Instantiate (bulletPrefab,firePoint.position,firePoint.rotation);
+	private void Shoot(){
+		GameObject spellGO = (GameObject)Instantiate (bulletPrefab, firePoint.position, firePoint.rotation);
 		TowerSpell towerSpell = spellGO.GetComponent<TowerSpell>();
 		SkillsProperties skillPro = spellGO.GetComponent<SkillsProperties> ();
 
 		// Set tower values on instantiated skill prefab
-		skillPro.SetDamage (damage);
-		skillPro.SetCooldown (cooldown);
-		skillPro.SetRange (range);
+		skillPro.SetDamage (GetDamage ());
+		skillPro.SetCooldown (GetCooldown ());
+		skillPro.SetRange (GetRange ());
+		skillPro.SetSideEffectValues (GetBurnValue (), GetSlowFactor (), GetRangeRadius (), GetEffectDuration ());
 
 		// Speel need to know who instantiated him
 		skillPro.SetInvoker (gameObject);
@@ -177,13 +181,12 @@ public class TowerScript : MonoBehaviour {
 			towerSpell.Seek (target);
 	}
 
-    bool IsAround (Transform trA, Transform trB) {
+    private bool IsAround (Transform trA, Transform trB) {
 
 		if (Vector3.Magnitude (trA.position - trB.position) < 1.0f)
 			return true;
 		else
 			return false;
-
 	}
 
     private bool IsInCorrectScene()
@@ -195,45 +198,21 @@ public class TowerScript : MonoBehaviour {
     {
         if (IsInCorrectScene())
         {
-			rangeObject.transform.localScale = new Vector3(range * 2, 0.01f, range * 2);
+			rangeObject.transform.localScale = new Vector3(GetRange() * 2, 0.01f, GetRange() * 2);
             rangeObject.SetActive(false);
         }
 	}
 
-	private void SetValues (float multiplicationFactor) {
+    private void OnMouseEnter()
+    {
+        if( IsAround(player.transform,playerSpawnOnTower) == false )
+        {
+            mouseCursorManage.SetTeleportCursor();
+        }
+    }
 
-		damage = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetDamage ();
-		cooldown = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetCooldown ();
-		range = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetRange ();
-	}
-
-	private void CheckMouseButtonDown()
-	{
-		// Mouse right click makes the store close
-		if (Input.GetMouseButtonDown(1) && upSys.activeInHierarchy)
-			instanceManager.SetTowerOfTheTime (this);
-	}
-
-	void OnMouseDown () {
-
-		if (gameObject.name == "MasterTower")
-			return;
-
-		instanceManager.SetTowerOfTheTime (this);
-
-		//StartCoroutine (CheckCamera ());
-		upSys.transform.rotation = Camera.main.transform.rotation;
-		//upSys.SetActive (!upSys.activeInHierarchy);
-	}
-
-	IEnumerator CheckCamera () {
-		Vector3 camPos = Camera.main.transform.position;
-
-		yield return new WaitUntil (() => 
-			(
-				Vector3.Magnitude (Camera.main.transform.position - camPos) > canvasRange
-			)
-		);
-		upSys.SetActive (false);
-	}
+    private void OnMouseExit()
+    {
+        mouseCursorManage.SetIdleCursor();
+    }
 }

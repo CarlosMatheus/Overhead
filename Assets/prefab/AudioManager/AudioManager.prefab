@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4151368780124016}
-  - component: {fileID: 114609452485419446}
+  - component: {fileID: 114805020594032602}
   m_Layer: 0
   m_Name: AudioManager
-  m_TagString: Untagged
+  m_TagString: AudioManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114609452485419446
+--- !u!114 &114805020594032602
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -51,4 +51,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b8202ca72ba4200a51ac70acf44d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: MusicMainScene
+    clip: {fileID: 8300000, guid: f752becba7e70fd4fb1621fc78a79f21, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: StartMainScene
+    clip: {fileID: 8300000, guid: a8c844bfb39cf4ea087247e48e3aa124, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: NewWave
+    clip: {fileID: 8300000, guid: 3a9aa29cb18516b479fe8eec898b44ca, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

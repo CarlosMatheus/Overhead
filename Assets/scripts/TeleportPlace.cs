@@ -7,12 +7,16 @@ public class TeleportPlace : MonoBehaviour {
 	private GameObject player;
 	private Transform partToRotate;
 	private Transform playerSpawnOnTower;
+    private MouseCursorManager mouseCursosManage;
 
 	void Start () {
 		// Finding the player gameObject
 		player = GameObject.FindGameObjectWithTag ("Player");
+		if (GetComponent<TowerScript> () == null)
+			return;
 		partToRotate = GetComponent<TowerScript> ().partToRotate;
 		playerSpawnOnTower = GetComponent<TowerScript> ().playerSpawnOnTower;
+        mouseCursosManage = GameObject.FindWithTag("GameMaster").GetComponent<MouseCursorManager>();
 	}
 
 	private void OnMouseOver()
@@ -27,7 +31,9 @@ public class TeleportPlace : MonoBehaviour {
 			{   // If not and player is not teleporting
 				player.GetComponent<PlayerController>().teleporting = true;
 				StartCoroutine(TeleportEvents());
+                mouseCursosManage.SetIdleCursor();
 			}
+
 		}
 	}
 

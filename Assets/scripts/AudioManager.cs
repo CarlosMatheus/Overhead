@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
             return;
-        }    
+        }
 
         //this is to not destroy this audio manager in the change of scene!
         DontDestroyOnLoad(gameObject);

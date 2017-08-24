@@ -27,7 +27,7 @@ public class Perk : MonoBehaviour {
 	void Start () 
     {
 		name = gameObject.name;
-		buttonName.text = name;
+		// buttonName.text = name;
 
 		gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
 		soulsCounter = gameMaster.GetComponent<SoulsCounter> ();
@@ -48,35 +48,32 @@ public class Perk : MonoBehaviour {
 			}
 		}
 		*/
+	}
 
-		GetButton().interactable = isCallable;
+	void Update () {
+		GetButton().interactable = CheckIfItsAvailable();
 	}
 
 	public void LevelUp () {
 		
-		if (level <= maxLevel && soulsCounter.GetSouls() >= cost) {
-			if (gameMaster.GetComponent<WaveSpawner> ().GetWave () >= minWaveToActivate) {
-				if (isCallable) {
-					// Set childs callables
-					foreach (Perk p in childs) {
-						p.TurnCallable ();
-						p.GetButton().interactable = true;
-					}
 
-					// Upgrade perk
-					level++;
-
-					// Consume souls to level up
-					soulsCounter.SetSouls (soulsCounter.GetSouls() - cost);
-
-					// Add score
-					scoreCounter.SetScore (scoreCounter.GetScore() + addScore);
-
-					// Call a default function on skill gameObject to alter values
-					Debug.Log ("LevelUp to level" + level);
-				}
-			}
+		// Set childs callables
+		foreach (Perk p in childs) {
+			p.TurnCallable ();
+			p.GetButton ().interactable = true;
 		}
+
+		// Upgrade perk
+		level++;
+
+		// Consume souls to level up
+		soulsCounter.SetSouls (soulsCounter.GetSouls () - cost);
+
+		// Add score
+		scoreCounter.SetScore (scoreCounter.GetScore () + addScore);
+
+		// Call a default function on skill gameObject to alter values
+		Debug.Log ("LevelUp to level" + level);
 	}
 
 	public void LevelDown () {
@@ -107,6 +104,13 @@ public class Perk : MonoBehaviour {
 
 	private Button GetButton () {
 		return perkButton;
+	}
+
+	private bool CheckIfItsAvailable () {
+		if (level < maxLevel && soulsCounter.GetSouls () >= cost && gameMaster.GetComponent<WaveSpawner> ().GetWave () >= minWaveToActivate && isCallable) {
+			return true;
+		}
+		return false;
 	}
 }
 
