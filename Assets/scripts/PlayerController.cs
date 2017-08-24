@@ -18,11 +18,7 @@ public class PlayerController : MonoBehaviour {
 	private GameObject enemyHealthBar;
 	private float attackCouldown;
 	private float time;
-
-	// Atributes from spell
-	private float damage;
-	private float cooldown;
-	private float range;
+	private PropertiesManager pm;
 
 	const int FIRST = 0, SECOND = 1;
 
@@ -69,21 +65,32 @@ public class PlayerController : MonoBehaviour {
 		return currentTarget;
 	}
 
-	public void SetDamage (float multiplicationFactor) {
-		damage = multiplicationFactor * currentSkill.GetComponent<SkillsProperties> ().GetDamage ();
+	public float GetDamage () {
+		return pm.GetDamage();
 	}
 
-	public void SetCooldown (float multiplicationFactor) {
-		cooldown = multiplicationFactor * currentSkill.GetComponent<SkillsProperties> ().GetCooldown ();
+	public float GetCooldown () {
+		return pm.GetCooldown ();
 	}
 
-	public void SetRange (float multiplicationFactor) {
-		range = multiplicationFactor * currentSkill.GetComponent<SkillsProperties> ().GetRange ();
+	public float GetRange () {
+		return pm.GetRange ();
+	}
+
+	public float GetBurnValue () {
+		return pm.GetBurnRate ();
+	}
+
+	public float GetSlowFactor () {
+		return pm.GetSlowFactor ();
 	}
 
 	void Start () {
+		// Get component to properties data manager
+		pm = GetComponent<PropertiesManager> ();
 
-		SetValues (1f);
+		// Set skill values from prefab
+		pm.SetValues(currentSkill.GetComponent<SkillsProperties>());
 
 		// Setting time reference
 		time = Time.time;
@@ -118,7 +125,7 @@ public class PlayerController : MonoBehaviour {
 
 			if (IsInRange (transform, currentTarget.transform)) {
 
-				if (Time.time - time > cooldown ) {
+				if (Time.time - time > GetCooldown() ) {
 					// Attack!
 					Attack ();
 					time = Time.time;
@@ -141,9 +148,10 @@ public class PlayerController : MonoBehaviour {
 		SkillsProperties skillPro = currentSpell.GetComponent<SkillsProperties> ();
 
 		// Set spell values on instantiated skill prefab
-		skillPro.SetDamage (damage);
-		skillPro.SetCooldown (cooldown);
-		skillPro.SetRange (range);
+		skillPro.SetDamage (GetDamage());
+		skillPro.SetCooldown (GetCooldown());
+		skillPro.SetRange (GetRange());
+		skillPro.SetSideEffectValues (GetBurnValue (), GetSlowFactor ());
 
 		// Spell need to know who instantiated him
 		skillPro.SetInvoker (this.gameObject);
@@ -158,17 +166,10 @@ public class PlayerController : MonoBehaviour {
 		a.y = 0;
 		b.y = 0;
 
-		if (Vector3.Magnitude (a - b) <= range)
+		if (Vector3.Magnitude (a - b) <= GetRange())
 			return true;
 		else
 			return false;
 
-	}
-
-	private void SetValues (float multiplicationFactor) {
-
-		damage = multiplicationFactor * currentSkill.GetComponent<SkillsProperties> ().GetDamage ();
-		cooldown = multiplicationFactor * currentSkill.GetComponent<SkillsProperties> ().GetCooldown ();
-		range = multiplicationFactor * currentSkill.GetComponent<SkillsProperties> ().GetRange ();
 	}
 }

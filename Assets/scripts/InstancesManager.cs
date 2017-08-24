@@ -25,6 +25,7 @@ public class InstancesManager : MonoBehaviour {
 			return;
 		}
 
+		// Maybe we can put some animation on deactivating one canvas
 		towerOfTheTime.GetUpCanvas ().SetActive (false);
 
 		if (_set == towerOfTheTime) {
@@ -33,6 +34,8 @@ public class InstancesManager : MonoBehaviour {
 		}
 
 		towerOfTheTime = _set;
+
+		// And an animation to activate other
 		towerOfTheTime.GetUpCanvas ().SetActive (true);
 	}
 

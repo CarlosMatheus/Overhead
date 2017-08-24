@@ -1,11 +1,11 @@
-﻿﻿using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerManager : MonoBehaviour {
 
-    [SerializeField] private int numOfTowers;
-    [SerializeField] private GameObject icosphere;
+    [SerializeField] private int numOfTowers = 0;
+    [SerializeField] private GameObject icosphere = null;
 
     private List<TowerListArr>[] towerListArr;
     private float originalIcosphereColiderRadius;

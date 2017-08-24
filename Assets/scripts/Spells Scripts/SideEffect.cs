@@ -21,10 +21,19 @@ public class SideEffect : MonoBehaviour {
 		target = _target;
 	}
 
+	public void SetBurnRate (float _burnRate) {
+		burnRate = _burnRate;
+	}
+
+	public void SetSlowFactor (float _slowFactor) {
+		slowFactor = _slowFactor;
+	}
+
 	public void StartEffect () {
 		
 		StartCoroutine (AutoDestroy ());
 
+		// If it's already side affected
 		if (!target.GetComponent<TargetSelection> ().IsSideAffected ()) {
 
 			target.GetComponent<TargetSelection> ().SetSideEffect (true);
@@ -33,7 +42,7 @@ public class SideEffect : MonoBehaviour {
 				Freeze ();
 			else if (burn)
 				StartCoroutine (Burn ());
-		} else
+		} else // Don't affect again
 			Destroy (this.gameObject);
 	}
 
