@@ -11,6 +11,8 @@ public class SkillsProperties : MonoBehaviour {
 	[SerializeField] private GameObject sideEffect;
 	[SerializeField] private float burnRate;
 	[SerializeField] private float slowFactor;
+	[SerializeField] private float rangeRadius;
+	[SerializeField] private float effectDuration;
 
 	private GameObject invoker;
 
@@ -32,6 +34,14 @@ public class SkillsProperties : MonoBehaviour {
 
 	public float GetSlowFactor () {
 		return slowFactor;
+	}
+
+	public float GetRangeRadius () {
+		return rangeRadius;
+	}
+
+	public float GetEffectDuration () {
+		return effectDuration;
 	}
 
 	public GameObject GetEffect () {
@@ -62,8 +72,10 @@ public class SkillsProperties : MonoBehaviour {
 		sideEffect = _sideEffect;
 	}
 
-	public void SetSideEffectValues (float _burnRate, float _slowFactor) {
+	public void SetSideEffectValues (float _burnRate, float _slowFactor, float _range, float _duration) {
 		burnRate = _burnRate;
 		slowFactor = _slowFactor;
+		rangeRadius = _range;
+		effectDuration = _duration;
 	}
 }

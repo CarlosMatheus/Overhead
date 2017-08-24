@@ -3,8 +3,8 @@
 public class TowerSpell : MonoBehaviour {
 
 	public Transform target;
-	public GameObject impactEffect;
-	public float speed = 15f;
+	[SerializeField] private GameObject impactEffect = null;
+	private float speed = 15f;
 
 	// This puclic function is accessed by the caster and it passes the target
 	public void Seek (Transform _target){
@@ -70,6 +70,8 @@ public class TowerSpell : MonoBehaviour {
 			// Att sideEffect values
 			sideEffect.GetComponent<SideEffect>().SetBurnRate (GetComponent<SkillsProperties> ().GetBurnRate ());
 			sideEffect.GetComponent<SideEffect> ().SetSlowFactor (GetComponent<SkillsProperties> ().GetSlowFactor ());
+			sideEffect.GetComponent<SideEffect> ().SetRangeRadius (GetComponent<SkillsProperties> ().GetRangeRadius ());
+			sideEffect.GetComponent<SideEffect> ().SetEffectDuration (GetComponent<SkillsProperties> ().GetEffectDuration ());
 
 			// Start sideEffect effects
 			sideEffect.GetComponent<SideEffect> ().StartEffect ();

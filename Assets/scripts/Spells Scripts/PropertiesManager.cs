@@ -12,6 +12,8 @@ public class PropertiesManager : MonoBehaviour {
 	private bool soulBonusActivation = false;
 	private float burnRate;
 	private float slowFactor;
+	private float rangeRadius;
+	private float effectDuration;
 
 	// Reference to objects
 	private GameObject masterTower;
@@ -39,8 +41,16 @@ public class PropertiesManager : MonoBehaviour {
 		return slowFactor;
 	}
 
-	public float GetBurnRate() {
+	public float GetBurnRate () {
 		return burnRate;
+	}
+
+	public float GetRangeRadius () {
+		return rangeRadius;
+	}
+
+	public float GetEffectDuration () {
+		return effectDuration;
 	}
 
 	public void SetDamage (float multiplicationFactor) {
@@ -59,8 +69,16 @@ public class PropertiesManager : MonoBehaviour {
 		burnRate *= multiplicationFactor;
 	}
 
-	public void SetSlowFactor (float multiplicationFactor) {
-		slowFactor *= multiplicationFactor;
+	public void SetSlowFactor (float adictionFactor) {
+		slowFactor += adictionFactor;
+	}
+
+	public void SetRangeRadius (float multiplicationFactor) {
+		rangeRadius *= multiplicationFactor;
+	}
+
+	public void SetEffectDuration (float multiplicationFactor) {
+		effectDuration *= multiplicationFactor;
 	}
 
 	public bool HasSoulBonusEffect () {

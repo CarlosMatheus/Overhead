@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class MasterTowerScript : MonoBehaviour {
 
-    [SerializeField] private int masterTowerIndex;
+    [SerializeField] private int masterTowerIndex = 0;
 
 	public float initialLifes;
 
