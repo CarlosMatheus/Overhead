@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class CanvasManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField] private GameObject waveWarning = null;
+    [SerializeField] private GameObject prepareYourself = null;
+
+    public void PlayWaveWarning()
+    {
+        waveWarning.GetComponent<Animation>().Play("FadeWarningCanvas");
+    }
+
+    public void PlayPrepareYourSelf()
+    {
+        prepareYourself.GetComponent<Animation>().Play("FadeWarningCanvas");
+    }
+
 }

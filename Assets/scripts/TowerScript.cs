@@ -17,6 +17,8 @@ public class TowerScript : MonoBehaviour {
 	private Transform target;
 	private GameObject player;
 	private PropertiesManager pm;
+    private GameObject gameMaster;
+    private MouseCursorManager mouseCursorManage;
 
 	public GameObject GetTarget() {
 		if (target != null)
@@ -66,6 +68,9 @@ public class TowerScript : MonoBehaviour {
 	}
 
 	void Start () {
+
+        gameMaster = GameObject.FindWithTag("GameMaster");
+        mouseCursorManage = gameMaster.GetComponent<MouseCursorManager>();
 
 		// Finding the player gameObject
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -197,4 +202,17 @@ public class TowerScript : MonoBehaviour {
             rangeObject.SetActive(false);
         }
 	}
+
+    private void OnMouseEnter()
+    {
+        if( IsAround(player.transform,playerSpawnOnTower) == false )
+        {
+            mouseCursorManage.SetTeleportCursor();
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        mouseCursorManage.SetIdleCursor();
+    }
 }

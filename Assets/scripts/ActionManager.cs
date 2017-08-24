@@ -9,6 +9,7 @@ public class ActionManager : MonoBehaviour
     
     private WaveSpawner waveSpawner;
     private AudioManager audioManager;
+    private CanvasManager canvasManager;
     private enum NextAction {Interval,Wave,Death};
     private NextAction nextAction;
     private float countdown;
@@ -37,6 +38,7 @@ public class ActionManager : MonoBehaviour
     {
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
         waveSpawner = gameObject.GetComponent<WaveSpawner>();
+        canvasManager = gameObject.GetComponent<CanvasManager>();
         StartInitialAnimation();
         numOfEnemies = 0;
     }
@@ -86,13 +88,16 @@ public class ActionManager : MonoBehaviour
     {
         countdown = interval;
         nextAction = NextAction.Wave;
+        audioManager.Play("IntervalSound");
         audioManager.SetVolumeWithFade("MusicMainScene", 0.3f, 3f);
+        canvasManager.PlayPrepareYourSelf();
     }
 
     private void StartWave()
     {
         audioManager.Play("NewWave");
         audioManager.SetVolumeWithFade("MusicMainScene", 0.6f, 3f);
+        canvasManager.PlayWaveWarning();
         countdown = 10000f;
         waveSpawner.StartNextWave();
         nextAction = NextAction.Interval;
