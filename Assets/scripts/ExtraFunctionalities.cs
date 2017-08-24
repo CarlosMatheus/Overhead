@@ -25,7 +25,7 @@ public class ExtraFunctionalities : MonoBehaviour {
 		}
 
 		ssNumber = PlayerPrefs.GetInt ("ssNumber");
-		Debug.Log (ssNumber);
+		//Debug.Log (ssNumber);
 
 		Time.timeScale = 1;
 		if (advanceTimeImage != null)
