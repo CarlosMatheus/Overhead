@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4775705776174594}
   - component: {fileID: 33632257767451864}
   - component: {fileID: 23051910337560410}
+  - component: {fileID: 114759920599285240}
   m_Layer: 0
   m_Name: Voxel
   m_TagString: Untagged
@@ -353,3 +354,14 @@ MonoBehaviour:
     type: 2}
   deathNode: {fileID: 1539836882470672, guid: c5e656f1dba9f40bf974310c00cf3760, type: 2}
   towerDist: 0.5
+--- !u!114 &114759920599285240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1552515744159090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aefa501011151461983226cb34efffb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

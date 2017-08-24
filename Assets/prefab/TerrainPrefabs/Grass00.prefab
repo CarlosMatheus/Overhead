@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114023980294843844}
   - component: {fileID: 65432970978238270}
   - component: {fileID: 114667618330999224}
+  - component: {fileID: 114461089958079680}
   m_Layer: 0
   m_Name: Grass00
   m_TagString: Grass
@@ -112,6 +113,17 @@ MonoBehaviour:
     type: 2}
   deathNode: {fileID: 1539836882470672, guid: c5e656f1dba9f40bf974310c00cf3760, type: 2}
   towerDist: 0.5
+--- !u!114 &114461089958079680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1539836882470672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aefa501011151461983226cb34efffb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114667618330999224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,3 +140,4 @@ MonoBehaviour:
   chance:
   - 1
   - 20
+  tolerance: 0.0005

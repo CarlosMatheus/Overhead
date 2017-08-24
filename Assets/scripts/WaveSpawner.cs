@@ -70,7 +70,7 @@ public class WaveSpawner : MonoBehaviour {
     {
         if ( IsInCorrectScene() )
         {
-            waveCountdownText.text = Mathf.Round(countdown).ToString();
+            //waveCountdownText.text = Mathf.Round(countdown).ToString();
             waveNumberText.text = Mathf.Round(waveNumber - 1).ToString();
         }
     }
@@ -169,7 +169,7 @@ public class WaveSpawner : MonoBehaviour {
         if (IsInCorrectScene())
         {
             waveNumberText = GameObject.Find("wave").GetComponent<Text>();
-            waveCountdownText = GameObject.Find("waveCountdownText").GetComponent<Text>();
+            //waveCountdownText = GameObject.Find("waveCountdownText").GetComponent<Text>();
         }
 
 		baseSpeed = baseSpeedConst;
