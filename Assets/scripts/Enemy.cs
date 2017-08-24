@@ -16,9 +16,11 @@ public class Enemy : MonoBehaviour {
 
 	private Transform target;
 	private GameObject masterTower;
+    private GameObject gameMaster;
 	private WaveSpawner waveSpawner;
 	private WayPointsScript wayPoints;
 	private MasterTowerScript masterTowerScript;
+    private MouseCursorManager mouserCursorManager;
 
 	//WaveSpawner will use this to set the waypoint
 	public void SetWayPoints(WayPointsScript wayP){
@@ -49,9 +51,12 @@ public class Enemy : MonoBehaviour {
 		hp = waveSpawner.GetBaseHP() * hpEnemyConst;
 	}
 
-	private void Start(){
-		masterTower = GameObject.Find("MasterTower");
+	private void Start()
+    {
+        gameMaster = GameObject.FindWithTag("GameMaster");
+        masterTower = gameMaster.GetComponent<InstancesManager>().GetMasterTowerObj();
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
+        mouserCursorManager = gameMaster.GetComponent<MouseCursorManager>();
 		SetSpeed (waveSpawner.GetBaseSpeed() * speedEnemyConst);
 		target = wayPoints.GetPoints (0);
 		originalHeight = transform.position.y;
@@ -85,6 +90,16 @@ public class Enemy : MonoBehaviour {
             Destroy(gameObject);
         }
 	}
+
+    private void OnMouseEnter()
+    {
+        mouserCursorManager.SetRedCursor();
+    }
+
+    private void OnMouseExit()
+    {
+        mouserCursorManager.SetIdleCursor();
+    }
 
     private bool IsInCorrectScene()
     {
