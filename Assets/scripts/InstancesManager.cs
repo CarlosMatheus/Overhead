@@ -3,7 +3,8 @@
 public class InstancesManager : MonoBehaviour {
 
     [SerializeField] private GameObject shopGObj = null;
-    [SerializeField] private GameObject masterTower = null;
+	[SerializeField] private GameObject masterTower = null;
+	[SerializeField] private GameObject player = null;
 
 	private UpgradeCanvasManager towerOfTheTime;
 	private SphereShop sphereShop;
@@ -47,6 +48,10 @@ public class InstancesManager : MonoBehaviour {
     {
         return masterTower;
     }
+
+	public GameObject GetPlayerObj () {
+		return player;
+	}
 
 	private void Start ()
     {
