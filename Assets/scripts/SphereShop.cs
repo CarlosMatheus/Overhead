@@ -29,9 +29,9 @@ public class SphereShop : MonoBehaviour {
 
 	public void ActiveShop(){
 		InstancesManager instancesManager = gameMaster.GetComponent<InstancesManager> ();
-		TowerScript towerScript = instancesManager.GetTowerOfTheTime ();
-		if (towerScript != null)
-			instancesManager.SetTowerOfTheTime (towerScript);
+		UpgradeCanvasManager ucmScript = instancesManager.GetTowerOfTheTime ();
+		if (ucmScript != null)
+			instancesManager.SetTowerOfTheTime (ucmScript);
 		ShopGObj.SetActive (true);
 	}
 

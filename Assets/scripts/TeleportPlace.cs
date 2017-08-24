@@ -11,6 +11,8 @@ public class TeleportPlace : MonoBehaviour {
 	void Start () {
 		// Finding the player gameObject
 		player = GameObject.FindGameObjectWithTag ("Player");
+		if (GetComponent<TowerScript> () == null)
+			return;
 		partToRotate = GetComponent<TowerScript> ().partToRotate;
 		playerSpawnOnTower = GetComponent<TowerScript> ().playerSpawnOnTower;
 	}

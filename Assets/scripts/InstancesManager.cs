@@ -4,14 +4,14 @@ public class InstancesManager : MonoBehaviour {
 
     [SerializeField] private GameObject shopGObj = null;
 
-	private TowerScript towerOfTheTime;
+	private UpgradeCanvasManager towerOfTheTime;
 	private SphereShop sphereShop;
 
-	public TowerScript GetTowerOfTheTime () {
+	public UpgradeCanvasManager GetTowerOfTheTime () {
 		return towerOfTheTime;
 	}
 
-	public void SetTowerOfTheTime (TowerScript _set) {
+	public void SetTowerOfTheTime (UpgradeCanvasManager _set) {
 		if (towerOfTheTime == null) {
 			towerOfTheTime = _set;
 			towerOfTheTime.GetUpCanvas ().SetActive (true);
