@@ -19,11 +19,7 @@ public class TowerScript : MonoBehaviour {
 	private GameObject player;
 	private GameObject upSys;
 	private InstancesManager instanceManager;
-
-	// Atributes from spell
-	private float damage;
-	private float cooldown;
-	private float range;
+	private PropertiesManager pm;
 
 	public GameObject GetTarget() {
 		if (target != null)
@@ -31,11 +27,6 @@ public class TowerScript : MonoBehaviour {
 		else
 			return null;
 	}
-
-    public float GetRange()
-    {
-		return bulletPrefab.GetComponent<SkillsProperties> ().GetRange ();
-    }
 
     public void AppearRange()
     {
@@ -45,18 +36,26 @@ public class TowerScript : MonoBehaviour {
     public void DisappearRange()
     {
         rangeObject.SetActive(false);
-    }
-
-	public void SetDamage (float multiplicationFactor) {
-		damage *= multiplicationFactor;// * bulletPrefab.GetComponent<SkillsProperties> ().GetDamage ();
 	}
 
-	public void SetCooldown (float multiplicationFactor) {
-		cooldown *= multiplicationFactor;// * bulletPrefab.GetComponent<SkillsProperties> ().GetCooldown ();
+	public float GetDamage ( ) {
+		return pm.GetDamage();
 	}
 
-	public void SetRange (float multiplicationFactor) {
-		range *= multiplicationFactor;// * bulletPrefab.GetComponent<SkillsProperties> ().GetRange ();
+	public float GetCooldown ( ) {
+		return pm.GetCooldown ();
+	}
+
+	public float GetRange ( ) {
+		return pm.GetRange ();
+	}
+
+	public float GetBurnValue () {
+		return pm.GetBurnRate ();
+	}
+
+	public float GetSlowFactor () {
+		return pm.GetSlowFactor ();
 	}
 
 	public GameObject GetUpCanvas () {
@@ -65,15 +64,16 @@ public class TowerScript : MonoBehaviour {
 
 	void Start () {
 
-		// Set skill values from prefab
-		SetValues (1f);
-
 		// Finding the player gameObject
 		player = GameObject.FindGameObjectWithTag ("Player");
 
-		SetRangeObject();
-
 		instanceManager = GameObject.FindGameObjectWithTag ("GameMaster").GetComponent<InstancesManager> ();
+		pm = GetComponent<PropertiesManager> ();
+
+		// Set skill values from prefab
+		pm.SetValues(bulletPrefab.GetComponent<SkillsProperties>());
+
+		SetRangeObject();
 
 		//This will reapeat every 0.5 sec
 		InvokeRepeating ("UpdateTarget", 0f, 0.5f);
@@ -122,7 +122,7 @@ public class TowerScript : MonoBehaviour {
                     if
                     (
 							player.GetComponent<PlayerController>().GetTarget() == null ||
-                        !player.GetComponent<PlayerController>().IsInRange
+							!player.GetComponent<PlayerController>().IsInRange
                         (
 								player.GetComponent<PlayerController>().GetTarget().transform,
                             player.transform
@@ -161,14 +161,15 @@ public class TowerScript : MonoBehaviour {
 
 	// Will instantiete the shot and make it fallow the target
 	void Shoot(){
-		GameObject spellGO = ( GameObject ) Instantiate (bulletPrefab,firePoint.position,firePoint.rotation);
+		GameObject spellGO = (GameObject)Instantiate (bulletPrefab, firePoint.position, firePoint.rotation);
 		TowerSpell towerSpell = spellGO.GetComponent<TowerSpell>();
 		SkillsProperties skillPro = spellGO.GetComponent<SkillsProperties> ();
 
 		// Set tower values on instantiated skill prefab
-		skillPro.SetDamage (damage);
-		skillPro.SetCooldown (cooldown);
-		skillPro.SetRange (range);
+		skillPro.SetDamage (GetDamage ());
+		skillPro.SetCooldown (GetCooldown ());
+		skillPro.SetRange (GetRange ());
+		skillPro.SetSideEffectValues (GetBurnValue (), GetSlowFactor ());
 
 		// Speel need to know who instantiated him
 		skillPro.SetInvoker (gameObject);
@@ -195,16 +196,9 @@ public class TowerScript : MonoBehaviour {
     {
         if (IsInCorrectScene())
         {
-			rangeObject.transform.localScale = new Vector3(range * 2, 0.01f, range * 2);
+			rangeObject.transform.localScale = new Vector3(GetRange() * 2, 0.01f, GetRange() * 2);
             rangeObject.SetActive(false);
         }
-	}
-
-	private void SetValues (float multiplicationFactor) {
-
-		damage = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetDamage ();
-		cooldown = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetCooldown ();
-		range = multiplicationFactor * bulletPrefab.GetComponent<SkillsProperties> ().GetRange ();
 	}
 
 	private void CheckMouseButtonDown()

@@ -42,22 +42,22 @@ public class SoulsCounter : MonoBehaviour {
 		souls = value;
 	}
 
-	public float GetSouls()
+	public float GetSouls ()
     {
 		return souls;
 	}
 
-	public void SetTowerPrice(float value, int index)
+	public void SetTowerPrice (float value, int index)
     {
 		towerValue[index] = value;
 	}
 
-	public float GetTowerPrice(int index)
+	public float GetTowerPrice (int index)
     {
 		return towerValue[index];
 	}
 
-	public void BuildTower( int index)
+	public void BuildTower (int index)
     {
 		souls -= towerValue[index];
 	}
@@ -75,6 +75,15 @@ public class SoulsCounter : MonoBehaviour {
 		float value = KillerPrice (_tag);
 		souls += value;
 		scoreCounter.KillEnemy(ConvertToScore (value));
+	}
+
+	public void AddSouls (string _tag) {
+		float value = KillerPrice (_tag);
+		souls += value;
+	}
+
+	public void AddSouls (float _value) {
+		souls += _value;
 	}
 
 	private float ConvertToScore(float value)

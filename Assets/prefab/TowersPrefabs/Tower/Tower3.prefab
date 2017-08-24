@@ -724,6 +724,7 @@ GameObject:
   - component: {fileID: 114699446148116006}
   - component: {fileID: 95984902713901724}
   - component: {fileID: 114682754452048586}
+  - component: {fileID: 114653394386334588}
   m_Layer: 0
   m_Name: Tower3
   m_TagString: Tower
@@ -4663,6 +4664,17 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!114 &114653394386334588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1500846572791458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696db64d46dbb1042b1b061ff4e6c48b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114673758347601546
 MonoBehaviour:
   m_ObjectHideFlags: 1

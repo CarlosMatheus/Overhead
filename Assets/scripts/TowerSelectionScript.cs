@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TowerSelectionScript : MonoBehaviour {
 
-    [SerializeField] private GameObject rangeObject;
-    [SerializeField] private GameObject tower;
+    [SerializeField] private GameObject rangeObject = null;
+    [SerializeField] private GameObject tower = null;
 
     private TowerScript towerScript;
     private Transform rangeObjectTransform;
@@ -16,7 +16,7 @@ public class TowerSelectionScript : MonoBehaviour {
         towerScript = tower.GetComponent<TowerScript>();
         rangeObjectTransform = rangeObject.transform;
 
-        range = towerScript.GetRange();
+		range = towerScript.bulletPrefab.GetComponent<SkillsProperties>().GetRange();
         rangeObjectTransform.localScale = new Vector3(range*2,0.01f,range*2);
     }
 }
