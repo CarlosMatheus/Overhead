@@ -1,10 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
-=======
-//using UnityEditor;
->>>>>>> 4bcd62684d1fe003794d985e27f8be621e8ad458
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
