@@ -7,6 +7,7 @@ public class MouseCursorManager : MonoBehaviour {
     [SerializeField] private MouseCursor mouseCursorIdle = null;
     [SerializeField] private MouseCursor mouseCursorRed = null;
     [SerializeField] private MouseCursor mouseCursorTeleport = null;
+    [SerializeField] private MouseCursor mouseCursorInvisable = null;
 
     public void SetIdleCursor()
     {
@@ -15,7 +16,7 @@ public class MouseCursorManager : MonoBehaviour {
 
     public void SetInvisibleCursor()
     {
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(mouseCursorInvisable.cursorTexture, mouseCursorInvisable.hotSpot, mouseCursorInvisable.cursorMode);
     }
 
     public void SetRedCursor()

@@ -19,6 +19,7 @@ public class Node : MonoBehaviour {
 	private SoulsCounter soulsCounter;
 	private ScoreCounter scoreCounter;
 	private GameObject currentBuildingTower;
+    private MouseCursorManager mouseCursorManager;
     private GameObject towerToBuild;
     private GameObject gameMaster;
     private GameObject tower;
@@ -34,6 +35,7 @@ public class Node : MonoBehaviour {
         {
             gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
             sphereShop = GameObject.FindGameObjectWithTag("Icosphere").GetComponent<SphereShop>();
+            mouseCursorManager = gameMaster.GetComponent<MouseCursorManager>();
             deathManager = gameMaster.GetComponent<DeathManager>();
             buildManager = gameMaster.GetComponent<BuildManager>();
             towerManager = gameMaster.GetComponent<TowerManager>();
@@ -74,6 +76,7 @@ public class Node : MonoBehaviour {
                 {
                     return;
                 }
+                mouseCursorManager.SetInvisibleCursor();
                 GameObject selecTowerInst = (GameObject)Instantiate(buildManager.GetSelectionTowerToBuild(), transform.position, transform.rotation);
                 selecTowerInst.transform.rotation = Quaternion.Euler(0, 0, 0);
                 buildManager.SetSelectionTowerToBuildInstance(selecTowerInst);
@@ -85,6 +88,7 @@ public class Node : MonoBehaviour {
     {
         if (IsInCorrectScene())
         {
+            mouseCursorManager.SetIdleCursor();
             buildManager.DestroySelectionTowerToBuildInstance();
         }
 	}
@@ -133,6 +137,9 @@ public class Node : MonoBehaviour {
                     }
                 }
                 //StartCoroutine (EventInstantiator ());
+
+                mouseCursorManager.SetIdleCursor();
+
                 BuildTower();
 
             }
