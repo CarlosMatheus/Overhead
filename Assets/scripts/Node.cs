@@ -76,7 +76,7 @@ public class Node : MonoBehaviour {
                 {
                     return;
                 }
-                mouseCursorManager.SetInvisibleCursor();
+                mouseCursorManager.SetGreenCursor();
                 GameObject selecTowerInst = (GameObject)Instantiate(buildManager.GetSelectionTowerToBuild(), transform.position, transform.rotation);
                 selecTowerInst.transform.rotation = Quaternion.Euler(0, 0, 0);
                 buildManager.SetSelectionTowerToBuildInstance(selecTowerInst);
