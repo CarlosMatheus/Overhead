@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 
-public class Perk : MonoBehaviour {
+public class Perk : MonoBehaviour 
+{
 
 	private new string name;
 
@@ -50,15 +51,18 @@ public class Perk : MonoBehaviour {
 		*/
 	}
 
-	void Update () {
+	void Update () 
+    {
 		GetButton().interactable = CheckIfItsAvailable();
 	}
 
-	public void LevelUp () {
+	public void LevelUp () 
+    {
 		
 
 		// Set childs callables
-		foreach (Perk p in childs) {
+		foreach (Perk p in childs) 
+        {
 			p.TurnCallable ();
 			p.GetButton ().interactable = true;
 		}
