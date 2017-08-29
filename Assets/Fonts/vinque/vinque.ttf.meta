@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 16f9d97c141c046d8a9842be2f0eaa66
+timeCreated: 1502918293
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Vinque
+  fontNames:
+  - Vinque
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

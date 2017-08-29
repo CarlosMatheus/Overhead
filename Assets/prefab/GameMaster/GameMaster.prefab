@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4447888224134530}
-  - component: {fileID: 82526920772506760}
   - component: {fileID: 114348083562371108}
   - component: {fileID: 114606223264522626}
   - component: {fileID: 114481859035547284}
@@ -33,6 +32,10 @@ GameObject:
   - component: {fileID: 114600698673747036}
   - component: {fileID: 114099972934301102}
   - component: {fileID: 114277739385761156}
+  - component: {fileID: 114026979271095136}
+  - component: {fileID: 114184450470069278}
+  - component: {fileID: 114200634650480466}
+  - component: {fileID: 114772377065291608}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: GameMaster
@@ -53,86 +56,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82526920772506760
-AudioSource:
+--- !u!114 &114026979271095136
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1314678458617260}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 76e371c54739e44448e10e29ec4c2546, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc71273a3b5714c7497ce58c91a920f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialAnimationDuration: 5
+  interval: 20
 --- !u!114 &114062466384089198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,7 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf6257e4bc5c454f838e8891970da0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canvas: {fileID: 0}
+  fader: {fileID: 0}
+  fadeCanvas: {fileID: 0}
 --- !u!114 &114099972934301102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,7 +93,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9173f5de5d02d4c03b69fbfc390647fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfTowers: 4
+  numOfTowers: 5
+  icosphere: {fileID: 0}
+--- !u!114 &114184450470069278
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314678458617260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bacca636bb2394b9ba59c266ebf72a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseCursorIdle:
+    cursorTexture: {fileID: 2800000, guid: b3ace3576da33443c8ae98b7e53737f1, type: 3}
+    cursorMode: 0
+    hotSpot: {x: 0, y: 0}
+  mouseCursorRed:
+    cursorTexture: {fileID: 0}
+    cursorMode: 0
+    hotSpot: {x: 0, y: 0}
+  mouseCursorTeleport:
+    cursorTexture: {fileID: 0}
+    cursorMode: 0
+    hotSpot: {x: 0, y: 0}
+--- !u!114 &114200634650480466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314678458617260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2380ab14f9c64761b23c14fb9db0325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114277739385761156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,6 +141,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopGObj: {fileID: 0}
+  masterTower: {fileID: 0}
+  cameraPlayer: {fileID: 0}
+  voxel4x4: {fileID: 4300000, guid: 96ba825617e964ff9b6f0fc5c1c4b5cf, type: 3}
+  voxel3x3: {fileID: 4300000, guid: 7a4f4f0e020024148b3bf543e9e55a44, type: 3}
+  voxel2x2: {fileID: 4300000, guid: 01ff7246a686a5140be8fa74effc106a, type: 3}
+  voxel1x1: {fileID: 4300000, guid: e1c48b5cca0e49c4eb463721ec416084, type: 3}
+  player: {fileID: 0}
 --- !u!114 &114292562531580396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,7 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef78957d5fe724a39b9819c1c73e2f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialcountdown: 5
   timeBetweenWaves: 30
   spawnDelay: 0.8
   baseSpeedConst: 1
@@ -280,14 +258,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1073512d1344efeaae7c18a90275b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialSouls: 60
-  scoreConstant: 2
   killersTags:
   - Tower
   - Player
-  killValues:
+  baseKillValues:
   - 1
-  - 5
+  - 2
+  initialSouls: 30
+  initialScoreConst: 3
+  waveKillConst: 1.05
 --- !u!114 &114600698673747036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -317,18 +296,38 @@ MonoBehaviour:
   - {fileID: 1500846572791458, guid: 2d59f18e94daa4ae5ae0e3f46bf85837, type: 2}
   - {fileID: 1500846572791458, guid: 917d86caf115c4349b17b2d9f19b3f3a, type: 2}
   - {fileID: 1500846572791458, guid: 88597a9b907de97409796bb0c30aede2, type: 2}
+  - {fileID: 1192856199098770, guid: 782d982d6a74d401baaa276aa7f637ce, type: 2}
   selectionTower:
   - {fileID: 1777162474150250, guid: ab91d0e8add484001b16ca9b0bd576d8, type: 2}
   - {fileID: 1470717830022824, guid: 39b91ae42e8051641b79131abd583d3a, type: 2}
   - {fileID: 1674007290332340, guid: 0370de2c70aef5947af4b535996af664, type: 2}
+  - {fileID: 1476852477586770, guid: 0f24f267cee384389891d46ba49e8bbf, type: 2}
   initialTowerValue:
-  - 10
-  - 30
-  - 100
+  - 5
+  - 15
+  - 50
+  - 1
   initialTowerScore:
   - 20
   - 80
   - 200
+  - 1
+--- !u!114 &114772377065291608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314678458617260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7a28846c0461040b959729999a449e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Birds:
+  - {fileID: 1019625292539496, guid: 560bf1c4085790b43bbd604dd64b086a, type: 2}
+  birdAltitude: 6
+  birdSpawnTimer: 30
+  gameDimensions: 25
 --- !u!114 &114812045155361606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -386,8 +385,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseButton: 0
   advanceTimeButton: 122
-  showAllHPButton: 0
-  closeStore: 0
-  quitGame: 0
-  setVolumeUp: 0
-  setVolumeDown: 0
+  screenShotButton: 291
+  sequencedScreenShotButton: 292
+  advanceTimeImage: {fileID: 0}
+  screenShotResolution: 3
+  sequencedNumber: 15
+  resetNumber: 1

@@ -2044,6 +2044,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4759435926548888}
+  - component: {fileID: 114195289656566572}
   m_Layer: 0
   m_Name: Village
   m_TagString: Untagged
@@ -60268,6 +60269,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5ebd7465fadef54e8878affe03425bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114195289656566572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1153551841387308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8685a8823e1184e4a819fd308db3e451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114195428385508308

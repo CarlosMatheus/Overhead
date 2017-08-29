@@ -970,6 +970,8 @@ GameObject:
   - component: {fileID: 114418525825306534}
   - component: {fileID: 65216629728745462}
   - component: {fileID: 114092974254467666}
+  - component: {fileID: 114118404777910702}
+  - component: {fileID: 114945845939211378}
   m_Layer: 0
   m_Name: MasterTower
   m_TagString: Tower
@@ -4193,6 +4195,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cilinder: {fileID: 1515482353084392}
+--- !u!114 &114118404777910702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1918428659857364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8900328075f4bc4db8d649ae0a2a073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114296661846443776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4204,7 +4217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc03328a5b8ea41d4b385715c488534a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterTowerIndex: 3
+  masterTowerIndex: 4
   initialLifes: 5
 --- !u!114 &114418525825306534
 MonoBehaviour:
@@ -4217,21 +4230,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e189b4cb99cfb4a5e99eb66f07e15b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangePiece: {fileID: 4954091469650824}
   partToRotate: {fileID: 4954091469650824}
   firePoint: {fileID: 4279723956395360}
   playerSpawnOnTower: {fileID: 4128924877811352}
   bulletPrefab: {fileID: 1683688416457540, guid: ae304f0987e691648af41f580f608b3e,
     type: 2}
-  towerSkill: {fileID: 1795519070530490, guid: 44c2f812a1dc8eb45918c88c1beac83d, type: 2}
-  teleportEffect: {fileID: 1628781945723574, guid: b790363590f171b42b9ff9508e1faa56,
-    type: 2}
-  enemyTag: Enemy
   rangeObject: {fileID: 1319819340153550}
-  range: 8
-  turnSpeed: 10
-  fireRate: 2
-  fireCountdown: 0
+  canvasRange: 1
 --- !u!114 &114454858350456286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4243,7 +4248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95c9be8b534b964aa2d38834ec2b888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlowColor: {r: 0.15862082, g: 0, b: 1, a: 0}
+  GlowColor: {r: 0.4705882, g: 0.38408303, b: 0.38408303, a: 0}
   FadeFactor: 5
   _currentColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114648816405002976
@@ -4268,7 +4273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0782aa6be446dd47a68169088085bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlowColor: {r: 0, g: 1, b: 0.006896496, a: 0}
+  GlowColor: {r: 0.4705882, g: 0.38408303, b: 0.38408303, a: 0}
   FadeFactor: 5
   entrou: 0
   _currentColor: {r: 0, g: 0, b: 0, a: 0}
@@ -4287,6 +4292,17 @@ MonoBehaviour:
   hoverIntensity: 1
   player: {fileID: 0}
   center: {fileID: 4495014266722656}
+--- !u!114 &114945845939211378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1918428659857364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696db64d46dbb1042b1b061ff4e6c48b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135357347063925088
 SphereCollider:
   m_ObjectHideFlags: 1

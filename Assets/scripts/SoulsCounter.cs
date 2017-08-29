@@ -18,72 +18,97 @@ public class SoulsCounter : MonoBehaviour {
 	private float wave;
 	private Text soulsText;
 	private ScoreCounter scoreCounter;
+    private ActionManager actionManager;
     private WaveSpawner waveSpawner;
 	private float[] towerValue;
 
-	public void SetInitialTowersValues(float[] towerV){
+	public void SetInitialTowersValues(float[] towerV)
+    {
 		towerValue = towerV;
 	}
 
-	public void SetWave(float value){
+	public void SetWave(float value)
+    {
 		wave = value;
 	}
 
-	public float GetWave(){
+	public float GetWave()
+    {
 		return wave;
 	}
 
-	public void SetSouls(float value){
+	public void SetSouls(float value)
+    {
 		souls = value;
 	}
 
-	public float GetSouls(){
+	public float GetSouls ()
+    {
 		return souls;
 	}
 
-	public void SetTowerPrice(float value, int index){
+	public void SetTowerPrice (float value, int index)
+    {
 		towerValue[index] = value;
 	}
 
-	public float GetTowerPrice(int index){
+	public float GetTowerPrice (int index)
+    {
 		return towerValue[index];
 	}
 
-	public void BuildTower( int index){
+	public void BuildTower (int index)
+    {
 		souls -= towerValue[index];
 	}
 
-	public bool CanBuild(int towerIndex){
+	public bool CanBuild(int towerIndex)
+    {
 		if (towerValue[towerIndex] <= souls)
 			return true;
 		else
 			return false;
 	}
 
-	public void KillEnemy (string _tag) {
+	public void KillEnemy (string _tag)
+    {
 		float value = KillerPrice (_tag);
 		souls += value;
 		scoreCounter.KillEnemy(ConvertToScore (value));
 	}
 
-	private float ConvertToScore(float value){
+	public void AddSouls (string _tag) {
+		float value = KillerPrice (_tag);
+		souls += value;
+	}
+
+	public void AddSouls (float _value) {
+		souls += _value;
+	}
+
+	private float ConvertToScore(float value)
+    {
 		return value * scoreConstant * wave;
 	}
 
-	private void Start () {
+	private void Start ()
+    {
 		SetSouls (initialSouls);
         scoreConstant = initialScoreConst;
 		instance = this;
 		scoreCounter = this.GetComponent<ScoreCounter> ();
 		soulsText = GameObject.Find ("SoulsNum").GetComponent<Text> ();
         waveSpawner = gameObject.GetComponent<WaveSpawner>();
+        actionManager = gameObject.GetComponent<ActionManager>();
 	}
 
-	private void Update () {
+	private void Update ()
+    {
 		UpdateUI ();
 	}
 
-	private void UpdateUI () {
+	private void UpdateUI ()
+    {
 		soulsText.text = Mathf.Round(GetSouls()).ToString();
 	}
 
@@ -95,6 +120,7 @@ public class SoulsCounter : MonoBehaviour {
 
 	private float KillerPrice (string _toSearch)
     {
+        actionManager.KillEnemy();
 		for (int i = 0; i < killersTags.Length; i++)
 			if (killersTags [i] == _toSearch)
                 return GetKillingValue(i);

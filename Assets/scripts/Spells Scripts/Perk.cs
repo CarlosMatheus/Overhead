@@ -3,19 +3,38 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 
-public class Perk : MonoBehaviour {
+public class Perk : MonoBehaviour 
+{
 
-	[SerializeField] private new string name;
-	[SerializeField] private GameObject skill;
-	[SerializeField] private Text buttonName;
+	private new string name;
+
+	[SerializeField] private Text buttonName = null;
 	[SerializeField] private float minWaveToActivate = 0f;
+	[SerializeField] private float maxLevel = 0f;
+	[SerializeField] private float cost = 0f;
+	[SerializeField] private float addScore = 0f;
+	[SerializeField] private Button perkButton;
 
-	private List<Perk> childs;
+	//private List<Perk> childs;
+	[SerializeField] private Perk[] childs;
+
+	private GameObject gameMaster;
+	private SoulsCounter soulsCounter;
+	private ScoreCounter scoreCounter;
 
 	public bool isCallable = false;
 	private int level = 0;
 
-	void Start () {
+	void Start () 
+    {
+		name = gameObject.name;
+		// buttonName.text = name;
+
+		gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
+		soulsCounter = gameMaster.GetComponent<SoulsCounter> ();
+		scoreCounter = gameMaster.GetComponent<ScoreCounter> ();
+
+		/* // If you wanna set automatically, try this. In our case, we choose not because of Canvas Horizontal Layout Group
 		Perk[] _childs = gameObject.GetComponentsInChildren<Perk> ();
 		foreach (Perk p in _childs) {
 			if (p.transform.parent != this.transform)
@@ -29,28 +48,36 @@ public class Perk : MonoBehaviour {
 				childs.Add (p);
 			}
 		}
-
-		buttonName.text = name;
-
-		GetComponentInChildren<Button> ().interactable = isCallable;
+		*/
 	}
 
-	public void LevelUp () {
+	void Update () 
+    {
+		GetButton().interactable = CheckIfItsAvailable();
+	}
 
-		//if (gameObject.GetComponent<WaveSpawner> ().GetWave () >= minWaveToActivate) {
-			if (isCallable) {
-				// Set childs callables
-				foreach (Perk p in childs) {
-					p.TurnCallable ();
-					p.GetComponent<Button> ().interactable = true;
-				}
+	public void LevelUp () 
+    {
+		
 
-				level++;
+		// Set childs callables
+		foreach (Perk p in childs) 
+        {
+			p.TurnCallable ();
+			p.GetButton ().interactable = true;
+		}
 
-				// Call a default function on skill gameObject to alter values
-				Debug.Log ("LevelUp!");
-			}
-		//}
+		// Upgrade perk
+		level++;
+
+		// Consume souls to level up
+		soulsCounter.SetSouls (soulsCounter.GetSouls () - cost);
+
+		// Add score
+		scoreCounter.SetScore (scoreCounter.GetScore () + addScore);
+
+		// Call a default function on skill gameObject to alter values
+		Debug.Log ("LevelUp to level" + level);
 	}
 
 	public void LevelDown () {
@@ -74,8 +101,20 @@ public class Perk : MonoBehaviour {
 	public void TurnCallable () {
 		isCallable = true;
 	}
+
 	public void TurnUncallable () {
 		isCallable = false;
+	}
+
+	private Button GetButton () {
+		return perkButton;
+	}
+
+	private bool CheckIfItsAvailable () {
+		if (level < maxLevel && soulsCounter.GetSouls () >= cost && gameMaster.GetComponent<WaveSpawner> ().GetWave () >= minWaveToActivate && isCallable) {
+			return true;
+		}
+		return false;
 	}
 }
 

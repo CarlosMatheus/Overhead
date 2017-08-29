@@ -9,15 +9,16 @@ public class PlayerController : MonoBehaviour {
 	public Transform shotSpawn;
 
 	[Header("Auto assign")]
-	public GameObject currentTarget;
 	public GameObject currentSkill;
 	public GameObject currentTower;
 	public bool teleporting = false;
 
 	// Private stuff
+	private GameObject currentTarget;
 	private GameObject enemyHealthBar;
 	private float attackCouldown;
 	private float time;
+	private PropertiesManager pm;
 
 	const int FIRST = 0, SECOND = 1;
 
@@ -46,7 +47,11 @@ public class PlayerController : MonoBehaviour {
 
 			// Active HP on top screen
 			enemyHealthBar.SetActive (true);
+
+			return;
 		}
+
+		currentTarget = _newTarget;
 	}
 
 	// Search for a new target (this is only called when a enemy dies killed by a player)
@@ -56,7 +61,44 @@ public class PlayerController : MonoBehaviour {
 		}  // If not, keep null
 	}
 
+	public GameObject GetTarget () {
+		return currentTarget;
+	}
+
+	public float GetDamage () {
+		return pm.GetDamage();
+	}
+
+	public float GetCooldown () {
+		return pm.GetCooldown ();
+	}
+
+	public float GetRange () {
+		return pm.GetRange ();
+	}
+
+	public float GetBurnValue () {
+		return pm.GetBurnRate ();
+	}
+
+	public float GetSlowFactor () {
+		return pm.GetSlowFactor ();
+	}
+
+	public float GetRangeRadius () {
+		return pm.GetRangeRadius ();
+	}
+
+	public float GetEffectDuration () {
+		return pm.GetEffectDuration ();
+	}
+
 	void Start () {
+		// Get component to properties data manager
+		pm = GetComponent<PropertiesManager> ();
+
+		// Set skill values from prefab
+		pm.SetValues(currentSkill.GetComponent<SkillsProperties>());
 
 		// Setting time reference
 		time = Time.time;
@@ -69,7 +111,7 @@ public class PlayerController : MonoBehaviour {
 			if (enemyHealthBar.activeInHierarchy) {   // If had target someone
 			
 				// Shows enemy (target) HP
-				enemyHealthBar.GetComponent<Slider> ().value = SetHealth (currentTarget.GetComponent<TargetSelection> ().HP);
+				enemyHealthBar.GetComponent<Slider> ().value = SetHealth (currentTarget.GetComponent<TargetSelection> ().GetHP());
 
 			}
 		}
@@ -91,7 +133,7 @@ public class PlayerController : MonoBehaviour {
 
 			if (IsInRange (transform, currentTarget.transform)) {
 
-				if (Time.time - time > currentSkill.GetComponent<SkillsProperties> ().cooldown) {
+				if (Time.time - time > GetCooldown() ) {
 					// Attack!
 					Attack ();
 					time = Time.time;
@@ -111,7 +153,16 @@ public class PlayerController : MonoBehaviour {
 		currentSkill.GetComponent<TowerSpell> ().Seek (currentTarget.transform);
 
 		GameObject currentSpell = (GameObject) Instantiate (currentSkill, shotSpawn.position, shotSpawn.rotation);
-		currentSpell.GetComponent<SkillsProperties> ().invoker = this.gameObject;
+		SkillsProperties skillPro = currentSpell.GetComponent<SkillsProperties> ();
+
+		// Pass PropertiesManager's information to prefab's SkillsProperties
+		skillPro.SetDamage (GetDamage());
+		skillPro.SetCooldown (GetCooldown());
+		skillPro.SetRange (GetRange());
+		skillPro.SetSideEffectValues (GetBurnValue (), GetSlowFactor (), GetRangeRadius (), GetEffectDuration ());
+
+		// Spell need to know who instantiated him
+		skillPro.SetInvoker (this.gameObject);
 	}
 
 	// Verify if A and B are in range
@@ -123,7 +174,7 @@ public class PlayerController : MonoBehaviour {
 		a.y = 0;
 		b.y = 0;
 
-		if (Vector3.Magnitude (a - b) <= currentSkill.GetComponent<SkillsProperties> ().range)
+		if (Vector3.Magnitude (a - b) <= GetRange())
 			return true;
 		else
 			return false;

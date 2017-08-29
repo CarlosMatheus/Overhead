@@ -21,12 +21,13 @@ GameObject:
   - component: {fileID: 4646910802980794}
   - component: {fileID: 33013155050419782}
   - component: {fileID: 23157288493198484}
+  - component: {fileID: 114559427362925936}
   m_Layer: 0
   m_Name: Grass.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1169906945663836
 GameObject:
@@ -38,12 +39,13 @@ GameObject:
   - component: {fileID: 4170357111447042}
   - component: {fileID: 33830678212307906}
   - component: {fileID: 23982997407134866}
+  - component: {fileID: 114868065572306244}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1322557448205272
 GameObject:
@@ -55,12 +57,13 @@ GameObject:
   - component: {fileID: 4840991939200992}
   - component: {fileID: 33948608018856992}
   - component: {fileID: 23817422675121438}
+  - component: {fileID: 114268763060373206}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1616925644455798
 GameObject:
@@ -72,12 +75,13 @@ GameObject:
   - component: {fileID: 4202610429247056}
   - component: {fileID: 33275347099755616}
   - component: {fileID: 23173514462689324}
+  - component: {fileID: 114054418631354732}
   m_Layer: 0
   m_Name: Grass.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1896202706455484
 GameObject:
@@ -94,7 +98,7 @@ GameObject:
   m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4170357111447042
 Transform:
@@ -173,7 +177,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1093981068320332}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -205,7 +209,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1616925644455798}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -237,7 +241,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1322557448205272}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -333,6 +337,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9238761, y: 0.055010796, z: 0.9238753}
   m_Center: {x: 0.0011405733, y: 0.00460577, z: 0.0034201557}
+--- !u!114 &114054418631354732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1616925644455798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543e99c20a3a94e4b92300df405a29b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114268763060373206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1322557448205272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543e99c20a3a94e4b92300df405a29b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114318637696392876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -350,3 +376,25 @@ MonoBehaviour:
     type: 2}
   deathNode: {fileID: 1539836882470672, guid: c5e656f1dba9f40bf974310c00cf3760, type: 2}
   towerDist: 0.5
+--- !u!114 &114559427362925936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1093981068320332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543e99c20a3a94e4b92300df405a29b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114868065572306244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1169906945663836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aefa501011151461983226cb34efffb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

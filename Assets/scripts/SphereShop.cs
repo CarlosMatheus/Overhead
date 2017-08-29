@@ -1,29 +1,53 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SphereShop : MonoBehaviour {
-
+public class SphereShop : MonoBehaviour 
+{
 	public float initialIntensity = 0.5f;
 	public float hoverIntensity = 1f;
-	public Transform player;
-	public Transform center;
-
-	private GameObject gameMaster;
-	private GameObject towerToBuild;
+	
 	private SoulsCounter soulsCounter;
 	private BuildManager buildManager;
-	private Light light;
-	private Shop shop;
-	private GameObject ShopGObj;
 	private DeathManager deathManager;
     private PauseManager pauseManager;
     private TowerManager towerManager;
+    private GameObject towerToBuild;
+    private GameObject gameMaster;
+    private GameObject ShopGObj;
+    public Transform player;
+    public Transform center;
+    private Light light;
+    private Shop shop;
 
-	public void SetTowerToBuild(GameObject towerToB){
+	public void SetTowerToBuild(GameObject towerToB)
+    {
 		towerToBuild = towerToB;
 	}
 
-	private void Start(){
+	public bool IsShopping () 
+    {
+		return ShopGObj.activeInHierarchy;
+	}
+
+	public void ActiveShop()
+    {
+		InstancesManager instancesManager = gameMaster.GetComponent<InstancesManager> ();
+		UpgradeCanvasManager ucmScript = instancesManager.GetTowerOfTheTime ();
+		if (ucmScript != null)
+			instancesManager.SetTowerOfTheTime (ucmScript);
+		ShopGObj.SetActive (true);
+	}
+
+	public void DesactiveShop()
+	{
+		buildManager.SetTowerToBuild (null);
+		buildManager.DestroySelectionTowerToBuildInstance ();
+		ShopGObj.SetActive (false);
+		towerManager.TowerDiselected();
+	}
+
+	private void Start()
+    {
         if (IsNotInCutScene())
         {
             gameMaster = GameObject.Find("GameMaster");
@@ -62,7 +86,8 @@ public class SphereShop : MonoBehaviour {
 	/// every frame check if player is is main tower and if he 
 	/// can buy the tower he selects
 	/// </summary>
-	private void Update () {
+	private void Update () 
+    {
         if (IsInCorrectScene())
         {
             if ( IsInMainTower() )
@@ -125,18 +150,6 @@ public class SphereShop : MonoBehaviour {
                 ActiveShop();
             }
         }
-	}
-
-	private void ActiveShop(){
-		ShopGObj.SetActive (true);
-	}
-
-	private void DesactiveShop()
-    {
-		buildManager.SetTowerToBuild (null);
-		buildManager.DestroySelectionTowerToBuildInstance ();
-		ShopGObj.SetActive (false);
-        towerManager.TowerDiselected();
 	}
 
 	private void CantBuild()

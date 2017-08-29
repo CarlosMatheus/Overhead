@@ -7,7 +7,6 @@ public class WaveSpawner : MonoBehaviour {
 
 	[Header("Spawn Attributes")]
 
-	public float initialcountdown = 5f;
 	public float timeBetweenWaves = 5f;
 	public float spawnDelay = 0.5f;
 
@@ -28,8 +27,6 @@ public class WaveSpawner : MonoBehaviour {
 
 	private int waveNumber = 1;
 	private int moduleIndex = 0;
-	private int numOfSpawnEnemy;
-	private float countdown;
 	private float baseSpeed;
 	private float baseHP;
 	private Text waveNumberText;
@@ -40,63 +37,70 @@ public class WaveSpawner : MonoBehaviour {
 	private SoulsCounter soulsConter;
 	private WayPointsScript[] wayPoints;
 	private MasterTowerScript masterTowerScript;
+    private ActionManager actionManager;
 
 	/// <summary>
 	/// Sets the module.
 	/// </summary>
 	/// <param name="spawnP">Spawn p.</param>
 	/// <param name="wayP">Way p.</param>
-	public void SetModule(Transform spawnP, WayPointsScript wayP){
+	public void SetModule(Transform spawnP, WayPointsScript wayP)
+    {
 		spawnPoint [moduleIndex] = spawnP;
 		wayPoints [moduleIndex] = wayP;
 		moduleIndex++;
 	}
 
-    public float GetWave(){
+    public float GetWave()
+    {
         return waveNumber;
     }
 
-	/// <summary>
-	/// Gets the base speed.
-	/// </summary>
-	/// <returns>The base speed.</returns>
-	public float getBaseSpeed (){
+    public void StartNextWave()
+    {
+        waveNumber++;
+        AjustDifficulty();
+        UpdateSoul();
+        UpdateLifes();
+        StartCoroutine(SpawnWave());
+    }
+
+    //Update the User Interface with wave and time remain for next wave information
+    public void UpdateUI(float countdown)
+    {
+        if ( IsInCorrectScene() )
+        {
+            //waveCountdownText.text = Mathf.Round(countdown).ToString();
+            waveNumberText.text = Mathf.Round(waveNumber - 1).ToString();
+        }
+    }
+
+	public float GetBaseSpeed ()
+    {
 		return baseSpeed;
 	}
 
-	/// <summary>
-	/// Gets the base H.
-	/// </summary>
-	/// <returns>The base H.</returns>
-	public float getBaseHP (){
+	public float GetBaseHP ()
+    {
 		return baseHP;
-	}
-
-	//Coroutine for the spawn, it delays spawnDelay for each instantiation
-	private IEnumerator SpawnWave(){
-		AjustArray ();
-		for (int i = 0; i < thisWaveSpawnEnemies.Length; i++) {    // not wave number  ???
-			EnemySpawn (thisWaveSpawnEnemies[i]);
-			yield return new WaitForSeconds (spawnDelay);
-		}
-		waveNumber++;
-		AjustDifficulty();
-		UpdateSoul ();
-		UpdateLifes ();
 	}
 
 	/// <summary>
 	/// Ajusts the array of enemies for the corrent wave
 	/// </summary>
-	private void AjustArray(){
+	private void AjustArray()
+    {
 		int sizeArrEn;
 		int waveNumIdx;
-		if (waveNumber > ArrayEnemies.Length) {
+		if ( waveNumber > ArrayEnemies.Length ) 
+        {
 			killPlayer ();
 			waveNumIdx = ArrayEnemies.Length - 1;
 			sizeArrEn = ArrayEnemies [waveNumIdx].Length;
-		} else {
-			waveNumIdx = waveNumber - 1;
+		} 
+        else
+        {
+			waveNumIdx = waveNumber - 2;
 			sizeArrEn = ArrayEnemies [waveNumIdx].Length;
 		}
 		int[] auxArr = new int[sizeArrEn];
@@ -106,7 +110,7 @@ public class WaveSpawner : MonoBehaviour {
 		int actualVal = 0;
 		for ( int i = sizeArrEn-1; i >= 0; i -- ){
 			actualVal = (ArrayEnemies[waveNumIdx][i] - '0');
-			if(actualVal == (','- '0') ){
+			if(actualVal == ( ',' - '0' ) ){
 				auxArr[auxArrIdx] = indexVal;
 				auxArrIdx++;
 				mult = 1;
@@ -158,14 +162,16 @@ public class WaveSpawner : MonoBehaviour {
 	/// </summary>
 	private void Start(){
 		masterTower = GameObject.Find ("MasterTower");
-		countdown = initialcountdown;
 		soulsConter = this.GetComponent<SoulsCounter> ();
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
+        actionManager = gameObject.GetComponent<ActionManager>();
+
         if (IsInCorrectScene())
         {
             waveNumberText = GameObject.Find("wave").GetComponent<Text>();
-            waveCountdownText = GameObject.Find("waveCountdownText").GetComponent<Text>();
+            //waveCountdownText = GameObject.Find("waveCountdownText").GetComponent<Text>();
         }
+
 		baseSpeed = baseSpeedConst;
 		baseHP = baseHPConst;
 	}
@@ -175,39 +181,22 @@ public class WaveSpawner : MonoBehaviour {
         return (SceneManager.GetActiveScene().buildIndex != 0 && string.Equals(SceneManager.GetActiveScene().name, "MainMenu") == false);
     }
 
-	/// <summary>
-	/// Update this instance.
-	/// </summary>
-	private void Update () {
-		if ( countdown <= 0f ) {
-			StartCoroutine (SpawnWave ());
-			countdown = timeBetweenWaves;
-		}
-		countdown -= Time.deltaTime;
-		UpdateUI();
-	}
-
 	//Instantiate the Enemy and set the waypoints
-	private void EnemySpawn(GameObject enemyPrefab){
-		for (int i = 0; i < 4; i++) {
+	private void EnemySpawn(GameObject enemyPrefab)
+    {
+		for (int i = 0; i < 4; i++) 
+        {
 			GameObject enemyGameObj = (GameObject)Instantiate (enemyPrefab, spawnPoint [i].position, spawnPoint [i].rotation);
 			enemyGameObj.GetComponent<Enemy> ().SetWayPoints (wayPoints [i]);
+            actionManager.SpawEnemy();
 		}
-	}
-
-	//Update the User Interface with wave and time remain for next wave information
-	private void UpdateUI(){
-        if (IsInCorrectScene())
-        {
-            waveCountdownText.text = Mathf.Round(countdown).ToString();
-            waveNumberText.text = Mathf.Round(waveNumber - 1).ToString();
-        }
 	}
 
 	/// <summary>
 	/// Updates the soul.
 	/// </summary>
-	private void UpdateSoul(){
+	private void UpdateSoul()
+    {
         if (IsInCorrectScene())
             soulsConter.SetWave (waveNumber - 1);
 	}
@@ -215,8 +204,20 @@ public class WaveSpawner : MonoBehaviour {
 	/// <summary>
 	/// Updates the lifes.
 	/// </summary>
-	private void UpdateLifes(){
+	private void UpdateLifes()
+    {
         if (IsInCorrectScene())
             masterTowerScript.NewWave ();
 	}
+
+    //Coroutine for the spawn, it delays spawnDelay for each instantiation
+    private IEnumerator SpawnWave()
+    {
+        AjustArray();
+        for (int i = 0; i < thisWaveSpawnEnemies.Length; i++)
+        {  
+            EnemySpawn(thisWaveSpawnEnemies[i]);
+            yield return new WaitForSeconds(spawnDelay);
+        }
+    }
 }

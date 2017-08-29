@@ -9,13 +9,24 @@ public class TargetSelection : MonoBehaviour {
 	public GameObject enemyHealthBar;
 	public GameObject deathEffect;
 
-	[Header("Auto assign (No need to assign)")]
-	public float HP;
-	public bool sideAffected = false;
+	private float HP;
+	private bool sideAffected = false;
 
 	private float maximumHealth;
 	private Enemy enemy;
 	private SoulsCounter soulsCounter;
+
+	public float GetHP () {
+		return HP;
+	}
+
+	public bool IsSideAffected () {
+		return sideAffected;
+	}
+
+	public void SetSideEffect (bool boolean) {
+		sideAffected = boolean;
+	}
 
 	public float getMaximumHealth(){
 		return maximumHealth;
@@ -23,9 +34,9 @@ public class TargetSelection : MonoBehaviour {
 
 	public void TakeDamageBy (GameObject other)
 	{
-		HP -= other.GetComponent<SkillsProperties> ().damage;
+		HP -= other.GetComponent<SkillsProperties> ().GetDamage();
 		if (HP <= 0)
-			DeathBy (other.GetComponent<SkillsProperties> ().invoker);
+			DeathBy (other.GetComponent<SkillsProperties> ().GetInvoker());
 	}
 
 	void Start ()
@@ -63,9 +74,9 @@ public class TargetSelection : MonoBehaviour {
 	{
 		// If player was killing this.gameObject
 		if (go.tag == "Player") {
-			if (go.GetComponent<PlayerController> ().currentTarget != null) {
-				if (go.GetComponent<PlayerController> ().currentTarget.transform == this.gameObject.transform) {
-					go.GetComponent<PlayerController> ().currentTarget = null;
+			if (go.GetComponent<PlayerController> ().GetTarget() != null) {
+				if (go.GetComponent<PlayerController> ().GetTarget().transform == this.gameObject.transform) {
+					go.GetComponent<PlayerController> ().SetTarget (null);
 					go.GetComponent<PlayerController> ().FindNewTarget ();   // Finds a new target
 				}
 			}
