@@ -21,6 +21,11 @@ public class ShopManager : MonoBehaviour
         return FindButtonOfKind(Kind.UpgradeTower)[0];
     }
 
+    public ButtonClass GetButtonClass(int index)
+    {
+        return buttons[index];
+    }
+
     private ButtonClass[] FindButtonOfKind(Kind kind)
     {
         List<ButtonClass> buttonVector = new List<ButtonClass>();

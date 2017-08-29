@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ShopButton : MonoBehaviour 
 {
+    [SerializeField] int indexOfThisTower = 0;
+
     private SkillsProperties skillProperties;
     private ShopManager shopManager;
     private ButtonClass thisButton;
@@ -16,11 +18,15 @@ public class ShopButton : MonoBehaviour
 
     private SoulsCounter soulsCounter;
 
-    public void StartButton(ButtonClass _thisButton)
+    public void Start()
     {
-        thisButton = _thisButton;
         InitializeVariables();
+        thisButton = shopManager.GetButtonClass(indexOfThisTower);
+        Invoke("SetCanvas", 0.1f);
+    }
 
+    private void SetCanvas()
+    {
         SetTowerName();
         SetTowerImage();
         SetTowerPrice();
@@ -32,7 +38,6 @@ public class ShopButton : MonoBehaviour
         gameMaster = GameObject.FindWithTag("GameMaster");
         shopManager = gameMaster.GetComponent<ShopManager>();
         soulsCounter = gameMaster.GetComponent<SoulsCounter>();
-        skillProperties = thisButton.spell.GetComponent<SkillsProperties>();
 
         description = gameObject.transform.GetChild(1).GetChild(0).gameObject;
         shopTowerItemImage = gameObject.transform.GetChild(1).GetChild(1).GetChild(1).gameObject;
@@ -52,7 +57,7 @@ public class ShopButton : MonoBehaviour
 
     private void SetTowerPrice()
     {
-        description.transform.GetChild(1).GetComponent<Text>().text = soulsCounter.GetTowerPrice(thisButton.indexOfThisTower).ToString();
+        description.transform.GetChild(1).GetComponent<Text>().text = soulsCounter.GetTowerPrice(thisButton.indexOfThisTower).ToString() + " souls";
     }
 
     private void SetTowerAttackTowerProperties()
@@ -72,6 +77,7 @@ public class ShopButton : MonoBehaviour
     {
         if (thisButton.kind == ShopManager.Kind.AttackTower)
         {
+            skillProperties = thisButton.spell.GetComponent<SkillsProperties>();
             SetTowerAttackTowerProperties();
             upgradeProperty.SetActive(false);
         }

@@ -119,26 +119,25 @@ public class Shop : MonoBehaviour
 		scoreCounter = gameMaster.GetComponent<ScoreCounter> ();
         towerManager = gameMaster.GetComponent<TowerManager>();
         shopManager = gameMaster.GetComponent<ShopManager>();
-        InitializeShopCanvas();
-
+        //InitializeShopCanvas();
 	}
 
-    private void InitializeShopCanvas ()
-    {
-        GameObject childTower;
-        ButtonClass[] attackTower = shopManager.GetAttackTowers();
-        ButtonClass researchTower = shopManager.GetResearchTower();
+    //private void InitializeShopCanvas ()
+    //{
+    //    GameObject childTower;
+    //    ButtonClass[] attackTower = shopManager.GetAttackTowers();
+    //    ButtonClass researchTower = shopManager.GetResearchTower();
 
-        for (int i = 0; i < attackTower.Length; i++)
-        {
-            childTower = Instantiate(buttonPrefab);
-            childTower.transform.parent = gameObject.transform;
-            childTower.GetComponent<ShopButton>().StartButton( attackTower[i] );
-        }
+    //    for (int i = 0; i < attackTower.Length; i++)
+    //    {
+    //        childTower = Instantiate(buttonPrefab);
+    //        childTower.transform.parent = gameObject.transform;
+    //        childTower.GetComponent<ShopButton>().StartButton( attackTower[i] );
+    //    }
 
-        childTower = Instantiate(buttonPrefab);
-        childTower.transform.parent = gameObject.transform;
-    }
+    //    childTower = Instantiate(buttonPrefab);
+    //    childTower.transform.parent = gameObject.transform;
+    //}
 
 	/// <summary>
 	/// Update this instance.
