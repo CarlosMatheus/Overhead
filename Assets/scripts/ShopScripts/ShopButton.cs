@@ -19,6 +19,16 @@ public class ShopButton : MonoBehaviour
     public void StartButton(ButtonClass _thisButton)
     {
         thisButton = _thisButton;
+        InitializeVariables();
+
+        SetTowerName();
+        SetTowerImage();
+        SetTowerPrice();
+        SetSpecificTowerProperties();
+    }
+
+    private void InitializeVariables()
+    {
         gameMaster = GameObject.FindWithTag("GameMaster");
         shopManager = gameMaster.GetComponent<ShopManager>();
         soulsCounter = gameMaster.GetComponent<SoulsCounter>();
@@ -28,21 +38,6 @@ public class ShopButton : MonoBehaviour
         shopTowerItemImage = gameObject.transform.GetChild(1).GetChild(1).GetChild(1).gameObject;
         AttackTowerValues = description.transform.GetChild(3).GetChild(0).gameObject;
         upgradeProperty = description.transform.GetChild(2).gameObject;
-
-        SetTowerName();
-        SetTowerImage();
-        SetTowerPrice();
-
-        if(thisButton.kind == ShopManager.Kind.AttackTower)
-        {
-            SetTowerAttackTowerProperties();
-            upgradeProperty.SetActive(false);
-        }
-        else
-        {
-
-            AttackTowerValues.transform.parent.gameObject.SetActive(false);
-        }
     }
 
     private void SetTowerName()
@@ -73,4 +68,17 @@ public class ShopButton : MonoBehaviour
         upgradeProperty.GetComponent<Text>().text = thisButton.description;
     }
 
+    private void SetSpecificTowerProperties()
+    {
+        if (thisButton.kind == ShopManager.Kind.AttackTower)
+        {
+            SetTowerAttackTowerProperties();
+            upgradeProperty.SetActive(false);
+        }
+        else
+        {
+            SetUpgradeProperty();
+            AttackTowerValues.transform.parent.gameObject.SetActive(false);
+        }
+    }
 }
