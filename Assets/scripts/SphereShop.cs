@@ -13,6 +13,7 @@ public class SphereShop : MonoBehaviour
     private TowerManager towerManager;
     private GameObject towerToBuild;
     private GameObject gameMaster;
+    private MouseCursorManager mouseCursorManage;
     private GameObject ShopGObj;
     private TowerScript masterTowerTowerScript;
     public Transform player;
@@ -57,6 +58,7 @@ public class SphereShop : MonoBehaviour
             soulsCounter = gameMaster.GetComponent<SoulsCounter>();
             buildManager = gameMaster.GetComponent<BuildManager>();
             towerManager = gameMaster.GetComponent<TowerManager>();
+            mouseCursorManage = gameMaster.GetComponent<MouseCursorManager>();
             ShopGObj = GameObject.Find("Shop");
             if (IsInCorrectScene())
             {
@@ -132,13 +134,14 @@ public class SphereShop : MonoBehaviour
 
 	private void OnMouseEnter ()
     {
-        if (IsInCorrectScene())
+        if ( IsInCorrectScene() )
         {
-            if (!deathManager.IsDead() && !pauseManager.IsPaused())
+            if ( !deathManager.IsDead() && !pauseManager.IsPaused() )
             {
-                if (masterTowerTowerScript.IsPlayerInThisTower() == false)
+                if ( masterTowerTowerScript.IsPlayerInThisTower() == false ) 
                     return;
                 icosphereLight.intensity = hoverIntensity;
+                mouseCursorManage.SetGreenCursor();
             }
         }
 	}
@@ -146,7 +149,10 @@ public class SphereShop : MonoBehaviour
 	private void OnMouseExit ()
     {
         if(IsInCorrectScene())
+        {
             icosphereLight.intensity = initialIntensity;
+            mouseCursorManage.SetIdleCursor();
+        }
 	}
 
 	private void OnMouseDown()

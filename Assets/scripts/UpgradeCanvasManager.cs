@@ -35,13 +35,14 @@ public class UpgradeCanvasManager : MonoBehaviour {
 			CheckMouseButtonDown();
 	}
 
-	void OnMouseDown () {
-
+	void OnMouseDown () 
+    {
 		if (gameObject.name == "MasterTower")
 			return;
+        if ( gameObject.GetComponent<TowerScript>().IsPlayerInThisTower() == false )
+            return;
 
 		instanceManager.SetTowerOfTheTime (this);
-
 		upSys.transform.rotation = Camera.main.transform.rotation;
 	}
 

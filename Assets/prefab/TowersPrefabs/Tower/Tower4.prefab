@@ -773,12 +773,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4183365528596564}
   - component: {fileID: 65983806571674308}
-  - component: {fileID: 114649483188891060}
   - component: {fileID: 95683305548998686}
   - component: {fileID: 114810577478426076}
   - component: {fileID: 114826421182979394}
   - component: {fileID: 114460142172004946}
   - component: {fileID: 114702606020858524}
+  - component: {fileID: 114649483188891060}
   m_Layer: 0
   m_Name: Tower4
   m_TagString: Tower
@@ -6078,12 +6078,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114792554728659090}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114898732237707678}
   childs:
   - {fileID: 114372159710446114}
   isCallable: 1
@@ -6475,12 +6473,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114897539169454972}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114868254347206808}
   childs: []
   isCallable: 0
 --- !u!114 &114045430532681636
@@ -8602,12 +8598,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114976640836761930}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114112857935170522}
   childs:
   - {fileID: 114044168811106326}
   isCallable: 0
@@ -10377,12 +10371,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114515506140349678}
   minWaveToActivate: 0
   maxLevel: 3
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114182394722976774}
   childs:
   - {fileID: 114963779826187566}
   - {fileID: 114475355912337324}
@@ -10827,12 +10819,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114089322953122666}
   minWaveToActivate: 0
   maxLevel: 5
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114930519840219686}
   childs:
   - {fileID: 114945871625699664}
   isCallable: 0
@@ -11005,12 +10995,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114390179807729646}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114384914238116066}
   childs:
   - {fileID: 114581802041066092}
   isCallable: 1
@@ -11145,12 +11133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114359523425827690}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114576382404668734}
   childs: []
   isCallable: 0
 --- !u!114 &114392337569243820
@@ -12265,12 +12251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114057557858811862}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114955288884815216}
   childs: []
   isCallable: 0
 --- !u!114 &114483900159409256
@@ -12441,12 +12425,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114104953853660972}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114727379816011764}
   childs: []
   isCallable: 1
 --- !u!114 &114500902319763398
@@ -13335,12 +13317,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114971499447220828}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114781738421415320}
   childs: []
   isCallable: 0
 --- !u!114 &114574656893812432
@@ -13510,12 +13490,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114581277081463754}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114283935971803086}
   childs:
   - {fileID: 114742149907950466}
   - {fileID: 114206040533558938}
@@ -14237,7 +14215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95c9be8b534b964aa2d38834ec2b888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlowColor: {r: 0.4068966, g: 0, b: 1, a: 0}
+  GlowColor: {r: 0.4705882, g: 0.38408303, b: 0.38408303, a: 0}
   FadeFactor: 5
   _currentColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114650292479785904
@@ -14747,12 +14725,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114996512184357326}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114599551300673508}
   childs: []
   isCallable: 1
 --- !u!114 &114702606020858524
@@ -15183,12 +15159,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114132863577553242}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114455244626598614}
   childs:
   - {fileID: 114889804662169216}
   isCallable: 0
@@ -15250,12 +15224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114352635959910314}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114188253069293518}
   childs: []
   isCallable: 1
 --- !u!114 &114751951674124482
@@ -16805,12 +16777,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114407457414270806}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114799605916851044}
   childs: []
   isCallable: 0
 --- !u!114 &114890857366750666
@@ -16898,12 +16868,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114111122171464434}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114933156743964730}
   childs:
   - {fileID: 114344377731282364}
   isCallable: 1
@@ -17583,12 +17551,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114819977361539046}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114486909794050856}
   childs:
   - {fileID: 114391538270800234}
   isCallable: 0
@@ -17935,12 +17901,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055e724a21b5d914bac51c16afb082b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: {fileID: 114092373906210898}
   minWaveToActivate: 0
   maxLevel: 1
   cost: 0
   addScore: 0
-  perkButton: {fileID: 114732958154528264}
   childs:
   - {fileID: 114574039998371156}
   isCallable: 0
