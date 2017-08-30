@@ -40,11 +40,11 @@ public class MouseCursorManager : MonoBehaviour {
 
     private void Start()
     {
-        ResizeCursor(ref mouseCursorIdle.cursorTexture, ref mouseCursorIdle.hotSpot);
-        ResizeCursor(ref mouseCursorInvisable.cursorTexture, ref mouseCursorInvisable.hotSpot);
-        ResizeCursor(ref mouseCursorRed.cursorTexture, ref mouseCursorRed.hotSpot);
-        ResizeCursor(ref mouseCursorTeleport.cursorTexture, ref mouseCursorTeleport.hotSpot);
-        ResizeCursor(ref mouseCursorGreen.cursorTexture, ref mouseCursorGreen.hotSpot);
+        //ResizeCursor(ref mouseCursorIdle.cursorTexture, ref mouseCursorIdle.hotSpot);
+        //ResizeCursor(ref mouseCursorInvisable.cursorTexture, ref mouseCursorInvisable.hotSpot);
+        //ResizeCursor(ref mouseCursorRed.cursorTexture, ref mouseCursorRed.hotSpot);
+        //ResizeCursor(ref mouseCursorTeleport.cursorTexture, ref mouseCursorTeleport.hotSpot);
+        //ResizeCursor(ref mouseCursorGreen.cursorTexture, ref mouseCursorGreen.hotSpot);
 
         SetIdleCursor();
     }
