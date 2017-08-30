@@ -14,9 +14,10 @@ public class SphereShop : MonoBehaviour
     private GameObject towerToBuild;
     private GameObject gameMaster;
     private GameObject ShopGObj;
+    private TowerScript masterTowerTowerScript;
     public Transform player;
     public Transform center;
-    private Light light;
+    private Light icosphereLight;
     private Shop shop;
 
 	public void SetTowerToBuild(GameObject towerToB)
@@ -62,8 +63,13 @@ public class SphereShop : MonoBehaviour
                 ShopGObj.SetActive(false);
                 shop = ShopGObj.GetComponent<Shop>();
             }
-            light = GetComponent<Light>();
-            light.intensity = initialIntensity;
+            icosphereLight = GetComponent<Light>();
+            icosphereLight.intensity = initialIntensity;
+
+            masterTowerTowerScript = GameObject.FindWithTag("GameMaster").
+                                               GetComponent<InstancesManager>().
+                                               GetMasterTowerObj().
+                                               GetComponent<TowerScript>();
         }
 	}
 
@@ -130,7 +136,9 @@ public class SphereShop : MonoBehaviour
         {
             if (!deathManager.IsDead() && !pauseManager.IsPaused())
             {
-                light.intensity = hoverIntensity;
+                if (masterTowerTowerScript.IsPlayerInThisTower() == false)
+                    return;
+                icosphereLight.intensity = hoverIntensity;
             }
         }
 	}
@@ -138,7 +146,7 @@ public class SphereShop : MonoBehaviour
 	private void OnMouseExit ()
     {
         if(IsInCorrectScene())
-            light.intensity = initialIntensity;
+            icosphereLight.intensity = initialIntensity;
 	}
 
 	private void OnMouseDown()
