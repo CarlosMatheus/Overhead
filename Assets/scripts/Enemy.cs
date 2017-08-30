@@ -23,30 +23,33 @@ public class Enemy : MonoBehaviour {
     private MouseCursorManager mouserCursorManager;
 
 	//WaveSpawner will use this to set the waypoint
-	public void SetWayPoints(WayPointsScript wayP){
+	public void SetWayPoints(WayPointsScript wayP)
+    {
 		wayPoints = wayP;
 	}
 
-	/// <summary> Gets the HP </summary>
-	/// This is accessed by the targetSelection
-	/// <returns> The HP </returns>
-	public float getHP() {
+	public float getHP() 
+    {
 		return hp;
 	}
 
-	public void SetSpeed ( float _speed ) {
+	public void SetSpeed ( float _speed ) 
+    {
 		speed = _speed;
 	}
 
-	public float GetSpeed () {
+	public float GetSpeed () 
+    {
 		return speed;
 	}
 
-	public void ReturnToOriginalSpeed () {
+	public void ReturnToOriginalSpeed () 
+    {
 		speed = waveSpawner.GetBaseSpeed () * speedEnemyConst;
 	}
 
-	private void Awake(){
+	private void Awake()
+    {
 		waveSpawner = GameObject.Find ("GameMaster").GetComponent<WaveSpawner> ();
 		hp = waveSpawner.GetBaseHP() * hpEnemyConst;
 	}
@@ -62,20 +65,27 @@ public class Enemy : MonoBehaviour {
 		originalHeight = transform.position.y;
 	}
 
-	private void Update (){
+	private void Update ()
+    {
 		Vector3 dir = target.position - transform.position;
 		transform.Translate (dir.normalized * GetSpeed() * Time.deltaTime, Space.World);
 		transform.LookAt (target.position);
-		if (Vector3.Distance (transform.position, target.position) <= minDistToChangeDirection) {
+
+		if (Vector3.Distance (transform.position, target.position) <= minDistToChangeDirection) 
+        {
 			GetNextWayPoint ();
 		}
 	}
 
 	//In the WayPoints array, get the next or attack the Main Tower
-	private void GetNextWayPoint(){
-		if (wavepointIndex >= wayPoints.GetPointsLength() - 1) {
+	private void GetNextWayPoint()
+    {
+		if (wavepointIndex >= wayPoints.GetPointsLength() - 1) 
+        {
 			EnemyAttack ();
-		} else {
+		} 
+        else 
+        {
 			wavepointIndex++;
 			target = wayPoints.GetPoints (wavepointIndex);
 		}
@@ -87,6 +97,7 @@ public class Enemy : MonoBehaviour {
         if (IsInCorrectScene())
         {
             masterTowerScript.EnemyAttack();
+            mouserCursorManager.SetIdleCursor();
             Destroy(gameObject);
         }
 	}

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Perk : MonoBehaviour {
+public class Perk : MonoBehaviour
+{
 
 	private new string name;
     private Text buttonName;
@@ -76,14 +77,16 @@ public class Perk : MonoBehaviour {
 		*/
     }
 
-	void Update () {
+	void Update ()
+    {
 		GetButton().interactable = CheckIfItsAvailable();
 	}
 
 	public virtual void LevelUp () {
-		
+
 		// Set childs callables
-		foreach (Perk p in childs) {
+		foreach (Perk p in childs)
+        {
 			p.TurnCallable ();
 			p.GetButton ().interactable = true;
 		}
