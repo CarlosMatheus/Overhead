@@ -66,7 +66,12 @@ public class TowerScript : MonoBehaviour {
 		return pm.GetEffectDuration ();
 	}
 
-	void Start () {
+    public bool IsPlayerInThisTower()
+    {
+        return IsAround(playerSpawnOnTower, player.transform);
+    }
+
+	private void Start () {
 
         gameMaster = GameObject.FindWithTag("GameMaster");
         mouseCursorManage = gameMaster.GetComponent<MouseCursorManager>();
@@ -89,7 +94,7 @@ public class TowerScript : MonoBehaviour {
 
 	}
 
-	void Update () {
+	private void Update () {
 		if (bulletPrefab == null)
 			return;
 		

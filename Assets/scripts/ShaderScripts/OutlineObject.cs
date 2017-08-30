@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OutlineObject : MonoBehaviour {
-
+public class OutlineObject : MonoBehaviour 
+{
     [SerializeField] public Color GlowColor;
     public float FadeFactor = 5;
 
@@ -12,7 +12,8 @@ public class OutlineObject : MonoBehaviour {
     private Color _targetColor;
     public Color _currentColor;
 
-	void Start () {
+	void Start () 
+    {
         _renderers = GetComponentsInChildren<Renderer>(); //Gets all the Children Renderers, to get access to their materials
 
         foreach (Renderer renderer in _renderers)
@@ -33,7 +34,8 @@ public class OutlineObject : MonoBehaviour {
         enabled = true;
     }
 
-    void Update () {
+    void Update ()
+    {
         _currentColor = Color.Lerp(_currentColor, _targetColor, Time.deltaTime * FadeFactor); //Just some fade in and out effect
 
 		for (int i = 0; i < _materials.Count; i ++)
