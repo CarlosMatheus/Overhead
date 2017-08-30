@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: 114184450470069278}
   - component: {fileID: 114200634650480466}
   - component: {fileID: 114772377065291608}
+  - component: {fileID: 114935410082788230}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: GameMaster
@@ -107,15 +108,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseCursorIdle:
-    cursorTexture: {fileID: 2800000, guid: b3ace3576da33443c8ae98b7e53737f1, type: 3}
+    cursorTexture: {fileID: 2800000, guid: 30759bc9b798b4194b223866db4310ec, type: 3}
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
   mouseCursorRed:
-    cursorTexture: {fileID: 0}
+    cursorTexture: {fileID: 2800000, guid: 25bb6cbfe7156428b95c2507e4435896, type: 3}
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
   mouseCursorTeleport:
-    cursorTexture: {fileID: 0}
+    cursorTexture: {fileID: 2800000, guid: 74c882b15a1864fb0a6d393924ddf843, type: 3}
+    cursorMode: 0
+    hotSpot: {x: 10, y: 10}
+  mouseCursorInvisable:
+    cursorTexture: {fileID: 2800000, guid: 6eaf17413f8af49c795bab49b91e87d3, type: 3}
+    cursorMode: 0
+    hotSpot: {x: 0, y: 0}
+  mouseCursorGreen:
+    cursorTexture: {fileID: 2800000, guid: bfdfe7cc4013a42548f53db8e2b7bd6b, type: 3}
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
 --- !u!114 &114200634650480466
@@ -129,6 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2380ab14f9c64761b23c14fb9db0325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveWarning: {fileID: 0}
+  prepareYourself: {fileID: 0}
 --- !u!114 &114277739385761156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -372,6 +383,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialScore: 0
+--- !u!114 &114935410082788230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314678458617260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2cb93087c306494eb3d56a008298b24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - kind: 0
+    name: Darkness
+    image: {fileID: 21300000, guid: 8a6614fe1bbc246b4858ad4b1dd30826, type: 3}
+    spell: {fileID: 1076308763873118, guid: 81d8a83a09a4b4d4183eb78e46bb9eed, type: 2}
+    indexOfThisTower: 0
+    effect: --
+    description: --
+  - kind: 0
+    name: Frozen
+    image: {fileID: 21300000, guid: d8fe9e0ab3d40440e88a1418207bfed4, type: 3}
+    spell: {fileID: 1279783995638840, guid: 79516ce57c986c141b96de4c4537c487, type: 2}
+    indexOfThisTower: 1
+    effect: Slow
+    description: --
+  - kind: 0
+    name: Infernus
+    image: {fileID: 21300000, guid: 73dfa6e6b51fd4c3586a130272dc50d3, type: 3}
+    spell: {fileID: 1043216770293996, guid: 5d75f8308cf7f374298690b42d297421, type: 2}
+    indexOfThisTower: 2
+    effect: --
+    description: --
+  - kind: 1
+    name: Researcher
+    image: {fileID: 21300000, guid: 73dfa6e6b51fd4c3586a130272dc50d3, type: 3}
+    spell: {fileID: 0}
+    indexOfThisTower: 3
+    effect: --
+    description: Description is here
 --- !u!114 &114984236687860478
 MonoBehaviour:
   m_ObjectHideFlags: 1
