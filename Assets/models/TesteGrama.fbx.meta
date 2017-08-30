@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d8e5a15c61dcc20439bc7acc28a96891
-timeCreated: 1503641162
+guid: 2c46a3887baa5df4ba4d09f4dbde71a5
+timeCreated: 1503985933
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: GreenFlatVoxel
+    4300000: grama01
   materials:
     importMaterials: 1
     materialName: 0

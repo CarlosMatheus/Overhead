@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d8e5a15c61dcc20439bc7acc28a96891
-timeCreated: 1503641162
+guid: 2df935fc3308fc147aad2d2c685897f9
+timeCreated: 1503642650
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: GreenFlatVoxel
+    4300000: HighPoly
   materials:
     importMaterials: 1
     materialName: 0

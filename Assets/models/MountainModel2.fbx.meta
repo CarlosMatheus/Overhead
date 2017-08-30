@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d8e5a15c61dcc20439bc7acc28a96891
-timeCreated: 1503641162
+guid: 6aa0df1e9b031184289a78eaa4bad081
+timeCreated: 1503653999
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: GreenFlatVoxel
+    4300000: Plane.001
   materials:
     importMaterials: 1
     materialName: 0
