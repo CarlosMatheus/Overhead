@@ -111,13 +111,13 @@ MonoBehaviour:
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
   mouseCursorRed:
-    cursorTexture: {fileID: 0}
+    cursorTexture: {fileID: 2800000, guid: b1967989efd7a40a1b46ea44af73a094, type: 3}
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
   mouseCursorTeleport:
-    cursorTexture: {fileID: 0}
+    cursorTexture: {fileID: 2800000, guid: c0beb4af4522b4b528d6f40435f683b2, type: 3}
     cursorMode: 0
-    hotSpot: {x: 0, y: 0}
+    hotSpot: {x: 10, y: 10}
 --- !u!114 &114200634650480466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2380ab14f9c64761b23c14fb9db0325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveWarning: {fileID: 0}
+  prepareYourself: {fileID: 0}
 --- !u!114 &114277739385761156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,6 +150,8 @@ MonoBehaviour:
   voxel2x2: {fileID: 4300000, guid: 01ff7246a686a5140be8fa74effc106a, type: 3}
   voxel1x1: {fileID: 4300000, guid: e1c48b5cca0e49c4eb463721ec416084, type: 3}
   player: {fileID: 0}
+  upgradeCanvas: {fileID: 1175686079971260, guid: 2695e7ca2c719434799b45b7aaf58e72,
+    type: 2}
 --- !u!114 &114292562531580396
 MonoBehaviour:
   m_ObjectHideFlags: 1

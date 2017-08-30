@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class UpgradeCanvasManager : MonoBehaviour {
 
-	private GameObject upSys;
 	private InstancesManager instanceManager;
+    private GameObject upSysRef;
+    private GameObject upSys;
 
-	void Start () {
+    void Start ()
+    {
+        // Take reference of instance manager to manage different canvas
+        instanceManager = GameObject.FindGameObjectWithTag ("GameMaster").GetComponent<InstancesManager> ();
 
-		instanceManager = GameObject.FindGameObjectWithTag ("GameMaster").GetComponent<InstancesManager> ();
+        // Get reference for the upgrade canvas for this tower
+        upSysRef = instanceManager.GetUpgradeCanvas();
 
-		// Upgrade system canvas configuration
-		Canvas towerCanvas = GetComponentInChildren<Canvas> ();
+        // Instantiate the upgrade canvas object
+        upSys = (GameObject) Instantiate(upSysRef, transform.position, transform.rotation, transform);
+
+        // Check if there is a Canvas on this tower
+        Canvas towerCanvas = GetComponentInChildren<Canvas> ();
 		if (towerCanvas == null) {
-			//Debug.Log ("Canvas is null no towe" + gameObject.name);
+			Debug.Log ("Canvas is null no tower " + gameObject.name);
 			return;
 		}
-		upSys = towerCanvas.gameObject;
+
+        // If there is, deactivate it for now
 		upSys.SetActive (false);
 	}
 
