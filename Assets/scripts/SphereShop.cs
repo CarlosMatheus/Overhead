@@ -13,10 +13,12 @@ public class SphereShop : MonoBehaviour
     private TowerManager towerManager;
     private GameObject towerToBuild;
     private GameObject gameMaster;
+    private MouseCursorManager mouseCursorManage;
     private GameObject ShopGObj;
+    private TowerScript masterTowerTowerScript;
     public Transform player;
     public Transform center;
-    private Light light;
+    private Light icosphereLight;
     private Shop shop;
 
 	public void SetTowerToBuild(GameObject towerToB)
@@ -56,14 +58,20 @@ public class SphereShop : MonoBehaviour
             soulsCounter = gameMaster.GetComponent<SoulsCounter>();
             buildManager = gameMaster.GetComponent<BuildManager>();
             towerManager = gameMaster.GetComponent<TowerManager>();
+            mouseCursorManage = gameMaster.GetComponent<MouseCursorManager>();
             ShopGObj = GameObject.Find("Shop");
             if (IsInCorrectScene())
             {
                 ShopGObj.SetActive(false);
                 shop = ShopGObj.GetComponent<Shop>();
             }
-            light = GetComponent<Light>();
-            light.intensity = initialIntensity;
+            icosphereLight = GetComponent<Light>();
+            icosphereLight.intensity = initialIntensity;
+
+            masterTowerTowerScript = GameObject.FindWithTag("GameMaster").
+                                               GetComponent<InstancesManager>().
+                                               GetMasterTowerObj().
+                                               GetComponent<TowerScript>();
         }
 	}
 
@@ -126,11 +134,14 @@ public class SphereShop : MonoBehaviour
 
 	private void OnMouseEnter ()
     {
-        if (IsInCorrectScene())
+        if ( IsInCorrectScene() )
         {
-            if (!deathManager.IsDead() && !pauseManager.IsPaused())
+            if ( !deathManager.IsDead() && !pauseManager.IsPaused() )
             {
-                light.intensity = hoverIntensity;
+                if ( masterTowerTowerScript.IsPlayerInThisTower() == false ) 
+                    return;
+                icosphereLight.intensity = hoverIntensity;
+                mouseCursorManage.SetGreenCursor();
             }
         }
 	}
@@ -138,7 +149,10 @@ public class SphereShop : MonoBehaviour
 	private void OnMouseExit ()
     {
         if(IsInCorrectScene())
-            light.intensity = initialIntensity;
+        {
+            icosphereLight.intensity = initialIntensity;
+            mouseCursorManage.SetIdleCursor();
+        }
 	}
 
 	private void OnMouseDown()

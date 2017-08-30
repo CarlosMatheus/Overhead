@@ -66,7 +66,12 @@ public class TowerScript : MonoBehaviour {
 		return pm.GetEffectDuration ();
 	}
 
-	void Start () {
+    public bool IsPlayerInThisTower()
+    {
+        return IsAround(playerSpawnOnTower, player.transform);
+    }
+
+	private void Start () {
 
         gameMaster = GameObject.FindWithTag("GameMaster");
         mouseCursorManage = gameMaster.GetComponent<MouseCursorManager>();
@@ -89,7 +94,7 @@ public class TowerScript : MonoBehaviour {
 
 	}
 
-	void Update () {
+	private void Update () {
 		if (bulletPrefab == null)
 			return;
 		
@@ -180,13 +185,21 @@ public class TowerScript : MonoBehaviour {
 			towerSpell.Seek (target);
 	}
 
-    private bool IsAround (Transform trA, Transform trB) {
-
+    private bool IsAround (Transform trA, Transform trB) 
+    {
 		if (Vector3.Magnitude (trA.position - trB.position) < 1.0f)
 			return true;
 		else
 			return false;
 	}
+
+    private bool IsMasterTower()
+    {
+        if ( gameObject.GetComponent<MasterTowerScript>() == null )
+            return false;
+        else
+            return true;
+    }
 
     private bool IsInCorrectScene()
     {
@@ -207,6 +220,16 @@ public class TowerScript : MonoBehaviour {
         if( IsAround(player.transform,playerSpawnOnTower) == false )
         {
             mouseCursorManage.SetTeleportCursor();
+            return;
+        }
+        if ( IsMasterTower() == false )
+        {
+            mouseCursorManage.SetGreenCursor();
+            return;
+        }
+        if ( IsMasterTower() == true )
+        {
+            return;
         }
     }
 

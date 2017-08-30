@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OutlineObjectMainTower : MonoBehaviour {
-
+public class OutlineObjectMainTower : MonoBehaviour 
+{
     [SerializeField] public Color GlowColor;
     public float FadeFactor = 5;
     public bool entrou = false;
@@ -23,7 +23,6 @@ public class OutlineObjectMainTower : MonoBehaviour {
         }
     }
 
-
     void CheckColor()
     {
         if (entrou)
@@ -41,6 +40,9 @@ public class OutlineObjectMainTower : MonoBehaviour {
 
     void Update()
     {
+
+
+
         if (entrou)
         {
             _targetColor = GlowColor; //If the mouse is on the collider, select the color to glow

@@ -98,13 +98,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4500873372251294}
-  - component: {fileID: 114623369097560350}
   - component: {fileID: 65853142933077740}
-  - component: {fileID: 114699446148116006}
   - component: {fileID: 95984902713901724}
+  - component: {fileID: 114623369097560350}
   - component: {fileID: 114682754452048586}
   - component: {fileID: 114653394386334588}
   - component: {fileID: 114706947807567452}
+  - component: {fileID: 114699446148116006}
   m_Layer: 0
   m_Name: Tower3
   m_TagString: Tower
@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95c9be8b534b964aa2d38834ec2b888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlowColor: {r: 1, g: 0, b: 0, a: 0}
+  GlowColor: {r: 0.4705882, g: 0.38408303, b: 0.38408303, a: 0}
   FadeFactor: 5
   _currentColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114706947807567452

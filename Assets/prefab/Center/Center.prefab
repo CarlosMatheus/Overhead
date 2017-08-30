@@ -972,6 +972,7 @@ GameObject:
   - component: {fileID: 114092974254467666}
   - component: {fileID: 114118404777910702}
   - component: {fileID: 114945845939211378}
+  - component: {fileID: 114009593065596732}
   m_Layer: 0
   m_Name: MasterTower
   m_TagString: Tower
@@ -1393,7 +1394,7 @@ Transform:
   - {fileID: 4128924877811352}
   - {fileID: 4500322971359992}
   m_Father: {fileID: 4563528017051808}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4362317711006746
 Transform:
@@ -1431,7 +1432,7 @@ Transform:
   - {fileID: 4214108940803144}
   - {fileID: 4674882311780152}
   m_Father: {fileID: 4563528017051808}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4364789495000156
 Transform:
@@ -1453,7 +1454,7 @@ Transform:
   - {fileID: 4367667442829796}
   - {fileID: 4078739453532290}
   m_Father: {fileID: 4563528017051808}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4367667442829796
 Transform:
@@ -1573,11 +1574,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4323788228674572}
   - {fileID: 4778436107972300}
   - {fileID: 4364789495000156}
   - {fileID: 4364423580089980}
   - {fileID: 4945831748356230}
-  - {fileID: 4323788228674572}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1770,7 +1771,7 @@ Transform:
   - {fileID: 4806748228157630}
   - {fileID: 4062426769398918}
   m_Father: {fileID: 4563528017051808}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4786773382566154
 Transform:
@@ -1938,7 +1939,7 @@ Transform:
   - {fileID: 4186627116623074}
   - {fileID: 4313269006423264}
   m_Father: {fileID: 4563528017051808}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!4 &4954091469650824
 Transform:
@@ -4183,6 +4184,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114009593065596732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1918428659857364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6125f6014bae1e24982d668f41805b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114092974254467666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4236,7 +4248,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1683688416457540, guid: ae304f0987e691648af41f580f608b3e,
     type: 2}
   rangeObject: {fileID: 1319819340153550}
-  canvasRange: 1
 --- !u!114 &114454858350456286
 MonoBehaviour:
   m_ObjectHideFlags: 1
