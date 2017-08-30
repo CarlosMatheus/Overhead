@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TowerScript : MonoBehaviour {
@@ -20,7 +19,7 @@ public class TowerScript : MonoBehaviour {
     private GameObject gameMaster;
     private MouseCursorManager mouseCursorManage;
 
-	public GameObject GetTarget() {
+    public GameObject GetTarget() {
 		if (target != null)
 			return target.gameObject;
 		else
@@ -80,7 +79,7 @@ public class TowerScript : MonoBehaviour {
 
 		pm = GetComponent<PropertiesManager> ();
 
-		// Set skill values from prefab
+ 		// Set skill values from prefab
 		pm.SetValues (bulletPrefab.GetComponent<SkillsProperties> ());
 
 		//This will reapeat every 0.5 sec
@@ -168,13 +167,13 @@ public class TowerScript : MonoBehaviour {
 		TowerSpell towerSpell = spellGO.GetComponent<TowerSpell>();
 		SkillsProperties skillPro = spellGO.GetComponent<SkillsProperties> ();
 
-		// Set tower values on instantiated skill prefab
-		skillPro.SetDamage (GetDamage ());
+        // Set tower values in SkillProperties script on instantiated prefab
+        skillPro.SetDamage (GetDamage ());
 		skillPro.SetCooldown (GetCooldown ());
 		skillPro.SetRange (GetRange ());
 		skillPro.SetSideEffectValues (GetBurnValue (), GetSlowFactor (), GetRangeRadius (), GetEffectDuration ());
 
-		// Speel need to know who instantiated him
+		// Spell need to know who instantiated him
 		skillPro.SetInvoker (gameObject);
 
 		if (towerSpell != null)

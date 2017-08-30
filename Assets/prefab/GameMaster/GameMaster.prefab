@@ -66,8 +66,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc71273a3b5714c7497ce58c91a920f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   initialAnimationDuration: 5
   interval: 20
 --- !u!114 &114062466384089198
@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bf6257e4bc5c454f838e8891970da0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   fader: {fileID: 0}
   fadeCanvas: {fileID: 0}
 --- !u!114 &114099972934301102
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9173f5de5d02d4c03b69fbfc390647fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   numOfTowers: 5
   icosphere: {fileID: 0}
 --- !u!114 &114184450470069278
@@ -105,8 +105,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bacca636bb2394b9ba59c266ebf72a5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   mouseCursorIdle:
     cursorTexture: {fileID: 2800000, guid: 30759bc9b798b4194b223866db4310ec, type: 3}
     cursorMode: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   mouseCursorGreen:
     cursorTexture: {fileID: 2800000, guid: bfdfe7cc4013a42548f53db8e2b7bd6b, type: 3}
     cursorMode: 0
-    hotSpot: {x: 0, y: 0}
+    hotSpot: {x: 10, y: 10}
 --- !u!114 &114200634650480466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,8 +136,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2380ab14f9c64761b23c14fb9db0325, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   waveWarning: {fileID: 0}
   prepareYourself: {fileID: 0}
 --- !u!114 &114277739385761156
@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2cbd7abd419adf841b578ed5f73febe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   shopGObj: {fileID: 0}
   masterTower: {fileID: 0}
   cameraPlayer: {fileID: 0}
@@ -159,6 +159,8 @@ MonoBehaviour:
   voxel2x2: {fileID: 4300000, guid: 01ff7246a686a5140be8fa74effc106a, type: 3}
   voxel1x1: {fileID: 4300000, guid: e1c48b5cca0e49c4eb463721ec416084, type: 3}
   player: {fileID: 0}
+  upgradeCanvas: {fileID: 1175686079971260, guid: 2695e7ca2c719434799b45b7aaf58e72,
+    type: 2}
 --- !u!114 &114292562531580396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,8 +170,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6036b8789ea235489d5aa51b99287c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   LifeManager: {fileID: 0}
   MainCamera: {fileID: 0}
   DeathCamera: {fileID: 0}
@@ -185,8 +187,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef78957d5fe724a39b9819c1c73e2f18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   timeBetweenWaves: 30
   spawnDelay: 0.8
   baseSpeedConst: 1
@@ -256,8 +258,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c9bf1bc54d2c4a43b949dfd7d1a17a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &114481859035547284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,8 +269,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e1073512d1344efeaae7c18a90275b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   killersTags:
   - Tower
   - Player
@@ -287,8 +289,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53a70fdeb88084436895852bf35fa71e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   fadeOutTexture: {fileID: 0}
   fadeSpeed: 0.8
   fadeDir: -1
@@ -301,8 +303,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602e3c32f9378486a971fab5f6c626bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   tower:
   - {fileID: 1500846572791458, guid: 2d59f18e94daa4ae5ae0e3f46bf85837, type: 2}
   - {fileID: 1500846572791458, guid: 917d86caf115c4349b17b2d9f19b3f3a, type: 2}
@@ -332,8 +334,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a7a28846c0461040b959729999a449e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   Birds:
   - {fileID: 1019625292539496, guid: 560bf1c4085790b43bbd604dd64b086a, type: 2}
   birdAltitude: 6
@@ -348,8 +350,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e133ad96aa3bcdc41b1365bd179cfaf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   camera: {fileID: 0}
   canvas: {fileID: 0}
   pauseCanvas: {fileID: 0}
@@ -362,8 +364,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aefb26073ffb744c48dfb35713fe9fa2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   modules:
   - {fileID: 1026134706115208, guid: e5d97afa5a9024ee7859161d6f52f5d4, type: 2}
   - {fileID: 1477899113756818, guid: ccbfa8ec0b471422a9a65f1965035c58, type: 2}
@@ -380,8 +382,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f585fdeb4d3824c5383b3b5fab2b23e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   InitialScore: 0
 --- !u!114 &114935410082788230
 MonoBehaviour:
@@ -392,8 +394,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2cb93087c306494eb3d56a008298b24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   buttons:
   - kind: 0
     name: Darkness
@@ -432,8 +434,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a943b6769e75754ea3b0050c1a5a7b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pauseButton: 0
   advanceTimeButton: 122
   screenShotButton: 291

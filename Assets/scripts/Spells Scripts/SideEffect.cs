@@ -48,15 +48,20 @@ public class SideEffect : MonoBehaviour {
 		// If it's already side affected
 		if (!target.GetComponent<TargetSelection> ().IsSideAffected ()) {
 
-			target.GetComponent<TargetSelection> ().SetSideEffect (true);
+            if (range)
+            {
+                Range();
+                return;
+            }
+
+            target.GetComponent<TargetSelection> ().SetSideEffect (true);
 
 			if (freeze)
 				Freeze ();
 			else if (burn)
 				StartCoroutine (Burn ());
-			else if (range)
-				Range ();
-		} else // Don't affect again
+
+        } else // Don't affect again
 			Destroy (this.gameObject);
 	}
 
@@ -69,7 +74,7 @@ public class SideEffect : MonoBehaviour {
 	}
 
 	void Freeze () {
-		target.GetComponent<Enemy> ().SetSpeed( target.GetComponent<Enemy> ().GetSpeed() * slowFactor );
+		target.GetComponent<Enemy> ().SetSpeed( target.GetComponent<Enemy> ().GetSpeed() * (1 - slowFactor) );
 	}
 
 	IEnumerator Burn () {
@@ -93,7 +98,7 @@ public class SideEffect : MonoBehaviour {
 			col.isTrigger = true;
 		}
 
-		col.radius = rangeRadius;
+		//col.radius = rangeRadius;
 
 		transform.localScale = Vector3.zero;
 
@@ -102,28 +107,43 @@ public class SideEffect : MonoBehaviour {
 
 	IEnumerator GrowUpInTime () {
 		float t = Time.time;
-		while (transform.localScale.magnitude < Vector3.Magnitude (Vector3.one * rangeRadius * 2)) {
-			transform.localScale = Vector3.Slerp (Vector3.zero, Vector3.one * rangeRadius * 2, Time.time - t);
+
+		while (transform.localScale.magnitude < Vector3.Magnitude (Vector3.one * rangeRadius)) {
+			transform.localScale = Vector3.Slerp (Vector3.zero, Vector3.one * rangeRadius, Time.time - t);
 			yield return null;
 		}
 
 		Destroy (gameObject);
 	}
 
-	void OnTriggerEnter (Collider other) {
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, 1);
+    }
+
+    void OnTriggerEnter (Collider other) {
+        if (other.gameObject == target)
+            return;
+
+        if (other.tag != "Enemy")
+            return;
+
 		Vector3 colDir = other.transform.position - transform.position;
+
+        Debug.Log(gameObject.name + " atingiu " + other.gameObject.name); /////////////////////////////////
 
 		Quaternion colQua = Quaternion.FromToRotation (transform.forward, colDir);
 
-		GameObject spellGO = (GameObject)Instantiate (normalBullet, transform.position, colQua);
+		GameObject spellGO = Instantiate (normalBullet, transform.position, colQua);
 		TowerSpell towerSpell = spellGO.GetComponent<TowerSpell>();
 		SkillsProperties skillPro = spellGO.GetComponent<SkillsProperties> ();
 
-		// Speel need to know who instantiated him
+		// Spell need to know who instantiated him
 		skillPro.SetInvoker (gameObject);
 
 		if (towerSpell != null)
-			towerSpell.Seek (target.transform);
+			towerSpell.Seek (other.transform);
 	}
 
 	IEnumerator AutoDestroy () {

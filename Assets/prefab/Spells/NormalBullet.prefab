@@ -127,7 +127,6 @@ MonoBehaviour:
   target: {fileID: 0}
   impactEffect: {fileID: 1099177712462748, guid: 632a9d5c50156f54e8071665d60bb047,
     type: 2}
-  speed: 15
 --- !u!114 &114454063863080778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf0493cc0b30a044b04e8f2aa0826a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
+  damage: 20
   cooldown: 0.75
   range: 4
   sideEffect: {fileID: 0}
