@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class VillageSpawn : MonoBehaviour {
-
+public class VillageSpawn : MonoBehaviour 
+{
     private Vector3 finalScale;
-
     private float speed = 3f;
 
     void Start()

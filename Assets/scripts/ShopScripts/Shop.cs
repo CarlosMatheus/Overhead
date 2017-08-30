@@ -2,10 +2,11 @@
 using UnityEngine.UI;
 
 //This class will be used by the UI bottom to buy a new tower
-public class Shop : MonoBehaviour {
-    
-    [SerializeField] private Color normalTextColor;
-    [SerializeField] private Color cantBuildTextColor;
+public class Shop : MonoBehaviour 
+{
+    [SerializeField] private Color normalTextColor = Color.blue;
+    [SerializeField] private Color cantBuildTextColor = Color.blue;
+    [SerializeField] private GameObject buttonPrefab = null;
 
 	private int numOfButtons;
 	private bool[] canBuildTower;
@@ -16,11 +17,10 @@ public class Shop : MonoBehaviour {
     private int indexOfThisTower;
     private GameObject gameMaster;
     private TowerManager towerManager;
+    private ShopManager shopManager;
 
-	/// <summary>
-	/// Purcheses the tower0.
-	/// </summary>
-	public void PurcheseTower0(){
+	public void PurcheseTower0()
+    {
 		indexOfThisTower = 0;
 		if ( !soulsCounter.CanBuild (indexOfThisTower) )
 			return;
@@ -30,7 +30,8 @@ public class Shop : MonoBehaviour {
         towerManager.TowerSelected();
     }
 
-	public void PurcheseTower1(){
+	public void PurcheseTower1()
+    {
 		indexOfThisTower = 1;
 		if ( !soulsCounter.CanBuild (indexOfThisTower) )
 			return;
@@ -40,7 +41,8 @@ public class Shop : MonoBehaviour {
         towerManager.TowerSelected();
     }
 
-	public void PurcheseTower2(){
+	public void PurcheseTower2()
+    {
 		indexOfThisTower = 2;
 		if ( !soulsCounter.CanBuild (indexOfThisTower) )
 			return;
@@ -71,7 +73,8 @@ public class Shop : MonoBehaviour {
 	/// </summary>
 	/// <returns><c>true</c> if this instance can build tower the specified index; otherwise, <c>false</c>.</returns>
 	/// <param name="index">Index.</param>
-	public bool CanBuildTower(int index){
+	public bool CanBuildTower(int index)
+    {
 		return canBuildTower [index];
 	}
 
@@ -115,7 +118,26 @@ public class Shop : MonoBehaviour {
 		soulsCounter = gameMaster.GetComponent<SoulsCounter> ();
 		scoreCounter = gameMaster.GetComponent<ScoreCounter> ();
         towerManager = gameMaster.GetComponent<TowerManager>();
+        shopManager = gameMaster.GetComponent<ShopManager>();
+        //InitializeShopCanvas();
 	}
+
+    //private void InitializeShopCanvas ()
+    //{
+    //    GameObject childTower;
+    //    ButtonClass[] attackTower = shopManager.GetAttackTowers();
+    //    ButtonClass researchTower = shopManager.GetResearchTower();
+
+    //    for (int i = 0; i < attackTower.Length; i++)
+    //    {
+    //        childTower = Instantiate(buttonPrefab);
+    //        childTower.transform.parent = gameObject.transform;
+    //        childTower.GetComponent<ShopButton>().StartButton( attackTower[i] );
+    //    }
+
+    //    childTower = Instantiate(buttonPrefab);
+    //    childTower.transform.parent = gameObject.transform;
+    //}
 
 	/// <summary>
 	/// Update this instance.

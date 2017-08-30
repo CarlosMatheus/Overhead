@@ -36,6 +36,7 @@ public class TowerSpell : MonoBehaviour {
 	void HitTarget() {
 		target.GetComponent<TargetSelection> ().TakeDamageBy(this.gameObject);
 
+        // Soul bonus effect
 		GameObject invoker = GetComponent<SkillsProperties> ().GetInvoker ();
 		PropertiesManager pm = invoker.GetComponent<PropertiesManager>();
 		if (pm != null) {
@@ -47,27 +48,29 @@ public class TowerSpell : MonoBehaviour {
 			}
 		}
 
+        // Impact animation effect
 		if (impactEffect != null) {
-			GameObject effect = (GameObject)Instantiate (impactEffect, transform.position, transform.rotation);
+			GameObject effect = Instantiate (impactEffect, transform.position, transform.rotation);
 			Destroy (effect, 2f);
 		}
 
+        // Side effect
 		if (GetComponent<SkillsProperties> ().GetEffect() != null) {  // If this spell has a effect
-
+            
 			// Instatiate it
-			GameObject sideEffect = (GameObject)Instantiate (
+			GameObject sideEffect = Instantiate (
 				GetComponent<SkillsProperties> ().GetEffect (), 
-				target.gameObject.transform.position, 
-				target.gameObject.transform.rotation
+				target.position, 
+				target.rotation
 			);
 
-			// Set sideEffect target
-			sideEffect.GetComponent<SideEffect> ().SetTarget (target.gameObject);
+            // Set sideEffect target
+            sideEffect.GetComponent<SideEffect> ().SetTarget (target.gameObject);
 
 			// Set sideEffect invoker
 			sideEffect.GetComponent<SkillsProperties> ().SetInvoker (GetComponent<SkillsProperties>().GetInvoker ());
 
-			// Att sideEffect values
+			// Att sideEffect values with SkillProperties values from spell hierity from tower
 			sideEffect.GetComponent<SideEffect>().SetBurnRate (GetComponent<SkillsProperties> ().GetBurnRate ());
 			sideEffect.GetComponent<SideEffect> ().SetSlowFactor (GetComponent<SkillsProperties> ().GetSlowFactor ());
 			sideEffect.GetComponent<SideEffect> ().SetRangeRadius (GetComponent<SkillsProperties> ().GetRangeRadius ());
@@ -76,6 +79,8 @@ public class TowerSpell : MonoBehaviour {
 			// Start sideEffect effects
 			sideEffect.GetComponent<SideEffect> ().StartEffect ();
 		}
+
+        // Finalization
 		Destroy (gameObject);
 	}
 }

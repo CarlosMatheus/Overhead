@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PropertiesManager : MonoBehaviour {
 
@@ -8,7 +6,7 @@ public class PropertiesManager : MonoBehaviour {
 	private float damage;
 	private float cooldown;
 	private float range;
-	private float soulBonusChance = 10f;
+	private float soulBonusChance = 5f;
 	private bool soulBonusActivation = false;
 	private float burnRate;
 	private float slowFactor;
@@ -107,7 +105,9 @@ public class PropertiesManager : MonoBehaviour {
 		damage = sp.GetDamage ();
 		cooldown = sp.GetCooldown ();
 		range = sp.GetRange ();
+        effectDuration = sp.GetEffectDuration();
 		burnRate = sp.GetBurnRate ();
 		slowFactor = sp.GetSlowFactor ();
+        rangeRadius = sp.GetRangeRadius ();
 	}
 }
