@@ -10,8 +10,8 @@ public class MouseCursorManager : MonoBehaviour {
     [SerializeField] private MouseCursor mouseCursorInvisable = null;
     [SerializeField] private MouseCursor mouseCursorGreen = null;
 
-    private int ScreenWidthRef = 2560;
-    private int ScreenHightRef = 1600;
+    //private int ScreenWidthRef = 2560;
+    //private int ScreenHightRef = 1600;
 
     public void SetIdleCursor()
     {
@@ -49,11 +49,11 @@ public class MouseCursorManager : MonoBehaviour {
         SetIdleCursor();
     }
 
-    private void ResizeCursor(ref Texture2D texture, ref Vector2 hotSpot)
-    {
-        print("antes: " + texture.width.ToString());
-        texture.Resize(texture.width * (Screen.width / ScreenWidthRef),texture.height * (Screen.height / ScreenHightRef));
-        print("depois: " + texture.width.ToString());
-        hotSpot = new Vector2(hotSpot.x * (Screen.width / ScreenWidthRef), hotSpot.y * (Screen.height / ScreenHightRef));
-    }
+    //private void ResizeCursor(ref Texture2D texture, ref Vector2 hotSpot)
+    //{
+    //    print("antes: " + texture.width.ToString());
+    //    texture.Resize(texture.width * (Screen.width / ScreenWidthRef),texture.height * (Screen.height / ScreenHightRef));
+    //    print("depois: " + texture.width.ToString());
+    //    hotSpot = new Vector2(hotSpot.x * (Screen.width / ScreenWidthRef), hotSpot.y * (Screen.height / ScreenHightRef));
+    //}
 }
