@@ -5,13 +5,16 @@ public class Perk : MonoBehaviour
 {
 
 	private new string name;
-    private Text buttonName;
 	private Button perkButton;
 
     [SerializeField] private float minWaveToActivate = 0f;
     [SerializeField] private float maxLevel = 0f;
     [SerializeField] private float cost = 0f;
     [SerializeField] private float addScore = 0f;
+    [SerializeField] private Sprite upgradeIcon = null;
+    [TextArea(3, 5)]
+    [SerializeField]
+    private string description = null;
 
     //private List<Perk> childs;
     [SerializeField] private Perk[] childs;
@@ -53,41 +56,57 @@ public class Perk : MonoBehaviour
 
         foreach (Text t in aux)
         {
-            if (t.gameObject.name == "UpgradeName")
+            if (t.gameObject.name == "TowerName")
             {
-                buttonName = t;
-                buttonName.text = name;
-                break;
+                t.text = name;
+            }
+
+            if (t.gameObject.name == "Price")
+            {
+                t.text = cost.ToString() + " Souls";
+            }
+
+            if (t.gameObject.name == "UpgradeProperty")
+            {
+                t.text = description + " (Min wave: " + minWaveToActivate.ToString() + "; Level max: " + maxLevel.ToString() + ")";
+            }
+        }
+
+        Image[] aux_ = gameObject.GetComponentsInChildren<Image>();
+
+        foreach (Image i in aux_)
+        {
+            if (i.gameObject.name == "ShopTowerItem")
+            {
+                i.sprite = upgradeIcon;
             }
         }
 
         /* // If you wanna set automatically, try this. In our case, we choose not because of Canvas Horizontal Layout Group
-		Perk[] _childs = gameObject.GetComponentsInChildren<Perk> ();
-		foreach (Perk p in _childs) {
-			if (p.transform.parent != this.transform)
-				_childs[Array.FindIndex (_childs, perk => perk == p)] = null;
-		}
+        Perk[] _childs = gameObject.GetComponentsInChildren<Perk> ();
+        foreach (Perk p in _childs) {
+            if (p.transform.parent != this.transform)
+                _childs[Array.FindIndex (_childs, perk => perk == p)] = null;
+        }
 
-		childs = new List<Perk> ();
+        childs = new List<Perk> ();
 
-		foreach (Perk p in _childs) {
-			if (p != null) {
-				childs.Add (p);
-			}
-		}
-		*/
+        foreach (Perk p in _childs) {
+            if (p != null) {
+                childs.Add (p);
+            }
+        }
+        */
     }
-
-	void Update ()
-    {
-        if (GetButton() != null)
-		    GetButton().interactable = CheckIfItsAvailable();
-	}
+    
 
 	public virtual void LevelUp () 
     {
-		// Set childs callables
-		foreach (Perk p in childs)
+        if (!CheckIfItsAvailable())
+            return;
+
+        // Set childs callables
+        foreach (Perk p in childs)
         {
 			p.TurnCallable ();
 			p.GetButton ().interactable = true;
@@ -103,7 +122,7 @@ public class Perk : MonoBehaviour
 		scoreCounter.SetScore (scoreCounter.GetScore () + addScore);
 
 		// Call a default function on skill gameObject to alter values
-		Debug.Log (buttonName.text + " level up to level " + level + " on tower " + currentTowerProperties.name);
+		Debug.Log (name + " level up to level " + level + " on tower " + currentTowerProperties.name);
 	}
 
 	public void LevelDown () 
@@ -147,9 +166,9 @@ public class Perk : MonoBehaviour
     {
 		if 
             (
-            level < maxLevel && soulsCounter.GetSouls () >= cost && gameMaster.
-            GetComponent<WaveSpawner> ().
-            GetWave () >= minWaveToActivate && isCallable
+            level < maxLevel && soulsCounter.GetSouls () >= cost && 
+            gameMaster.GetComponent<WaveSpawner> ().GetWave () >= minWaveToActivate &&
+            isCallable
             ) 
         {
 			return true;
