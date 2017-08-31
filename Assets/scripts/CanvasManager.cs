@@ -59,6 +59,7 @@ public class CanvasManager : MonoBehaviour {
     {
         canvas.GetComponent<CanvasGroup>().alpha = 0;
         SetCanvasAlpha(1f);
+        InitialAnimation.SetActive(false);
     }
 
     public void PlayAppearCanvas()

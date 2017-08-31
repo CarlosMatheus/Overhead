@@ -33,6 +33,7 @@ public class Perk : MonoBehaviour
         scoreCounter = gameMaster.GetComponent<ScoreCounter>();
 
         currentTowerProperties = gameObject.GetComponentInParent<PropertiesManager>();
+
         if (currentTowerProperties == null)
         {
             Debug.LogError("There are perks without reference to their towers");
@@ -79,11 +80,12 @@ public class Perk : MonoBehaviour
 
 	void Update ()
     {
-		GetButton().interactable = CheckIfItsAvailable();
+        if (GetButton() != null)
+		    GetButton().interactable = CheckIfItsAvailable();
 	}
 
-	public virtual void LevelUp () {
-
+	public virtual void LevelUp () 
+    {
 		// Set childs callables
 		foreach (Perk p in childs)
         {
@@ -104,7 +106,8 @@ public class Perk : MonoBehaviour
 		Debug.Log (buttonName.text + " level up to level " + level + " on tower " + currentTowerProperties.name);
 	}
 
-	public void LevelDown () {
+	public void LevelDown () 
+    {
 		if (level > 0) {
 			// Set childs callables
 			foreach (Perk p in childs) {
@@ -130,7 +133,8 @@ public class Perk : MonoBehaviour
 		isCallable = false;
 	}
 
-	public Button GetButton () {
+	public Button GetButton () 
+    {
 		return perkButton;
 	}
 
@@ -139,8 +143,15 @@ public class Perk : MonoBehaviour
         return currentTowerProperties;
     }
 
-	private bool CheckIfItsAvailable () {
-		if (level < maxLevel && soulsCounter.GetSouls () >= cost && gameMaster.GetComponent<WaveSpawner> ().GetWave () >= minWaveToActivate && isCallable) {
+	private bool CheckIfItsAvailable () 
+    {
+		if 
+            (
+            level < maxLevel && soulsCounter.GetSouls () >= cost && gameMaster.
+            GetComponent<WaveSpawner> ().
+            GetWave () >= minWaveToActivate && isCallable
+            ) 
+        {
 			return true;
 		}
 		return false;
