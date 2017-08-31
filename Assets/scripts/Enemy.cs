@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour {
 	private GameObject masterTower;
     private GameObject gameMaster;
 	private WaveSpawner waveSpawner;
+    private ActionManager actionManager;
 	private WayPointsScript wayPoints;
 	private MasterTowerScript masterTowerScript;
     private MouseCursorManager mouserCursorManager;
@@ -57,6 +58,7 @@ public class Enemy : MonoBehaviour {
 	private void Start()
     {
         gameMaster = GameObject.FindWithTag("GameMaster");
+        actionManager = gameMaster.GetComponent<ActionManager>();
         masterTower = gameMaster.GetComponent<InstancesManager>().GetMasterTowerObj();
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
         mouserCursorManager = gameMaster.GetComponent<MouseCursorManager>();
@@ -98,6 +100,7 @@ public class Enemy : MonoBehaviour {
         {
             masterTowerScript.EnemyAttack();
             mouserCursorManager.SetIdleCursor();
+            actionManager.KillEnemy();
             Destroy(gameObject);
         }
 	}

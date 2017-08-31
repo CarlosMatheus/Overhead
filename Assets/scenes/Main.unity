@@ -205,6 +205,96 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224578484924072674, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224578484924072674, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224578484924072674, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 489.41132
+      objectReference: {fileID: 0}
+    - target: {fileID: 224578484924072674, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224209554156187392, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224209554156187392, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224209554156187392, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 590.21136
+      objectReference: {fileID: 0}
+    - target: {fileID: 224209554156187392, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224985720147315222, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224985720147315222, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224985720147315222, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 691.01135
+      objectReference: {fileID: 0}
+    - target: {fileID: 224985720147315222, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224113836249433616, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224113836249433616, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224113836249433616, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 791.81134
+      objectReference: {fileID: 0}
+    - target: {fileID: 224113836249433616, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225681254743732884, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224438812211355058, guid: 0b856abfdd5ce4931b2113cd82c17491,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b856abfdd5ce4931b2113cd82c17491, type: 2}
   m_IsPrefabParent: 0
@@ -887,12 +977,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1319377659274120, guid: 0b856abfdd5ce4931b2113cd82c17491,
     type: 2}
   m_PrefabInternal: {fileID: 10452206}
---- !u!1 &1018629785 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1523038539326692, guid: 6849b8a20f320f04dabdfd7ed9070271,
-    type: 2}
-  m_PrefabInternal: {fileID: 1611023307}
---- !u!84 &1107262082
+--- !u!84 &1009185929
 RenderTexture:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -919,6 +1004,11 @@ RenderTexture:
     m_WrapW: 1
   m_Dimension: 2
   m_VolumeDepth: 1
+--- !u!1 &1018629785 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1523038539326692, guid: 6849b8a20f320f04dabdfd7ed9070271,
+    type: 2}
+  m_PrefabInternal: {fileID: 1611023307}
 --- !u!1 &1122379856 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1046847332457860, guid: 0b856abfdd5ce4931b2113cd82c17491,
@@ -1554,33 +1644,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4570669095973516, guid: 2f16d96d8e95f4ee893d3f69273b7e64,
     type: 2}
   m_PrefabInternal: {fileID: 182574045}
---- !u!84 &1493798980
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 511
-  m_Height: 529
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!114 &1573586643 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114812045155361606, guid: a0ae3f0160a394622b2556300039986c,
@@ -1630,10 +1693,37 @@ Prefab:
         type: 2}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1493798980}
+      objectReference: {fileID: 1009185929}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6849b8a20f320f04dabdfd7ed9070271, type: 2}
   m_IsPrefabParent: 0
+--- !u!84 &1638567568
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 815
+  m_Height: 458
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1708905068 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1597138934059966, guid: 0b856abfdd5ce4931b2113cd82c17491,

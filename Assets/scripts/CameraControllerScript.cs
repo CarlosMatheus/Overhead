@@ -22,9 +22,9 @@ public class CameraControllerScript : MonoBehaviour {
 	}
 
 	private void Start(){
-        minX = (-1f) * moduleDimension - 3f;
+        minX = (-1f) * moduleDimension - 8f;
         maxX = moduleDimension - 10f;
-		minZ = (-1f)*moduleDimension - 10f;
+		minZ = (-1f)*moduleDimension - 17f;
         maxZ = moduleDimension - 15f;
 	}
 
