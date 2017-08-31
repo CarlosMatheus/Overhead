@@ -34,7 +34,8 @@ public class SoulsCounter : MonoBehaviour {
 
 	public float GetWave()
     {
-		return wave;
+
+		return wave*2;
 	}
 
 	public void SetSouls(float value)
@@ -70,9 +71,8 @@ public class SoulsCounter : MonoBehaviour {
 			return false;
 	}
 
-	public void KillEnemy (string _tag)
+	public void KillEnemy (float value)
     {
-		float value = KillerPrice (_tag);
 		souls += value;
 		scoreCounter.KillEnemy(ConvertToScore (value));
 	}
@@ -115,10 +115,11 @@ public class SoulsCounter : MonoBehaviour {
     private float GetKillingValue(int i)
     {
         float val = Mathf.Round( (baseKillValues[i] * (Mathf.Pow(waveKillConst, waveSpawner.GetWave()))) );
+
         return val;
     }
 
-	private float KillerPrice (string _toSearch)
+	public float KillerPrice (string _toSearch)
     {
         actionManager.KillEnemy();
 		for (int i = 0; i < killersTags.Length; i++)
