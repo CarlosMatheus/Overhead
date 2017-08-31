@@ -29,7 +29,7 @@ public class ActionManager : MonoBehaviour
     private void CheckEnemies()
     {
         if (numOfEnemies == 0)
-            countdown = -1f;
+            countdown = - 1f;
         else
             return;
     }
@@ -39,8 +39,9 @@ public class ActionManager : MonoBehaviour
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
         waveSpawner = gameObject.GetComponent<WaveSpawner>();
         canvasManager = gameObject.GetComponent<CanvasManager>();
-        StartInitialAnimation();
         numOfEnemies = 0;
+
+        StartInitialAnimation();
     }
 
     private void Update()
@@ -82,11 +83,17 @@ public class ActionManager : MonoBehaviour
         countdown = initialAnimationDuration;
         audioManager.PlayWithFade("MusicMainScene", 2f);
         nextAction = NextAction.Interval;
+        canvasManager.SetCanvasAlpha(0);
+        canvasManager.PlayInitialLoadingAnimation();
+        canvasManager.PlayAppearCanvasWithDelay(4f);
+        canvasManager.SetCanvasAfterAnimationWithDelay(4f);
     }
 
     private void StartInterval()
     {
         countdown = interval;
+        canvasManager.SetWaveCanvasAlpha(0);
+        canvasManager.SetWaveCoolDownAlpha(1f);
         nextAction = NextAction.Wave;
         audioManager.Play("IntervalSound");
         audioManager.SetVolumeWithFade("MusicMainScene", 0.3f, 3f);
@@ -95,6 +102,8 @@ public class ActionManager : MonoBehaviour
 
     private void StartWave()
     {
+        canvasManager.SetWaveCanvasAlpha(1f);
+        canvasManager.SetWaveCoolDownAlpha(0);
         audioManager.Play("NewWave");
         audioManager.SetVolumeWithFade("MusicMainScene", 0.6f, 3f);
         canvasManager.PlayWaveWarning();

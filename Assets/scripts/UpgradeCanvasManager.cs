@@ -30,12 +30,13 @@ public class UpgradeCanvasManager : MonoBehaviour {
 		upSys.SetActive (false);
 	}
 
-	void Update () {
+	void Update () 
+    {
 		if (upSys != null)
 			CheckMouseButtonDown();
 	}
 
-	void OnMouseDown () 
+	void OnMouseDown ()
     {
 		if (gameObject.name == "MasterTower")
 			return;
