@@ -218,10 +218,12 @@ public class WaveSpawner : MonoBehaviour {
     private IEnumerator SpawnWave()
     {
         AjustArray();
+        actionManager.StartSpawn();
         for (int i = 0; i < thisWaveSpawnEnemies.Length; i++)
         {  
             EnemySpawn(thisWaveSpawnEnemies[i]);
             yield return new WaitForSeconds(spawnDelay);
         }
+        actionManager.FinishSpawn();
     }
 }

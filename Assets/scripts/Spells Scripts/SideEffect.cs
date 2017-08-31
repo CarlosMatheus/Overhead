@@ -131,7 +131,7 @@ public class SideEffect : MonoBehaviour {
 
 		Vector3 colDir = other.transform.position - transform.position;
 
-        Debug.Log(gameObject.name + " atingiu " + other.gameObject.name); /////////////////////////////////
+        //Debug.Log(gameObject.name + " atingiu " + other.gameObject.name); /////////////////////////////////
 
 		Quaternion colQua = Quaternion.FromToRotation (transform.forward, colDir);
 

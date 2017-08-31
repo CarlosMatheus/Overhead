@@ -74,10 +74,11 @@ public class SoulsCounter : MonoBehaviour {
 	public void KillEnemy (float value)
     {
 		souls += value;
-		scoreCounter.KillEnemy(ConvertToScore (value));
+		scoreCounter.KillEnemy( ConvertToScore (value) );
 	}
 
-	public void AddSouls (string _tag) {
+	public void AddSouls (string _tag)
+    {
 		float value = KillerPrice (_tag);
 		souls += value;
 	}
@@ -121,7 +122,6 @@ public class SoulsCounter : MonoBehaviour {
 
 	public float KillerPrice (string _toSearch)
     {
-        actionManager.KillEnemy();
 		for (int i = 0; i < killersTags.Length; i++)
 			if (killersTags [i] == _toSearch)
                 return GetKillingValue(i);

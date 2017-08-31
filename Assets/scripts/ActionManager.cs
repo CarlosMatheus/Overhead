@@ -12,6 +12,7 @@ public class ActionManager : MonoBehaviour
     private CanvasManager canvasManager;
     private enum NextAction {Interval,Wave,Death};
     private NextAction nextAction;
+    private bool isSpawning;
     private float countdown;
     private int numOfEnemies;
 
@@ -20,14 +21,28 @@ public class ActionManager : MonoBehaviour
         numOfEnemies++;
     }
 
+    public void FinishSpawn()
+    {
+        isSpawning = false;
+    }
+
+    public void StartSpawn()
+    {
+        isSpawning = true;
+    }
+
     public void KillEnemy()
     {
         numOfEnemies--;
         CheckEnemies();
+
+        if (numOfEnemies < 0)
+            Debug.LogError("There are a negative number of Enemies");
     }
 
     private void CheckEnemies()
     {
+        if (isSpawning == true) return;
         if (numOfEnemies == 0)
             countdown = - 1f;
         else
