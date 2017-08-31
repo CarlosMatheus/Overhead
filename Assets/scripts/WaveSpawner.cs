@@ -37,6 +37,7 @@ public class WaveSpawner : MonoBehaviour {
 	private SoulsCounter soulsConter;
 	private WayPointsScript[] wayPoints;
 	private MasterTowerScript masterTowerScript;
+    private Text warningWaveText;
     private ActionManager actionManager;
 
 	/// <summary>
@@ -70,8 +71,9 @@ public class WaveSpawner : MonoBehaviour {
     {
         if ( IsInCorrectScene() )
         {
-            //waveCountdownText.text = Mathf.Round(countdown).ToString();
+            waveCountdownText.text = Mathf.Round(countdown).ToString();
             waveNumberText.text = Mathf.Round(waveNumber - 1).ToString();
+            warningWaveText.text = Mathf.Round(waveNumber - 1).ToString();
         }
     }
 
@@ -108,7 +110,8 @@ public class WaveSpawner : MonoBehaviour {
 		int indexVal = 0;
 		int mult = 1;
 		int actualVal = 0;
-		for ( int i = sizeArrEn-1; i >= 0; i -- ){
+		for ( int i = sizeArrEn-1; i >= 0; i -- )
+        {
 			actualVal = (ArrayEnemies[waveNumIdx][i] - '0');
 			if(actualVal == ( ',' - '0' ) ){
 				auxArr[auxArrIdx] = indexVal;
@@ -117,7 +120,8 @@ public class WaveSpawner : MonoBehaviour {
 				indexVal = 0;
 				continue;
 			}
-			else {
+			else 
+            {
 				indexVal += actualVal * mult;
 				mult = mult * 10;
 			}
@@ -125,7 +129,8 @@ public class WaveSpawner : MonoBehaviour {
 		auxArr[auxArrIdx] = indexVal;
 		thisWaveSpawnEnemies = new GameObject[auxArrIdx + 1];
 		int j = 0; 
-		for (int i = auxArrIdx; i >= 0; i--) {
+		for (int i = auxArrIdx; i >= 0; i--) 
+        {
 			thisWaveSpawnEnemies[j] = enemyPrefab[ auxArr[i] - 1 ];
 			j++;
 		}
@@ -134,7 +139,8 @@ public class WaveSpawner : MonoBehaviour {
 	/// <summary>
 	/// Kills the player.
 	/// </summary>
-	private void killPlayer(){
+	private void killPlayer()
+    {
 		for (int i = 0; i < 10; i++)
 			AjustDifficulty ();
 	}
@@ -142,34 +148,32 @@ public class WaveSpawner : MonoBehaviour {
 	/// <summary>
 	/// Ajusts the difficulty for the next wave
 	/// </summary>
-	private void AjustDifficulty(){
+	private void AjustDifficulty()
+    {
 		baseSpeed = baseSpeed * SpeedWaveConst;
 		baseSpeed = Mathf.Clamp (baseSpeed, 1f, 2f);
 		baseHP = baseHP * HPWaveConst;
 	}
 
-	/// <summary>
-	/// Awake this instance.
-	/// </summary>
-	private void Awake(){
+	private void Awake()
+    {
 		moduleIndex = 0;
 		spawnPoint = new Transform[4];
 		wayPoints = new WayPointsScript[4];
 	}
 
-	/// <summary>
-	/// Start this instance.
-	/// </summary>
-	private void Start(){
+	private void Start()
+    {
 		masterTower = GameObject.Find ("MasterTower");
 		soulsConter = this.GetComponent<SoulsCounter> ();
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
         actionManager = gameObject.GetComponent<ActionManager>();
+        warningWaveText = GameObject.Find("WaveWarningNum").GetComponent<Text>();
 
         if (IsInCorrectScene())
         {
             waveNumberText = GameObject.Find("wave").GetComponent<Text>();
-            //waveCountdownText = GameObject.Find("waveCountdownText").GetComponent<Text>();
+            waveCountdownText = GameObject.Find("CooldownNum").GetComponent<Text>();
         }
 
 		baseSpeed = baseSpeedConst;
