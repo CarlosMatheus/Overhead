@@ -399,21 +399,21 @@ MonoBehaviour:
   buttons:
   - kind: 0
     name: Darkness
-    image: {fileID: 21300000, guid: e410618f55da5431a8f106722913d9ac, type: 3}
+    image: {fileID: 21300000, guid: 1e2e462ce52d2784585865dd388a19d0, type: 3}
     spell: {fileID: 1076308763873118, guid: 81d8a83a09a4b4d4183eb78e46bb9eed, type: 2}
     indexOfThisTower: 0
     effect: Area
     description: --
   - kind: 0
     name: Frozen
-    image: {fileID: 21300000, guid: f6d757aa267a54b8da0bbc520dd9baba, type: 3}
+    image: {fileID: 21300000, guid: c493f372d6aff064390242548f6115f6, type: 3}
     spell: {fileID: 1279783995638840, guid: 79516ce57c986c141b96de4c4537c487, type: 2}
     indexOfThisTower: 1
     effect: Slow
     description: --
   - kind: 0
     name: Infernus
-    image: {fileID: 21300000, guid: 2f25eff25e16c4751bbc533bec8dcca6, type: 3}
+    image: {fileID: 21300000, guid: 48f667ac977b40343996314f42834228, type: 3}
     spell: {fileID: 1043216770293996, guid: 5d75f8308cf7f374298690b42d297421, type: 2}
     indexOfThisTower: 2
     effect: Fire
