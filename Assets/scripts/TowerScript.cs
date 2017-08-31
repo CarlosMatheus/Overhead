@@ -219,6 +219,7 @@ public class TowerScript : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        if (IsInCorrectScene() == false) return;
         if( IsAround(player.transform,playerSpawnOnTower) == false )
         {
             mouseCursorManage.SetTeleportCursor();
@@ -237,6 +238,7 @@ public class TowerScript : MonoBehaviour
 
     private void OnMouseExit()
     {
+        if(IsInCorrectScene() == false) return;
         mouseCursorManage.SetIdleCursor();
     }
 }

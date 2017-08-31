@@ -11,7 +11,7 @@ public class VillageSpawn : MonoBehaviour
     void Start()
     {
         finalScale = transform.localScale;
-        if (SceneManager.GetActiveScene().name == "Main")
+        if (SceneManager.GetActiveScene().name == "Main" || SceneManager.GetActiveScene().name == "Tutorial")
         {
             transform.localScale = Vector3.zero;
             StartCoroutine(Spawn());

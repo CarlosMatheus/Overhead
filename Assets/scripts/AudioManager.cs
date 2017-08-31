@@ -3,6 +3,7 @@ using System.Collections.Generic;
 ﻿using UnityEngine.Audio;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -57,7 +58,8 @@ public class AudioManager : MonoBehaviour
     //Set sounds that will play as the game starts:
     private void Start()
     {
-        
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+            PlayWithFade("MainMenuMusic", 2f);
     }
 
     private void Awake () 
