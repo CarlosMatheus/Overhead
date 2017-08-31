@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialAnimationDuration: 5
-  interval: 20
+  interval: 30
 --- !u!114 &114062466384089198
 MonoBehaviour:
   m_ObjectHideFlags: 1
