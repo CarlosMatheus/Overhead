@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44971108, g: 0.49977785, b: 0.5756334, a: 1}
+  m_IndirectSpecularColor: {r: 0.44971132, g: 0.49977797, b: 0.57563335, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -218,7 +218,7 @@ Prefab:
     - target: {fileID: 224578484924072674, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 489.41132
+      value: 488.37445
       objectReference: {fileID: 0}
     - target: {fileID: 224578484924072674, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
@@ -238,7 +238,7 @@ Prefab:
     - target: {fileID: 224209554156187392, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 590.21136
+      value: 589.1745
       objectReference: {fileID: 0}
     - target: {fileID: 224209554156187392, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
@@ -258,7 +258,7 @@ Prefab:
     - target: {fileID: 224985720147315222, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 691.01135
+      value: 689.9745
       objectReference: {fileID: 0}
     - target: {fileID: 224985720147315222, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
@@ -278,7 +278,7 @@ Prefab:
     - target: {fileID: 224113836249433616, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 791.81134
+      value: 790.7745
       objectReference: {fileID: 0}
     - target: {fileID: 224113836249433616, guid: 0b856abfdd5ce4931b2113cd82c17491,
         type: 2}
@@ -971,12 +971,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4bf5981ab3d03e4c9727d8431deba69, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &612114638 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1161922269846664, guid: e057f9a5ad71a4f15b8d50ed6d9ed9ee,
-    type: 2}
-  m_PrefabInternal: {fileID: 1710198126}
---- !u!84 &819686606
+--- !u!84 &444528406
 RenderTexture:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -985,8 +980,8 @@ RenderTexture:
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
-  m_Width: 815
-  m_Height: 458
+  m_Width: 668
+  m_Height: 376
   m_AntiAliasing: 1
   m_DepthFormat: 2
   m_ColorFormat: 0
@@ -1003,6 +998,11 @@ RenderTexture:
     m_WrapW: 1
   m_Dimension: 2
   m_VolumeDepth: 1
+--- !u!1 &612114638 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1161922269846664, guid: e057f9a5ad71a4f15b8d50ed6d9ed9ee,
+    type: 2}
+  m_PrefabInternal: {fileID: 1710198126}
 --- !u!1 &955045869 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1319377659274120, guid: 0b856abfdd5ce4931b2113cd82c17491,
@@ -1648,7 +1648,7 @@ Transform:
   m_PrefabParentObject: {fileID: 4570669095973516, guid: 2f16d96d8e95f4ee893d3f69273b7e64,
     type: 2}
   m_PrefabInternal: {fileID: 182574045}
---- !u!84 &1540142412
+--- !u!84 &1569089195
 RenderTexture:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1657,8 +1657,8 @@ RenderTexture:
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
-  m_Width: 815
-  m_Height: 458
+  m_Width: 668
+  m_Height: 376
   m_AntiAliasing: 1
   m_DepthFormat: 2
   m_ColorFormat: 0
@@ -1724,7 +1724,7 @@ Prefab:
         type: 2}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1540142412}
+      objectReference: {fileID: 444528406}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6849b8a20f320f04dabdfd7ed9070271, type: 2}
   m_IsPrefabParent: 0

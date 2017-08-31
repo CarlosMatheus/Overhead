@@ -1940,10 +1940,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7810a1c41f4dcfc42b2e451b1ed4a2de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minWaveToActivate: 0
+  minWaveToActivate: 9
   maxLevel: 3
-  cost: 0
-  addScore: 0
+  cost: 50
+  addScore: 100
   childs: []
   isCallable: 0
   bonusChance: 2
@@ -2111,10 +2111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d46b94959622864a80cb963dddb8449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minWaveToActivate: 0
+  minWaveToActivate: 12
   maxLevel: 3
-  cost: 0
-  addScore: 0
+  cost: 75
+  addScore: 100
   childs: []
   isCallable: 0
   slowAddFact: 0.1
@@ -3611,8 +3611,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 10
   maxLevel: 3
-  cost: 0
-  addScore: 0
+  cost: 100
+  addScore: 200
   childs:
   - {fileID: 114097585435259080}
   - {fileID: 114575570512899304}
@@ -3670,10 +3670,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e40a26e0314974d8e24ef4458ade79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minWaveToActivate: 0
+  minWaveToActivate: 3
   maxLevel: 3
-  cost: 0
-  addScore: 0
+  cost: 40
+  addScore: 75
   childs:
   - {fileID: 114045399678459682}
   isCallable: 1
@@ -3805,10 +3805,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26b287b4e378d54daa6b06117445976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minWaveToActivate: 0
+  minWaveToActivate: 13
   maxLevel: 2
-  cost: 0
-  addScore: 0
+  cost: 60
+  addScore: 100
   childs: []
   isCallable: 0
   multiplicationFactor: 1.5
@@ -4228,10 +4228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b35991d2771adff4c9239cf746fadb7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minWaveToActivate: 0
+  minWaveToActivate: 6
   maxLevel: 2
-  cost: 0
-  addScore: 0
+  cost: 50
+  addScore: 100
   childs: []
   isCallable: 1
   multiplicationFactor: 1.5

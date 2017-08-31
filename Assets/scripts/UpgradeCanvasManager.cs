@@ -40,8 +40,8 @@ public class UpgradeCanvasManager : MonoBehaviour {
     {
 		if (gameObject.name == "MasterTower")
 			return;
-        if ( gameObject.GetComponent<TowerScript>().IsPlayerInThisTower() == false )
-            return;
+        //if ( gameObject.GetComponent<TowerScript>().IsPlayerInThisTower() == false )
+        //    return;
 
 		instanceManager.SetTowerOfTheTime (this);
 		upSys.transform.rotation = Camera.main.transform.rotation;
