@@ -38,15 +38,25 @@ public class TowerSpell : MonoBehaviour {
 
         // Soul bonus effect
 		GameObject invoker = GetComponent<SkillsProperties> ().GetInvoker ();
-		PropertiesManager pm = invoker.GetComponent<PropertiesManager>();
-		if (pm != null) {
-			if (pm.HasSoulBonusEffect ()) {
-				if (Random.Range (0f, 1f) < pm.GetSoulBonusChance ()) {
-					SoulsCounter.instance.AddSouls (invoker.tag);
-					Debug.Log ("Soul de bonus!");
-				}
-			}
-		}
+        if (invoker != null)
+        {
+            PropertiesManager pm = invoker.GetComponent<PropertiesManager>();
+            if (pm != null)
+            {
+                if (pm.HasSoulBonusEffect())
+                {
+                    if (Random.Range(0f, 1f) < pm.GetSoulBonusChance())
+                    {
+                        SoulsCounter.instance.AddSouls(invoker.tag);
+                        Debug.Log("Soul de bonus!");
+                    }
+                }
+            }
+            else
+                Debug.LogError("We have null exception on propertiesManager in " + gameObject.name);
+        }
+        else
+            Debug.LogError("We have null exception on invoker in " + gameObject.name);
 
         // Impact animation effect
 		if (impactEffect != null) {

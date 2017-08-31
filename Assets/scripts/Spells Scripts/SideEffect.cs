@@ -139,8 +139,8 @@ public class SideEffect : MonoBehaviour {
 		TowerSpell towerSpell = spellGO.GetComponent<TowerSpell>();
 		SkillsProperties skillPro = spellGO.GetComponent<SkillsProperties> ();
 
-		// Spell need to know who instantiated him
-		skillPro.SetInvoker (gameObject);
+        // Spell need to know who instantiated him
+        skillPro.SetInvoker(gameObject.GetComponent<SkillsProperties>().GetInvoker());
 
 		if (towerSpell != null)
 			towerSpell.Seek (other.transform);
