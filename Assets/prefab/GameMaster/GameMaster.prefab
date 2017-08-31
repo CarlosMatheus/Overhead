@@ -112,19 +112,19 @@ MonoBehaviour:
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
   mouseCursorRed:
-    cursorTexture: {fileID: 2800000, guid: 25bb6cbfe7156428b95c2507e4435896, type: 3}
+    cursorTexture: {fileID: 2800000, guid: ff95ca2f35e2a425999bbde29b8bf6e6, type: 3}
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
   mouseCursorTeleport:
-    cursorTexture: {fileID: 2800000, guid: 74c882b15a1864fb0a6d393924ddf843, type: 3}
+    cursorTexture: {fileID: 2800000, guid: 1a3f1a316e94b4af7bd9cc282586828d, type: 3}
     cursorMode: 0
-    hotSpot: {x: 10, y: 10}
+    hotSpot: {x: 7, y: 7}
   mouseCursorInvisable:
     cursorTexture: {fileID: 2800000, guid: 6eaf17413f8af49c795bab49b91e87d3, type: 3}
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
   mouseCursorGreen:
-    cursorTexture: {fileID: 2800000, guid: bfdfe7cc4013a42548f53db8e2b7bd6b, type: 3}
+    cursorTexture: {fileID: 2800000, guid: a8bc2fc7673d44534a1510cd59bbee4a, type: 3}
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
 --- !u!114 &114200634650480466
