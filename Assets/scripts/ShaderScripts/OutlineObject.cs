@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OutlineObject : MonoBehaviour 
 {
@@ -22,8 +23,13 @@ public class OutlineObject : MonoBehaviour
         {
             _materials.AddRange(renderer.materials); //Getting access to their materials
         }
-
+        if (IsInCorrectScene() == false) return;
         masterTowerTowerScript = GameObject.FindWithTag("GameMaster").GetComponent<InstancesManager>().GetMasterTowerObj().GetComponent<TowerScript>();
+    }
+
+    private bool IsInCorrectScene()
+    {
+        return (SceneManager.GetActiveScene().buildIndex != 0 && string.Equals(SceneManager.GetActiveScene().name, "MainMenu") == false);
     }
 
     private void Update()

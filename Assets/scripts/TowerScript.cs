@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TowerScript : MonoBehaviour {
-
+public class TowerScript : MonoBehaviour 
+{
 	[Header("Unity Setup Fields")]
 
 	public Transform partToRotate;
@@ -71,10 +71,9 @@ public class TowerScript : MonoBehaviour {
         return IsAround(playerSpawnOnTower, player.transform);
     }
 
-	private void Start () {
-
+	private void Start () 
+    {
         gameMaster = GameObject.FindWithTag("GameMaster");
-        mouseCursorManage = gameMaster.GetComponent<MouseCursorManager>();
 
 		// Finding the player gameObject
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -84,14 +83,17 @@ public class TowerScript : MonoBehaviour {
 
 		pm = GetComponent<PropertiesManager> ();
 
- 		// Set skill values from prefab
-		pm.SetValues (bulletPrefab.GetComponent<SkillsProperties> ());
 
 		//This will reapeat every 0.5 sec
 		InvokeRepeating ("UpdateTarget", 0f, 0.5f);
 
 		SetRangeObject ();
 
+        if (IsInCorrectScene() == false) return;
+        mouseCursorManage = gameMaster.GetComponent<MouseCursorManager>();
+
+        // Set skill values from prefab
+        pm.SetValues(bulletPrefab.GetComponent<SkillsProperties>());
 	}
 
 	private void Update () {
