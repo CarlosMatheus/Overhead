@@ -621,8 +621,7 @@ MonoBehaviour:
   enemyHealthBar: {fileID: 1374926427234664}
   deathEffect: {fileID: 1432811619508178, guid: c437ea0344f1ee248900e43dd41d9ad1,
     type: 2}
-  HP: 0
-  sideAffected: 0
+  soulCanvas: {fileID: 1501028493053376, guid: ccd6974a99ed95e4fa96c4a42ce8f553, type: 2}
 --- !u!114 &114655299370250458
 MonoBehaviour:
   m_ObjectHideFlags: 1
