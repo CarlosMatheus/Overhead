@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panSpeed: 10
-  panBoardThickness: 30
+  panBoardThickness: 7
   scrollSpeed: 1
   scrollMaxSensibility: 1
   moduleDimension: 25
