@@ -64,7 +64,6 @@ public class CanvasManager : MonoBehaviour {
     public void PlayAppearCanvas()
     {
         canvas.GetComponent<Animation>().Play("Appear");
-        print("played");
     }
 
     public void PlayDisappearCanvas()
