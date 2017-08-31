@@ -46,8 +46,8 @@ public class TeleportPlace : MonoBehaviour {
 
 	}
 
-	IEnumerator TeleportEvents () {
-
+	IEnumerator TeleportEvents () 
+    {
 		// Animates
 		player.GetComponent<Teleporter>().TeleportFor(playerSpawnOnTower.gameObject);
 
