@@ -12,8 +12,8 @@ public class SoulCounterScript : MonoBehaviour {
 
     //Attributes
     public float speed = 2f;
-    public float deltaY = 1f;
-    public float deltaScale = 0.5f;
+    public float deltaY = 3f;
+    public float deltaScale = 0.7f;
     public float destroyTime = 3f;
 
     private void Start()
