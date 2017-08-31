@@ -44,7 +44,7 @@ public class RandomVoxelSpawn : MonoBehaviour
             compVal += chance[i];
             if (val <= compVal)
             {
-                if (SceneManager.GetActiveScene().name == "Main")
+                if (SceneManager.GetActiveScene().name == "Main" || SceneManager.GetActiveScene().name == "Tutorial")
                     StartCoroutine(Spawn(i));
                 else
                     SpawnVoxel(i);

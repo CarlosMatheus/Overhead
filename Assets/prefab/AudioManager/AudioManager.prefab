@@ -70,3 +70,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: MainMenuMusic
+    clip: {fileID: 8300000, guid: 5c63383a9fbe521499354ffbe409424d, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}

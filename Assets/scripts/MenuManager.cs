@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour {
 
     private float _currentValue;
     //private GameObject fadeCanvas;
+    private AudioManager audioManager;
 
     private void Start()
     {
@@ -17,6 +18,12 @@ public class MenuManager : MonoBehaviour {
 
     public void LoadScene(int sceneNumber)
     {
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        //if (sceneNumber == 2)
+        //{
+        //    audioManager.StopWithFade("MusicMainScene", 0.6f);
+        //    audioManager.PlayWithFade("MainMenuMusic", 0.6f);
+        //}
         Time.timeScale = 1;
         StartCoroutine(Fade(sceneNumber));
     }

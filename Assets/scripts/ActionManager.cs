@@ -96,6 +96,7 @@ public class ActionManager : MonoBehaviour
     private void StartInitialAnimation()
     {
         countdown = initialAnimationDuration;
+        audioManager.SetVolume("MusicMainScene", 0.6f);
         audioManager.PlayWithFade("MusicMainScene", 2f);
         nextAction = NextAction.Interval;
         canvasManager.SetCanvasAlpha(0);
