@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class VoxelDistance : MonoBehaviour {
-
+public class VoxelDistance : MonoBehaviour 
+{
     private Mesh voxel4x4 = null;
     private Mesh voxel3x3 = null;
     private Mesh voxel2x2 = null;
@@ -21,6 +22,7 @@ public class VoxelDistance : MonoBehaviour {
 
     private void Start()
     {
+        if (IsInCorrectScene() == false) return;
         meshFilter = GetComponent<MeshFilter>();
         instanceManager = GameObject.FindWithTag("GameMaster").GetComponent<InstancesManager>();
         cameraObj = instanceManager.GetCameraPlayer();
@@ -30,6 +32,13 @@ public class VoxelDistance : MonoBehaviour {
         voxel4x4 = instanceManager.GetVoxel4x4();
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
         //InvokeRepeating("CalculateDist", 0f, 0.3f);
+    }
+
+    private bool IsInCorrectScene()
+    {
+        bool a = SceneManager.GetActiveScene().buildIndex != 0;
+        bool b = string.Equals(SceneManager.GetActiveScene().name, "MainMenu") == false;
+        return (a && b);
     }
 
     private void CalculateDist()

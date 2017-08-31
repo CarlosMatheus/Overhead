@@ -168,16 +168,12 @@ public class WaveSpawner : MonoBehaviour {
 		soulsConter = this.GetComponent<SoulsCounter> ();
 		masterTowerScript = masterTower.GetComponent<MasterTowerScript> ();
         actionManager = gameObject.GetComponent<ActionManager>();
+        baseSpeed = baseSpeedConst;
+        baseHP = baseHPConst;
+        if (IsInCorrectScene() == false) return;
+        waveNumberText = GameObject.Find("wave").GetComponent<Text>();
+        waveCountdownText = GameObject.Find("CooldownNum").GetComponent<Text>();
         warningWaveText = GameObject.Find("WaveWarningNum").GetComponent<Text>();
-
-        if (IsInCorrectScene())
-        {
-            waveNumberText = GameObject.Find("wave").GetComponent<Text>();
-            waveCountdownText = GameObject.Find("CooldownNum").GetComponent<Text>();
-        }
-
-		baseSpeed = baseSpeedConst;
-		baseHP = baseHPConst;
 	}
 
     private bool IsInCorrectScene()

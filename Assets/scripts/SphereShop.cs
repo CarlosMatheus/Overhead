@@ -68,6 +68,7 @@ public class SphereShop : MonoBehaviour
             icosphereLight = GetComponent<Light>();
             icosphereLight.intensity = initialIntensity;
 
+            if (IsInCorrectScene() == false) return;
             masterTowerTowerScript = GameObject.FindWithTag("GameMaster").
                                                GetComponent<InstancesManager>().
                                                GetMasterTowerObj().

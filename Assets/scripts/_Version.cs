@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class _Version : MonoBehaviour {
 
-    private string version = "1.3.1";
+    private string version = "1.5";
 
     public string GetVersion()
     {
