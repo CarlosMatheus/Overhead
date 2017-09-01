@@ -778,13 +778,14 @@ GameObject:
   - component: {fileID: 114460142172004946}
   - component: {fileID: 114702606020858524}
   - component: {fileID: 114649483188891060}
+  - component: {fileID: 114431518068588860}
   m_Layer: 0
   m_Name: Tower4
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1193246431708810
 GameObject:
   m_ObjectHideFlags: 1
@@ -2925,7 +2926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1581040002671906
 GameObject:
   m_ObjectHideFlags: 1
@@ -5433,7 +5434,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1376630355681784}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.35, z: 0}
+  m_LocalPosition: {x: 0, y: 1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4183365528596564}
@@ -6189,6 +6190,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs:
   - {fileID: 114372159710446114}
   isCallable: 1
@@ -6584,6 +6587,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs: []
   isCallable: 0
 --- !u!114 &114045430532681636
@@ -8709,6 +8714,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs:
   - {fileID: 114044168811106326}
   isCallable: 0
@@ -10482,6 +10489,8 @@ MonoBehaviour:
   maxLevel: 3
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs:
   - {fileID: 114963779826187566}
   - {fileID: 114475355912337324}
@@ -10930,6 +10939,8 @@ MonoBehaviour:
   maxLevel: 5
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs:
   - {fileID: 114945871625699664}
   isCallable: 0
@@ -11106,6 +11117,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs:
   - {fileID: 114581802041066092}
   isCallable: 1
@@ -11244,6 +11257,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs: []
   isCallable: 0
 --- !u!114 &114392337569243820
@@ -11698,6 +11713,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 7
+--- !u!114 &114431518068588860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1192856199098770}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696db64d46dbb1042b1b061ff4e6c48b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114433601993585492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12362,6 +12388,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs: []
   isCallable: 0
 --- !u!114 &114483900159409256
@@ -12536,6 +12564,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs: []
   isCallable: 1
 --- !u!114 &114500902319763398
@@ -13428,6 +13458,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs: []
   isCallable: 0
 --- !u!114 &114574656893812432
@@ -13601,6 +13633,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs:
   - {fileID: 114742149907950466}
   - {fileID: 114206040533558938}
@@ -14836,6 +14870,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs: []
   isCallable: 1
 --- !u!114 &114702606020858524
@@ -15270,6 +15306,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs:
   - {fileID: 114889804662169216}
   isCallable: 0
@@ -15335,6 +15373,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs: []
   isCallable: 1
 --- !u!114 &114751951674124482
@@ -16306,7 +16346,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1192856199098770}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8900328075f4bc4db8d649ae0a2a073, type: 3}
   m_Name: 
@@ -16888,6 +16928,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs: []
   isCallable: 0
 --- !u!114 &114890857366750666
@@ -16979,6 +17021,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs:
   - {fileID: 114344377731282364}
   isCallable: 1
@@ -17662,6 +17706,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs:
   - {fileID: 114391538270800234}
   isCallable: 0
@@ -18012,6 +18058,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
+  upgradeIcon: {fileID: 0}
+  description: 
   childs:
   - {fileID: 114574039998371156}
   isCallable: 0

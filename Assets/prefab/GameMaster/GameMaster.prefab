@@ -319,12 +319,12 @@ MonoBehaviour:
   - 5
   - 15
   - 50
-  - 1000
+  - 10
   initialTowerScore:
   - 20
   - 80
   - 200
-  - 1000
+  - 100
 --- !u!114 &114772377065291608
 MonoBehaviour:
   m_ObjectHideFlags: 1

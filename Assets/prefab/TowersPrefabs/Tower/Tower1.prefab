@@ -101,10 +101,10 @@ GameObject:
   - component: {fileID: 65853142933077740}
   - component: {fileID: 95269012887861862}
   - component: {fileID: 114623369097560350}
-  - component: {fileID: 114699446148116006}
   - component: {fileID: 114880102893571164}
   - component: {fileID: 114398883616282538}
   - component: {fileID: 114398969784102374}
+  - component: {fileID: 114699446148116006}
   m_Layer: 0
   m_Name: Tower1
   m_TagString: Tower

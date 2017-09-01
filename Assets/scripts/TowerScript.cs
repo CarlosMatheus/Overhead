@@ -78,19 +78,19 @@ public class TowerScript : MonoBehaviour
 		// Finding the player gameObject
 		player = GameObject.FindGameObjectWithTag ("Player");
 
-		if (bulletPrefab == null)
+        // Get reference to MouseCursorManager on GameMaster to manage cursor changes
+        if (IsInCorrectScene() == false) return;
+        mouseCursorManage = gameMaster.GetComponent<MouseCursorManager>();
+
+        if (bulletPrefab == null)
 			return;
 
 		pm = GetComponent<PropertiesManager> ();
 
-
-		//This will reapeat every 0.5 sec
+		//This will repeat every 0.5 sec
 		InvokeRepeating ("UpdateTarget", 0f, 0.5f);
 
 		SetRangeObject ();
-
-        if (IsInCorrectScene() == false) return;
-        mouseCursorManage = gameMaster.GetComponent<MouseCursorManager>();
 
         // Set skill values from prefab
         pm.SetValues(bulletPrefab.GetComponent<SkillsProperties>());
@@ -220,6 +220,7 @@ public class TowerScript : MonoBehaviour
     private void OnMouseEnter()
     {
         if (IsInCorrectScene() == false) return;
+        if (GetComponent<TeleportPlace>() == null) return;
         if( IsAround(player.transform,playerSpawnOnTower) == false )
         {
             mouseCursorManage.SetTeleportCursor();
@@ -238,7 +239,8 @@ public class TowerScript : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if(IsInCorrectScene() == false) return;
+        if (IsInCorrectScene() == false) return;
+        if (GetComponent<TeleportPlace>() == null) return;
         mouseCursorManage.SetIdleCursor();
     }
 }
