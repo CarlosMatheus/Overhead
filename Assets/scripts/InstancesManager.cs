@@ -11,6 +11,7 @@ public class InstancesManager : MonoBehaviour {
     [SerializeField] private Mesh voxel1x1 = null;
 	[SerializeField] private GameObject player = null;
     [SerializeField] private GameObject upgradeCanvas = null;
+    [SerializeField] private GameObject researchCanvas = null;
 
     private UpgradeCanvasManager towerOfTheTime;
 	private SphereShop sphereShop;
@@ -88,6 +89,11 @@ public class InstancesManager : MonoBehaviour {
     public GameObject GetUpgradeCanvas()
     {
         return upgradeCanvas;
+    }
+
+    public GameObject GetResearchCanvas()
+    {
+        return researchCanvas;
     }
 
     private void Start ()

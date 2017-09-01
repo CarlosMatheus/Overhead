@@ -161,6 +161,8 @@ MonoBehaviour:
   player: {fileID: 0}
   upgradeCanvas: {fileID: 1175686079971260, guid: 2695e7ca2c719434799b45b7aaf58e72,
     type: 2}
+  researchCanvas: {fileID: 1162508381349228, guid: e0e71380f7f8eb04eac506609e922a49,
+    type: 2}
 --- !u!114 &114292562531580396
 MonoBehaviour:
   m_ObjectHideFlags: 1

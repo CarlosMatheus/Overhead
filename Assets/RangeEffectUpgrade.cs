@@ -7,12 +7,12 @@ public class RangeEffectUpgrade : Perk
     [Space]
     [Header("Upgrade Settings")]
     [SerializeField]
-    private float multiplicationFactor;
+    private float multiplicationFactor = 0f;
 
     public override void LevelUp()
     {
         base.LevelUp();
 
-        GetCurrentTower().SetRangeRadius(multiplicationFactor);
+        GetCurrentTowerProperties().SetRangeRadius(multiplicationFactor);
     }
 }

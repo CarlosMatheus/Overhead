@@ -5,13 +5,13 @@ public class SoulBonusUpgrade : Perk {
     [Space]
     [Header("Upgrade Settings")]
     [SerializeField]
-    private float bonusChance;
+    private float bonusChance = 0f;
 
     public override void LevelUp()
     {
         base.LevelUp();
 
-        GetCurrentTower().SetSoulBonusEffect(true);
-        GetCurrentTower().SetSoulBonusChance(bonusChance);
+        GetCurrentTowerProperties().SetSoulBonusEffect(true);
+        GetCurrentTowerProperties().SetSoulBonusChance(bonusChance);
     }
 }

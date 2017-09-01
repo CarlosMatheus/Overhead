@@ -71,15 +71,18 @@ public class TowerScript : MonoBehaviour
         return IsAround(playerSpawnOnTower, player.transform);
     }
 
-	private void Start () 
+	private void Start ()
     {
+        // Only do thing is it's on Main scene or on Tutorial Scene
+        if (IsInCorrectScene() == false) return;
+
+        // Get reference to GameMaster
         gameMaster = GameObject.FindWithTag("GameMaster");
 
 		// Finding the player gameObject
 		player = GameObject.FindGameObjectWithTag ("Player");
 
         // Get reference to MouseCursorManager on GameMaster to manage cursor changes
-        if (IsInCorrectScene() == false) return;
         mouseCursorManage = gameMaster.GetComponent<MouseCursorManager>();
 
         if (bulletPrefab == null)

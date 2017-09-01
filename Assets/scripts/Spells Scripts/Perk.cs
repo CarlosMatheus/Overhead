@@ -27,7 +27,7 @@ public class Perk : MonoBehaviour
     public bool isCallable = false;
 	private int level = 0;
 
-    void Start()
+    public virtual void Start()
     {
         name = gameObject.name;
 
@@ -37,17 +37,10 @@ public class Perk : MonoBehaviour
 
         currentTowerProperties = gameObject.GetComponentInParent<PropertiesManager>();
 
-        if (currentTowerProperties == null)
-        {
-            Debug.LogError("There are perks without reference to their towers");
-            return;
-        }
-
         perkButton = gameObject.GetComponentInChildren<Button>();
         if (perkButton == null)
         {
-            Debug.LogError("There are perks without reference to their buttons");
-            return;
+            Debug.LogWarning("There are perks without reference to their buttons");
         }
 
         perkButton.onClick.AddListener(LevelUp);
@@ -98,9 +91,9 @@ public class Perk : MonoBehaviour
         }
         */
     }
-    
 
-	public virtual void LevelUp () 
+
+    public virtual void LevelUp()
     {
         if (!CheckIfItsAvailable())
             return;
@@ -108,22 +101,22 @@ public class Perk : MonoBehaviour
         // Set childs callables
         foreach (Perk p in childs)
         {
-			p.TurnCallable ();
-			p.GetButton ().interactable = true;
-		}
+            p.TurnCallable();
+            p.GetButton().interactable = true;
+        }
 
-		// Upgrade perk
-		level++;
+        // Upgrade perk
+        level++;
 
-		// Consume souls to level up
-		soulsCounter.SetSouls (soulsCounter.GetSouls () - cost);
+        // Consume souls to level up
+        soulsCounter.SetSouls(soulsCounter.GetSouls() - cost);
 
-		// Add score
-		scoreCounter.SetScore (scoreCounter.GetScore () + addScore);
+        // Add score
+        scoreCounter.SetScore(scoreCounter.GetScore() + addScore);
 
-		// Call a default function on skill gameObject to alter values
-		Debug.Log (name + " level up to level " + level + " on tower " + currentTowerProperties.name);
-	}
+        // Call a default function on skill gameObject to alter values
+        Debug.Log(name + " level up to level " + level + " on tower " + GetCurrentTower().name);
+    }
 
 	public void LevelDown () 
     {
@@ -157,12 +150,17 @@ public class Perk : MonoBehaviour
 		return perkButton;
 	}
 
-    public PropertiesManager GetCurrentTower ()
+    public PropertiesManager GetCurrentTowerProperties ()
     {
         return currentTowerProperties;
     }
 
-	private bool CheckIfItsAvailable () 
+    public GameObject GetCurrentTower()
+    {
+        return GetComponentInParent<TowerScript>().gameObject;
+    }
+
+    private bool CheckIfItsAvailable () 
     {
 		if 
             (

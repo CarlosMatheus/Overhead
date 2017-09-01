@@ -5,12 +5,12 @@ public class StrenghUpUpdate : Perk {
     [Space]
     [Header("Upgrade Settings")]
     [SerializeField]
-    private float multiplicationFactor;
+    private float multiplicationFactor = 0f;
 
     public override void LevelUp()
     {
         base.LevelUp();
 
-        GetCurrentTower().SetDamage(multiplicationFactor);
+        GetCurrentTowerProperties().SetDamage(multiplicationFactor);
     }
 }

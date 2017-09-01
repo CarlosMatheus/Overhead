@@ -7,12 +7,12 @@ public class EffectDurationUpgrade : Perk
     [Space]
     [Header("Upgrade Settings")]
     [SerializeField]
-    private float multiplicationFactor;
+    private float multiplicationFactor = 0f;
 
     public override void LevelUp()
     {
         base.LevelUp();
 
-        GetCurrentTower().SetEffectDuration(multiplicationFactor);
+        GetCurrentTowerProperties().SetEffectDuration(multiplicationFactor);
     }
 }

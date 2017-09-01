@@ -7,24 +7,24 @@ public class SideEffectUpgrade : Perk
 
     [Header("Slow Effect")]
     [SerializeField]
-    private float slowAddFact;
+    private float slowAddFact = 0f;
 
     [Header("Range Effect")]
     [SerializeField]
-    private float rangeMultFact;
+    private float rangeMultFact = 0f;
 
     [Header("Burn Effect")]
     [SerializeField]
-    private float burnMultFact;
+    private float burnMultFact = 0f;
 
     public override void LevelUp()
     {
         base.LevelUp();
 
-        GetCurrentTower().SetSlowFactor(slowAddFact);
+        GetCurrentTowerProperties().SetSlowFactor(slowAddFact);
 
-        GetCurrentTower().SetRangeRadius(rangeMultFact);
+        GetCurrentTowerProperties().SetRangeRadius(rangeMultFact);
 
-        GetCurrentTower().SetBurnRate(burnMultFact);
+        GetCurrentTowerProperties().SetBurnRate(burnMultFact);
     }
 }
