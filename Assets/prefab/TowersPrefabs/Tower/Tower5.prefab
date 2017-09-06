@@ -71,8 +71,6 @@ GameObject:
   - component: {fileID: 65913465577892104}
   - component: {fileID: 95076321732797900}
   - component: {fileID: 114952762343088076}
-  - component: {fileID: 114525920660738748}
-  - component: {fileID: 114826740646268736}
   - component: {fileID: 114487755724624862}
   - component: {fileID: 114669568599551518}
   m_Layer: 0
@@ -220,17 +218,6 @@ MonoBehaviour:
   GlowColor: {r: 0.8897059, g: 0.8897059, b: 0.8897059, a: 0}
   FadeFactor: 5
   _currentColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &114525920660738748
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1829025781973266}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16bebf4e36bb7db47abcd963101a929f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114669568599551518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,17 +227,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8900328075f4bc4db8d649ae0a2a073, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114826740646268736
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1829025781973266}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6125f6014bae1e24982d668f41805b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114952762343088076

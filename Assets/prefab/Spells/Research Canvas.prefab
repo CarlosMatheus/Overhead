@@ -2407,7 +2407,7 @@ GameObject:
   - component: {fileID: 224195104988373272}
   - component: {fileID: 114758989384210248}
   m_Layer: 5
-  m_Name: Fire rate
+  m_Name: Fire rate up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3079,7 +3079,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224818193492212138}
   - component: {fileID: 114082154226524352}
-  - component: {fileID: 114621457862245460}
   m_Layer: 5
   m_Name: Fire Bubble
   m_TagString: Untagged
@@ -4802,8 +4801,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
-  upgradeIcon: {fileID: 21300000, guid: a59d7c5e9c97b694e98f54e382a7d411, type: 3}
-  description: Research on type 1
+  upgradeIcon: {fileID: 21300000, guid: 0c7ceeec099c287489bd440bf4a84097, type: 3}
+  description: Research on type 3
   childs: []
   gameMaster: {fileID: 0}
   isCallable: 1
@@ -5418,10 +5417,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 1
   maxLevel: 1
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
+  cost: 150
+  addScore: 1000
+  upgradeIcon: {fileID: 21300000, guid: 1dd4d9f29c6e14549a274ca216591434, type: 3}
+  description: What about master the power os destruction? Gives a mix of continuous
+    damage with area impact (requires Burn Effect)
   childs: []
   gameMaster: {fileID: 0}
   isCallable: 0
@@ -6529,12 +6529,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4752ac2071c961d42b7fd66025fd105e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minWaveToActivate: 1
+  minWaveToActivate: 3
   maxLevel: 1
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
+  cost: 50
+  addScore: 200
+  upgradeIcon: {fileID: 21300000, guid: a33142ac972f6dc4d98e604746e627f1, type: 3}
+  description: Concentrate life force on Icosphere, allowing it to cast powerfull
+    skills and improve ours.
   childs:
   - {fileID: 114758989384210248}
   gameMaster: {fileID: 0}
@@ -7098,10 +7099,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 1
   maxLevel: 3
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
+  cost: 50
+  addScore: 200
+  upgradeIcon: {fileID: 21300000, guid: 78d0fab9434905c45b6adcf2ba4a1fe0, type: 3}
+  description: Multiply Master Tower's and Witch's spell damage by 2. (requires Master
+    Tower perk)
   childs:
   - {fileID: 114380740899317628}
   gameMaster: {fileID: 0}
@@ -7120,11 +7122,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 1
   maxLevel: 1
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
-  childs: []
+  cost: 75
+  addScore: 200
+  upgradeIcon: {fileID: 21300000, guid: e919ebf174ab8b24faf15a8a7e3e05cd, type: 3}
+  description: Gives a ability to hit multiple targets (Give Range effect to Master
+    Tower and Witch) (requires Range Grow)
+  childs:
+  - {fileID: 114931984067046108}
   gameMaster: {fileID: 0}
   isCallable: 0
   sideEffect: {fileID: 1637392632034614, guid: d02e99a9cfee6e64183b143584a05a79, type: 2}
@@ -7267,12 +7271,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7baf6895467e9498f5e80d705d5f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minWaveToActivate: 1
+  minWaveToActivate: 10
   maxLevel: 1
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
+  cost: 150
+  addScore: 1000
+  upgradeIcon: {fileID: 21300000, guid: 3562f1449130ab04c8823593bb262da9, type: 3}
+  description: With this we can learn the most powerfull freezing spell! (Combines
+    Range and Freeze side effects in Master Tower's and Witch's spells) (requires
+    Slow Effect perk)
   childs: []
   gameMaster: {fileID: 0}
   isCallable: 0
@@ -7798,10 +7804,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 1
   maxLevel: 1
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
+  cost: 50
+  addScore: 100
+  upgradeIcon: {fileID: 21300000, guid: e4bdacec77463ca4a94edc4140b84ca9, type: 3}
+  description: Gives the power of fire! (Increase Burn side effect to Master Tower's
+    and Witch's spells) (requires Strengh Up perk)
   childs:
   - {fileID: 114638401429360162}
   gameMaster: {fileID: 0}
@@ -8983,12 +8990,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c0b48311c5489b49a3aeeebc0ff1982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minWaveToActivate: 1
+  minWaveToActivate: 8
   maxLevel: 3
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
+  cost: 75
+  addScore: 200
+  upgradeIcon: {fileID: 21300000, guid: b879f763ef534a54ba6106b06a508599, type: 3}
+  description: If we had a chance to paralise them for a little moments... Ops, now
+    we have! (Increase chance to paralise enemies by 5%/level) (requires Slow Effect
+    perk)
   childs: []
   gameMaster: {fileID: 0}
   isCallable: 0
@@ -9327,12 +9336,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596f143175d1bb046971728f5314ffbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minWaveToActivate: 1
+  minWaveToActivate: 6
   maxLevel: 1
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
+  cost: 50
+  addScore: 100
+  upgradeIcon: {fileID: 21300000, guid: db0854e5ae4072b469ea682b3a757b9d, type: 3}
+  description: What about master the speed force? We could steal our enemies agility!
+    (Gives Freeze side effect to Master Tower's and Witch's spells) (requires Fire
+    rate up perk)
   childs:
   - {fileID: 114552639506874836}
   - {fileID: 114310994101234728}
@@ -9525,29 +9536,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Min wave to activate
---- !u!114 &114621457862245460
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1684888084422604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c7baf6895467e9498f5e80d705d5f40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minWaveToActivate: 1
-  maxLevel: 1
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
-  childs: []
-  gameMaster: {fileID: 0}
-  isCallable: 0
-  rangeEffect: {fileID: 1637392632034614, guid: d02e99a9cfee6e64183b143584a05a79,
-    type: 2}
-  sideEffect: {fileID: 0}
 --- !u!114 &114622615714026646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9708,10 +9696,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 1
   maxLevel: 3
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
+  cost: 75
+  addScore: 200
+  upgradeIcon: {fileID: 21300000, guid: a697d4812f9612e459fe730e9eb1666b, type: 3}
+  description: With this we can concentrate our energy to have a chance to give a
+    hit kill (+5%/level) (requires Burn Effect)
   childs: []
   gameMaster: {fileID: 0}
   isCallable: 0
@@ -9969,7 +9958,7 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
-  upgradeIcon: {fileID: 21300000, guid: a59d7c5e9c97b694e98f54e382a7d411, type: 3}
+  upgradeIcon: {fileID: 21300000, guid: 52114af9e5aceaf41af7aa5f26c84437, type: 3}
   description: Research on type 1
   childs: []
   gameMaster: {fileID: 0}
@@ -10409,10 +10398,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 1
   maxLevel: 4
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
+  cost: 65
+  addScore: 100
+  upgradeIcon: {fileID: 21300000, guid: 78d0fab9434905c45b6adcf2ba4a1fe0, type: 3}
+  description: Let's attack from far away! (Increase range of Master Tower and Witch
+    x1.5/level) (requires Master Tower)
   childs:
   - {fileID: 114294079812576572}
   gameMaster: {fileID: 0}
@@ -10577,17 +10567,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274df4bc89af5c84d9c3537e8b844397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minWaveToActivate: 1
+  minWaveToActivate: 5
   maxLevel: 2
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
+  cost: 50
+  addScore: 100
+  upgradeIcon: {fileID: 21300000, guid: 78d0fab9434905c45b6adcf2ba4a1fe0, type: 3}
+  description: We'll cast spell faster than the sound! (Decreases cooldown of Master
+    Tower and Witch by 0.75/level) (requires Master Tower perk)
   childs:
   - {fileID: 114593500870010116}
   gameMaster: {fileID: 0}
   isCallable: 0
-  multiplicationFactor: 0.5
+  multiplicationFactor: 0.75
 --- !u!114 &114760228223654418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10843,10 +10834,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 1
   maxLevel: 1
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
+  cost: 50
+  addScore: 200
+  upgradeIcon: {fileID: 21300000, guid: a33142ac972f6dc4d98e604746e627f1, type: 3}
+  description: Concentrate life force on Icosphere, allowing it to cast powerfull
+    skills and improve ours.
   childs:
   - {fileID: 114730027873601374}
   gameMaster: {fileID: 0}
@@ -11554,10 +11546,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 1
   maxLevel: 1
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
+  cost: 50
+  addScore: 200
+  upgradeIcon: {fileID: 21300000, guid: a33142ac972f6dc4d98e604746e627f1, type: 3}
+  description: Concentrate life force on Icosphere, allowing it to cast powerfull
+    skills and improve ours.
   childs:
   - {fileID: 114289542641641772}
   gameMaster: {fileID: 0}
@@ -12023,10 +12016,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 1
   maxLevel: 3
-  cost: 0
-  addScore: 0
-  upgradeIcon: {fileID: 0}
-  description: 
+  cost: 75
+  addScore: 120
+  upgradeIcon: {fileID: 21300000, guid: cf6b3e7991bd43b408cee68ae9520786, type: 3}
+  description: With this we will learn even more how to attack more enemies at the
+    same time (Increase area of range effect) (requires Range Impact)
   childs: []
   gameMaster: {fileID: 0}
   isCallable: 0
@@ -12505,8 +12499,8 @@ MonoBehaviour:
   maxLevel: 1
   cost: 0
   addScore: 0
-  upgradeIcon: {fileID: 21300000, guid: a59d7c5e9c97b694e98f54e382a7d411, type: 3}
-  description: Research on type 1
+  upgradeIcon: {fileID: 21300000, guid: a15047348a0e42d419eb4389c975075b, type: 3}
+  description: Research on type 2
   childs: []
   gameMaster: {fileID: 0}
   isCallable: 1

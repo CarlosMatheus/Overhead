@@ -110,6 +110,14 @@ public class Perk : MonoBehaviour
         if (!CheckIfItsAvailable())
             return;
 
+        OutlineObject oo = GetCurrentTower().GetComponent<OutlineObject>();
+
+        if (oo != null)
+        {
+            Color mix = (4 * oo.GetCurrentColor() + 1 * oo.GetGlowColor()) / 5;
+            oo.SetCurrentColor(mix);
+        }        
+
         // Set childs callables
         foreach (Perk p in childs)
         {

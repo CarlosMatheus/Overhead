@@ -1805,11 +1805,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 8
   maxLevel: 3
-  cost: 75
+  cost: 30
   addScore: 100
   upgradeIcon: {fileID: 21300000, guid: f1e8d73ef414d65478f0c4a740f374c6, type: 3}
   description: Once Savithar has spoken to us, there will be a chance to get more
-    souls by killing a hero!
+    souls by killing a hero! (Increase chance by get a soul bonus by 2) (require Savithar
+    Blessing)
   childs: []
   gameMaster: {fileID: 0}
   isCallable: 0
@@ -2011,11 +2012,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 12
   maxLevel: 3
-  cost: 100
+  cost: 30
   addScore: 150
   upgradeIcon: {fileID: 21300000, guid: a697d4812f9612e459fe730e9eb1666b, type: 3}
   description: Once we know Dunamis, it will be easy to concentrate our forces to
-    improve this place abilities!
+    improve this place abilities! (increase side effect's power) (require Let be dunamis)
   childs: []
   gameMaster: {fileID: 0}
   isCallable: 0
@@ -3261,10 +3262,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 10
   maxLevel: 3
-  cost: 100
+  cost: 35
   addScore: 150
   upgradeIcon: {fileID: 21300000, guid: 63691da3d59a92c429bf73ef2be20998, type: 3}
-  description: As we used to be, let's be stronger again till they surrender!
+  description: As we used to be, let's be stronger again till they surrender! (multiply
+    spell damage by 2)
   childs:
   - {fileID: 114097585435259080}
   - {fileID: 114575570512899304}
@@ -3342,7 +3344,7 @@ MonoBehaviour:
   addScore: 50
   upgradeIcon: {fileID: 21300000, guid: eb7f89bddcb55e44298fc93c71a890e9, type: 3}
   description: Our speel will gonna cut the wind! Faster and faster! There will be
-    no mercy for those who want to stop you!
+    no mercy for those who want to stop you! (reduces cooldown by 10%/level)
   childs:
   - {fileID: 114045399678459682}
   gameMaster: {fileID: 0}
@@ -3530,11 +3532,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 15
   maxLevel: 2
-  cost: 100
+  cost: 35
   addScore: 150
   upgradeIcon: {fileID: 21300000, guid: b879f763ef534a54ba6106b06a508599, type: 3}
   description: "\rOnce we know Dunamis, we are increasingly mastering the ability
-    to increase the duration of this place spell effects."
+    to increase the duration of this place spell effects. (require Let be dunamis)"
   childs: []
   gameMaster: {fileID: 0}
   isCallable: 0
@@ -3702,7 +3704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minWaveToActivate: 7
   maxLevel: 2
-  cost: 50
+  cost: 25
   addScore: 100
   upgradeIcon: {fileID: 21300000, guid: 8b777c0abac52a64ab8fdfa5b8f90219, type: 3}
   description: "What about break our universe laws to go further\r and further away!?"

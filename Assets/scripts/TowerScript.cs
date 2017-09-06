@@ -75,6 +75,11 @@ public class TowerScript : MonoBehaviour
     {
         return IsAround(playerSpawnOnTower, player.transform);
     }
+
+    public void DoFireAction()
+    {
+        fireCountdown = 0;
+    }
     #endregion
 
     private void Start ()
@@ -172,14 +177,14 @@ public class TowerScript : MonoBehaviour
 	private void Fire(){
 		if( fireCountdown <= 0f ){
 			Shoot ();
-			fireCountdown = bulletPrefab.GetComponent<SkillsProperties> ().GetCooldown ();
+			fireCountdown = GetComponent<PropertiesManager> ().GetCooldown ();
 		}
 		fireCountdown -= Time.deltaTime;
 	}
 
 	// Will instantiete the shot and make it fallow the target
 	private void Shoot(){
-		GameObject spellGO = (GameObject)Instantiate (bulletPrefab, firePoint.position, firePoint.rotation);
+		GameObject spellGO = Instantiate (bulletPrefab, firePoint.position, firePoint.rotation);
 		TowerSpell towerSpell = spellGO.GetComponent<TowerSpell>();
 		SkillsProperties skillPro = spellGO.GetComponent<SkillsProperties> ();
 
@@ -229,7 +234,7 @@ public class TowerScript : MonoBehaviour
     private void OnMouseEnter()
     {
         if (IsInCorrectScene() == false) return;
-        if (GetComponent<TeleportPlace>() == null) return;
+        //if (GetComponent<TeleportPlace>() == null) return;
         if( IsAround(player.transform,playerSpawnOnTower) == false )
         {
             mouseCursorManage.SetTeleportCursor();

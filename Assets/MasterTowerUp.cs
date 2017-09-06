@@ -21,6 +21,7 @@ public class MasterTowerUp : Perk
     {
         base.LevelUp();
         masterTower.GetComponent<PropertiesManager>().SetValues(sp);
+        masterTower.GetComponent<TowerScript>().DoFireAction();
     }
 
 }

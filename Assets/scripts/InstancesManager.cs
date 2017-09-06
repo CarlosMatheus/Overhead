@@ -12,6 +12,7 @@ public class InstancesManager : MonoBehaviour {
 	[SerializeField] private GameObject player = null;
     [SerializeField] private GameObject upgradeCanvas = null;
     [SerializeField] private GameObject researchCanvas = null;
+    [SerializeField] private GameObject normalBullet = null;
 
     private UpgradeCanvasManager towerOfTheTime;
 	private SphereShop sphereShop;
@@ -97,7 +98,8 @@ public class InstancesManager : MonoBehaviour {
     }
 
     private void Start ()
-  {
+    {
 		sphereShop = GameObject.FindGameObjectWithTag ("Icosphere").GetComponent<SphereShop>();
+        normalBullet.GetComponent<SkillsProperties>().SetEffect(null);
 	}
 }

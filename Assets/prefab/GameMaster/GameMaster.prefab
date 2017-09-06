@@ -163,6 +163,8 @@ MonoBehaviour:
     type: 2}
   researchCanvas: {fileID: 1906892298127638, guid: e0e71380f7f8eb04eac506609e922a49,
     type: 2}
+  normalBullet: {fileID: 1431736794467902, guid: 4b19275f4737a114a8bcd491c6a24afe,
+    type: 2}
 --- !u!114 &114292562531580396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -279,7 +281,7 @@ MonoBehaviour:
   baseKillValues:
   - 1
   - 2
-  initialSouls: 30
+  initialSouls: 1000
   initialScoreConst: 3
   waveKillConst: 1.05
 --- !u!114 &114600698673747036
@@ -320,10 +322,10 @@ MonoBehaviour:
   - {fileID: 1476852477586770, guid: 0f24f267cee384389891d46ba49e8bbf, type: 2}
   - {fileID: 1524480298607174, guid: ede720f73c7477d4eae4e8f6959be545, type: 2}
   initialTowerValue:
-  - 15
+  - 20
   - 30
   - 50
-  - 100
+  - 50
   - 5
   initialTowerScore:
   - 50
@@ -433,7 +435,7 @@ MonoBehaviour:
     description: Research tower allows you to do researches!
   - kind: 1
     name: Evzone
-    image: {fileID: 21300000, guid: 6614dec50f4ee59439dc8ed297f84d5e, type: 3}
+    image: {fileID: 21300000, guid: 7ad37a0008db4fb4289a2eb224e21551, type: 3}
     spell: {fileID: 0}
     indexOfThisTower: 4
     effect: --
