@@ -49,7 +49,7 @@ public class SearchCenterPlace : MonoBehaviour {
 	public void ResearchOn(int i)
     {
         researchCanvasTypes[0].SetActive(false);
-        researchCanvasTypes [i].SetActive (true);
+        researchCanvasTypes [i].SetActive (true);  // Reasearch tower tree: i=0
 	}
 
 	public void SetValuesFromMasterTower (SkillsProperties sp) {

@@ -61,7 +61,17 @@ public class Perk : MonoBehaviour
 
             if (t.gameObject.name == "UpgradeProperty")
             {
-                t.text = description + " (Min wave: " + minWaveToActivate.ToString() + "; Level max: " + maxLevel.ToString() + ")";
+                t.text = description;
+            }
+
+            if (t.gameObject.name == "Level")
+            {
+                t.text = "Level: " + level.ToString() + "/" + maxLevel.ToString();
+            }
+
+            if (t.gameObject.name == "MinWave")
+            {
+                t.text = "Min wave: " + minWaveToActivate.ToString();
             }
         }
 
