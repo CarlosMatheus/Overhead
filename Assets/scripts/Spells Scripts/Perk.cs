@@ -6,6 +6,7 @@ public class Perk : MonoBehaviour
 
 	private new string name;
 	private Button perkButton;
+    private int level = 0;
 
     [SerializeField] private float minWaveToActivate = 0f;
     [SerializeField] private float maxLevel = 0f;
@@ -15,19 +16,20 @@ public class Perk : MonoBehaviour
     [TextArea(3, 5)]
     [SerializeField]
     private string description = null;
-
-    //private List<Perk> childs;
+    
     [SerializeField] private Perk[] childs;
 
+    // External references
     private PropertiesManager currentTowerProperties;
-    private GameObject gameMaster;
 	private SoulsCounter soulsCounter;
 	private ScoreCounter scoreCounter;
 
+    // Accessable from hierichy classes
+    [HideInInspector]
+    public GameObject gameMaster;
     public bool isCallable = false;
-	private int level = 0;
 
-    void Start()
+    public virtual void Start()
     {
         name = gameObject.name;
 
@@ -37,17 +39,10 @@ public class Perk : MonoBehaviour
 
         currentTowerProperties = gameObject.GetComponentInParent<PropertiesManager>();
 
-        if (currentTowerProperties == null)
-        {
-            Debug.LogError("There are perks without reference to their towers");
-            return;
-        }
-
         perkButton = gameObject.GetComponentInChildren<Button>();
         if (perkButton == null)
         {
-            Debug.LogError("There are perks without reference to their buttons");
-            return;
+            Debug.LogWarning("There are perks without reference to their buttons");
         }
 
         perkButton.onClick.AddListener(LevelUp);
@@ -68,7 +63,17 @@ public class Perk : MonoBehaviour
 
             if (t.gameObject.name == "UpgradeProperty")
             {
-                t.text = description + " (Min wave: " + minWaveToActivate.ToString() + "; Level max: " + maxLevel.ToString() + ")";
+                t.text = description;
+            }
+
+            if (t.gameObject.name == "Level")
+            {
+                t.text = "Level: " + level.ToString() + "/" + maxLevel.ToString();
+            }
+
+            if (t.gameObject.name == "MinWave")
+            {
+                t.text = "Min wave: " + minWaveToActivate.ToString();
             }
         }
 
@@ -98,32 +103,51 @@ public class Perk : MonoBehaviour
         }
         */
     }
-    
 
-	public virtual void LevelUp () 
+
+    public virtual void LevelUp()
     {
         if (!CheckIfItsAvailable())
             return;
 
+        OutlineObject oo = GetCurrentTower().GetComponent<OutlineObject>();
+
+        if (oo != null)
+        {
+            Color mix = (4 * oo.GetCurrentColor() + 1 * oo.GetGlowColor()) / 5;
+            oo.SetCurrentColor(mix);
+        }        
+
         // Set childs callables
         foreach (Perk p in childs)
         {
-			p.TurnCallable ();
-			p.GetButton ().interactable = true;
-		}
+            p.TurnCallable();
+            p.GetButton().interactable = true;
+        }
 
-		// Upgrade perk
-		level++;
+        // Upgrade perk
+        level++;
 
-		// Consume souls to level up
-		soulsCounter.SetSouls (soulsCounter.GetSouls () - cost);
+        // Upgrade stats
+        Text[] aux = gameObject.GetComponentsInChildren<Text>();
 
-		// Add score
-		scoreCounter.SetScore (scoreCounter.GetScore () + addScore);
+        foreach (Text t in aux)
+        {
+            if (t.gameObject.name == "Level")
+            {
+                t.text = "Level: " + level.ToString() + "/" + maxLevel.ToString();
+            }
+        }
 
-		// Call a default function on skill gameObject to alter values
-		Debug.Log (name + " level up to level " + level + " on tower " + currentTowerProperties.name);
-	}
+        // Consume souls to level up
+        soulsCounter.SetSouls(soulsCounter.GetSouls() - cost);
+
+        // Add score
+        scoreCounter.SetScore(scoreCounter.GetScore() + addScore);
+
+        // Call a default function on skill gameObject to alter values
+        Debug.Log(name + " level up to level " + level + " on tower " + GetCurrentTower().name);
+    }
 
 	public void LevelDown () 
     {
@@ -157,12 +181,17 @@ public class Perk : MonoBehaviour
 		return perkButton;
 	}
 
-    public PropertiesManager GetCurrentTower ()
+    public PropertiesManager GetCurrentTowerProperties ()
     {
         return currentTowerProperties;
     }
 
-	private bool CheckIfItsAvailable () 
+    public GameObject GetCurrentTower()
+    {
+        return GetComponentInParent<TowerScript>().gameObject;
+    }
+
+    private bool CheckIfItsAvailable () 
     {
 		if 
             (

@@ -19,6 +19,8 @@ public class TowerScript : MonoBehaviour
     private GameObject gameMaster;
     private MouseCursorManager mouseCursorManage;
 
+    #region Encapsuling methods
+
     public GameObject GetTarget() {
 		if (target != null)
 			return target.gameObject;
@@ -47,7 +49,10 @@ public class TowerScript : MonoBehaviour
 	}
 
 	public float GetRange () {
-		return pm.GetRange ();
+        if (pm != null)
+            return pm.GetRange();
+        else
+            return player.GetComponent<PlayerController>().GetRange();
 	}
 
 	public float GetBurnValue () {
@@ -71,26 +76,35 @@ public class TowerScript : MonoBehaviour
         return IsAround(playerSpawnOnTower, player.transform);
     }
 
-	private void Start () 
+    public void DoFireAction()
     {
+        fireCountdown = 0;
+    }
+    #endregion
+
+    private void Start ()
+    {
+        // Only do thing is it's on Main scene or on Tutorial Scene
+        if (IsInCorrectScene() == false) return;
+
+        // Get reference to GameMaster
         gameMaster = GameObject.FindWithTag("GameMaster");
 
 		// Finding the player gameObject
 		player = GameObject.FindGameObjectWithTag ("Player");
 
-		if (bulletPrefab == null)
+        // Get reference to MouseCursorManager on GameMaster to manage cursor changes
+        mouseCursorManage = gameMaster.GetComponent<MouseCursorManager>();
+
+        //This will repeat every 0.5 sec
+        InvokeRepeating("UpdateTarget", 0f, 0.5f);
+
+        if (bulletPrefab == null)
 			return;
 
 		pm = GetComponent<PropertiesManager> ();
 
-
-		//This will reapeat every 0.5 sec
-		InvokeRepeating ("UpdateTarget", 0f, 0.5f);
-
 		SetRangeObject ();
-
-        if (IsInCorrectScene() == false) return;
-        mouseCursorManage = gameMaster.GetComponent<MouseCursorManager>();
 
         // Set skill values from prefab
         pm.SetValues(bulletPrefab.GetComponent<SkillsProperties>());
@@ -163,14 +177,14 @@ public class TowerScript : MonoBehaviour
 	private void Fire(){
 		if( fireCountdown <= 0f ){
 			Shoot ();
-			fireCountdown = bulletPrefab.GetComponent<SkillsProperties> ().GetCooldown ();
+			fireCountdown = GetComponent<PropertiesManager> ().GetCooldown ();
 		}
 		fireCountdown -= Time.deltaTime;
 	}
 
 	// Will instantiete the shot and make it fallow the target
 	private void Shoot(){
-		GameObject spellGO = (GameObject)Instantiate (bulletPrefab, firePoint.position, firePoint.rotation);
+		GameObject spellGO = Instantiate (bulletPrefab, firePoint.position, firePoint.rotation);
 		TowerSpell towerSpell = spellGO.GetComponent<TowerSpell>();
 		SkillsProperties skillPro = spellGO.GetComponent<SkillsProperties> ();
 
@@ -220,6 +234,7 @@ public class TowerScript : MonoBehaviour
     private void OnMouseEnter()
     {
         if (IsInCorrectScene() == false) return;
+        //if (GetComponent<TeleportPlace>() == null) return;
         if( IsAround(player.transform,playerSpawnOnTower) == false )
         {
             mouseCursorManage.SetTeleportCursor();
@@ -238,7 +253,27 @@ public class TowerScript : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if(IsInCorrectScene() == false) return;
+        if (IsInCorrectScene() == false) return;
+        if (GetComponent<TeleportPlace>() == null) return;
         mouseCursorManage.SetIdleCursor();
+    }
+
+    private void OnMouseOver()
+    {
+        if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftControl)) && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (IsMasterTower())
+                return;
+
+            if (IsPlayerInThisTower())
+                return;
+
+            if (GetComponent<SearchCenterPlace>() != null)
+                gameMaster.GetComponent<InstancesManager>().SetResearchTowerOfTheTime(null);
+
+            GameObject deathEffect = Instantiate(gameMaster.GetComponent<InstancesManager>().GetDeathEffect(), transform.position, Quaternion.identity);
+            Destroy(deathEffect, 2.5f);
+            Destroy(gameObject);
+        }
     }
 }

@@ -2,27 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class SearchCenterPlace : MonoBehaviour {
 
-	[SerializeField] private GameObject researchCanvas = null;
-	[SerializeField] private GameObject[] researchCanvasTypes = null;
+	private GameObject researchCanvas = null;
+	private GameObject[] researchCanvasTypes = null;
 
 	private GameObject masterTower;
 
-	void Start () {
+    void Start () {
 		masterTower = GameObject.FindGameObjectWithTag ("GameMaster").GetComponent<InstancesManager> ().GetMasterTowerObj ();
+        GetResearchCanvas();
+    }
 
-		researchCanvas.SetActive (true);
+    private void GetResearchCanvas()
+    {
+        researchCanvas = GetComponent<UpgradeCanvasManager>().GetUpCanvas();
+        if (researchCanvas == null)
+        {
+            Debug.Log("Aqui");
+            GetResearchCanvas();
+        }
+        else
+        {
+            SetUpResearchCanvas();
+            return;
+        }
+    }
 
-		foreach (GameObject go in researchCanvasTypes) {
-			go.SetActive (false);
-		}
-	}
+    public void SetUpResearchCanvas ()
+    {
+        HorizontalLayoutGroup[] hlg = researchCanvas.GetComponentsInChildren<HorizontalLayoutGroup>();
+        researchCanvasTypes = new GameObject[hlg.Length];
+        foreach (HorizontalLayoutGroup h in hlg)
+        {
+            researchCanvasTypes[Array.FindIndex(hlg, _h => _h == h)] = h.gameObject;
+        }
+        foreach (GameObject g in researchCanvasTypes)
+        {
+            g.SetActive(false);
+        }
+        researchCanvasTypes[0].SetActive(true);
+    }
 
-	public void ResearchOn(int i) {
-		researchCanvas.SetActive (false);
-		researchCanvasTypes [i-1].SetActive (true);
+	public void ResearchOn(int i)
+    {
+        researchCanvasTypes[0].SetActive(false);
+        researchCanvasTypes [i].SetActive (true);  // Reasearch tower tree: i=0
 	}
 
 	public void SetValuesFromMasterTower (SkillsProperties sp) {

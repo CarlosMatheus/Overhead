@@ -11,11 +11,30 @@ public class OutlineObject : MonoBehaviour
     private Renderer[] _renderers;
     private List<Material> _materials = new List<Material>();
     private Color _targetColor;
+    private Color _relyColor = Color.black;
     private TowerScript masterTowerTowerScript;
 
     public Color _currentColor;
 
-	private void Start () 
+    #region Get and set method
+    public Color GetCurrentColor ()
+    {
+        return _currentColor;
+    }
+
+    public Color GetGlowColor()
+    {
+        return GlowColor;
+    }
+
+    public void SetCurrentColor (Color _color)
+    {
+        _targetColor = _color;
+        _relyColor = _color;
+    }
+    #endregion
+
+    private void Start () 
     {
         _renderers = GetComponentsInChildren<Renderer>(); //Gets all the Children Renderers, to get access to their materials
 
@@ -60,7 +79,7 @@ public class OutlineObject : MonoBehaviour
 
     private void OnMouseExit()
     {
-        _targetColor = Color.black; //If the mouse left the collider, make the aura black, so the effect won't appear
+        _targetColor = _relyColor; //If the mouse left the collider, make the aura ~black~ some base color, so the effect won't appear
         enabled = true;
     }
 

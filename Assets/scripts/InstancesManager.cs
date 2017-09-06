@@ -11,9 +11,13 @@ public class InstancesManager : MonoBehaviour {
     [SerializeField] private Mesh voxel1x1 = null;
 	[SerializeField] private GameObject player = null;
     [SerializeField] private GameObject upgradeCanvas = null;
+    [SerializeField] private GameObject researchCanvas = null;
+    [SerializeField] private GameObject normalBullet = null;
+    [SerializeField] private GameObject deathEffect = null;
 
     private UpgradeCanvasManager towerOfTheTime;
 	private SphereShop sphereShop;
+    private SearchCenterPlace researchTower = null;
 
 	public UpgradeCanvasManager GetTowerOfTheTime () {
 		return towerOfTheTime;
@@ -90,8 +94,29 @@ public class InstancesManager : MonoBehaviour {
         return upgradeCanvas;
     }
 
+    public GameObject GetResearchCanvas()
+    {
+        return researchCanvas;
+    }
+
+    public GameObject GetDeathEffect()
+    {
+        return deathEffect;
+    }
+
+    public SearchCenterPlace GetResearchTowerOfTheTime ()
+    {
+        return researchTower;
+    }
+
+    public void SetResearchTowerOfTheTime(SearchCenterPlace _set)
+    {
+        researchTower = _set;
+    }
+
     private void Start ()
-  {
+    {
 		sphereShop = GameObject.FindGameObjectWithTag ("Icosphere").GetComponent<SphereShop>();
+        normalBullet.GetComponent<SkillsProperties>().SetEffect(null);
 	}
 }

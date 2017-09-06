@@ -22,8 +22,10 @@ public class PlayerController : MonoBehaviour {
 
 	const int FIRST = 0, SECOND = 1;
 
-	// Function to be called by the new target when clicked
-	public void SetTarget (GameObject _newTarget) {
+    #region Set and get methods
+
+    // Function to be called by the new target when clicked
+    public void SetTarget (GameObject _newTarget) {
 		
 		if (_newTarget != null) {
 			
@@ -92,8 +94,9 @@ public class PlayerController : MonoBehaviour {
 	public float GetEffectDuration () {
 		return pm.GetEffectDuration ();
 	}
+#endregion
 
-	void Start () {
+    void Start () {
 		// Get component to properties data manager
 		pm = GetComponent<PropertiesManager> ();
 

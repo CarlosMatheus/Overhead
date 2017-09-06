@@ -13,11 +13,17 @@ public class UpgradeCanvasManager : MonoBehaviour {
         // Take reference of instance manager to manage different canvas
         instanceManager = GameObject.FindGameObjectWithTag ("GameMaster").GetComponent<InstancesManager> ();
 
-        // Get reference for the upgrade canvas for this tower
-        upSysRef = instanceManager.GetUpgradeCanvas();
+        // See if it is an Research Tower
+        SearchCenterPlace scp = GetComponent<SearchCenterPlace>();
+        if (scp == null)
+            // If it's not, get UpgradeCanvas
+            upSysRef = instanceManager.GetUpgradeCanvas();
+        else
+            // Else, get ResearchCanvas from InstancesManager
+            upSysRef = instanceManager.GetResearchCanvas();
 
-        // Instantiate the upgrade canvas object
-        upSys = (GameObject) Instantiate(upSysRef, transform.position, transform.rotation, transform);
+        // Instantiate the correct canvas object in this tower
+        upSys = Instantiate(upSysRef, transform.position, transform.rotation, transform);
 
         // Check if there is a Canvas on this tower
         Canvas towerCanvas = GetComponentInChildren<Canvas> ();
