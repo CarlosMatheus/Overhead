@@ -165,6 +165,8 @@ MonoBehaviour:
     type: 2}
   normalBullet: {fileID: 1431736794467902, guid: 4b19275f4737a114a8bcd491c6a24afe,
     type: 2}
+  deathEffect: {fileID: 1579671125913872, guid: 9ae608f50d00bae46907305a808101b6,
+    type: 2}
 --- !u!114 &114292562531580396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -281,7 +283,7 @@ MonoBehaviour:
   baseKillValues:
   - 1
   - 2
-  initialSouls: 1000
+  initialSouls: 30
   initialScoreConst: 3
   waveKillConst: 1.05
 --- !u!114 &114600698673747036
@@ -432,7 +434,8 @@ MonoBehaviour:
     spell: {fileID: 0}
     indexOfThisTower: 3
     effect: --
-    description: Research tower allows you to do researches!
+    description: Research tower allows you to improve your skills! Just allowed one
+      per time. (You can destroy towers by Ctrl+mouse left click)
   - kind: 1
     name: Evzone
     image: {fileID: 21300000, guid: 7ad37a0008db4fb4289a2eb224e21551, type: 3}

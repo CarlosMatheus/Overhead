@@ -13,9 +13,11 @@ public class InstancesManager : MonoBehaviour {
     [SerializeField] private GameObject upgradeCanvas = null;
     [SerializeField] private GameObject researchCanvas = null;
     [SerializeField] private GameObject normalBullet = null;
+    [SerializeField] private GameObject deathEffect = null;
 
     private UpgradeCanvasManager towerOfTheTime;
 	private SphereShop sphereShop;
+    private SearchCenterPlace researchTower = null;
 
 	public UpgradeCanvasManager GetTowerOfTheTime () {
 		return towerOfTheTime;
@@ -95,6 +97,21 @@ public class InstancesManager : MonoBehaviour {
     public GameObject GetResearchCanvas()
     {
         return researchCanvas;
+    }
+
+    public GameObject GetDeathEffect()
+    {
+        return deathEffect;
+    }
+
+    public SearchCenterPlace GetResearchTowerOfTheTime ()
+    {
+        return researchTower;
+    }
+
+    public void SetResearchTowerOfTheTime(SearchCenterPlace _set)
+    {
+        researchTower = _set;
     }
 
     private void Start ()

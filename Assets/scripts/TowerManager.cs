@@ -24,8 +24,11 @@ public class TowerManager : MonoBehaviour {
         {
             for (int i = 0; i < towerListArr[j].Count; i++)
             {
-                towerListArr[j][i].tower.GetComponent<TowerScript>().AppearRange();
-                towerListArr[j][i].tower.GetComponent<BoxCollider>().size = new Vector3(0,0,0);
+                if (towerListArr[j][i].tower != null)
+                {
+                    towerListArr[j][i].tower.GetComponent<TowerScript>().AppearRange();
+                    towerListArr[j][i].tower.GetComponent<BoxCollider>().size = new Vector3(0, 0, 0);
+                }
             }
         }
         icosphere.GetComponent<SphereCollider>().radius = 0;
@@ -35,11 +38,14 @@ public class TowerManager : MonoBehaviour {
     {
 		for (int j = 0; j < numOfTowers; j++)
 		{
-			for (int i = 0; i < towerListArr[j].Count; i++)
-			{
-				towerListArr[j][i].tower.GetComponent<TowerScript>().DisappearRange();
-                towerListArr[j][i].tower.GetComponent<BoxCollider>().size = towerListArr[j][i].originalColliderSize;
-			}
+            for (int i = 0; i < towerListArr[j].Count; i++)
+            {
+                if (towerListArr[j][i].tower != null)
+                {
+                    towerListArr[j][i].tower.GetComponent<TowerScript>().DisappearRange();
+                    towerListArr[j][i].tower.GetComponent<BoxCollider>().size = towerListArr[j][i].originalColliderSize;
+                }
+            }
 		}
         icosphere.GetComponent<SphereCollider>().radius = originalIcosphereColiderRadius;
     }

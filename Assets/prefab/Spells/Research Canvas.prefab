@@ -10402,12 +10402,12 @@ MonoBehaviour:
   addScore: 100
   upgradeIcon: {fileID: 21300000, guid: 78d0fab9434905c45b6adcf2ba4a1fe0, type: 3}
   description: Let's attack from far away! (Increase range of Master Tower and Witch
-    x1.5/level) (requires Master Tower)
+    +30%/level) (requires Master Tower)
   childs:
   - {fileID: 114294079812576572}
   gameMaster: {fileID: 0}
   isCallable: 0
-  multiplicationFactor: 1.5
+  multiplicationFactor: 1.3
 --- !u!114 &114730830785083244
 MonoBehaviour:
   m_ObjectHideFlags: 1

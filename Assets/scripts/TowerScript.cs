@@ -257,4 +257,23 @@ public class TowerScript : MonoBehaviour
         if (GetComponent<TeleportPlace>() == null) return;
         mouseCursorManage.SetIdleCursor();
     }
+
+    private void OnMouseOver()
+    {
+        if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftControl)) && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (IsMasterTower())
+                return;
+
+            if (IsPlayerInThisTower())
+                return;
+
+            if (GetComponent<SearchCenterPlace>() != null)
+                gameMaster.GetComponent<InstancesManager>().SetResearchTowerOfTheTime(null);
+
+            GameObject deathEffect = Instantiate(gameMaster.GetComponent<InstancesManager>().GetDeathEffect(), transform.position, Quaternion.identity);
+            Destroy(deathEffect, 2.5f);
+            Destroy(gameObject);
+        }
+    }
 }
