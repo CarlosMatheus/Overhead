@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9173f5de5d02d4c03b69fbfc390647fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfTowers: 5
+  numOfTowers: 6
   icosphere: {fileID: 0}
 --- !u!114 &114184450470069278
 MonoBehaviour:
@@ -161,7 +161,7 @@ MonoBehaviour:
   player: {fileID: 0}
   upgradeCanvas: {fileID: 1175686079971260, guid: 2695e7ca2c719434799b45b7aaf58e72,
     type: 2}
-  researchCanvas: {fileID: 1162508381349228, guid: e0e71380f7f8eb04eac506609e922a49,
+  researchCanvas: {fileID: 1906892298127638, guid: e0e71380f7f8eb04eac506609e922a49,
     type: 2}
 --- !u!114 &114292562531580396
 MonoBehaviour:
@@ -312,21 +312,25 @@ MonoBehaviour:
   - {fileID: 1500846572791458, guid: 917d86caf115c4349b17b2d9f19b3f3a, type: 2}
   - {fileID: 1500846572791458, guid: 88597a9b907de97409796bb0c30aede2, type: 2}
   - {fileID: 1192856199098770, guid: 782d982d6a74d401baaa276aa7f637ce, type: 2}
+  - {fileID: 1829025781973266, guid: 9364d95a538cdbe45b01ce12f29b59ef, type: 2}
   selectionTower:
   - {fileID: 1777162474150250, guid: ab91d0e8add484001b16ca9b0bd576d8, type: 2}
   - {fileID: 1470717830022824, guid: 39b91ae42e8051641b79131abd583d3a, type: 2}
   - {fileID: 1674007290332340, guid: 0370de2c70aef5947af4b535996af664, type: 2}
   - {fileID: 1476852477586770, guid: 0f24f267cee384389891d46ba49e8bbf, type: 2}
+  - {fileID: 1524480298607174, guid: ede720f73c7477d4eae4e8f6959be545, type: 2}
   initialTowerValue:
-  - 5
   - 15
+  - 30
   - 50
-  - 10
-  initialTowerScore:
-  - 20
-  - 80
-  - 200
   - 100
+  - 5
+  initialTowerScore:
+  - 50
+  - 90
+  - 200
+  - 200
+  - 20
 --- !u!114 &114772377065291608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -427,6 +431,14 @@ MonoBehaviour:
     indexOfThisTower: 3
     effect: --
     description: Research tower allows you to do researches!
+  - kind: 1
+    name: Evzone
+    image: {fileID: 21300000, guid: 6614dec50f4ee59439dc8ed297f84d5e, type: 3}
+    spell: {fileID: 0}
+    indexOfThisTower: 4
+    effect: --
+    description: Evzones are our way to conquest more lands and take control of thats
+      ways. We can easly teleport for them and attack enemies.
 --- !u!114 &114984236687860478
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -63,6 +63,17 @@ public class Shop : MonoBehaviour
         towerManager.TowerSelected();
     }
 
+    public void PurcheseTower4()
+    {
+        indexOfThisTower = 4;
+        if (!soulsCounter.CanBuild(indexOfThisTower))
+            return;
+        buildManager.SetTowerToBuildIndex(indexOfThisTower);
+        buildManager.SetTowerToBuild(buildManager.tower[indexOfThisTower]);
+        buildManager.SetSelectionTowerToBuild(buildManager.selectionTower[indexOfThisTower]);
+        towerManager.TowerSelected();
+    }
+
     public int GetTowerToBuildIndex()
     {
         return indexOfThisTower;

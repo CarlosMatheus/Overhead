@@ -49,7 +49,10 @@ public class TowerScript : MonoBehaviour
 	}
 
 	public float GetRange () {
-		return pm.GetRange ();
+        if (pm != null)
+            return pm.GetRange();
+        else
+            return player.GetComponent<PlayerController>().GetRange();
 	}
 
 	public float GetBurnValue () {
@@ -88,13 +91,13 @@ public class TowerScript : MonoBehaviour
         // Get reference to MouseCursorManager on GameMaster to manage cursor changes
         mouseCursorManage = gameMaster.GetComponent<MouseCursorManager>();
 
+        //This will repeat every 0.5 sec
+        InvokeRepeating("UpdateTarget", 0f, 0.5f);
+
         if (bulletPrefab == null)
 			return;
 
 		pm = GetComponent<PropertiesManager> ();
-
-		//This will repeat every 0.5 sec
-		InvokeRepeating ("UpdateTarget", 0f, 0.5f);
 
 		SetRangeObject ();
 
