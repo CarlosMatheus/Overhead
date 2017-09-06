@@ -19,6 +19,8 @@ public class TowerScript : MonoBehaviour
     private GameObject gameMaster;
     private MouseCursorManager mouseCursorManage;
 
+    #region Encapsuling methods
+
     public GameObject GetTarget() {
 		if (target != null)
 			return target.gameObject;
@@ -70,8 +72,9 @@ public class TowerScript : MonoBehaviour
     {
         return IsAround(playerSpawnOnTower, player.transform);
     }
+    #endregion
 
-	private void Start ()
+    private void Start ()
     {
         // Only do thing is it's on Main scene or on Tutorial Scene
         if (IsInCorrectScene() == false) return;

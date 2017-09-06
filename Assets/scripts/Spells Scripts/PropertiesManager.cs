@@ -8,7 +8,11 @@ public class PropertiesManager : MonoBehaviour {
 	private float range;
 	private float soulBonusChance = 5f;
 	private bool soulBonusActivation = false;
-	private float burnRate;
+    private float slowTimeChance = 5f;
+    private bool slowTimeActivation = false;
+    private float fatalHitChance = 5f;
+    private bool fatalHitActivation = false;
+    private float burnRate;
 	private float slowFactor;
 	private float rangeRadius;
 	private float effectDuration;
@@ -21,9 +25,11 @@ public class PropertiesManager : MonoBehaviour {
 		GameObject gameMaster = GameObject.FindGameObjectWithTag ("GameMaster");
 		player = gameMaster.GetComponent<InstancesManager> ().GetPlayerObj ();
 		masterTower = gameMaster.GetComponent<InstancesManager> ().GetMasterTowerObj ();
+        SetMasterEffect(null);
 	}
 
-	public float GetDamage () {
+    #region Get methods
+    public float GetDamage () {
 		return damage;
 	}
 
@@ -51,7 +57,11 @@ public class PropertiesManager : MonoBehaviour {
 		return effectDuration;
 	}
 
-	public void SetDamage (float multiplicationFactor) {
+    #endregion
+
+    #region Set methods
+
+    public void SetDamage (float multiplicationFactor) {
 		damage *= multiplicationFactor;// * bulletPrefab.GetComponent<SkillsProperties> ().GetDamage ();
 	}
 
@@ -79,23 +89,71 @@ public class PropertiesManager : MonoBehaviour {
 		effectDuration *= multiplicationFactor;
 	}
 
-	public bool HasSoulBonusEffect () {
+    #region Soul bonus methods
+    public bool HasSoulBonusEffect () {
 		return soulBonusActivation;
 	}
 
 	public void SetSoulBonusEffect (bool _act) {
 		soulBonusActivation = _act;
-	}
+    }
 
-	public float GetSoulBonusChance () {
-		return soulBonusChance/100;
-	}
+    public float GetSoulBonusChance()
+    {
+        return soulBonusChance / 100;
+    }
 
-	public void SetSoulBonusChance (float multiplicationFactor) {
-		soulBonusChance *= multiplicationFactor;
-	}
+    public void SetSoulBonusChance(float multiplicationFactor)
+    {
+        soulBonusChance *= multiplicationFactor;
+    }
+#endregion
 
-	public void SetEffect (GameObject _effect) {
+    #region Slow time methods
+    public bool HasSlowTimeEffect()
+    {
+        return slowTimeActivation;
+    }
+
+    public void SetSlowTimeEffect(bool _act)
+    {
+        slowTimeActivation = _act;
+    }
+
+    public float GetSlowTimeChance()
+    {
+        return slowTimeChance / 100;
+    }
+
+    public void SetSlowTimeChance (float multiplicationFactor)
+    {
+        soulBonusChance *= multiplicationFactor;
+    }
+    #endregion
+
+    #region Fatal hit methods
+    public bool HasFatalHitEffect()
+    {
+        return fatalHitActivation;
+    }
+
+    public void SetFatalHitEffect(bool _act)
+    {
+        fatalHitActivation = _act;
+    }
+
+    public float GetFatalHitChance()
+    {
+        return fatalHitChance / 100;
+    }
+
+    public void SetFatalHitChance(float multiplicationFactor)
+    {
+        fatalHitChance *= multiplicationFactor;
+    }
+    #endregion
+
+    public void SetMasterEffect (GameObject _effect) {
 		player.GetComponent<PlayerController> ().currentSkill.GetComponent<SkillsProperties> ().SetEffect (_effect);
 		masterTower.GetComponent<TowerScript> ().bulletPrefab.GetComponent<SkillsProperties> ().SetEffect (_effect);
 	}
@@ -110,4 +168,5 @@ public class PropertiesManager : MonoBehaviour {
 		slowFactor = sp.GetSlowFactor ();
         rangeRadius = sp.GetRangeRadius ();
 	}
+#endregion
 }

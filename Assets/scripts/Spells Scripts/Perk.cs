@@ -6,6 +6,7 @@ public class Perk : MonoBehaviour
 
 	private new string name;
 	private Button perkButton;
+    private int level = 0;
 
     [SerializeField] private float minWaveToActivate = 0f;
     [SerializeField] private float maxLevel = 0f;
@@ -15,17 +16,18 @@ public class Perk : MonoBehaviour
     [TextArea(3, 5)]
     [SerializeField]
     private string description = null;
-
-    //private List<Perk> childs;
+    
     [SerializeField] private Perk[] childs;
 
+    // External references
     private PropertiesManager currentTowerProperties;
-    private GameObject gameMaster;
 	private SoulsCounter soulsCounter;
 	private ScoreCounter scoreCounter;
 
+    // Accessable from hierichy classes
+    [HideInInspector]
+    public GameObject gameMaster;
     public bool isCallable = false;
-	private int level = 0;
 
     public virtual void Start()
     {
@@ -117,6 +119,17 @@ public class Perk : MonoBehaviour
 
         // Upgrade perk
         level++;
+
+        // Upgrade stats
+        Text[] aux = gameObject.GetComponentsInChildren<Text>();
+
+        foreach (Text t in aux)
+        {
+            if (t.gameObject.name == "Level")
+            {
+                t.text = "Level: " + level.ToString() + "/" + maxLevel.ToString();
+            }
+        }
 
         // Consume souls to level up
         soulsCounter.SetSouls(soulsCounter.GetSouls() - cost);

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class TowerSpell : MonoBehaviour {
 
@@ -36,8 +37,15 @@ public class TowerSpell : MonoBehaviour {
 	void HitTarget() {
 		target.GetComponent<TargetSelection> ().TakeDamageBy(this.gameObject);
 
+        // Impact animation effect
+        if (impactEffect != null)
+        {
+            GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(effect, 2f);
+        }
+
         // Soul bonus effect
-		GameObject invoker = GetComponent<SkillsProperties> ().GetInvoker ();
+        GameObject invoker = GetComponent<SkillsProperties> ().GetInvoker ();
         if (invoker != null)
         {
             PropertiesManager pm = invoker.GetComponent<PropertiesManager>();
@@ -51,18 +59,31 @@ public class TowerSpell : MonoBehaviour {
                         Debug.Log("Soul de bonus!");
                     }
                 }
+
+                if (pm.HasSlowTimeEffect())
+                {
+                    if (Random.Range(0f, 1f) < pm.GetSlowTimeChance())
+                    {
+                        StartCoroutine(StopThisEnemy(target, pm.GetEffectDuration()));
+                        Debug.Log("Freeze!");
+                    }
+                }
+
+                if (pm.HasFatalHitEffect())
+                {
+                    if (Random.Range(0f, 1f) < pm.GetFatalHitChance())
+                    {
+                        Destroy(target);
+                        Debug.Log("Hit kill!");
+                        return;
+                    }
+                }
             }
             else
                 Debug.LogError("We have null exception on propertiesManager in " + gameObject.name);
         }
         else
             Debug.LogError("We have null exception on invoker in " + gameObject.name);
-
-        // Impact animation effect
-		if (impactEffect != null) {
-			GameObject effect = Instantiate (impactEffect, transform.position, transform.rotation);
-			Destroy (effect, 2f);
-		}
 
         // Side effect
 		if (GetComponent<SkillsProperties> ().GetEffect() != null) {  // If this spell has a effect
@@ -93,4 +114,12 @@ public class TowerSpell : MonoBehaviour {
         // Finalization
 		Destroy (gameObject);
 	}
+
+    IEnumerator StopThisEnemy(Transform _enemy, float _time)
+    {
+        Enemy enemy = _enemy.gameObject.GetComponent<Enemy>();
+        enemy.SetSpeed(0f);
+        yield return new WaitForSeconds(_time);
+        enemy.ReturnToOriginalSpeed();
+    }
 }

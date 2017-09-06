@@ -106,7 +106,7 @@ public class TargetSelection : MonoBehaviour {
         //Debug.Log(score.ToString());
 
 		// Anyway, instantiate this target's deathEffect and destroy it
-		GameObject effectInstantiated = (GameObject) Instantiate (deathEffect, transform.position, transform.rotation);
+		GameObject effectInstantiated = Instantiate (deathEffect, transform.position, transform.rotation);
 		Destroy (effectInstantiated, 2f);
 
         //tell actionManager that the enemy has been killed

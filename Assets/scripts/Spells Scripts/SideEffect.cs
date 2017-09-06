@@ -21,7 +21,9 @@ public class SideEffect : MonoBehaviour {
 
 	private GameObject target;
 
-	public void SetTarget (GameObject _target) {
+    #region Get and set methods
+
+    public void SetTarget (GameObject _target) {
 		target = _target;
 	}
 
@@ -39,9 +41,16 @@ public class SideEffect : MonoBehaviour {
 
 	public void SetEffectDuration (float _duration) {
 		duration = _duration;
-	}
+    }
 
-	public void StartEffect () {
+    public void SetNormalBulletEffect(GameObject _effect)
+    {
+        normalBullet.GetComponent<SkillsProperties>().SetEffect(_effect);
+    }
+
+#endregion
+
+    public void StartEffect () {
 		
 		StartCoroutine (AutoDestroy ());
 
