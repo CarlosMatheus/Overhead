@@ -63,9 +63,9 @@ public class SoulsCounter : MonoBehaviour {
 		souls -= towerValue[index];
 	}
 
-	public bool CanBuild(int towerIndex)
+	public bool CanBuild (int towerIndex)
     {
-		if (towerValue[towerIndex] <= souls)
+		if ( towerValue[towerIndex] <= souls )
 			return true;
 		else
 			return false;
