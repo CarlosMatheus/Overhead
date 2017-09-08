@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-public class CameraControllerScript : MonoBehaviour {
-
+public class CameraControllerScript : MonoBehaviour 
+{
 	public float panSpeed = 30f;
 	public float panBoardThickness = 10f;
 	public float scrollSpeed = 5f;
@@ -10,11 +10,22 @@ public class CameraControllerScript : MonoBehaviour {
 	public float minY = 10f;
 	public float maxY = 80f;
 
-	private float minX = 10f;
-	private float maxX = 80f;
-	private float minZ = 10f;
-	private float maxZ = 80f;
+    private float frontRation;
+    private float backRation;
+    private float rightRation;
+    private float leftRation;
+	private float minXInMaxY = 10f;
+	private float maxXInMaxY = 80f;
+	private float minZInMaxY = 10f;
+	private float maxZInMaxY = 80f;
+    private float minX = 10f;
+    private float maxX = 80f;
+    private float minZ = 10f;
+    private float maxZ = 80f;
     private float epsilon = 0.0001f;
+    float posX;
+    float posY;
+    float posZ;
 
 	private void Update ()
     {
@@ -25,14 +36,19 @@ public class CameraControllerScript : MonoBehaviour {
 
 	private void Start()
     {
-        minX = (-1f) * moduleDimension - 8f;
-        maxX = moduleDimension - 10f;
-		minZ = (-1f)*moduleDimension - 17f;
-        maxZ = moduleDimension - 15f;
+        minXInMaxY = (-1f) * moduleDimension - 8.5f;
+        maxXInMaxY = moduleDimension - 23f;
+		minZInMaxY = (-1f)*moduleDimension - 16.5f;
+        maxZInMaxY = moduleDimension - 33f;
+
+        frontRation = (maxZInMaxY - moduleDimension) / maxY;
+        backRation = ( minZInMaxY + moduleDimension ) / maxY;
+        leftRation = ( minXInMaxY + moduleDimension ) / maxY;
+        rightRation = (maxXInMaxY - moduleDimension) / maxY;
 	}
 
 	//move the camera white awsd or with mouse in the border
-	void MoveScreen()
+	private void MoveScreen()
     {
 		if ( 
             Input.GetKey ("w") || 
@@ -70,7 +86,7 @@ public class CameraControllerScript : MonoBehaviour {
 	}
 
 	//Transform mouse scroll into zoom and defines min and max distances
-	void ZoomScroll()
+	private void ZoomScroll()
     {
         float scroll = LimitScrollSensibility( Input.GetAxis("Mouse ScrollWheel") );
 
@@ -84,7 +100,7 @@ public class CameraControllerScript : MonoBehaviour {
     }
 
 	//Camera zoom moviment
-	void ZoomMoviment(float scroll)
+	private void ZoomMoviment(float scroll)
     {
 		Vector3 triedPosition = transform.position;
 		triedPosition.y -= scroll * scrollSpeed * 200 * Time.deltaTime;
@@ -117,47 +133,63 @@ public class CameraControllerScript : MonoBehaviour {
         }
 	}
 
-    void ZoomVerticalMoviment(Vector3 pos)
+    private void ZoomVerticalMoviment(Vector3 pos)
     {
         transform.position = pos;
     }
 
-	void ZoomHorizontalMoviment(float scroll)
+	private void ZoomHorizontalMoviment(float scroll)
     {
 		Vector3 pos = transform.position;
 		transform.Translate (Vector3.forward * scroll * scrollSpeed * 200 * Time.deltaTime, Space.Self);
 	}
 
-	//limit camera position
-	void LimitPosition()
+	private void LimitPosition()
     {
-		float posX = transform.position.x;
-		float posY = transform.position.y;
-		float posZ = transform.position.z;
-
-		posX = Mathf.Clamp (posX, minX, maxX);
-		posY = Mathf.Clamp (posY, minY, maxY);
-		posZ = Mathf.Clamp (posZ, minZ, maxZ);
-
+        SetPos();
+        SetCameraEdgesForTheHeigh();
+        ClampCameraPosition();
 		transform.position = new Vector3 (posX, posY, posZ);
 	}
 
-	public void GoForward () 
+    private void SetPos()
+    {
+        posX = transform.position.x;
+        posY = transform.position.y;
+        posZ = transform.position.z;
+    }
+
+    private void SetCameraEdgesForTheHeigh()
+    {
+        minX = leftRation * posY - moduleDimension;
+        minZ = backRation * posY - moduleDimension;
+        maxX = rightRation * posY + moduleDimension;
+        maxZ = frontRation * posY + moduleDimension;
+    }
+
+    private void ClampCameraPosition()
+    {
+        posX = Mathf.Clamp(posX, minX, maxX);
+        posY = Mathf.Clamp(posY, minY, maxY);
+        posZ = Mathf.Clamp(posZ, minZ, maxZ);
+    }
+
+	private void GoForward () 
     {
 		transform.Translate ( Vector3.forward * panSpeed * Time.deltaTime, Space.Self );
 	}
 
-	public void GoBack () 
+	private void GoBack () 
     {
 		transform.Translate ( Vector3.back * panSpeed * Time.deltaTime, Space.Self );
 	}
 
-	public void GoLeft () 
+	private void GoLeft () 
     {
 		transform.Translate ( Vector3.left * panSpeed * Time.deltaTime, Space.Self );
 	}
 
-	public void GoRight () 
+	private void GoRight () 
     {
 		transform.Translate ( Vector3.right * panSpeed * Time.deltaTime, Space.Self );
 	}
