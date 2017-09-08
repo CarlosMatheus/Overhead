@@ -35,4 +35,15 @@ public class TutorialVerifier : MonoBehaviour
         playedTutorial = PlayerPrefs.HasKey(tutorialKey);
         version = GameObject.Find("_VERSION").GetComponent<_Version>();
     }
+
+    private void Update()
+    {
+        if( Input.GetKeyDown("k") )
+        {
+            PlayerPrefs.DeleteKey(tutorialKey);
+            Debug.LogWarning("Deleted key: " + tutorialKey);
+            PlayerPrefs.Save();
+            playedTutorial = PlayerPrefs.HasKey(tutorialKey);
+        }
+    }
 }

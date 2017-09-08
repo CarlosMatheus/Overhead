@@ -15,6 +15,7 @@ public class MenuManager : MonoBehaviour {
 
     private void Start()
     {
+        playGame = false;
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
         tutorialVerifier = GameObject.FindWithTag("GameMaster").GetComponent<TutorialVerifier>();
     }
@@ -24,25 +25,31 @@ public class MenuManager : MonoBehaviour {
         Time.timeScale = 1;
         if (sceneNumber == 3)
         {
-            if (tutorialVerifier.GetPlayedTutorial() == true)
+            if ( SceneManager.GetActiveScene().buildIndex == 3 )
+            {
+                StartCoroutine(Fade(sceneNumber));
+            }
+            else if ( tutorialVerifier.GetPlayedTutorial() == true)
             {
                 StartCoroutine(Fade(sceneNumber));
             }
             else if( playGame == false )
             {
-                playGame = true;
                 tutorialVerifier.AppearTutorialCanvas();
+                playGame = true;
             }
             else
             {
                 StartCoroutine(Fade(sceneNumber));
             }
         }
-        if (sceneNumber == 4)
+        else if (sceneNumber == 4)
         {
             tutorialVerifier.PlayTutorial();
             StartCoroutine(Fade(sceneNumber));
         }
+        else
+            StartCoroutine(Fade(sceneNumber));
     }
 
     public void ExitGame()

@@ -66,6 +66,8 @@ public class OutlineObject : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        if (IsInCorrectScene() == false)
+            return;
         if ( IsThisIcosphere() == true)
         {
             if ( masterTowerTowerScript.IsPlayerInThisTower() == false )
