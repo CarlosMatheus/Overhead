@@ -5,27 +5,44 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
 
-    [SerializeField] private GameObject fader;
-    [SerializeField] private GameObject fadeCanvas;
+    [SerializeField] private GameObject fader = null;
+    [SerializeField] private GameObject fadeCanvas = null;
 
     private float _currentValue;
-    //private GameObject fadeCanvas;
     private AudioManager audioManager;
+    private TutorialVerifier tutorialVerifier;
+    private bool playGame = false;
 
     private void Start()
     {
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        tutorialVerifier = GameObject.FindWithTag("GameMaster").GetComponent<TutorialVerifier>();
     }
 
     public void LoadScene(int sceneNumber)
     {
-        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
-        //if (sceneNumber == 2)
-        //{
-        //    audioManager.StopWithFade("MusicMainScene", 0.6f);
-        //    audioManager.PlayWithFade("MainMenuMusic", 0.6f);
-        //}
         Time.timeScale = 1;
-        StartCoroutine(Fade(sceneNumber));
+        if (sceneNumber == 3)
+        {
+            if (tutorialVerifier.GetPlayedTutorial() == true)
+            {
+                StartCoroutine(Fade(sceneNumber));
+            }
+            else if( playGame == false )
+            {
+                playGame = true;
+                tutorialVerifier.AppearTutorialCanvas();
+            }
+            else
+            {
+                StartCoroutine(Fade(sceneNumber));
+            }
+        }
+        if (sceneNumber == 4)
+        {
+            tutorialVerifier.PlayTutorial();
+            StartCoroutine(Fade(sceneNumber));
+        }
     }
 
     public void ExitGame()
