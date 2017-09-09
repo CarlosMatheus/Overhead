@@ -10,11 +10,13 @@ public class OutlineMainTower : MonoBehaviour
 
     private void Start()
     {
+        if (SceneVerifier.IsInMainSceneOrTutorial() == false) return;
         towerScript = GameObject.FindWithTag("GameMaster").GetComponent<InstancesManager>().GetMasterTowerObj().GetComponent<TowerScript>();
     }
 
     private void OnMouseEnter()
     {
+        if (SceneVerifier.IsInMainSceneOrTutorial() == false) return;
         if( towerScript.IsPlayerInThisTower() == false )
         {
             cilinder.GetComponent<OutlineObjectMainTower>().enabled = true;
@@ -24,6 +26,7 @@ public class OutlineMainTower : MonoBehaviour
 
     private void OnMouseExit()
     {
+        if (SceneVerifier.IsInMainSceneOrTutorial() == false) return;
         cilinder.GetComponent<OutlineObjectMainTower>().enabled = true;
         cilinder.GetComponent<OutlineObjectMainTower>().entrou = false;
     }
