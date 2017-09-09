@@ -18,7 +18,12 @@ public class ShopButton : MonoBehaviour
 
     private SoulsCounter soulsCounter;
 
-    public void Start()
+    public int GetIndexOfThisTower()
+    {
+        return indexOfThisTower;
+    }
+
+    private void Start()
     {
         InitializeVariables();
         thisButton = shopManager.GetButtonClass(indexOfThisTower);

@@ -438,7 +438,7 @@ MonoBehaviour:
       per time. (You can destroy towers by Ctrl+mouse left click)
   - kind: 1
     name: Evzone
-    image: {fileID: 21300000, guid: 7ad37a0008db4fb4289a2eb224e21551, type: 3}
+    image: {fileID: 21300000, guid: c2264032e9bed4e2d99f027df66094cf, type: 3}
     spell: {fileID: 0}
     indexOfThisTower: 4
     effect: --

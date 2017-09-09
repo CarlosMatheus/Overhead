@@ -10,6 +10,7 @@ public class UpgradeCanvasManager : MonoBehaviour {
 
     void Start ()
     {
+        if (SceneVerifier.IsInMainSceneOrTutorial() == false) return;
         // Take reference of instance manager to manage different canvas
         instanceManager = GameObject.FindGameObjectWithTag ("GameMaster").GetComponent<InstancesManager> ();
 

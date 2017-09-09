@@ -21,7 +21,9 @@ public class PropertiesManager : MonoBehaviour {
 	private GameObject masterTower;
 	private GameObject player;
 
-	void Start () {
+	void Start () 
+    {
+        if (SceneVerifier.IsInMainSceneOrTutorial() == false) return;
 		GameObject gameMaster = GameObject.FindGameObjectWithTag ("GameMaster");
 		player = gameMaster.GetComponent<InstancesManager> ().GetPlayerObj ();
 		masterTower = gameMaster.GetComponent<InstancesManager> ().GetMasterTowerObj ();

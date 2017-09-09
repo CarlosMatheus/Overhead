@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour {
 
 	private void Awake()
     {
+        if (SceneVerifier.IsInMainSceneOrTutorial() == false) return;
 		waveSpawner = GameObject.Find ("GameMaster").GetComponent<WaveSpawner> ();
 		hp = waveSpawner.GetBaseHP() * hpEnemyConst;
 	}
@@ -107,11 +108,13 @@ public class Enemy : MonoBehaviour {
 
     private void OnMouseEnter()
     {
+        if (SceneVerifier.IsInMainSceneOrTutorial() == false) return;
         mouserCursorManager.SetRedCursor();
     }
 
     private void OnMouseExit()
     {
+        if (SceneVerifier.IsInMainSceneOrTutorial() == false) return;
         mouserCursorManager.SetIdleCursor();
     }
 
