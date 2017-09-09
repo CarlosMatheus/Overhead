@@ -17,7 +17,7 @@ public class SideEffect : MonoBehaviour {
 	[Header("Range Effect")]
 	[SerializeField] private bool range = false;
 	[SerializeField] private GameObject normalBullet = null;
-	private float rangeRadius = 5f;
+	private float rangeRadius = 10f;
 
 	private GameObject target;
 

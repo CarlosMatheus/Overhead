@@ -35,7 +35,6 @@ public class VersionScriptManager : MonoBehaviour
     private void Start()
     {
         mouseCursorManager = gameObject.GetComponent<MouseCursorManager>();
-        mouseCursorManager.SetInvisibleCursor();
         image = GameObject.Find("Image");
         versionText = GameObject.Find("VersionText");
         name1 = GameObject.Find("Name1");

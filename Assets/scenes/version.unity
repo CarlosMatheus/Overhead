@@ -342,7 +342,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: dd6a53acfd118ec4a9435cd70d11b308, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2267b16199a34956aa1469dbfd2b639, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -375,9 +375,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 600938162}
-  - component: {fileID: 600938163}
   - component: {fileID: 600938161}
   - component: {fileID: 600938164}
+  - component: {fileID: 600938163}
   m_Layer: 0
   m_Name: VersionSceneMaster
   m_TagString: Untagged
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 600938160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edcfe502ae8723a4bbf4a150b981e184, type: 3}
+  m_Script: {fileID: 11500000, guid: 09fa9a1832c20478099288853a7d9fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: MainMenu
@@ -451,7 +451,7 @@ MonoBehaviour:
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
   mouseCursorInvisable:
-    cursorTexture: {fileID: 2800000, guid: 6eaf17413f8af49c795bab49b91e87d3, type: 3}
+    cursorTexture: {fileID: 2800000, guid: 310156d0f4a354a428ab7b68b930b626, type: 3}
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
   mouseCursorGreen:
