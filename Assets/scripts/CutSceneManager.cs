@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CutSceneManager : MonoBehaviour {
-
+public class CutSceneManager : MonoBehaviour 
+{
     public string nextSceneName;
 
     private void Start()

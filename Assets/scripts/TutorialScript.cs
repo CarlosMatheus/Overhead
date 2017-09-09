@@ -3,37 +3,45 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class TutorialScript : MonoBehaviour {
+public class TutorialScript : MonoBehaviour 
+{
+	[SerializeField] private float welcomeTextTime = 5f;
+    [SerializeField] private float startCountdown = 2f;
+	[SerializeField] private float Countdown1 = 1f;
+	[SerializeField] private float Countdown2 = 1f;
+    [SerializeField] private float fadeSpeed = 0.8f;
+    [SerializeField] private float fadeTime = 1.5f;
 
-	public float fadeTime = 1.5f;
-	public float fadeSpeed = 0.8f;
-	public float startCountdown = 2f;
-	public float welcomeTextTime = 5f;
-	public float Countdown1 = 1f;
-	public float Countdown2 = 1f;
-
-	private GameObject[] texts;
 	private int fadeDir = 1;
 	private int cont = 0; 
+    private bool fade;
+    private float mainCountdown = 5f;
 	private GameObject welcomeText;
 	private GameObject wasdKeysText;
-	private CanvasGroup canvasGroup;
-	private bool fade;
 	private GameObject wKey;
 	private GameObject aKey;
 	private GameObject sKey;
 	private GameObject dKey;
 	private GameObject flow;
-	private float mainCountdown = 5f;
+    private GameObject[] texts;
+    private CanvasGroup canvasGroup;
 
-	private void Start(){
+    public void StartTutorial()
+    {
+        StartCoroutine(TutorialFlow());
+    }
+
+	private void Start()
+    {
 		flow = GameObject.Find ("Flow");
 		//sets the texts
 		texts = new GameObject[flow.transform.childCount];
-		for(int i = 0; i < flow.transform.childCount; i ++){
+		for(int i = 0; i < flow.transform.childCount; i ++)
+        {
 			texts [i] = flow.transform.GetChild (i).gameObject;
 			texts [i].SetActive (false);
 		}
+
 		wKey = GameObject.Find ("wKey");
 		aKey = GameObject.Find ("aKey");
 		sKey = GameObject.Find ("sKey");
@@ -44,10 +52,10 @@ public class TutorialScript : MonoBehaviour {
 		welcomeText.SetActive (false);
 		wasdKeysText.SetActive (false);
 		canvasGroup.alpha = 0;
-		StartCoroutine(TutorialFlow ());
 	}
 
-	private IEnumerator TutorialFlow(){
+	private IEnumerator TutorialFlow()
+    {
 		yield return new WaitForSeconds (startCountdown);
 		welcomeText.SetActive (true);
 		fadeDir = 1;
@@ -67,7 +75,7 @@ public class TutorialScript : MonoBehaviour {
 		StartCoroutine(WaitForKeyDown ("s"));
 		StartCoroutine(WaitForKeyDown ("d"));
 
-		yield return new WaitUntil (() => cont >= 4);
+		yield return new WaitUntil ( ( ) => cont >= 4 );
 
 		yield return new WaitForSeconds (Countdown2);
 		fadeDir = (-1);
@@ -86,10 +94,9 @@ public class TutorialScript : MonoBehaviour {
 
 		yield return new WaitForSeconds (mainCountdown);
 
-        GameObject.Find("GameMaster").GetComponent<MenuManager>().LoadScene(2);
+        GameObject.Find("GameMaster").GetComponent<MenuManager>().LoadMainMenuScene();
 		SceneManager.LoadScene ("MainMenu");
 	}
-
 
 	IEnumerator WaitForKeyDown(string key)
 	{
@@ -97,9 +104,11 @@ public class TutorialScript : MonoBehaviour {
 			yield return null;
 		cont++;
 	}
-		
-	void Update(){
-		if(fade){
+	
+	void Update()
+    {
+		if( fade )
+        {
 			canvasGroup.alpha += fadeDir * fadeSpeed * Time.deltaTime; 
 			canvasGroup.alpha = Mathf.Clamp01 (canvasGroup.alpha);
 		}

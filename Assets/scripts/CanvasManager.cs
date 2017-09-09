@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CanvasManager : MonoBehaviour {
-
+public class CanvasManager : MonoBehaviour 
+{
     [SerializeField] private GameObject waveWarning = null;
     [SerializeField] private GameObject prepareYourself = null;
 
-    private GameObject canvas;
     private CanvasGroup waveCanvas;
     private CanvasGroup waveCooldown;
     private GameObject InitialAnimation;
+    private GameObject canvas;
 
     public void PlayWaveWarning()
     {

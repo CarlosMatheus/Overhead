@@ -10,7 +10,8 @@ public class ActionManager : MonoBehaviour
     private WaveSpawner waveSpawner;
     private AudioManager audioManager;
     private CanvasManager canvasManager;
-    private enum NextAction {Interval,Wave,Death};
+    private GameObject tutorial;
+    private enum NextAction {Interval,Wave,Death,Tutorial};
     private NextAction nextAction;
     private bool isSpawning;
     private float countdown;
@@ -52,8 +53,10 @@ public class ActionManager : MonoBehaviour
     private void Start()
     {
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
-        waveSpawner = gameObject.GetComponent<WaveSpawner>();
         canvasManager = gameObject.GetComponent<CanvasManager>();
+        waveSpawner = gameObject.GetComponent<WaveSpawner>();
+        tutorial = GameObject.Find("Tutorial");
+        tutorial.SetActive(false);
         numOfEnemies = 0;
 
         StartInitialAnimation();
@@ -91,6 +94,11 @@ public class ActionManager : MonoBehaviour
             StartDeath();
             return;
         }
+        if (nextAction == NextAction.Tutorial)
+        {
+            StartTutorial();
+            return;
+        }
     }
 
     private void StartInitialAnimation()
@@ -98,11 +106,14 @@ public class ActionManager : MonoBehaviour
         countdown = initialAnimationDuration;
         audioManager.SetVolume("MusicMainScene", 0.6f);
         audioManager.PlayWithFade("MusicMainScene", 2f);
-        nextAction = NextAction.Interval;
         canvasManager.SetCanvasAlpha(0);
         canvasManager.PlayInitialLoadingAnimation();
         canvasManager.PlayAppearCanvasWithDelay(4f);
         canvasManager.SetCanvasAfterAnimationWithDelay(4f);
+        if(CurrentGameMode.IsInNormalMode())
+            nextAction = NextAction.Interval;
+        if (CurrentGameMode.IsInTutorialMode())
+            nextAction = NextAction.Tutorial;
     }
 
     private void StartInterval()
@@ -131,6 +142,11 @@ public class ActionManager : MonoBehaviour
     private void StartDeath()
     {
         
+    }
+
+    private void StartTutorial()
+    {
+        tutorial.transform.GetComponentInChildren<TutorialScript>().StartTutorial();
     }
 
     private void UpdateTime()
