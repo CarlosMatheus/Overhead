@@ -41,6 +41,14 @@ public class ActionManager : MonoBehaviour
             Debug.LogError("There are a negative number of Enemies");
     }
 
+    public void FinishTutorial()
+    {
+        tutorial.SetActive(false);
+        countdown = -1f;
+        canvasManager.SetTutorialNameCanvasAlpha(0);
+        CurrentGameMode.SetGameMode(CurrentGameMode.GameMode.Normal);
+    }
+
     private void CheckEnemies()
     {
         if (isSpawning == true) return;
@@ -119,17 +127,19 @@ public class ActionManager : MonoBehaviour
     private void StartInterval()
     {
         countdown = interval;
-        canvasManager.SetWaveCanvasAlpha(0);
-        canvasManager.SetWaveCoolDownAlpha(1f);
         nextAction = NextAction.Wave;
         audioManager.Play("IntervalSound");
         audioManager.SetVolumeWithFade("MusicMainScene", 0.3f, 3f);
         canvasManager.PlayPrepareYourSelf();
+        canvasManager.SetWaveCanvasAlpha(0);
+        canvasManager.AppearWaveCoolDown();
     }
 
     private void StartWave()
     {
-        canvasManager.SetWaveCanvasAlpha(1f);
+        //canvasManager.SetWaveCanvasAlpha(1f);
+        canvasManager.AppearWaveCanvas();
+        //canvasManager.SetWaveCoolDownAlpha(0);
         canvasManager.SetWaveCoolDownAlpha(0);
         audioManager.Play("NewWave");
         audioManager.SetVolumeWithFade("MusicMainScene", 0.6f, 3f);
@@ -146,7 +156,14 @@ public class ActionManager : MonoBehaviour
 
     private void StartTutorial()
     {
+        tutorial.SetActive(true);
+        countdown = 10000f;
+        canvasManager.SetWaveCanvasAlpha(0);
+        canvasManager.SetWaveCoolDownAlpha(0);
+        nextAction = NextAction.Interval;
+        audioManager.SetVolumeWithFade("MusicMainScene", 0.3f, 3f);
         tutorial.transform.GetComponentInChildren<TutorialScript>().StartTutorial();
+        canvasManager.AppearTutorialNameCanvas();
     }
 
     private void UpdateTime()

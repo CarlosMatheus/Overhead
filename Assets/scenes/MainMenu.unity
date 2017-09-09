@@ -609,8 +609,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1204336661}
-        m_MethodName: LoadScene
-        m_Mode: 3
+        m_MethodName: LoadTutorialMainScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -897,7 +897,7 @@ Prefab:
     - target: {fileID: 114503542182494730, guid: 714c44d03609b4df3aaed52e2e0a8bc1,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114503542182494730, guid: 714c44d03609b4df3aaed52e2e0a8bc1,
         type: 2}
@@ -912,7 +912,7 @@ Prefab:
     - target: {fileID: 114503542182494730, guid: 714c44d03609b4df3aaed52e2e0a8bc1,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadTutorialMainScene
       objectReference: {fileID: 0}
     - target: {fileID: 114503542182494730, guid: 714c44d03609b4df3aaed52e2e0a8bc1,
         type: 2}
@@ -1012,7 +1012,12 @@ Prefab:
     - target: {fileID: 114975204581297878, guid: 714c44d03609b4df3aaed52e2e0a8bc1,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadNormalMainScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 114975204581297878, guid: 714c44d03609b4df3aaed52e2e0a8bc1,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 714c44d03609b4df3aaed52e2e0a8bc1, type: 2}
@@ -1484,8 +1489,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1204336661}
-        m_MethodName: LoadScene
-        m_Mode: 3
+        m_MethodName: LoadNormalMainScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

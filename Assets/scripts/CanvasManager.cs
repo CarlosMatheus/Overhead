@@ -7,9 +7,10 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private GameObject waveWarning = null;
     [SerializeField] private GameObject prepareYourself = null;
 
-    private CanvasGroup waveCanvas;
-    private CanvasGroup waveCooldown;
+    private GameObject waveCanvas;
+    private GameObject waveCooldown;
     private GameObject InitialAnimation;
+    private GameObject tutorialNameCanvas;
     private GameObject canvas;
 
     public void PlayWaveWarning()
@@ -27,14 +28,54 @@ public class CanvasManager : MonoBehaviour
         InitialAnimation.GetComponent<Animation>().Play("FadeWarningCanvas");
     }
 
-    public void SetWaveCanvasAlpha(float val)
+    public void SetWaveCanvasAlphaWithDelay(float delay)
     {
-        waveCanvas.alpha = val;
+        Invoke("SetWaveCanvasAlpha", delay);
     }
 
-    public void SetWaveCoolDownAlpha(float val)
+    public void SetWaveCoolDownAlphaWithDelay(float delay)
     {
-        waveCooldown.alpha = val;
+        Invoke("SetCanvasAfterAnimation", delay);
+    }
+
+    public void SetWaveCanvasAlpha(float val = 1f)
+    {
+        waveCanvas.GetComponent<CanvasGroup>().alpha = val;
+    }
+
+    public void SetWaveCoolDownAlpha(float val = 1f)
+    {
+        waveCooldown.GetComponent<CanvasGroup>().alpha = val;
+    }
+
+    public void SetTutorialNameCanvasAlpha(float val = 1f)
+    {
+        tutorialNameCanvas.GetComponent<CanvasGroup>().alpha = val;
+    }
+
+    public void AppearWaveCanvas()
+    {
+        waveCanvas.GetComponent<Animation>().Play("Appear");
+    }
+
+    public void DisappearWaveCanvas()
+    {
+        waveCanvas.GetComponent<Animation>().Play("Disappear");
+    }
+
+    public void AppearWaveCoolDown()
+    {
+        waveCooldown.GetComponent<Animation>().Play("Appear");
+    }
+
+    public void DisappearWaveCoolDown()
+    {
+        waveCooldown.GetComponent<Animation>().Play("Disappear");
+    }
+
+    public void AppearTutorialNameCanvas()
+    {
+        tutorialNameCanvas.GetComponent<Animation>().Play("Appear");
     }
 
     public void SetCanvasAlpha(float val)
@@ -60,6 +101,9 @@ public class CanvasManager : MonoBehaviour
         canvas.GetComponent<CanvasGroup>().alpha = 0;
         SetCanvasAlpha(1f);
         InitialAnimation.SetActive(false);
+        waveCanvas.GetComponent<CanvasGroup>().alpha = 0;
+        waveCooldown.GetComponent<CanvasGroup>().alpha = 0;
+        tutorialNameCanvas.GetComponent<CanvasGroup>().alpha = 0;
     }
 
     public void PlayAppearCanvas()
@@ -75,8 +119,9 @@ public class CanvasManager : MonoBehaviour
     private void Awake()
     {
         canvas = GameObject.FindWithTag("Canvas");
-        waveCanvas = GameObject.Find("WaveCanvas").GetComponent<CanvasGroup>();
-        waveCooldown = GameObject.Find("WaveCooldown").GetComponent<CanvasGroup>();
+        waveCanvas = GameObject.Find("WaveCanvas");
+        waveCooldown = GameObject.Find("WaveCooldown");
         InitialAnimation = GameObject.Find("InitialLoading");
+        tutorialNameCanvas = GameObject.Find("TutorialNameCanvas");
     }
 }

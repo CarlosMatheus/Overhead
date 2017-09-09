@@ -25,6 +25,7 @@ public class TutorialScript : MonoBehaviour
 	private GameObject flow;
     private GameObject[] texts;
     private CanvasGroup canvasGroup;
+    private ActionManager actionManager;
 
     public void StartTutorial()
     {
@@ -33,6 +34,7 @@ public class TutorialScript : MonoBehaviour
 
 	private void Start()
     {
+        actionManager = GameObject.FindWithTag("GameMaster").GetComponent<ActionManager>();
 		flow = GameObject.Find ("Flow");
 		//sets the texts
 		texts = new GameObject[flow.transform.childCount];
@@ -94,8 +96,7 @@ public class TutorialScript : MonoBehaviour
 
 		yield return new WaitForSeconds (mainCountdown);
 
-        GameObject.Find("GameMaster").GetComponent<MenuManager>().LoadMainMenuScene();
-		SceneManager.LoadScene ("MainMenu");
+        actionManager.FinishTutorial();
 	}
 
 	IEnumerator WaitForKeyDown(string key)

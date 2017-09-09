@@ -11,6 +11,7 @@ public class MenuManager : MonoBehaviour
     private TutorialVerifier tutorialVerifier;
     private AudioManager audioManager;
     private float _currentValue;
+    private string[] scenes = { "CutScenes", "version", "MainMenu", "Main", "LoadingScreen" };
     private bool playGame;
 
     public void LoadNormalMainScene()
@@ -83,12 +84,22 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            LoadManager.instance.CallLoadScene(SceneManager.GetSceneByName(sceneName).buildIndex);
+            LoadManager.instance.CallLoadScene( GetSceneIndex(sceneName) );
         }
     }
 
     private bool CheckIfTheSceneIsMenu(string sceneName)
     {
         return sceneName == "MainMenu";
+    }
+
+    private int GetSceneIndex(string _name)
+    {
+        for (int i = 0; i < scenes.Length ; i ++)
+        {
+            if (scenes[i] == _name)
+                return i; 
+        }
+        return -1;
     }
 }
