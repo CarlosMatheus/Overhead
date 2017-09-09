@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TargetSelection : MonoBehaviour {
 
@@ -9,12 +10,17 @@ public class TargetSelection : MonoBehaviour {
 	public GameObject enemyHealthBar;
 	public GameObject deathEffect;
 
+    public GameObject soulCanvas;
+
 	private float HP;
 	private bool sideAffected = false;
+    private bool isDead = false;
 
+    private ActionManager actionManager;
 	private float maximumHealth;
 	private Enemy enemy;
 	private SoulsCounter soulsCounter;
+    private float score;
 
 	public float GetHP () {
 		return HP;
@@ -34,13 +40,21 @@ public class TargetSelection : MonoBehaviour {
 
 	public void TakeDamageBy (GameObject other)
 	{
+        if (isDead == true) return;
 		HP -= other.GetComponent<SkillsProperties> ().GetDamage();
 		if (HP <= 0)
-			DeathBy (other.GetComponent<SkillsProperties> ().GetInvoker());
+        {
+            isDead = true;
+            DeathBy(other.GetComponent<SkillsProperties>().GetInvoker());
+        }
 	}
 
 	void Start ()
 	{
+        isDead = false;
+
+        actionManager = GameObject.FindWithTag("GameMaster").GetComponent<ActionManager>();
+
 		enemy = gameObject.GetComponent<Enemy> ();
 
 		// Setting current HP to maximumHP
@@ -83,11 +97,21 @@ public class TargetSelection : MonoBehaviour {
 		}
 
 		// Get souls for your kill
-		soulsCounter.KillEnemy (go.tag);
+        score = soulsCounter.KillerPrice(go.tag);
+        soulsCounter.KillEnemy(score);
+
+        //Instantiate soul number
+        GameObject soulCanvasObject = Instantiate(soulCanvas, transform.position, transform.rotation);
+        soulCanvasObject.GetComponentInChildren<Text>().text = "+" + score.ToString();
+        //Debug.Log(score.ToString());
 
 		// Anyway, instantiate this target's deathEffect and destroy it
-		GameObject effectInstantiated = (GameObject) Instantiate (deathEffect, transform.position, transform.rotation);
+		GameObject effectInstantiated = Instantiate (deathEffect, transform.position, transform.rotation);
 		Destroy (effectInstantiated, 2f);
+
+        //tell actionManager that the enemy has been killed
+        actionManager.KillEnemy();
+
 		Destroy (gameObject);
 	}
 

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadManager : MonoBehaviour {
-
+public class LoadManager : MonoBehaviour 
+{
     public static LoadManager instance;
 
     public int sceneToLoad { get; private set;}
@@ -14,8 +14,6 @@ public class LoadManager : MonoBehaviour {
         sceneToLoad = buildIndex;
         SceneManager.LoadScene("LoadingScreen");
     }
-
-
 
     private void Awake()
     {

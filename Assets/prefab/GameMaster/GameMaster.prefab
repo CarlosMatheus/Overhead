@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: 114184450470069278}
   - component: {fileID: 114200634650480466}
   - component: {fileID: 114772377065291608}
+  - component: {fileID: 114935410082788230}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: GameMaster
@@ -68,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialAnimationDuration: 5
-  interval: 20
+  interval: 30
 --- !u!114 &114062466384089198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9173f5de5d02d4c03b69fbfc390647fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfTowers: 5
+  numOfTowers: 6
   icosphere: {fileID: 0}
 --- !u!114 &114184450470069278
 MonoBehaviour:
@@ -107,15 +108,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseCursorIdle:
-    cursorTexture: {fileID: 2800000, guid: b3ace3576da33443c8ae98b7e53737f1, type: 3}
+    cursorTexture: {fileID: 2800000, guid: 5e2fc4c6909464534a8f72a107da8bb9, type: 3}
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
   mouseCursorRed:
-    cursorTexture: {fileID: 0}
+    cursorTexture: {fileID: 2800000, guid: ff95ca2f35e2a425999bbde29b8bf6e6, type: 3}
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
   mouseCursorTeleport:
-    cursorTexture: {fileID: 0}
+    cursorTexture: {fileID: 2800000, guid: 1a3f1a316e94b4af7bd9cc282586828d, type: 3}
+    cursorMode: 0
+    hotSpot: {x: 7, y: 7}
+  mouseCursorInvisable:
+    cursorTexture: {fileID: 2800000, guid: 6eaf17413f8af49c795bab49b91e87d3, type: 3}
+    cursorMode: 0
+    hotSpot: {x: 0, y: 0}
+  mouseCursorGreen:
+    cursorTexture: {fileID: 2800000, guid: a8bc2fc7673d44534a1510cd59bbee4a, type: 3}
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
 --- !u!114 &114200634650480466
@@ -129,6 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2380ab14f9c64761b23c14fb9db0325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveWarning: {fileID: 0}
+  prepareYourself: {fileID: 0}
 --- !u!114 &114277739385761156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,6 +159,14 @@ MonoBehaviour:
   voxel2x2: {fileID: 4300000, guid: 01ff7246a686a5140be8fa74effc106a, type: 3}
   voxel1x1: {fileID: 4300000, guid: e1c48b5cca0e49c4eb463721ec416084, type: 3}
   player: {fileID: 0}
+  upgradeCanvas: {fileID: 1175686079971260, guid: 2695e7ca2c719434799b45b7aaf58e72,
+    type: 2}
+  researchCanvas: {fileID: 1906892298127638, guid: e0e71380f7f8eb04eac506609e922a49,
+    type: 2}
+  normalBullet: {fileID: 1431736794467902, guid: 4b19275f4737a114a8bcd491c6a24afe,
+    type: 2}
+  deathEffect: {fileID: 1579671125913872, guid: 9ae608f50d00bae46907305a808101b6,
+    type: 2}
 --- !u!114 &114292562531580396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,21 +316,25 @@ MonoBehaviour:
   - {fileID: 1500846572791458, guid: 917d86caf115c4349b17b2d9f19b3f3a, type: 2}
   - {fileID: 1500846572791458, guid: 88597a9b907de97409796bb0c30aede2, type: 2}
   - {fileID: 1192856199098770, guid: 782d982d6a74d401baaa276aa7f637ce, type: 2}
+  - {fileID: 1829025781973266, guid: 9364d95a538cdbe45b01ce12f29b59ef, type: 2}
   selectionTower:
   - {fileID: 1777162474150250, guid: ab91d0e8add484001b16ca9b0bd576d8, type: 2}
   - {fileID: 1470717830022824, guid: 39b91ae42e8051641b79131abd583d3a, type: 2}
   - {fileID: 1674007290332340, guid: 0370de2c70aef5947af4b535996af664, type: 2}
   - {fileID: 1476852477586770, guid: 0f24f267cee384389891d46ba49e8bbf, type: 2}
+  - {fileID: 1524480298607174, guid: ede720f73c7477d4eae4e8f6959be545, type: 2}
   initialTowerValue:
-  - 5
-  - 15
-  - 50
-  - 1
-  initialTowerScore:
   - 20
-  - 80
+  - 30
+  - 50
+  - 50
+  - 5
+  initialTowerScore:
+  - 50
+  - 90
   - 200
-  - 1
+  - 200
+  - 20
 --- !u!114 &114772377065291608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -372,6 +395,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialScore: 0
+--- !u!114 &114935410082788230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314678458617260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2cb93087c306494eb3d56a008298b24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - kind: 0
+    name: Darkness
+    image: {fileID: 21300000, guid: 1e2e462ce52d2784585865dd388a19d0, type: 3}
+    spell: {fileID: 1076308763873118, guid: 81d8a83a09a4b4d4183eb78e46bb9eed, type: 2}
+    indexOfThisTower: 0
+    effect: Area
+    description: --
+  - kind: 0
+    name: Frozen
+    image: {fileID: 21300000, guid: c493f372d6aff064390242548f6115f6, type: 3}
+    spell: {fileID: 1279783995638840, guid: 79516ce57c986c141b96de4c4537c487, type: 2}
+    indexOfThisTower: 1
+    effect: Slow
+    description: --
+  - kind: 0
+    name: Infernus
+    image: {fileID: 21300000, guid: 48f667ac977b40343996314f42834228, type: 3}
+    spell: {fileID: 1043216770293996, guid: 5d75f8308cf7f374298690b42d297421, type: 2}
+    indexOfThisTower: 2
+    effect: Fire
+    description: --
+  - kind: 1
+    name: Researcher
+    image: {fileID: 21300000, guid: 6522bd00b87a9e045907b5b15de5e7a4, type: 3}
+    spell: {fileID: 0}
+    indexOfThisTower: 3
+    effect: --
+    description: Research tower allows you to improve your skills! Just allowed one
+      per time. (You can destroy towers by Ctrl+mouse left click)
+  - kind: 1
+    name: Evzone
+    image: {fileID: 21300000, guid: c2264032e9bed4e2d99f027df66094cf, type: 3}
+    spell: {fileID: 0}
+    indexOfThisTower: 4
+    effect: --
+    description: Evzones are our way to conquest more lands and take control of thats
+      ways. We can easly teleport for them and attack enemies.
 --- !u!114 &114984236687860478
 MonoBehaviour:
   m_ObjectHideFlags: 1

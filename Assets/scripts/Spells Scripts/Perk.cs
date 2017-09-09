@@ -1,86 +1,156 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using System;
 
-public class Perk : MonoBehaviour 
+public class Perk : MonoBehaviour
 {
 
 	private new string name;
+	private Button perkButton;
+    private int level = 0;
 
-	[SerializeField] private Text buttonName = null;
-	[SerializeField] private float minWaveToActivate = 0f;
-	[SerializeField] private float maxLevel = 0f;
-	[SerializeField] private float cost = 0f;
-	[SerializeField] private float addScore = 0f;
-	[SerializeField] private Button perkButton;
+    [SerializeField] private float minWaveToActivate = 0f;
+    [SerializeField] private float maxLevel = 0f;
+    [SerializeField] private float cost = 0f;
+    [SerializeField] private float addScore = 0f;
+    [SerializeField] private Sprite upgradeIcon = null;
+    [TextArea(3, 5)]
+    [SerializeField]
+    private string description = null;
+    
+    [SerializeField] private Perk[] childs;
 
-	//private List<Perk> childs;
-	[SerializeField] private Perk[] childs;
-
-	private GameObject gameMaster;
+    // External references
+    private PropertiesManager currentTowerProperties;
 	private SoulsCounter soulsCounter;
 	private ScoreCounter scoreCounter;
 
-	public bool isCallable = false;
-	private int level = 0;
+    // Accessable from hierichy classes
+    [HideInInspector]
+    public GameObject gameMaster;
+    public bool isCallable = false;
 
-	void Start () 
+    public virtual void Start()
     {
-		name = gameObject.name;
-		// buttonName.text = name;
+        name = gameObject.name;
 
-		gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
-		soulsCounter = gameMaster.GetComponent<SoulsCounter> ();
-		scoreCounter = gameMaster.GetComponent<ScoreCounter> ();
+        gameMaster = GameObject.FindGameObjectWithTag("GameMaster");
+        soulsCounter = gameMaster.GetComponent<SoulsCounter>();
+        scoreCounter = gameMaster.GetComponent<ScoreCounter>();
 
-		/* // If you wanna set automatically, try this. In our case, we choose not because of Canvas Horizontal Layout Group
-		Perk[] _childs = gameObject.GetComponentsInChildren<Perk> ();
-		foreach (Perk p in _childs) {
-			if (p.transform.parent != this.transform)
-				_childs[Array.FindIndex (_childs, perk => perk == p)] = null;
-		}
+        currentTowerProperties = gameObject.GetComponentInParent<PropertiesManager>();
 
-		childs = new List<Perk> ();
-
-		foreach (Perk p in _childs) {
-			if (p != null) {
-				childs.Add (p);
-			}
-		}
-		*/
-	}
-
-	void Update () 
-    {
-		GetButton().interactable = CheckIfItsAvailable();
-	}
-
-	public void LevelUp () 
-    {
-		
-
-		// Set childs callables
-		foreach (Perk p in childs) 
+        perkButton = gameObject.GetComponentInChildren<Button>();
+        if (perkButton == null)
         {
-			p.TurnCallable ();
-			p.GetButton ().interactable = true;
-		}
+            Debug.LogWarning("There are perks without reference to their buttons");
+        }
 
-		// Upgrade perk
-		level++;
+        perkButton.onClick.AddListener(LevelUp);
 
-		// Consume souls to level up
-		soulsCounter.SetSouls (soulsCounter.GetSouls () - cost);
+        Text[] aux = gameObject.GetComponentsInChildren<Text>();
 
-		// Add score
-		scoreCounter.SetScore (scoreCounter.GetScore () + addScore);
+        foreach (Text t in aux)
+        {
+            if (t.gameObject.name == "TowerName")
+            {
+                t.text = name;
+            }
 
-		// Call a default function on skill gameObject to alter values
-		Debug.Log ("LevelUp to level" + level);
-	}
+            if (t.gameObject.name == "Price")
+            {
+                t.text = cost.ToString() + " Souls";
+            }
 
-	public void LevelDown () {
+            if (t.gameObject.name == "UpgradeProperty")
+            {
+                t.text = description;
+            }
+
+            if (t.gameObject.name == "Level")
+            {
+                t.text = "Level: " + level.ToString() + "/" + maxLevel.ToString();
+            }
+
+            if (t.gameObject.name == "MinWave")
+            {
+                t.text = "Min wave: " + minWaveToActivate.ToString();
+            }
+        }
+
+        Image[] aux_ = gameObject.GetComponentsInChildren<Image>();
+
+        foreach (Image i in aux_)
+        {
+            if (i.gameObject.name == "ShopTowerItem")
+            {
+                i.sprite = upgradeIcon;
+            }
+        }
+
+        /* // If you wanna set automatically, try this. In our case, we choose not because of Canvas Horizontal Layout Group
+        Perk[] _childs = gameObject.GetComponentsInChildren<Perk> ();
+        foreach (Perk p in _childs) {
+            if (p.transform.parent != this.transform)
+                _childs[Array.FindIndex (_childs, perk => perk == p)] = null;
+        }
+
+        childs = new List<Perk> ();
+
+        foreach (Perk p in _childs) {
+            if (p != null) {
+                childs.Add (p);
+            }
+        }
+        */
+    }
+
+
+    public virtual void LevelUp()
+    {
+        if (!CheckIfItsAvailable())
+            return;
+
+        OutlineObject oo = GetCurrentTower().GetComponent<OutlineObject>();
+
+        if (oo != null)
+        {
+            Color mix = (4 * oo.GetCurrentColor() + 1 * oo.GetGlowColor()) / 5;
+            oo.SetCurrentColor(mix);
+        }        
+
+        // Set childs callables
+        foreach (Perk p in childs)
+        {
+            p.TurnCallable();
+            p.GetButton().interactable = true;
+        }
+
+        // Upgrade perk
+        level++;
+
+        // Upgrade stats
+        Text[] aux = gameObject.GetComponentsInChildren<Text>();
+
+        foreach (Text t in aux)
+        {
+            if (t.gameObject.name == "Level")
+            {
+                t.text = "Level: " + level.ToString() + "/" + maxLevel.ToString();
+            }
+        }
+
+        // Consume souls to level up
+        soulsCounter.SetSouls(soulsCounter.GetSouls() - cost);
+
+        // Add score
+        scoreCounter.SetScore(scoreCounter.GetScore() + addScore);
+
+        // Call a default function on skill gameObject to alter values
+        Debug.Log(name + " level up to level " + level + " on tower " + GetCurrentTower().name);
+    }
+
+	public void LevelDown () 
+    {
 		if (level > 0) {
 			// Set childs callables
 			foreach (Perk p in childs) {
@@ -106,12 +176,30 @@ public class Perk : MonoBehaviour
 		isCallable = false;
 	}
 
-	private Button GetButton () {
+	public Button GetButton () 
+    {
 		return perkButton;
 	}
 
-	private bool CheckIfItsAvailable () {
-		if (level < maxLevel && soulsCounter.GetSouls () >= cost && gameMaster.GetComponent<WaveSpawner> ().GetWave () >= minWaveToActivate && isCallable) {
+    public PropertiesManager GetCurrentTowerProperties ()
+    {
+        return currentTowerProperties;
+    }
+
+    public GameObject GetCurrentTower()
+    {
+        return GetComponentInParent<TowerScript>().gameObject;
+    }
+
+    private bool CheckIfItsAvailable () 
+    {
+		if 
+            (
+            level < maxLevel && soulsCounter.GetSouls () >= cost && 
+            gameMaster.GetComponent<WaveSpawner> ().GetWave () >= minWaveToActivate &&
+            isCallable
+            ) 
+        {
 			return true;
 		}
 		return false;

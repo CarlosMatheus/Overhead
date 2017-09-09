@@ -1,25 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEditor;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour {
+public class MenuManager : MonoBehaviour 
+{
+    [SerializeField] private GameObject fader = null;
+    [SerializeField] private GameObject fadeCanvas = null;
 
-    [SerializeField] private GameObject fader;
-    [SerializeField] private GameObject fadeCanvas;
-
+    private TutorialVerifier tutorialVerifier;
+    private AudioManager audioManager;
     private float _currentValue;
-    //private GameObject fadeCanvas;
+    private string[] scenes = { "CutScenes", "version", "MainMenu", "Main", "LoadingScreen" };
+    private bool playGame;
 
-    private void Start()
+    public void LoadNormalMainScene()
     {
+        string sceneName = "Main";
+        Time.timeScale = 1;
+        CurrentGameMode.SetGameMode(CurrentGameMode.GameMode.Normal);
+        if (tutorialVerifier.GetPlayedTutorial() == true)
+        {
+            StartCoroutine(Fade(sceneName));
+        }
+        else if (playGame == false)
+        {
+            tutorialVerifier.AppearTutorialCanvas();
+            playGame = true;
+        }
+        else
+        {
+            StartCoroutine(Fade(sceneName));
+        }
     }
 
-    public void LoadScene(int sceneNumber)
+    public void LoadTutorialMainScene()
+    {
+        string sceneName = "Main";
+        Time.timeScale = 1;
+        CurrentGameMode.SetGameMode(CurrentGameMode.GameMode.Tutorial);
+        tutorialVerifier.PlayTutorial();
+        StartCoroutine(Fade(sceneName));
+    }
+
+    public void LoadMainMenuScene()
+    {
+        string sceneName = "MainMenu";
+        Time.timeScale = 1;
+        StartCoroutine(Fade(sceneName));
+    }
+
+    public void RestartScene()
     {
         Time.timeScale = 1;
-        StartCoroutine(Fade(sceneNumber));
+        StartCoroutine(Fade(SceneManager.GetActiveScene().name));
     }
 
     public void ExitGame()
@@ -27,7 +61,14 @@ public class MenuManager : MonoBehaviour {
         Application.Quit();
     }
 
-    public IEnumerator Fade(int sceneNumber)
+    private void Start()
+    {
+        playGame = false;
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        tutorialVerifier = GameObject.FindWithTag("GameMaster").GetComponent<TutorialVerifier>();
+    }
+
+    private IEnumerator Fade(string sceneName)
     {
         fader.SetActive(true);
         fadeCanvas.SetActive(true);
@@ -37,14 +78,28 @@ public class MenuManager : MonoBehaviour {
             fadeCanvas.GetComponent<CanvasGroup>().alpha = _currentValue;
             yield return null;
         }
-        if (CheckIfTheSceneIsMenu(sceneNumber))
-            SceneManager.LoadScene(sceneNumber);
+        if (CheckIfTheSceneIsMenu(sceneName))
+        {
+            SceneManager.LoadScene(sceneName);
+        }
         else
-            LoadManager.instance.CallLoadScene(sceneNumber);
+        {
+            LoadManager.instance.CallLoadScene( GetSceneIndex(sceneName) );
+        }
     }
 
-    bool CheckIfTheSceneIsMenu(int sceneNumber)
+    private bool CheckIfTheSceneIsMenu(string sceneName)
     {
-        return sceneNumber == 2;
+        return sceneName == "MainMenu";
+    }
+
+    private int GetSceneIndex(string _name)
+    {
+        for (int i = 0; i < scenes.Length ; i ++)
+        {
+            if (scenes[i] == _name)
+                return i; 
+        }
+        return -1;
     }
 }

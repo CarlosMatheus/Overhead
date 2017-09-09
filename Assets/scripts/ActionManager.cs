@@ -10,8 +10,10 @@ public class ActionManager : MonoBehaviour
     private WaveSpawner waveSpawner;
     private AudioManager audioManager;
     private CanvasManager canvasManager;
-    private enum NextAction {Interval,Wave,Death};
+    private GameObject tutorial;
+    private enum NextAction {Interval,Wave,Death,Tutorial};
     private NextAction nextAction;
+    private bool isSpawning;
     private float countdown;
     private int numOfEnemies;
 
@@ -20,16 +22,38 @@ public class ActionManager : MonoBehaviour
         numOfEnemies++;
     }
 
+    public void FinishSpawn()
+    {
+        isSpawning = false;
+    }
+
+    public void StartSpawn()
+    {
+        isSpawning = true;
+    }
+
     public void KillEnemy()
     {
         numOfEnemies--;
         CheckEnemies();
+
+        if (numOfEnemies < 0)
+            Debug.LogError("There are a negative number of Enemies");
+    }
+
+    public void FinishTutorial()
+    {
+        tutorial.SetActive(false);
+        countdown = -1f;
+        canvasManager.SetTutorialNameCanvasAlpha(0);
+        CurrentGameMode.SetGameMode(CurrentGameMode.GameMode.Normal);
     }
 
     private void CheckEnemies()
     {
+        if (isSpawning == true) return;
         if (numOfEnemies == 0)
-            countdown = -1f;
+            countdown = - 1f;
         else
             return;
     }
@@ -37,10 +61,13 @@ public class ActionManager : MonoBehaviour
     private void Start()
     {
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
-        waveSpawner = gameObject.GetComponent<WaveSpawner>();
         canvasManager = gameObject.GetComponent<CanvasManager>();
-        StartInitialAnimation();
+        waveSpawner = gameObject.GetComponent<WaveSpawner>();
+        tutorial = GameObject.Find("Tutorial");
+        tutorial.SetActive(false);
         numOfEnemies = 0;
+
+        StartInitialAnimation();
     }
 
     private void Update()
@@ -75,13 +102,26 @@ public class ActionManager : MonoBehaviour
             StartDeath();
             return;
         }
+        if (nextAction == NextAction.Tutorial)
+        {
+            StartTutorial();
+            return;
+        }
     }
 
     private void StartInitialAnimation()
     {
         countdown = initialAnimationDuration;
+        audioManager.SetVolume("MusicMainScene", 0.6f);
         audioManager.PlayWithFade("MusicMainScene", 2f);
-        nextAction = NextAction.Interval;
+        canvasManager.SetCanvasAlpha(0);
+        canvasManager.PlayInitialLoadingAnimation();
+        canvasManager.PlayAppearCanvasWithDelay(4f);
+        canvasManager.SetCanvasAfterAnimationWithDelay(4f);
+        if(CurrentGameMode.IsInNormalMode())
+            nextAction = NextAction.Interval;
+        if (CurrentGameMode.IsInTutorialMode())
+            nextAction = NextAction.Tutorial;
     }
 
     private void StartInterval()
@@ -91,10 +131,16 @@ public class ActionManager : MonoBehaviour
         audioManager.Play("IntervalSound");
         audioManager.SetVolumeWithFade("MusicMainScene", 0.3f, 3f);
         canvasManager.PlayPrepareYourSelf();
+        canvasManager.SetWaveCanvasAlpha(0);
+        canvasManager.AppearWaveCoolDown();
     }
 
     private void StartWave()
     {
+        //canvasManager.SetWaveCanvasAlpha(1f);
+        canvasManager.AppearWaveCanvas();
+        //canvasManager.SetWaveCoolDownAlpha(0);
+        canvasManager.SetWaveCoolDownAlpha(0);
         audioManager.Play("NewWave");
         audioManager.SetVolumeWithFade("MusicMainScene", 0.6f, 3f);
         canvasManager.PlayWaveWarning();
@@ -106,6 +152,18 @@ public class ActionManager : MonoBehaviour
     private void StartDeath()
     {
         
+    }
+
+    private void StartTutorial()
+    {
+        tutorial.SetActive(true);
+        countdown = 10000f;
+        canvasManager.SetWaveCanvasAlpha(0);
+        canvasManager.SetWaveCoolDownAlpha(0);
+        nextAction = NextAction.Interval;
+        audioManager.SetVolumeWithFade("MusicMainScene", 0.3f, 3f);
+        tutorial.transform.GetComponentInChildren<TutorialScript>().StartTutorial();
+        canvasManager.AppearTutorialNameCanvas();
     }
 
     private void UpdateTime()

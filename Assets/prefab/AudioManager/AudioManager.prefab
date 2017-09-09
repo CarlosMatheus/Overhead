@@ -58,15 +58,21 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  - name: StartMainScene
-    clip: {fileID: 8300000, guid: a8c844bfb39cf4ea087247e48e3aa124, type: 3}
-    volume: 0.6
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
   - name: NewWave
     clip: {fileID: 8300000, guid: 3a9aa29cb18516b479fe8eec898b44ca, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - name: IntervalSound
+    clip: {fileID: 8300000, guid: 9cfe1e0eb8daf450f95079019df94c73, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MainMenuMusic
+    clip: {fileID: 8300000, guid: 5c63383a9fbe521499354ffbe409424d, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 1
     source: {fileID: 0}

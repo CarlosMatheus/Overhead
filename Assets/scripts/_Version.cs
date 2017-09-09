@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class _Version : MonoBehaviour {
-
-    private string version = "1.3.1";
+public class _Version : MonoBehaviour 
+{
+    private string version = "1.6";
 
     public string GetVersion()
     {

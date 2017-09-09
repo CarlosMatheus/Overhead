@@ -44,7 +44,7 @@ public class RandomVoxelSpawn : MonoBehaviour
             compVal += chance[i];
             if (val <= compVal)
             {
-                if (SceneManager.GetActiveScene().name == "Main")
+                if (SceneManager.GetActiveScene().name == "Main" || SceneManager.GetActiveScene().name == "Tutorial")
                     StartCoroutine(Spawn(i));
                 else
                     SpawnVoxel(i);
@@ -65,7 +65,7 @@ public class RandomVoxelSpawn : MonoBehaviour
         float time = Mathf.Pow((transform.position.x * transform.position.x + transform.position.z * transform.position.z), 0.43f);
         gameObject.GetComponent<MeshRenderer>().enabled = false;
 
-        yield return new WaitForSeconds(((time-1)+Random.Range(0, 1.5f))/5);
+        yield return new WaitForSeconds(((time-1)+Random.Range(0, 1.5f))/8);
         voxel = Instantiate(arr[i], curPos, Quaternion.Euler(rotatInVector));
 
         while (voxel.transform.position.y - finalPos.y >= 0.0005f)

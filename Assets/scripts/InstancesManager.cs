@@ -10,15 +10,20 @@ public class InstancesManager : MonoBehaviour {
     [SerializeField] private Mesh voxel2x2 = null;
     [SerializeField] private Mesh voxel1x1 = null;
 	[SerializeField] private GameObject player = null;
+    [SerializeField] private GameObject upgradeCanvas = null;
+    [SerializeField] private GameObject researchCanvas = null;
+    [SerializeField] private GameObject normalBullet = null;
+    [SerializeField] private GameObject deathEffect = null;
 
-	private UpgradeCanvasManager towerOfTheTime;
+    private UpgradeCanvasManager towerOfTheTime;
 	private SphereShop sphereShop;
+    private SearchCenterPlace researchTower = null;
 
 	public UpgradeCanvasManager GetTowerOfTheTime () {
 		return towerOfTheTime;
-	}
+    }
 
-	public void SetTowerOfTheTime (UpgradeCanvasManager _set) {
+    public void SetTowerOfTheTime (UpgradeCanvasManager _set) {
 		if (towerOfTheTime == null) {
 			towerOfTheTime = _set;
 			towerOfTheTime.GetUpCanvas ().SetActive (true);
@@ -79,13 +84,39 @@ public class InstancesManager : MonoBehaviour {
         return voxel1x1;
     }
 
-	  public GameObject GetPlayerObj ()
+	 public GameObject GetPlayerObj ()
     {
 		    return player;
-	  }
+    }
 
-	private void Start ()
-  {
+    public GameObject GetUpgradeCanvas()
+    {
+        return upgradeCanvas;
+    }
+
+    public GameObject GetResearchCanvas()
+    {
+        return researchCanvas;
+    }
+
+    public GameObject GetDeathEffect()
+    {
+        return deathEffect;
+    }
+
+    public SearchCenterPlace GetResearchTowerOfTheTime ()
+    {
+        return researchTower;
+    }
+
+    public void SetResearchTowerOfTheTime(SearchCenterPlace _set)
+    {
+        researchTower = _set;
+    }
+
+    private void Start ()
+    {
 		sphereShop = GameObject.FindGameObjectWithTag ("Icosphere").GetComponent<SphereShop>();
+        normalBullet.GetComponent<SkillsProperties>().SetEffect(null);
 	}
 }

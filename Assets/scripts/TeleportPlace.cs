@@ -9,8 +9,11 @@ public class TeleportPlace : MonoBehaviour {
 	private Transform playerSpawnOnTower;
     private MouseCursorManager mouseCursosManage;
 
-	void Start () {
-		// Finding the player gameObject
+	void Start () 
+    {
+        // Finding the player gameObject
+        if (SceneVerifier.IsInMainSceneOrTutorial() == false )
+            return;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		if (GetComponent<TowerScript> () == null)
 			return;
@@ -46,8 +49,8 @@ public class TeleportPlace : MonoBehaviour {
 
 	}
 
-	IEnumerator TeleportEvents () {
-
+	IEnumerator TeleportEvents () 
+    {
 		// Animates
 		player.GetComponent<Teleporter>().TeleportFor(playerSpawnOnTower.gameObject);
 

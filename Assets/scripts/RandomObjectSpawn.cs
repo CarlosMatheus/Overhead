@@ -39,7 +39,7 @@ public class RandomObjectSpawn : MonoBehaviour {
 		for (int i = 0; i < arr.Length; i++) {
 			compVal += chance[i];
 			if (val <= compVal) {
-                if (SceneManager.GetActiveScene().name == "Main")
+                if (SceneManager.GetActiveScene().name == "Main" || SceneManager.GetActiveScene().name == "Tutorial")
                     StartCoroutine(Spawn(i));
                 else
                     SpawnObject(i);
@@ -51,7 +51,7 @@ public class RandomObjectSpawn : MonoBehaviour {
 	//spawn in a random y rotation, the quaternion need to be converted to vector 3 to oparate it
 	IEnumerator Spawn(int i)
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.8f);
 
         Quaternion rotat = arr [i].transform.rotation;
 		Vector3 rotatInVector = rotat.eulerAngles;

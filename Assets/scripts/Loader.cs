@@ -17,6 +17,7 @@ public class Loader : MonoBehaviour {
 	
 	IEnumerator LoadScene()
     {
+        Application.backgroundLoadingPriority = ThreadPriority.Low;
         yield return new WaitForSeconds(3);
 
         //Load Scene in the background

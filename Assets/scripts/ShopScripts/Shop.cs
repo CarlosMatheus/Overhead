@@ -6,6 +6,8 @@ public class Shop : MonoBehaviour
 {
     [SerializeField] private Color normalTextColor = Color.blue;
     [SerializeField] private Color cantBuildTextColor = Color.blue;
+    [SerializeField] private Color normalCanvasColor = Color.blue;
+    [SerializeField] private Color cantBuildCanvasColor = Color.blue;
     [SerializeField] private GameObject buttonPrefab = null;
 
 	private int numOfButtons;
@@ -52,9 +54,25 @@ public class Shop : MonoBehaviour
         towerManager.TowerSelected();
     }
 
-    public void PurcheseTower3()
+    public void PurcheseTower3()  // Researcher
     {
         indexOfThisTower = 3;
+
+        if (gameMaster.GetComponent<InstancesManager>().GetResearchTowerOfTheTime() != null)
+            return;
+        gameMaster.GetComponent<InstancesManager>().SetResearchTowerOfTheTime(buildManager.tower[indexOfThisTower].GetComponent<SearchCenterPlace>());
+
+        if (!soulsCounter.CanBuild(indexOfThisTower))
+            return;
+        buildManager.SetTowerToBuildIndex(indexOfThisTower);
+        buildManager.SetTowerToBuild(buildManager.tower[indexOfThisTower]);
+        buildManager.SetSelectionTowerToBuild(buildManager.selectionTower[indexOfThisTower]);
+        towerManager.TowerSelected();
+    }
+
+    public void PurcheseTower4()
+    {
+        indexOfThisTower = 4;
         if (!soulsCounter.CanBuild(indexOfThisTower))
             return;
         buildManager.SetTowerToBuildIndex(indexOfThisTower);
@@ -89,14 +107,16 @@ public class Shop : MonoBehaviour
 	//Will set the store up:
 	private void Awake(){
 		numOfButtons = transform.childCount;
-		setTheShopButtons ();
-		setCanBuildTower ();
+		SetTheShopButtons ();
+		SetCanBuildTower ();
 	}
 
 	//get the buttons gameobjects
-	private void setTheShopButtons(){
+	private void SetTheShopButtons()
+    {
 		buttons = new Transform[numOfButtons];
-		for (int i = 0; i < numOfButtons; i++){
+		for (int i = 0; i < numOfButtons; i++)
+        {
 			buttons [i] = transform.GetChild (i);
 		}
 	}
@@ -104,61 +124,58 @@ public class Shop : MonoBehaviour
 	/// <summary>
 	/// Sets the can build tower.
 	/// </summary>
-	private void setCanBuildTower(){
+	private void SetCanBuildTower()
+    {
 		canBuildTower = new bool[numOfButtons];
-		for (int i = 0; i < numOfButtons; i++){
+		for (int i = 0; i < numOfButtons; i++)
+        {
 			canBuildTower [i] = false;
 		}
 	}
 
 	//Instantiate and initialize 
-	private void Start(){
+	private void Start()
+    {
         gameMaster = GameObject.Find("GameMaster");
         buildManager = gameMaster.GetComponent<BuildManager> ();
 		soulsCounter = gameMaster.GetComponent<SoulsCounter> ();
 		scoreCounter = gameMaster.GetComponent<ScoreCounter> ();
         towerManager = gameMaster.GetComponent<TowerManager>();
         shopManager = gameMaster.GetComponent<ShopManager>();
-        //InitializeShopCanvas();
 	}
-
-    //private void InitializeShopCanvas ()
-    //{
-    //    GameObject childTower;
-    //    ButtonClass[] attackTower = shopManager.GetAttackTowers();
-    //    ButtonClass researchTower = shopManager.GetResearchTower();
-
-    //    for (int i = 0; i < attackTower.Length; i++)
-    //    {
-    //        childTower = Instantiate(buttonPrefab);
-    //        childTower.transform.parent = gameObject.transform;
-    //        childTower.GetComponent<ShopButton>().StartButton( attackTower[i] );
-    //    }
-
-    //    childTower = Instantiate(buttonPrefab);
-    //    childTower.transform.parent = gameObject.transform;
-    //}
 
 	/// <summary>
 	/// Update this instance.
 	/// every frame verify if the player have enought soul to 
 	/// buy each tower
 	/// </summary>
-	private void Update(){
+	private void Update()
+    {
 		UpdateCanBuildTower ();
 	}
 
 	/// <summary>
 	/// Updates the can build tower.
 	/// </summary>
-	private void UpdateCanBuildTower(){
-		for (int i = 0 ; i < buildManager.tower.Length; i ++){
-			if (!soulsCounter.CanBuild (i)) {
+	private void UpdateCanBuildTower()
+    {
+		for (int i = 0 ; i < buildManager.tower.Length; i ++)
+        {
+            if ( !soulsCounter.CanBuild( buttons[i].GetComponent<ShopButton>().GetIndexOfThisTower() ))
+            {
 				canBuildTower [i] = false;
-                buttons[i].GetComponentInChildren<PriceFinder>().GetComponent<Text>().color = cantBuildTextColor;
-			} else {
+                buttons[i].GetComponentInChildren<PriceFinder>().
+                          GetComponent<Text>().color = cantBuildTextColor;
+                buttons[i].GetComponentInChildren<DescriptionCanvasFinder>().
+                          GetComponent<Image>().color = cantBuildCanvasColor;
+			} 
+            else 
+            {
 				canBuildTower [i] = true;
-                buttons[i].GetComponentInChildren<PriceFinder>().GetComponent<Text>().color = normalTextColor;
+                buttons[i].GetComponentInChildren<PriceFinder>().
+                          GetComponent<Text>().color = normalTextColor;
+                buttons[i].GetComponentInChildren<DescriptionCanvasFinder>().
+                          GetComponent<Image>().color = normalCanvasColor;
 			}
 		}
 	}

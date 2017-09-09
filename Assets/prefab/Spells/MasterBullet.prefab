@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   cooldown: Infinity
-  range: 0
+  range: 9
   sideEffect: {fileID: 0}
   burnRate: 0
   slowFactor: 0
