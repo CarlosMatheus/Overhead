@@ -26,6 +26,7 @@ public class VersionScriptManager : MonoBehaviour
     private int fadeDirName3 = 1;
     private GameObject image;
     private GameObject versionText;
+    private MouseCursorManager mouseCursorManager;
     private GameObject name1;
     private GameObject name2;
     private GameObject name3;
@@ -33,6 +34,8 @@ public class VersionScriptManager : MonoBehaviour
 
     private void Start()
     {
+        mouseCursorManager = gameObject.GetComponent<MouseCursorManager>();
+        mouseCursorManager.SetInvisibleCursor();
         image = GameObject.Find("Image");
         versionText = GameObject.Find("VersionText");
         name1 = GameObject.Find("Name1");
