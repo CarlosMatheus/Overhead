@@ -8996,7 +8996,7 @@ MonoBehaviour:
   addScore: 200
   upgradeIcon: {fileID: 21300000, guid: b879f763ef534a54ba6106b06a508599, type: 3}
   description: If we had a chance to paralise them for a little moments... Ops, now
-    we have! (Increase chance to paralise enemies by 5%/level) (requires Slow Effect
+    we have! (Increase chance to paralise enemies by 2.5%/level) (requires Slow Effect
     perk)
   childs: []
   gameMaster: {fileID: 0}
@@ -9700,8 +9700,9 @@ MonoBehaviour:
   addScore: 200
   upgradeIcon: {fileID: 21300000, guid: a697d4812f9612e459fe730e9eb1666b, type: 3}
   description: With this we can concentrate our energy to have a chance to give a
-    hit kill (+5%/level) (requires Burn Effect)
-  childs: []
+    hit kill (+1%/level) (requires Burn Effect)
+  childs:
+  - {fileID: 114082154226524352}
   gameMaster: {fileID: 0}
   isCallable: 0
   bonusChanceMultiplier: 2
