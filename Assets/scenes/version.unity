@@ -451,7 +451,7 @@ MonoBehaviour:
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
   mouseCursorInvisable:
-    cursorTexture: {fileID: 2800000, guid: 310156d0f4a354a428ab7b68b930b626, type: 3}
+    cursorTexture: {fileID: 2800000, guid: b037ef9ab053d614cbfc14e24412b117, type: 3}
     cursorMode: 0
     hotSpot: {x: 0, y: 0}
   mouseCursorGreen:
