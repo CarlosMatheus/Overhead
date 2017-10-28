@@ -6,11 +6,11 @@ public class PropertiesManager : MonoBehaviour {
 	private float damage;
 	private float cooldown;
 	private float range;
-	private float soulBonusChance = 5f;
+	private float soulBonusChance = 0.5f;
 	private bool soulBonusActivation = false;
-    private float slowTimeChance = 5f;
+    private float slowTimeChance = 2.5f;
     private bool slowTimeActivation = false;
-    private float fatalHitChance = 5f;
+    private float fatalHitChance = 1f;
     private bool fatalHitActivation = false;
     private float burnRate;
 	private float slowFactor;
