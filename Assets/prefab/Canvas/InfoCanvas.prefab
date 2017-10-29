@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114750492205427502}
   - component: {fileID: 225990302669728662}
   m_Layer: 5
-  m_Name: SoulCanvas
+  m_Name: InfoCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 222537695912707366}
   - component: {fileID: 114214365139734518}
   m_Layer: 5
-  m_Name: SoulNumber
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

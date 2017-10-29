@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class CameraControllerScript : MonoBehaviour 
 {
@@ -27,11 +28,16 @@ public class CameraControllerScript : MonoBehaviour
     float posY;
     float posZ;
 
+	private Animator anim;
+
 	private void Update ()
     {
 		MoveScreen ();
 		ZoomScroll ();
 		LimitPosition ();
+
+		if (Input.GetKeyDown(KeyCode.C))
+			ShakeBySpeed(1f, 1f);
 	}
 
 	private void Start()
@@ -45,6 +51,8 @@ public class CameraControllerScript : MonoBehaviour
         backRation = ( minZInMaxY + moduleDimension ) / maxY;
         leftRation = ( minXInMaxY + moduleDimension ) / maxY;
         rightRation = (maxXInMaxY - moduleDimension) / maxY;
+
+		anim = GetComponentInChildren<Animator>();
 	}
 
 	//move the camera white awsd or with mouse in the border
@@ -192,5 +200,32 @@ public class CameraControllerScript : MonoBehaviour
 	private void GoRight () 
     {
 		transform.Translate ( Vector3.right * panSpeed * Time.deltaTime, Space.Self );
+	}
+
+	/// <summary>
+	/// Function to shake the camera. It's animation-based, then it's not dependent of camera's transform
+	/// </summary>
+	/// <param name="speed">The speed of the animation playing</param>
+	/// <param name="percentageOfAnimationToShow">Which percentage of the animation should play</param>
+	public void ShakeBySpeed (float speed, float percentageOfAnimationToShow)
+	{
+		//float t0 = Time.time;
+		anim.SetFloat("speed", speed);
+		StartCoroutine(Shake(percentageOfAnimationToShow));
+		/*
+		float a = 0.1f;
+		float w = 1f;
+		float phi = 0f;
+		while (anim.GetBool("shake"))
+		{
+			anim.SetFloat("speed", a * Mathf.Cos(w * (Time.time - t0)));
+		}*/
+	}
+
+	IEnumerator Shake(float t)
+	{
+		anim.SetBool("shake", true);
+		yield return new WaitForSeconds(t);
+		anim.SetBool("shake", false);
 	}
 }

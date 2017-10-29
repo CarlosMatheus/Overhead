@@ -8,6 +8,7 @@ public class TargetSelection : MonoBehaviour {
 
 	[Header("To assign")]
 	public GameObject enemyHealthBar;
+	public GameObject hpText;
 	public GameObject deathEffect;
 
     public GameObject soulCanvas;
@@ -21,6 +22,7 @@ public class TargetSelection : MonoBehaviour {
 	private Enemy enemy;
 	private SoulsCounter soulsCounter;
     private float score;
+	private Text text;
 
 	public float GetHP () {
 		return HP;
@@ -42,11 +44,24 @@ public class TargetSelection : MonoBehaviour {
 	{
         if (isDead == true) return;
 		HP -= other.GetComponent<SkillsProperties> ().GetDamage();
+
+		if (!enemyHealthBar.activeInHierarchy)
+		{
+			enemyHealthBar.SetActive(true);
+		}
+
 		if (HP <= 0)
-        {
-            isDead = true;
+		{
+			enemyHealthBar.SetActive(false);
+			isDead = true;
             DeathBy(other.GetComponent<SkillsProperties>().GetInvoker());
+			return;
         }
+
+		Text text = AnimateInfo();
+		text.text = "-" + other.GetComponent<SkillsProperties>().GetDamage();
+		text.color = Color.red;
+		text.fontSize -= 35;
 	}
 
 	void Start ()
@@ -60,6 +75,8 @@ public class TargetSelection : MonoBehaviour {
 		// Setting current HP to maximumHP
 		HP = enemy.getHP();
 		maximumHealth = HP;
+
+		SetHPTextOnHealthBar();
 
 		// Rotating enemy UI (health bar) at beginning and desactivating it
 		enemyHealthBar.transform.rotation = GameObject.FindGameObjectWithTag ("MainCamera").gameObject.transform.rotation;
@@ -100,10 +117,11 @@ public class TargetSelection : MonoBehaviour {
         score = soulsCounter.KillerPrice(go.tag);
         soulsCounter.KillEnemy(score);
 
-        //Instantiate soul number
-        GameObject soulCanvasObject = Instantiate(soulCanvas, transform.position, transform.rotation);
-        soulCanvasObject.GetComponentInChildren<Text>().text = "+" + score.ToString();
-        //Debug.Log(score.ToString());
+		//Instantiate soul number
+		Text text = AnimateInfo();
+		text.text = "+" + score + " Soul";
+		if (score > 1)
+			text.text = text.text + "s";
 
 		// Anyway, instantiate this target's deathEffect and destroy it
 		GameObject effectInstantiated = Instantiate (deathEffect, transform.position, transform.rotation);
@@ -120,4 +138,42 @@ public class TargetSelection : MonoBehaviour {
         return (SceneManager.GetActiveScene().buildIndex != 0 && string.Equals(SceneManager.GetActiveScene().name, "MainMenu") == false);
     }
 
+	private void SetHPTextOnHealthBar()
+	{
+		//enemyHealthBar.GetComponentInParent<CanvasScaler>().dynamicPixelsPerUnit = 3;
+		Transform fillArea = enemyHealthBar.transform.Find("Fill Area").transform;
+		GameObject instText = Instantiate(hpText, fillArea.position, fillArea.rotation, fillArea);
+		Rect textRect = instText.GetComponent<RectTransform>().rect;
+		textRect.xMax = 0;
+		textRect.xMin = 0;
+		textRect.yMax = 0;
+		textRect.yMin = 0;
+
+		text = instText.GetComponent<Text>();
+		text.fontSize = 7;
+		text.fontStyle = FontStyle.Bold;
+		text.alignment = TextAnchor.MiddleCenter;
+
+		InvokeRepeating("AttHP", 0f, 0.5f);
+	}
+
+	private void AttHP ()
+	{
+		text.text = Mathf.Round(HP).ToString() + " / " + Mathf.Round(maximumHealth).ToString();
+		enemyHealthBar.GetComponent<Slider>().value = HP / maximumHealth;
+	}
+
+	private Text AnimateInfo()
+	{
+		GameObject damageCanvasObject = Instantiate(soulCanvas, transform.position + new Vector3(0f, 0.75f, 0f), transform.rotation);
+		return damageCanvasObject.GetComponentInChildren<Text>();
+	}
+
+	private Text AnimateInfo(float _factor)
+	{
+		GameObject canvasObject = Instantiate(soulCanvas, transform.position, transform.rotation);
+		canvasObject.GetComponent<SoulCounterScript>().speed *= _factor;
+		canvasObject.GetComponent<SoulCounterScript>().destroyTime /= _factor;
+		return canvasObject.GetComponentInChildren<Text>();
+	}
 }

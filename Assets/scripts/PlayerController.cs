@@ -30,8 +30,13 @@ public class PlayerController : MonoBehaviour {
 		if (_newTarget != null) {
 			
 			if (currentTarget != null) {
-				
-				currentTarget.GetComponent<TargetSelection> ().enemyHealthBar.SetActive (false);
+
+				// If we have just targeted one enemy, but have not attacked him, deactivate his health bar
+				TargetSelection ts = currentTarget.GetComponent<TargetSelection>();
+				if (ts.GetHP() == ts.getMaximumHealth())
+					ts.enemyHealthBar.SetActive (false);
+
+				// Obs: in ts.TakeDamageBy() we activate the enemy health bar by default
 
 				// If had double clicked the same target, just destarget it
 				if (_newTarget == currentTarget) {

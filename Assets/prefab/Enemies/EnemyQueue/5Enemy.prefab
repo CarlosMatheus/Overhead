@@ -619,6 +619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealthBar: {fileID: 1374926427234664}
+  hpText: {fileID: 1695052297714708, guid: 1dd6ea2ac31142d47bf8cb7155691749, type: 2}
   deathEffect: {fileID: 1432811619508178, guid: c437ea0344f1ee248900e43dd41d9ad1,
     type: 2}
   soulCanvas: {fileID: 1501028493053376, guid: ccd6974a99ed95e4fa96c4a42ce8f553, type: 2}
