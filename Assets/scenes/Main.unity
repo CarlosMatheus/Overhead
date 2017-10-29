@@ -161,11 +161,11 @@ Prefab:
     - target: {fileID: 114779885614857912, guid: da42a4da83762402ab84356f1fafda0e,
         type: 2}
       propertyPath: player
-      value: 
+      value:
       objectReference: {fileID: 1383395336}
     - target: {fileID: 1918428659857364, guid: da42a4da83762402ab84356f1fafda0e, type: 2}
       propertyPath: m_Icon
-      value: 
+      value:
       objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000,
         type: 0}
     m_RemovedComponents: []
@@ -213,12 +213,12 @@ Prefab:
     - target: {fileID: 199641367505400312, guid: 9ae608f50d00bae46907305a808101b6,
         type: 2}
       propertyPath: m_Materials.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: de2b81137f0f14b429d534df33662fec, type: 2}
     - target: {fileID: 199059941207439724, guid: 9ae608f50d00bae46907305a808101b6,
         type: 2}
       propertyPath: m_Materials.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: de2b81137f0f14b429d534df33662fec, type: 2}
     - target: {fileID: 1579671125913872, guid: 9ae608f50d00bae46907305a808101b6, type: 2}
       propertyPath: m_IsActive
@@ -232,7 +232,7 @@ RenderTexture:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 
+  m_Name:
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -296,82 +296,82 @@ Prefab:
     - target: {fileID: 114200634650480466, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: waveWarning
-      value: 
+      value:
       objectReference: {fileID: 1708905068}
     - target: {fileID: 114200634650480466, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: prepareYourself
-      value: 
+      value:
       objectReference: {fileID: 1122379856}
     - target: {fileID: 114277739385761156, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: shopGObj
-      value: 
+      value:
       objectReference: {fileID: 25785798}
     - target: {fileID: 114277739385761156, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: masterTower
-      value: 
+      value:
       objectReference: {fileID: 1130619536}
     - target: {fileID: 114277739385761156, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: cameraPlayer
-      value: 
+      value:
       objectReference: {fileID: 1018629785}
     - target: {fileID: 114277739385761156, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: player
-      value: 
+      value:
       objectReference: {fileID: 2069403988}
     - target: {fileID: 114099972934301102, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: icosphere
-      value: 
+      value:
       objectReference: {fileID: 1801212921}
     - target: {fileID: 114292562531580396, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: LifeManager
-      value: 
+      value:
       objectReference: {fileID: 1130619536}
     - target: {fileID: 114292562531580396, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: MainCamera
-      value: 
+      value:
       objectReference: {fileID: 1018629785}
     - target: {fileID: 114292562531580396, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: DeathCamera
-      value: 
+      value:
       objectReference: {fileID: 227316646}
     - target: {fileID: 114292562531580396, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: Canvas
-      value: 
+      value:
       objectReference: {fileID: 955045869}
     - target: {fileID: 114062466384089198, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: fader
-      value: 
+      value:
       objectReference: {fileID: 612114638}
     - target: {fileID: 114062466384089198, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: fadeCanvas
-      value: 
+      value:
       objectReference: {fileID: 1710198127}
     - target: {fileID: 114812045155361606, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: camera
-      value: 
+      value:
       objectReference: {fileID: 1018629785}
     - target: {fileID: 114812045155361606, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: canvas
-      value: 
+      value:
       objectReference: {fileID: 955045869}
     - target: {fileID: 114812045155361606, guid: a0ae3f0160a394622b2556300039986c,
         type: 2}
       propertyPath: pauseCanvas
-      value: 
+      value:
       objectReference: {fileID: 1344477235}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0ae3f0160a394622b2556300039986c, type: 2}
@@ -418,7 +418,7 @@ Prefab:
     - target: {fileID: 114068820416195024, guid: 2f16d96d8e95f4ee893d3f69273b7e64,
         type: 2}
       propertyPath: currentTower
-      value: 
+      value:
       objectReference: {fileID: 1130619536}
     - target: {fileID: 1536250208252664, guid: 2f16d96d8e95f4ee893d3f69273b7e64, type: 2}
       propertyPath: m_IsActive
@@ -574,32 +574,32 @@ Prefab:
     - target: {fileID: 114124489154208378, guid: c07b0d04cd57a464099e8d48325b7bc0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      value:
       objectReference: {fileID: 111354136}
     - target: {fileID: 114285878670850768, guid: c07b0d04cd57a464099e8d48325b7bc0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      value:
       objectReference: {fileID: 111354136}
     - target: {fileID: 114350611522373874, guid: c07b0d04cd57a464099e8d48325b7bc0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      value:
       objectReference: {fileID: 111354136}
     - target: {fileID: 114481826010727124, guid: c07b0d04cd57a464099e8d48325b7bc0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      value:
       objectReference: {fileID: 111354136}
     - target: {fileID: 114348647864155914, guid: c07b0d04cd57a464099e8d48325b7bc0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      value:
       objectReference: {fileID: 111354136}
     - target: {fileID: 114806712673884942, guid: c07b0d04cd57a464099e8d48325b7bc0,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      value:
       objectReference: {fileID: 111354136}
     - target: {fileID: 114350611522373874, guid: c07b0d04cd57a464099e8d48325b7bc0,
         type: 2}
@@ -1288,22 +1288,22 @@ Prefab:
     - target: {fileID: 114170908887679418, guid: 74f4d1f54da024845bcab1fd08899c37,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      value:
       objectReference: {fileID: 111354136}
     - target: {fileID: 114046189841898152, guid: 74f4d1f54da024845bcab1fd08899c37,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      value:
       objectReference: {fileID: 111354136}
     - target: {fileID: 114041757862916714, guid: 74f4d1f54da024845bcab1fd08899c37,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      value:
       objectReference: {fileID: 111354136}
     - target: {fileID: 114743282931074316, guid: 74f4d1f54da024845bcab1fd08899c37,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      value:
       objectReference: {fileID: 1573586643}
     - target: {fileID: 114041757862916714, guid: 74f4d1f54da024845bcab1fd08899c37,
         type: 2}
@@ -1386,7 +1386,7 @@ Prefab:
     - target: {fileID: 20139175998373164, guid: 6849b8a20f320f04dabdfd7ed9070271,
         type: 2}
       propertyPath: m_TargetTexture
-      value: 
+      value:
       objectReference: {fileID: 132487070}
     - target: {fileID: 20754644307438984, guid: 6849b8a20f320f04dabdfd7ed9070271,
         type: 2}
