@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using System.IO;
 
+
 public class AudioRecorder : MonoBehaviour {
 
 	bool isRecording = false;
@@ -18,13 +19,16 @@ public class AudioRecorder : MonoBehaviour {
 
 	void Start()
 	{
-		audioSource = GetComponent<AudioSource>();
-		//set up recording to last a max of 1 seconds and loop over and over
-		//audioSource.clip = Microphone.Start(null, true, 1, 44100);
-		//audioSource.Play();
-		//resize our temporary vector every second
-		//Invoke("ResizeRecording", 1);
-		UnityEngine.Debug.Log("Para gravar um som, aperte espaço. Este será salvo enquanto o jogo estiver em execução. Para ouvir os sons gravados, navegue\n pelas teclas númericas e aperte E caso deseje salvar o som gravado em execução. O arquivo será salvo em (currentdirectory)\\audio\\audio.wav");
+		if (Application.isEditor)
+		{
+			audioSource = GetComponent<AudioSource>();
+			//set up recording to last a max of 1 seconds and loop over and over
+			//audioSource.clip = Microphone.Start(null, true, 1, 44100);
+			//audioSource.Play();
+			//resize our temporary vector every second
+			//Invoke("ResizeRecording", 1);
+			UnityEngine.Debug.Log("Para gravar um som, aperte espaço. Este será salvo enquanto o jogo estiver em execução. Para ouvir os sons gravados, navegue\n pelas teclas númericas e aperte E caso deseje salvar o som gravado em execução. O arquivo será salvo em (currentdirectory)\\audio\\audio.wav");
+		}
 	}
 
 	void ResizeRecording()
@@ -42,66 +46,69 @@ public class AudioRecorder : MonoBehaviour {
 
 	void Update()
 	{
-		//space key triggers recording to start...
-		if (Input.GetKeyDown("space"))
+		if (Application.isEditor)
 		{
-			isRecording = !isRecording;
-			UnityEngine.Debug.Log(isRecording == true ? "Is Recording" : "Off");
-
-			if (isRecording == false)
+			//space key triggers recording to start...
+			if (Input.GetKeyDown("space"))
 			{
-				//stop recording, get length, create a new array of samples
-				int length = Microphone.GetPosition(null);
+				isRecording = !isRecording;
+				UnityEngine.Debug.Log(isRecording == true ? "Is Recording" : "Off");
 
-				Microphone.End(null);
-				float[] clipData = new float[length];
-				audioSource.clip.GetData(clipData, 0);
-
-				//create a larger vector that will have enough space to hold our temporary
-				//recording, and the last section of the current recording
-				float[] fullClip = new float[clipData.Length + tempRecording.Count];
-				for (int i = 0; i < fullClip.Length; i++)
+				if (isRecording == false)
 				{
-					//write data all recorded data to fullCLip vector
-					if (i < tempRecording.Count)
-						fullClip[i] = tempRecording[i];
-					else
-						fullClip[i] = clipData[i - tempRecording.Count];
+					//stop recording, get length, create a new array of samples
+					int length = Microphone.GetPosition(null);
+
+					Microphone.End(null);
+					float[] clipData = new float[length];
+					audioSource.clip.GetData(clipData, 0);
+
+					//create a larger vector that will have enough space to hold our temporary
+					//recording, and the last section of the current recording
+					float[] fullClip = new float[clipData.Length + tempRecording.Count];
+					for (int i = 0; i < fullClip.Length; i++)
+					{
+						//write data all recorded data to fullCLip vector
+						if (i < tempRecording.Count)
+							fullClip[i] = tempRecording[i];
+						else
+							fullClip[i] = clipData[i - tempRecording.Count];
+					}
+
+					recordedClips.Add(fullClip);
+					audioSource.clip = AudioClip.Create("recorded samples", fullClip.Length, 1, 44100, false);
+					audioSource.clip.SetData(fullClip, 0);
+					audioSource.loop = true;
+
+				}
+				else
+				{
+					//stop audio playback and start new recording...
+					audioSource.Stop();
+					tempRecording.Clear();
+					Microphone.End(null);
+					audioSource.clip = Microphone.Start(null, true, 1, 44100);
+					Invoke("ResizeRecording", 1);
 				}
 
-				recordedClips.Add(fullClip);
-				audioSource.clip = AudioClip.Create("recorded samples", fullClip.Length, 1, 44100, false);
-				audioSource.clip.SetData(fullClip, 0);
-				audioSource.loop = true;
-
 			}
-			else
+
+			//use number keys to switch between recorded clips, start from 1!!
+			for (int i = 0; i < 10; i++)
 			{
-				//stop audio playback and start new recording...
-				audioSource.Stop();
-				tempRecording.Clear();
-				Microphone.End(null);
-				audioSource.clip = Microphone.Start(null, true, 1, 44100);
-				Invoke("ResizeRecording", 1);
+				if (Input.GetKeyDown("" + i))
+				{
+					SwitchClips(i - 1);
+				}
 			}
 
-		}
-
-		//use number keys to switch between recorded clips, start from 1!!
-		for (int i = 0; i < 10; i++)
-		{
-			if (Input.GetKeyDown("" + i))
+			// Press E to save the current recorded clip playing on audiosource (the last one by default)
+			if (Input.GetKeyDown(KeyCode.E))
 			{
-				SwitchClips(i - 1);
+				GenerateAudio.CallSaveFunction("audio", audioSource.clip);
 			}
-		}
 
-		// Press E to save the current recorded clip playing on audiosource (the last one by default)
-		if (Input.GetKeyDown(KeyCode.E))
-		{
-			GenerateAudio.CallSaveFunction("audio", audioSource.clip);
 		}
-
 	}
 
 	//chooose which clip to play based on number key..

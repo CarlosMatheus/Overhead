@@ -36,7 +36,7 @@ public class CameraControllerScript : MonoBehaviour
 		ZoomScroll ();
 		LimitPosition ();
 
-		if (Input.GetKeyDown(KeyCode.C))
+		if (Input.GetKeyDown(KeyCode.C) && Application.isEditor)
 			ShakeBySpeed(1f, 1f);
 	}
 
