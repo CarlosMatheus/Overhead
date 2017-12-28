@@ -3,17 +3,59 @@ guid: 282f5cb671776c74ca0ea535db12f94d
 timeCreated: 1497073276
 licenseType: Free
 ModelImporter:
-  serializedVersion: 21
+  serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Plane_MeshPart0
+    100004: Plane_MeshPart1
+    100006: Plane_MeshPart2
     400000: //RootNode
+    400002: Plane_MeshPart0
+    400004: Plane_MeshPart1
+    400006: Plane_MeshPart2
     2300000: //RootNode
+    2300002: Plane_MeshPart0
+    2300004: Plane_MeshPart1
+    2300006: Plane_MeshPart2
     3300000: //RootNode
+    3300002: Plane_MeshPart0
+    3300004: Plane_MeshPart1
+    3300006: Plane_MeshPart2
     4300000: Plane
+    4300002: Plane_MeshPart0
+    4300004: Plane_MeshPart1
+    4300006: Plane_MeshPart2
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mountain
+    second: {fileID: 2100000, guid: 6f8d2e028e88d4c48aa145fba9217828, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mountain2
+    second: {fileID: 2100000, guid: e517f9d6913237d4da6659607cc76aeb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MountainGrass
+    second: {fileID: 2100000, guid: f64c47e5ac3d3704bac14cdd70f19f3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MountainSnow
+    second: {fileID: 2100000, guid: 7cd932e3eba90be48bdc64354d5d7522, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MountainSnow2
+    second: {fileID: 2100000, guid: 9aaf10a272a1b9e498d5ea2428b5cbba, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -26,6 +68,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -50,6 +93,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88

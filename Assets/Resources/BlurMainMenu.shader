@@ -47,9 +47,9 @@
 				return media/9;
 			}
 
-			fixed4 frag (v2f i) : SV_Target
+			float3 frag (v2f i) : SV_Target
 			{
-				fixed4 col = lerp(boxBlur(_MainTex, i.uv, _MainTex_TexelSize).rgb, fixed4(0, 0, 0, 0), 0.5);
+				float3 col = (float3) lerp(boxBlur(_MainTex, i.uv, _MainTex_TexelSize).rgb, fixed4(0, 0, 0, 0), 0.5);
 				return col;
 			}
 			ENDCG

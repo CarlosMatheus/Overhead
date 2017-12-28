@@ -54,6 +54,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 2
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -69,6 +70,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -136,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arr:
-  - {fileID: 1068842944600378, guid: 2df020c0fd9483b41b0c1927a72635cf, type: 2}
+  - {fileID: 1360799090849732, guid: 742a6f1dc6d0c486297d32f09d2d0cd1, type: 2}
   chance:
   - 1
   - 20

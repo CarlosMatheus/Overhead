@@ -1,36 +1,62 @@
 fileFormatVersion: 2
-guid: 6aa0df1e9b031184289a78eaa4bad081
-timeCreated: 1503653999
+guid: ef64dcdc7ad85441cabd1e4e7b52afe1
+timeCreated: 1514498772
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Plane.001
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mountain
-    second: {fileID: 2100000, guid: 6f8d2e028e88d4c48aa145fba9217828, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MountainGrass
-    second: {fileID: 2100000, guid: f64c47e5ac3d3704bac14cdd70f19f3f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MountainSnow
-    second: {fileID: 2100000, guid: 7cd932e3eba90be48bdc64354d5d7522, type: 2}
+    100000: Armature
+    100002: Bone
+    100004: Bone.001
+    100006: Bone.001_end
+    100008: Bone.002
+    100010: Bone.002_end
+    100012: Bone.003
+    100014: Bone.004
+    100016: Bone.005
+    100018: Bone.005_end
+    100020: Bone.006
+    100022: Bone.006_end
+    100024: Bone.007
+    100026: Bone.008
+    100028: Bone.008_end
+    100030: Icosphere.006
+    100032: //RootNode
+    400000: Armature
+    400002: Bone
+    400004: Bone.001
+    400006: Bone.001_end
+    400008: Bone.002
+    400010: Bone.002_end
+    400012: Bone.003
+    400014: Bone.004
+    400016: Bone.005
+    400018: Bone.005_end
+    400020: Bone.006
+    400022: Bone.006_end
+    400024: Bone.007
+    400026: Bone.008
+    400028: Bone.008_end
+    400030: Icosphere.006
+    400032: //RootNode
+    2100000: Material.007
+    2100002: Material.005
+    2100004: Material.006
+    2100006: Material.002
+    2100008: Material.004
+    2100010: Material.001
+    2100012: Material.003
+    2100014: Material
+    4300000: Icosphere.006
+    7400000: Armature|ArmatureAction
+    9500000: //RootNode
+    13700000: Icosphere.006
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -63,13 +89,13 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    indexFormat: 1
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -99,7 +125,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
