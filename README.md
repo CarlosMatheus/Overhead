@@ -12,10 +12,12 @@ You can download and play Overhead on its [itch.io page](https://chicomcastro.it
 ## About
 
 Overhead was a National finalist on the Brazilian Games Symposium 2017 (SBGames) on Best Game, Best Student Game and Best Technology categories.
+
 It was originally developed to compete CIG 2017, in which also won the first place. CIG 2017 is the Intituto Tecnologico de Aeronautica - [ITA](http://www.ita.br/) - internal game development competition.
+
 It was also the only student game selected in Best Game category on SBGames 2017.
 
-## Notes about documentation and contributing
+## Notes about contributing
 
 If any substantial change is made, please, contact any of the authors.
 
