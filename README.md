@@ -1,6 +1,6 @@
 # Overhead
 
-![gif](https://media.giphy.com/media/39gsw4Jqt1zlOnKNTl/giphy.gif)
+![gif](./Screenshots/gameplay.gif)
 
 Tower defense game made with Unity!
 
