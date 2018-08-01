@@ -2,7 +2,7 @@
 
 ![game](https://media.giphy.com/media/BoHLyrFkWTN5Yt3gr4/giphy.gif)
 
-![game_play](https://media.giphy.com/media/2bV8SBmUUpvM3FAj6q/giphy.gif)
+![game_play](https://media.giphy.com/media/2bV8SBmUUpvM3FAj6q/giphy-downsized-large.gif)
 
 Tower defense game made with Unity!
 
