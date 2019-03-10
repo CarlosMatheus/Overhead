@@ -4,7 +4,8 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Camera))]
-public class PrePassCamera : MonoBehaviour {
+public class PrePassCamera : MonoBehaviour
+{
 
     private static RenderTexture PrePass;     //Texture where the solid color is stored
     private static RenderTexture BlurTexture; //Texture where the blur is stored
@@ -13,7 +14,7 @@ public class PrePassCamera : MonoBehaviour {
 
     private void OnEnable()
     {
-        PrePass = new RenderTexture(Screen.width, Screen.height, 24); 
+        PrePass = new RenderTexture(Screen.width, Screen.height, 24);
         BlurTexture = new RenderTexture(Screen.width >> 1, Screen.height >> 1, 0); //Downing the resolution for the blur
 
         Camera _camera = GetComponent<Camera>();
@@ -36,7 +37,7 @@ public class PrePassCamera : MonoBehaviour {
 
         Graphics.Blit(source, BlurTexture); //Time to apply the blur. First, the blurTexture is merged with what the camera is seeing
 
-        for (int i = 0 ; i < 10; i++)
+        for (int i = 0; i < 10; i++)
         {
             RenderTexture rt = RenderTexture.GetTemporary(BlurTexture.width, BlurTexture.height); //Temporary texture to apply iterative blur
             Graphics.Blit(BlurTexture, rt, _blurMaterial); //Step 1 of iterative blur, the temporary texture receives the blur texture, but blurred(by the blur shader)
@@ -45,4 +46,22 @@ public class PrePassCamera : MonoBehaviour {
         }
         //After the loop, the blur texture is very blurred
     }
+
+    #region Main camera tracking and following
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+        gameObject.GetComponent<Camera>().orthographic = Camera.main.orthographic;
+    }
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        gameObject.GetComponent<Camera>().orthographicSize = Camera.main.orthographicSize;
+    }
+    #endregion
 }
