@@ -1,0 +1,31 @@
+Modularization:
+    ✔ Adapt ModuleSpawnScript to support any number of modules prefabs @done(19-05-15 23:18)
+    ☐ Create new modules for campaign levels
+    ☐ Displace sequence for them
+    ☐ Set enemy progression
+
+História:
+    ? O bruxo deve perder vida não quando um heroi entra na torre
+    Para ficar consistente com a história, o bruxo deve perder vida da seguinte forma:
+        ☐ Muitos heroi dão sua vida para salvar a princesa
+        ☐ As almas que o bruxo ganha são destinadas à aumentar sua força
+        ☐ As almas que se doam na torre para salvar a princesa contribuem para enfraquecer o bruxo
+        Gerar história em cima disso
+
+Campanha:
+    ☐ Sequência de fases
+    ☐ Mesma cena
+    ☐ Ordem de dificuldade crescente
+    ☐ Bruxo ganha ao destruir a(s) vila(s)
+        ☐ Testar essa mecânica
+    ☐ Vilas são destruídas ao final
+        ☐ Bruxo retorna pra main tower
+        ☐ Torres se convertem em pontos
+        ☐ Mostra a leaderboard
+        ☐ Controe-se (animação) novas vilas e caminhos que darão origem ao próximo level
+        ☐ A cena é a mesma
+        ☐ Os recursos são resetados
+
+Modo survival:
+    ☐ Continua do jeito que tá
+    ☐ Só balancear melhor os parâmetros

@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class ModuleSpawnScript : MonoBehaviour {
 
-	[Header("Must be at least 4 modules!")]
-
 	public GameObject[] modules;
+	public int modulesToInstantiate = 4;
 
 	private int randomSelection;
 	private bool[] selectedModules;
@@ -44,8 +43,8 @@ public class ModuleSpawnScript : MonoBehaviour {
 	/// <summary>
 	/// Instantiates the modules.
 	/// </summary>
-	private void InstantiateModules(){
-		for (int i = 0; i < 4; i++) {
+	private void InstantiateModules(){ // ADAPT HERE
+		for (int i = 0; i < modulesToInstantiate; i++) {
 			Instantiate ( SelectRandomModule (), new Vector3(0,0,0), Quaternion.Euler(0,i*90,0) );
 		}
 	}
