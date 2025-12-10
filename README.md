@@ -21,10 +21,3 @@ It was also the only student game selected in Best Game category on SBGames 2017
 ## Notes about contributing
 
 If any substantial change is made, please, contact any of the authors.
-
-## Authors
-
-* **Carlos Matheus Barros da Silva** - [CarlosMatheus](https://github.com/CarlosMatheus)
-* **Francisco Matheus Moreira de Castro** - [chicomcastro](https://github.com/chicomcastro)
-* **Luiz Henrique Aguiar de Lima Alves** - [HikkusT](https://github.com/HikkusT)
-
